@@ -1,0 +1,417 @@
+---
+title: "Statistics"
+author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
+  <tr style='border:none'>
+    <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
+      <font style='font-style:normal'>Introduction to Data Science with R</font><br>
+      <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
+        <i class='fas fa-clock' style='font-size:.9em;' ></i>
+      </a>
+      <a href='https://therbootcamp.github.io'>
+        <i class='fas fa-home' style='font-size:.9em;'></i>
+      </a>
+      <a href='mailto:therbootcamp@gmail.com'>
+        <i class='fas fa-envelope' style='font-size: .9em;'></i>
+      </a>
+      <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+        <i class='fab fa-linkedin' style='font-size: .9em;'></i>
+      </a>
+      <a href='https://therbootcamp.github.io'>
+        <font style='font-style:normal'>The R Bootcamp</font>
+      </a>
+    </td>
+    <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
+      <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
+    </td>
+  </tr></table>"
+output:
+  html_document:
+    css: practical.css
+    self_contained: no
+---
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(comment = NA, 
+                      fig.width = 6, 
+                      fig.height = 6,
+                      fig.align = 'center',
+                      echo = TRUE, 
+                      eval = TRUE, 
+                      warning = FALSE)
+
+options(digits = 3)
+
+# Load packages
+library(tidyverse)
+
+# wine <- 
+# wein %>%
+#   rename("Quality" = "Qualität",
+#          "Color" = "Farbe",
+#          "Dissolved_Acid" = "Gelöste_Säure",
+#          "Free_Acid" = "Freie_Säure",
+#          "Citric_Acid" = "Citronensäure",
+#          "Residual_Sugar" = "Restzucker",
+#          "Chloride" = "Chloride",
+#          "Free_Sulfur_Dioxide" = "Freie_Schwefeldioxide",
+#          "Total_Sulfur_Dioxide" = "Gesamt_Schwefeldioxide",
+#          "Density" = "Dichte",
+#          "PH_Value" = "pH_Wert",
+#          "Sulphate" = "Sulphate",
+#          "Alcohol" = "Alkohol") %>%
+#   mutate(Color = case_when(Color == 'weiss' ~ 'white',
+#                              Color == 'rot' ~ 'red'))
+# 
+# write_csv(wine, '1_Data/wine.csv')
+
+# generate english version
+
+# Load packages
+wine <- read_csv("https://raw.githubusercontent.com/dwulff/Intro2R_Unibe_2021/main/_sessions/Statistics/1_Data/wine.csv") 
+```
+
+<p align="center" width="100%">
+  <img src="image/vinho2.png" alt="Trulli" style="width:100%">
+  <br>
+  <font style="font-size:10px">from <a href="https://www.delinat.com/winelese-blog/wie-lange-ist-ein-wine-haltbar/">delinat.com</a></font>
+</p>
+
+
+# {.tabset}
+
+## Overview
+
+At the end of this practical you will be able to ...
+
+1. run simple and multiple regressions.
+2. use categorical variables for group comparisons.
+
+## Tasks
+
+### A - Setup
+
+1. Open your `TheRBootcamp` R project. Make sure that the data files listed in the `Datasets` tab are in your `1_Data` folder.
+
+2. Using `library()` load the set of packages for this practical listed in the Functions section.
+
+```{r, eval = FALSE, echo = TRUE}
+## Name
+## Date
+## Statistics Practical
+
+library(XX)     
+library(XX)
+```
+
+3. In this practical, you will analyze a dataset called `wine.csv`. Read it in with `read_csv()` from its location on a website. Copy the link of the  [wine.csv](https://bit.ly/3zV98fi) file into your `read_csv()` function.
+
+```{r, echo=T, eval = T, message = F}
+# Read in the data
+wine <- read_csv(file = "https://bit.ly/3zV98fi")
+```
+
+4. Execute the code below to ensure that all `character` variables are converted to factors. This will help the statistical model to interpret categorical variables correctly. 
+
+```{r, echo = TRUE}
+# convert character to factor
+wine <- wine %>% mutate_if(is.character, factor)
+```
+
+### B - Einfache Regression
+
+1. In this section, you will test the effect of `Residual_Sugar` (predictor) on the perceived `Quality` (criterion) of wines. Use the template below, to run a simple linear regression testing the relationship and save it in an object called `wine_lm`.
+
+```{r, eval = FALSE, echo = TRUE}
+# Simple regression
+wine_lm <- lm(formula = XX ~ XX,
+              data = XX)
+```
+
+```{r}
+wine_lm <- lm(formula = Quality ~ Residual_Sugar,
+              data = wine)
+```
+
+2. Print the fitted model `wine_lm`. Which information does it show? Can you make sense of it?
+
+```{r}
+wine_lm
+```
+
+3. The deafult output of `lm` is not very informative. It only shows the code and the estimates for the mdoel's parameters: the inetrcept and the coefficient for `Residual_Sugar`. Use `summary()` to obtain a more informative output. 
+
+```{r, echo = TRUE, eval = FALSE}
+# Show results
+summary(XX)
+```
+
+```{r}
+summary(wine_lm)
+```
+
+4. `summary()` shows a detailed output with five sections:
+
+- Call: The code specifying the model.
+- Residuals: Statistics of the distribution of residuals.
+- Coefficients: Estimates and tests of model parameters.
+- Signif. codes: Conventional coding of significances.
+- Schluss: Statistics of the overall model fit.
+
+Which sections shows you, whether `Residual_Sugar` has an impact on the perceived `Quality` of wine?
+
+5. The section `Coefficients` shows the estimates of the model parameters and whether they are significantly different from 0. What value was estimated for `Residual_Sugar`? What does this value tell you?
+
+6. An increase of `1` (g/ml) is associated with a change of `-.0067` in the quality of wine. This means that the sweeter the wine, the lower the perceived quality of the wine. But is this relationship significant? Have a look at the corresponding p-value. 
+
+7. Now direct your attention to the final section. There you see a summary of the overall fit of the model to the data. Of particular interest is the `Multiple R-squared`. It shows you how much the criterion's variance is accounted by the model. How do you assess the values magnitude? Is it large or small?
+
+8. The value is small. Only .1% of the variance is accounted for. It is time to include additional predictors.
+
+### C - Multiple Regression
+
+1. Test the effect of multiple predictors on the perceived `Quality` (criterion) of the wine. Include, in addition to `Residual_sugar`, the `PH_Value`, `Alcohol`, and `Sulphate`. Use the template below, to run a multiple regression with these variables and save it as `wine_lm`.   
+
+```{r, eval = FALSE, echo = TRUE}
+# Multiple regression
+wine_lm <- lm(formula = XX ~ XX + XX + XX + XX,
+              data = XX)
+```
+
+```{r}
+wine_lm <- lm(formula = Quality ~ Residual_Sugar + PH_Value + Alcohol + Sulphate,
+              data = wine)
+```
+
+2. Print the fitted mdoel. How do you interpret the coefficients? Do they tell you, which predictor is most important?
+
+```{r}
+wine_lm
+```
+
+3. Raw coefficients tell little about the importance of predictors, as they are also affect by the scale of the precictors. For instance, was `Alcohol` coded in per thousand (rather than percent), then its coefficient would be exactly ten times larger. You can tests this using the template below. Add the four predictors using above such that `Alcohol` is placed within of `I()` and  run the model. Do not save it, only inspect the coefficients printed in the console.  
+
+```{r, eval = FALSE, echo = TRUE}
+# Multiple regression
+lm(formula = XX ~ XX + XX + I(XX / 10) + XX,
+   data = XX)
+```
+
+```{r}
+wine_lm <- lm(formula = Quality ~ Residual_Sugar + PH_Value + I(Alcohol/10) + Sulphate,
+              data = wine)
+```
+
+4. Regression coefficients must always be interpreted with the scaling of variables in mind. Nevertheless, the coefficients reveal some interesting results. Take a look at the coefficient of `Residual_sugar`. Wasn't the effect negative, when it was the only predictor? How come it has changed?
+
+5. In multiple regressison, all predictors depend on each other. This means that one coefficient can only be interpreted in reference to the whole set of predictors. Now, take a look at the `summary()`. Which effects are significant and what is their direction?
+
+```{r}
+summary(wine_lm)
+```
+
+6. `Alcohol`, `Sulphate`, and `Residual_Sugar` all show a significant positive relationship with perceived quality of wines, whereas `PH_Value` shows a non-significant negative relationship. Using the summary, you can now evaluate, which predictor is most important. Which values would you rely on to make that call?   
+
+7. The best value to evaluate the importance of predictors is the t-value. The larger the t-value, the stronger the signal for the corresponding predictor. Now, take a look at `R-squared`. Has it increased relative to the simple regression?
+
+8. The `R-squared` increased substantially. About 22% of the criterion's variance is accounted for by a linear model of the four predictors. 
+
+### D - Comparing groups: <i>t</i>-test versus regression
+
+1. In this part, you will analyze the effect of `Color` of the wine, red or white, as a predictor for `Quality`. Use the code below to generate two vectors that include quality ratings for white and red wine. 
+
+```{r, echo = TRUE}
+# Qualitiy vectors by color
+white <- wine %>% filter(Color == 'white') %>% pull(Quality)
+red <- wine %>% filter(Color == 'red') %>% pull(Quality)
+```
+
+2. Use the `t.test()` template below to compare the two vectors with a <i>t</i>-test. You do not have to save the result.
+
+```{r, eval = FALSE, echo = TRUE}
+# t-test
+t.test(x = XX, y = XX)
+```
+
+```{r}
+# t-test
+t.test(x = white, y = red)
+```
+
+3. What does the output of the <i>t</i>-tests tell you about the difference between white and red wine in perceived quality? You can find the answer in the second line of the output that starts with `t=..` together with the last line.  
+
+4. White wine were rated `0.2419` (difference of the two means) points higher than red wine and this difference is significant. Now, try to get the same result with a regression. Predict `Quality` with `Color`.
+
+```{r, eval = FALSE, echo = TRUE}
+# Regression
+wine_lm <- lm(formula = XX ~ XX, 
+              data = XX)
+```
+
+```{r}
+# Regression
+wine_lm <- lm(formula = Quality ~ Color, 
+              data = wine)
+```
+
+5. Print the object and inspect the regression coefficients. Do you recognize some of these numbers?
+
+6. Exactly! The regression coefficient for `Color` is the difference of red and white wines. What does the intercept represent? It represents the value of the category that got assigned 0 by R. For `character` variables the default is assigned to the category that comes earlier in the alphabet, i.e., `'red' < 'white'`.   
+
+7. Now take a look at the `summary()` of your model object and compare the degrees of freedom, <i>t</i>- and p-values with the ones from the <i>t</i>-test above. 
+
+```{r}
+# summary
+summary(wine_lm)
+```
+
+8. The values from the t-test do not exactly match the estimates for the coefficients in the regression. The reason is that the `t.test()` function permits different variances in the groups (red and white). In contrast, regression always assumes that the variances between groups are the identical. Re-calculate the <i>t</i>-test using the additional argument `var.equal = TRUE`.   
+
+```{r, eval = FALSE, echo = TRUE}
+# t-test
+t.test(x = XX, y = XX, var.equal = XX)
+```
+
+```{r}
+# t-test
+t.test(x = white, y = red, var.equal = TRUE)
+```
+
+9. Order has been restored! All values in the <i>t</i>-test and the regression should now be identical. 
+
+### E - Comparing groups: Coding
+
+1. The default in R is dummy coding, which assigns 0 to one feature and 1 for to another. Alternatively, you can code effects, by assigning -1 to one value and 1 to another. To see the difference between these codings generate two new varibales in your dataset using the code below. 
+
+```{r, echo = TRUE}
+# Kodierungen der Color
+wine <- wine %>% mutate(Color_dummy = ifelse(Color == 'red', 0, 1),
+                        Color_effect = ifelse(Color == 'red', -1, 1))
+```
+
+2. Now, calculate two regressions, one with dummy coding and the other with effect coding as the predictor, and save them as new objects called `wine_dummy` and `wine_effect`.   
+
+```{r, eval = FALSE, echo = TRUE}
+# Regression dummy
+wine_dummy <- lm(formula = XX ~ XX, 
+                 data = XX)
+
+# Regression effect
+wine_effect <- lm(formula = XX ~ XX, 
+                  data = XX)
+```
+
+```{r}
+# Regression dummy
+wine_dummy <- lm(formula = Quality ~ Color_dummy, 
+                 data = wine)
+
+# Regression effect
+wine_effect <- lm(formula = Quality ~ Color_effect, 
+                  data = wine)
+```
+
+3. Print these objects and compare the coeffcients. The dummy coding coefficients should be familiar. How do they compare to the effect coding? Do you see the connection?
+
+4. The coefficient for color using effect coding is exactly half of the coefficient for the dummy coding. To compensate for this change, the intercept has also changed for exactly the same value. Verify the weights with the calculations done in the code chunk below.
+
+```{r, echo = TRUE}
+# Dummy-coding
+mean(red) # intercept
+mean(white) - mean(red) # coeffcient color
+
+# EffekKodierung
+(mean(red) + mean(white))/2 # intercept
+mean(white) - (mean(red) + mean(white))/2 # coeffcient color
+```
+
+5. Now, compare the models with `summary()`. Where is different, what the  same?
+
+```{r}
+# Regression dummy
+summary(wine_dummy)
+
+# Regression effekt
+summary(wine_effect)
+```
+
+6. The coding (dummy or effect) has, with the exception of the coefficient scaling and the standard error, no influence on the <i>t</i>-value and the <i>p</i>-value for predictors. However, the intercept changed dramatically, because for the effect coding the intercept is considerably further away from zero.
+
+
+## Examples
+
+```{r, eval = FALSE, echo = TRUE}
+# Regression mit R
+
+library(tidyverse)
+
+# Model:
+# Does engine displacement predict
+# highway miles per gallon?
+hwy_mod <- lm(formula = hwy ~ displ,
+               data = mpg)
+
+# Results 
+summary(hwy_mod)
+coef(hwy_mod)
+
+# Fitted values
+hwy_fit <- fitted(hwy_mod)
+hwy_fit
+
+# Resdiuals 
+hwy_resid <- residuals(hwy_mod)
+hwy_resid
+
+```
+
+
+## Datasets
+
+|Datei | Zeile | Spalte |
+|:----|:-----|:------|
+|[wine.csv](https://github.com/dwulff/Intro2R_Unibe_2021/raw/main/_sessions/Statistics/1_Data/wine.csv) | 6497 | 13 |
+
+
+
+#### wine.csv
+
+The `wine.csv` file contains data of the Comissão De Viticultura Da Região Dos Vinhos Verdes, the official certification agency of Vinho Verde in Portugal for the years 2004 to 2007.
+
+
+| Name | Description |
+|:-------------|:-------------------------------------|
+|Quality | Quality rating on a scale between 1-9 |
+|Color| red or white wine |
+|Dissolved_Acid| Concentration of acids dissolved in the wine |
+|Free_Acid| Concentration of free acids |
+|Citric_Acid| Citric acid in the wine |
+|Residual_Sugar| Sugar concentration in the wine|
+|Chloride| Chlorid concentration in the|
+|Free_Sulfur_Dioxide| Free sulfur dioxide in the |
+|Total_Sulfur_Dioxide| Total amount of sulfur dioxide |
+|Density|Density of the wine|
+|PH_Value|pH-Value of the wine. The smaller the more acidic.|
+|Sulphate| Sulphate concentration of the wine |
+|Alcohol| Alcohol in the wine in %|
+
+## Functions
+
+### Packages
+
+|Package| Installation|
+|:------|:------|
+|`tidyverse`|`install.packages("tidyverse")`|
+
+### Functions
+
+| Function| Package | Description |
+|:---|:------|:---------------------------------------------|
+|   `lm`|`stats`| Fit a linear model  |
+|   `fitted`|`stats`| Extract predicted values|
+|   `residuals`|`stats`| Extract residuals |
+
+## Resources
+
+### Books
+
+- [Discovering Statistics with R](https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469) excellent and entertaining book on statistics.

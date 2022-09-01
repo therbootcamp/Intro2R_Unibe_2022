@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Plotting II</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="  Intro to Data Science with R   The R Bootcamp @ Unibe                  " />
+    <script src="PlottingII_files/header-attrs/header-attrs.js"></script>
+    <link href="PlottingII_files/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Plotting II
+### <br> Intro to Data Science with R<br> <a href='https://therbootcamp.github.io'> The R Bootcamp @ Unibe </a> <br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+### September 2021
+
+---
+
+layout: true
+
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://therbootcamp.github.io/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
+          www.therbootcamp.com
+        </font>
+      </span>
+    </a>
+    <a href="https://therbootcamp.github.io/">
+      <font color="#7E7E7E">
+       The R Bootcamp | September 2021
+      </font>
+    </a>
+    </span>
+  </div> 
+
+---
+
+
+
+
+
+
+
+
+
+
+# Customizing plots
+
+.pull-left45[
+&lt;br2&gt;
+&lt;font style="font-size:24px"&gt;
+&lt;b&gt;1&lt;/b&gt; &lt;high&gt;Store&lt;/high&gt; and customize plot as a &lt;high&gt;&lt;mono&gt;gg&lt;/mono&gt; object&lt;/high&gt;.
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;2&lt;/b&gt; Create multiple plots using &lt;high&gt;facetting&lt;/high&gt;.
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;3&lt;/b&gt; Use &lt;high&gt;themes&lt;/high&gt; to control every &lt;high&gt;detail&lt;/high&gt; of the plot.
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;4&lt;/b&gt; Create your &lt;high&gt;own themes&lt;/high&gt;.
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;5&lt;/b&gt; Combine &lt;high&gt;multiple plots&lt;/high&gt;.
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;6&lt;/b&gt; Create &lt;high&gt;image files&lt;/high&gt; in &lt;mono&gt;.pdf&lt;/mono&gt;, &lt;mono&gt;.png&lt;/mono&gt;, etc.
+&lt;/font&gt;
+]
+
+
+.pull-right45[
+
+&lt;img src="image/button_sm.jpeg" style="width:400px"&gt;
+
+]
+
+
+---
+
+# The &lt;mono&gt;gg&lt;/mono&gt; object
+
+.pull-left4[
+
+&lt;b&gt;1&lt;/b&gt; ggplot returns an object of the class `gg`.&lt;br&gt;
+&lt;b&gt;2&lt;/b&gt; You can assign the result of `ggplot` to an &lt;high&gt;object&lt;/high&gt;.&lt;br&gt;
+&lt;b&gt;3&lt;/b&gt; Evaluating the object will show the plot.&lt;br&gt;
+&lt;b&gt;4&lt;/b&gt; You can even edit existing &lt;high&gt;`ggplot` objects&lt;/high&gt;.&lt;br&gt;
+
+
+```r
+# Create my_plot
+my_plot &lt;- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+class(my_plot)
+```
+
+```
+[1] "gg"     "ggplot"
+```
+
+]
+
+.pull-right45[
+
+
+```r
+my_plot # Evaluate my_plot
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# The &lt;mono&gt;gg&lt;/mono&gt; object
+
+.pull-left4[
+
+&lt;b&gt;1&lt;/b&gt; ggplot returns an object of the class `gg`.&lt;br&gt;
+&lt;b&gt;2&lt;/b&gt; You can assign the result of `ggplot` to an &lt;high&gt;object&lt;/high&gt;.&lt;br&gt;
+&lt;b&gt;3&lt;/b&gt; Evaluating the object will show the plot.&lt;br&gt;
+&lt;b&gt;4&lt;/b&gt; You can even edit existing &lt;high&gt;`ggplot` objects&lt;/high&gt;.&lt;br&gt;
+
+
+```r
+# Create my_plot
+my_plot &lt;- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+class(my_plot)
+```
+
+```
+[1] "gg"     "ggplot"
+```
+
+]
+
+.pull-right45[
+
+
+```r
+my_plot + 
+  geom_smooth() # add geom
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# `facet_wrap()`
+
+.pull-left45[
+
+Faceting = &lt;high&gt;same plot for different groups&lt;/high&gt;.
+
+To facet plots, use, e.g., `facet_wrap()`.
+
+
+```r
+# Without faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw()
+```
+
+]
+
+.pull-right45[
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# `facet_wrap()`
+
+.pull-left4[
+
+Faceting = &lt;high&gt;same plot for different groups&lt;/high&gt;.
+
+To facet plots, use, e.g., `facet_wrap()`.
+
+
+```r
+# With faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw() +
+  facet_wrap(~ class)  # Tilde first
+```
+
+
+]
+
+.pull-right45[
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# `facet_grid()`
+
+.pull-left4[
+
+Faceting = &lt;high&gt;same plot for different groups&lt;/high&gt;.
+
+Use `facet_grid()` to create plots of one (set of) variable against those another.
+
+
+```r
+# With faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw() +
+  facet_grid(drv ~ class) 
+```
+
+
+]
+
+.pull-right45[
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+
+# `theme()`
+
+.pull-left45[
+
+To &lt;high&gt;customize the appearance of your plot use `theme()`.
+
+`theme()` has &lt;high&gt;94 arguments&lt;/high&gt; allowing to fine-tune, e.g., the background, the axes, the legend, etc. 
+
+Arguments are specified via `element_*()` helper functions, mostly `element_rect()` or `element_line()`.
+
+
+```r
+# use theme to change appearance
+my_plot + 
+  theme(argument = element_*(), 
+        argument = element_*(),
+        etc.)
+```
+
+]
+
+
+.pull-right45[
+
+&lt;p align="center"&gt;
+&lt;img src="image/theme.png"&gt;
+&lt;/p&gt;
+]
+
+---
+
+# Background color: `theme()`
+
+.pull-left45[
+
+Address the &lt;high&gt;panel background&lt;/high&gt; using `panel.background` and that of the &lt;high&gt;plot background&lt;/high&gt; using `plot.background` and change the color using `element_rect(fill = color)`.
+
+
+```r
+# change panel and plot color
+my_plot + 
+  theme(
+    panel.background = 
+      element_rect(fill = 'tomato'), 
+    plot.background = 
+      element_rect(fill = 'burlywood'))
+```
+
+]
+
+
+.pull-right45[
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Background grid: `theme()`
+
+.pull-left45[
+
+Address the &lt;high&gt;grid line colors&lt;/high&gt; using `panel.grid.major` (large grid lines) and `panel.grid.minor` (small grid lines) and change the color using `element_line(colour = color)`.
+
+
+```r
+# change grid line color
+my_plot + 
+  theme(
+    panel.grid.major = 
+      element_line(colour = "salmon"),
+    panel.grid.minor = 
+      element_line(colour = "seagreen")
+    )
+```
+
+]
+
+
+.pull-right45[
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Background grid: `theme()`
+
+.pull-left45[
+
+Change the &lt;high&gt;grid line sizes&lt;/high&gt; using `element_line(size = number)`.
+
+
+```r
+# change grid line color
+my_plot + 
+  theme(
+    panel.grid.major = 
+      element_line(colour = "salmon",
+                   size = 3),
+    panel.grid.minor = 
+      element_line(colour = "seagreen",
+                   size = 1.5)
+    )
+```
+
+]
+
+
+.pull-right45[
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Axes: `theme()`
+
+.pull-left45[
+
+Change the &lt;high&gt;axes&lt;/high&gt; using the ` axis.line.x` and ` axis.line.y` arguments and `element_line(colour, size, lineend, ...)`.
+
+
+```r
+# change grid line color
+my_plot + 
+  theme(
+    axis.line.x = 
+      element_line(colour = "deeppink", 
+                   size = 3.5, 
+                   lineend = "butt"),
+    axis.line.y = 
+      element_line(colour = "deeppink", 
+                   size = 3.5)
+    )
+```
+
+]
+
+
+.pull-right45[
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Axes: `theme()`
+
+.pull-left45[
+
+Change the &lt;high&gt;axes labels&lt;/high&gt; using the ` axis.title.x` and ` axis.title.y` arguments and `element_text(family, face, ...)`.
+
+
+```r
+# change grid line color
+my_plot + 
+  theme(
+    axis.title.x = 
+      element_text(
+                   family = "Comic Sans MS", 
+                   size = 30),
+    axis.title.y = 
+      element_text(family = "Comic Sans MS", 
+                   size = 30)
+    )
+```
+
+]
+
+.pull-right45[
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+
+.pull-left45[
+
+# Further arguments&lt;font style="font-size:16px"&gt; (incomplete)&lt;/font&gt;
+
+&lt;u&gt;&lt;mono&gt;theme()&lt;/mono&gt;&lt;/u&gt;
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Argument&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;axis.title.*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Everything about the axis labels &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;axis.ticks.*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Everything about the axis tick marks &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;axis.line.*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Everything about the axis line &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;legend.*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Everything about the legend &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;panel.*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Everything about the panel (inner plot region) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;plot.*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Everything about the plot (outer plot region) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;strip.*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Everything about facet headers &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right45[
+
+&lt;br&gt;
+
+&lt;u&gt;&lt;mono&gt;element_rect()&lt;/mono&gt;&lt;/u&gt;
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Argument&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;fill&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Fill color &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;colour&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Border color &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;u&gt;&lt;mono&gt;element_line()&lt;/mono&gt;&lt;/u&gt;
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Argument&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;size&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Line size &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;linetype&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Type of line (solid, dashed, etc.) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;u&gt;&lt;mono&gt;element_text()&lt;/mono&gt;&lt;/u&gt;
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Argument&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;face&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Font face &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;colour&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Font colour &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+
+---
+
+# Create themes
+
+.pull-left45[
+
+
+```r
+# define my theme
+my_theme &lt;- theme(
+    panel.background = 
+      element_rect(fill = 'tomato'), 
+    plot.background = 
+      element_rect(fill = 'burlywood'),
+    panel.grid.major = element_line(
+      colour = "salmon", size = 3),
+    panel.grid.minor = element_line(
+      colour = "seagreen", size = 1.5),
+    axis.line.x = element_line(
+      colour = "deeppink", size = 3.5, 
+      lineend = "butt"),
+    axis.line.y = element_line(
+      colour = "deeppink", size = 3.5),
+    axis.title.x = element_text(
+      family = "Comic Sans MS", size = 30),
+    axis.title.y = element_text(
+      family = "Comic Sans MS", size = 30)
+  )
+```
+
+]
+
+.pull-right45[
+
+
+
+
+```r
+my_plot
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Create themes
+
+.pull-left45[
+
+
+```r
+# define my theme
+my_theme &lt;- theme(
+    panel.background = 
+      element_rect(fill = 'tomato'), 
+    plot.background = 
+      element_rect(fill = 'burlywood'),
+    panel.grid.major = element_line(
+      colour = "salmon", size = 3),
+    panel.grid.minor = element_line(
+      colour = "seagreen", size = 1.5),
+    axis.line.x = element_line(
+      colour = "deeppink", size = 3.5, 
+      lineend = "butt"),
+    axis.line.y = element_line(
+      colour = "deeppink", size = 3.5),
+    axis.title.x = element_text(
+      family = "Comic Sans MS", size = 30),
+    axis.title.y = element_text(
+      family = "Comic Sans MS", size = 30)
+  )
+```
+
+]
+
+.pull-right45[
+
+
+
+
+```r
+my_plot + my_theme
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+&lt;high&gt;`Scales` control&lt;/high&gt; many automatic aspects of the plot such as the axis limits or the color scale.
+
+&lt;u&gt;Scale functions&lt;/u&gt;
+
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Function&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_color_*&lt;/mono&gt;, &lt;mono&gt;scale_fill_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control coloring &lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_scale_xy*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control axis dimensions  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_size_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control geom sizes  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_alpha_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control transparency  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; ... &lt;/td&gt;
+    &lt;td&gt; ...  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+]
+
+.pull-right45[
+
+
+
+
+```r
+# Original plot
+my_plot
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+&lt;high&gt;`Scales` control&lt;/high&gt; many automatic aspects of the plot such as the axis limits or the color scale.
+
+&lt;u&gt;Scale functions&lt;/u&gt;
+
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Function&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_color_*&lt;/mono&gt;, &lt;mono&gt;scale_fill_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control coloring &lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_scale_xy*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control axis dimensions  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_size_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control geom sizes  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_alpha_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control transparency  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; ... &lt;/td&gt;
+    &lt;td&gt; ...  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+]
+
+.pull-right45[
+
+
+
+
+```r
+my_plot + 
+  scale_x_continuous(limits = c(1, 30))
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+&lt;high&gt;`Scales` control&lt;/high&gt; many automatic aspects of the plot such as the axis limits or the color scale.
+
+&lt;u&gt;Scale functions&lt;/u&gt;
+
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Function&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_color_*&lt;/mono&gt;, &lt;mono&gt;scale_fill_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control coloring &lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_scale_xy*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control axis dimensions  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_size_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control geom sizes  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_alpha_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control transparency  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; ... &lt;/td&gt;
+    &lt;td&gt; ...  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+]
+
+.pull-right45[
+
+
+
+
+```r
+my_plot + 
+  scale_x_reverse()
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-35-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+&lt;high&gt;`Scales` control&lt;/high&gt; many automatic aspects of the plot such as the axis limits or the color scale.
+
+&lt;u&gt;Scale functions&lt;/u&gt;
+
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Function&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_color_*&lt;/mono&gt;, &lt;mono&gt;scale_fill_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control coloring &lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_scale_xy*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control axis dimensions  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_size_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control geom sizes  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_alpha_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control transparency  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; ... &lt;/td&gt;
+    &lt;td&gt; ...  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+]
+
+.pull-right45[
+
+
+
+
+```r
+my_plot + 
+  scale_colour_hue(h = c(160, 260))
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+&lt;high&gt;`Scales` control&lt;/high&gt; many automatic aspects of the plot such as the axis limits or the color scale.
+
+&lt;u&gt;Scale functions&lt;/u&gt;
+
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Function&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_color_*&lt;/mono&gt;, &lt;mono&gt;scale_fill_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control coloring &lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_scale_xy_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control axis dimensions  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_size_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control geom sizes  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;scale_alpha_*&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Control transparency  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; ... &lt;/td&gt;
+    &lt;td&gt; ...  &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+
+]
+
+.pull-right45[
+
+
+
+
+```r
+my_plot + 
+  scale_size(range = c(1, 15))
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The &lt;mono&gt;patchwork&lt;/mono&gt; package provide a simple syntax to combine multiple plots.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;mono&gt;patchwork&lt;/mono&gt; Syntax:&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;+&lt;/mono&gt; | generic add&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;|&lt;/mono&gt; | show next to each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;/&lt;/mono&gt; | show below each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;()&lt;/mono&gt; | combine&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&amp;&lt;/mono&gt; | apply to all&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+
+
+&lt;br&gt;
+
+
+```r
+# Save plots
+pretty &lt;- my_plot
+ugly &lt;- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+
+```r
+pretty + ugly
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-42-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The &lt;mono&gt;patchwork&lt;/mono&gt; package provide a simple syntax to combine multiple plots.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;mono&gt;patchwork&lt;/mono&gt; Syntax:&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;+&lt;/mono&gt; | generic add&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;|&lt;/mono&gt; | show next to each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;/&lt;/mono&gt; | show below each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;()&lt;/mono&gt; | combine&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&amp;&lt;/mono&gt; | apply to all&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+
+
+&lt;br&gt;
+
+
+```r
+# add themes
+pretty &lt;- my_plot
+ugly &lt;- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+
+```r
+pretty | ugly + pretty
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-45-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The &lt;mono&gt;patchwork&lt;/mono&gt; package provide a simple syntax to combine multiple plots.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;mono&gt;patchwork&lt;/mono&gt; Syntax:&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;+&lt;/mono&gt; | generic add&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;|&lt;/mono&gt; | show next to each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;/&lt;/mono&gt; | show below each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;()&lt;/mono&gt; | combine&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&amp;&lt;/mono&gt; | apply to all&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+
+
+&lt;br&gt;
+
+
+```r
+# add themes
+pretty &lt;- my_plot
+ugly &lt;- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+
+```r
+(pretty+pretty) / (pretty+pretty)
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The &lt;mono&gt;patchwork&lt;/mono&gt; package provide a simple syntax to combine multiple plots.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;mono&gt;patchwork&lt;/mono&gt; Syntax:&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;+&lt;/mono&gt; | generic add&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;|&lt;/mono&gt; | show next to each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;/&lt;/mono&gt; | show below each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;()&lt;/mono&gt; | combine&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&amp;&lt;/mono&gt; | apply to all&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+
+
+&lt;br&gt;
+
+
+```r
+# add themes
+pretty &lt;- my_plot
+ugly &lt;- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+
+```r
+(pretty+pretty) / (pretty+pretty) &amp;
+  my_theme
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The &lt;mono&gt;patchwork&lt;/mono&gt; package provide a simple syntax to combine multiple plots.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;mono&gt;patchwork&lt;/mono&gt; Syntax:&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;+&lt;/mono&gt; | generic add&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;|&lt;/mono&gt; | show next to each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;/&lt;/mono&gt; | show below each other&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;()&lt;/mono&gt; | combine&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&amp;&lt;/mono&gt; | apply to all&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+
+
+&lt;br&gt;
+
+
+```r
+# add themes
+pretty &lt;- my_plot
+ugly &lt;- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+
+```r
+(pretty+pretty) / (pretty+pretty) +
+  plot_annotation(tag_levels = "A") &amp; 
+  theme(legend.position = "none") 
+```
+
+&lt;img src="PlottingII_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# `ggsave()`
+
+.pull-left5[
+
+To create an &lt;high&gt;image file&lt;/high&gt; of a plot (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
+
+
+&lt;u&gt;Arguments&lt;/u&gt;
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Argument&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;filename&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Name of the to-be-created file &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;device&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; File type (e.g.; "pdf", "jpeg", "png") &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;path&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Folder to store image in &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;width&lt;/mono&gt;, &lt;mono&gt;height&lt;/mono&gt;  &lt;/td&gt;
+    &lt;td&gt; Plot width, height (e.g., inches) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+
+.pull-right45[
+
+
+```r
+# Create my_plot object
+my_plot &lt;- ggplot(data = mpg,
+                 aes(x = displ, y = hwy)) + 
+            geom_point() + 
+            my_theme
+
+# Create "my_plot.pdf", from my_plot
+ggsave(filename = "my_plot.pdf",
+       plot = my_plot,
+       device = "pdf",
+       path = "figures",
+       width = 6, 
+       height = 4)
+```
+
+]
+
+---
+
+# `ggsave()`
+
+.pull-left5[
+
+To create an &lt;high&gt;image file&lt;/high&gt; of a plot (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
+
+
+&lt;u&gt;Arguments&lt;/u&gt;
+
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;b&gt;Argument&lt;/b&gt; &lt;/td&gt;
+    &lt;td&gt; &lt;b&gt;Description&lt;/b&gt; &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;filename&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Name of the to-be-created file &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;device&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; File type (e.g.; "pdf", "jpeg", "png") &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;path&lt;/mono&gt; &lt;/td&gt;
+    &lt;td&gt; Folder to store image in &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; &lt;mono&gt;width&lt;/mono&gt;, &lt;mono&gt;height&lt;/mono&gt;  &lt;/td&gt;
+    &lt;td&gt; Plot width, height (e.g., inches) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+
+.pull-right45[
+
+
+```r
+# Create my_plot object
+my_plot &lt;- ggplot(data = mpg,
+                 aes(x = displ, y = hwy)) + 
+            geom_point() + 
+            my_theme
+
+# Create "my_plot.png", from my_plot
+ggsave(filename = "my_plot.png",
+       plot = my_plot,
+       device = "png",
+       path = "figures",
+       width = 6, 
+       height = 4)
+```
+
+]
+
+
+
+---
+
+class: middle, center
+
+&lt;h1&gt;&lt;a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/PlottingII/PlottingII_practical.html"&gt;Practical&lt;/a&gt;&lt;/h1&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,187 @@
+---
+title: "Welcome!"
+
+output:
+  xaringan::moon_reader:
+    css: ["default", "baselrbootcamp.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
+---
+
+---
+.pull-left45[
+<br><br><br><br><br>
+#  Schedule and Materials
+
+Use the "Start Bootcamp" link in Ilias!
+
+]
+
+.pull-right5[
+
+<br><br>
+<iframe src="https://dwulff.github.io/Intro2R_Unibe_2021/" width="500" height="500"></iframe>
+
+]
+
+---
+
+
+
+.pull-left6[
+
+<br><br><br>
+
+
+# Aim
+
+
+>###The aim of this workshop is enable you to thoughtfully and actively use R. You will learn the fundamentals of the R language, as well as cutting-edge packages for wrangling, analyzing, and communicating statistical data.  
+
+]
+
+.pull-right4[
+
+<br><br><br><br>
+<p align="center"><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/target.png" height="350"></p>
+
+]
+
+---
+<br><br>
+.pull-left5[
+# Schedule 
+
+3 days, <high>3 sessions per day</high>, <high>2 hours per session</high>.
+
+Each session contains a slide-based <high>introduction</high> and a hands-on <high>programming practical</high>
+
+<br>
+
+
+]
+
+.pull-right4[
+
+<p align="center"><img src="image/schedule.png"></p>
+<center><font size = 3></font></center>
+
+]
+
+---
+
+
+.pull-left45[
+
+# Introduction
+
+<high>15 - 45 minutes</high> slide based introduction to help you understand the basic concepts, including:
+
+<br><br>
+&emsp;&emsp;1 - Theory<br>
+&emsp;&emsp;2 - Code examples<br>
+&emsp;&emsp;3 - Live demonstrations<br> 
+<br><br>
+
+<high>All available online</high>. Follow along, and don't worry about memorizing
+
+<br><br>
+<a href="https://dwulff.github.io/Intro2R_Unibe_2021/">This is a Link to our materials</a>.
+<br><br>
+
+]
+
+.pull-right55[
+
+<br>
+
+<p align="center">
+<img src="https://img.freepik.com/free-vector/business-presentation_23-2147511785.jpg?size=338&ext=jpg" style="width:250px">
+<br>
+<font style="font-size:10px">from <a href="www.Freepik.com">Freepik.com</a></font>
+</p>
+
+<p align="center">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5DZ7eRkgxeFuEMEtuVC9YHz2v0STxeQ9YJyW2T3PbXGIci_2Lig" style="width:250px">
+<br>
+<font style="font-size:10px">from <a href="www.Freepik.com">Freepik.com</a></font>
+</p>
+
+]
+
+---
+
+.pull-left45[
+
+# Practicals
+
+<high>Write your own R scripts!</high>
+
+1 - Anywhere from 10 ~ 30 programming tasks.
+
+2 - Starts easy, gets progressively more challenging
+
+3 - Struggle, work together, ask questions and challenge yourself!
+
+4 - Go at your own pace and finish as much as you can.
+
+5 - We'll give you all the answers later
+
+]
+
+
+
+
+.pull-right5[
+<br>
+
+  <iframe src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Data/Data_practical.html" height="480px" width = "500px"></iframe>
+
+  Example practical:<a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Data/Data_practical.html"> Data </a>
+
+]
+
+
+---
+
+.pull-left45[
+# Introductions
+
+1. Who are you?
+
+2. What is your study subject?
+
+3. Why do you want to learn R?
+
+4. Mac or PC?
+
+5. Coffee or tea?
+
+6. Berlin or Paris?
+
+
+]
+
+.pull-right50[
+
+<p align="center"><br><br><br><br>
+<img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/introductions.jpg" style="width:500px">
+<br>
+<font style="font-size:10px">from <a href="www.artofmanliness.com">artofmanliness.com</a></font>
+</p>
+
+]
+
+---
+
+class: middle, center
+
+<h1><a href=https://dwulff.github.io/Intro2R_Unibe_2021/index.html>Schedule</a></h1>
+
+

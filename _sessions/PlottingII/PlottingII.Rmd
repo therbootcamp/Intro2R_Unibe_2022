@@ -1,0 +1,1330 @@
+---
+title: "Plotting II"
+output:
+  xaringan::moon_reader:
+    css: ["default", "baselrbootcamp.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
+---
+
+---
+
+
+
+```{r, eval = TRUE, echo = FALSE, warning=F,message=F}
+# Code to knit slides
+baselers <- readr::read_csv("../_data/baselers.csv")
+```
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# see: https://github.com/yihui/xaringan
+# install.packages("xaringan")
+# see: 
+# https://github.com/yihui/xaringan/wiki
+# https://github.com/gnab/remark/wiki/Markdown
+options(width=110)
+options(digits = 4) 
+knitr::opts_chunk$set(comment = NA)
+```
+
+```{r, echo = FALSE ,message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(comment=NA, fig.width=6, fig.height=6, echo = TRUE, eval = TRUE, 
+                      message = FALSE, warning = FALSE, fig.align = 'center', dpi = 200)
+library(tidyverse)
+#library(baselers)
+library(ggthemes)
+library(extrafont)
+library(gridExtra)
+#loadfonts()
+```
+
+# Customizing plots
+
+.pull-left45[
+<br2>
+<font style="font-size:24px">
+<b>1</b> <high>Store</high> and customize plot as a <high><mono>gg</mono> object</high>.
+<br><br>
+<b>2</b> Create multiple plots using <high>facetting</high>.
+<br><br>
+<b>3</b> Use <high>themes</high> to control every <high>detail</high> of the plot.
+<br><br>
+<b>4</b> Create your <high>own themes</high>.
+<br><br>
+<b>5</b> Combine <high>multiple plots</high>.
+<br><br>
+<b>6</b> Create <high>image files</high> in <mono>.pdf</mono>, <mono>.png</mono>, etc.
+</font>
+]
+
+
+.pull-right45[
+
+<img src="image/button_sm.jpeg" style="width:400px">
+
+]
+
+
+---
+
+# The <mono>gg</mono> object
+
+.pull-left4[
+
+<b>1</b> ggplot returns an object of the class `gg`.<br>
+<b>2</b> You can assign the result of `ggplot` to an <high>object</high>.<br>
+<b>3</b> Evaluating the object will show the plot.<br>
+<b>4</b> You can even edit existing <high>`ggplot` objects</high>.<br>
+
+```{r, fig.width = 8}
+# Create my_plot
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+class(my_plot)
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5}
+my_plot # Evaluate my_plot
+```
+
+]
+
+---
+
+# The <mono>gg</mono> object
+
+.pull-left4[
+
+<b>1</b> ggplot returns an object of the class `gg`.<br>
+<b>2</b> You can assign the result of `ggplot` to an <high>object</high>.<br>
+<b>3</b> Evaluating the object will show the plot.<br>
+<b>4</b> You can even edit existing <high>`ggplot` objects</high>.<br>
+
+```{r, fig.width = 7, fig.height = 5.5}
+# Create my_plot
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+class(my_plot)
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5}
+my_plot + 
+  geom_smooth() # add geom
+```
+
+]
+
+---
+
+# `facet_wrap()`
+
+.pull-left45[
+
+Faceting = <high>same plot for different groups</high>.
+
+To facet plots, use, e.g., `facet_wrap()`.
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE, eval = F}
+# Without faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw()
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+# Without faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw()
+```
+
+]
+
+---
+
+# `facet_wrap()`
+
+.pull-left4[
+
+Faceting = <high>same plot for different groups</high>.
+
+To facet plots, use, e.g., `facet_wrap()`.
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE, eval = FALSE}
+# With faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw() +
+  facet_wrap(~ class)  # Tilde first
+```
+
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+# With faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw() +
+  facet_wrap(~ class)  # Tilde first!
+```
+
+]
+
+---
+
+# `facet_grid()`
+
+.pull-left4[
+
+Faceting = <high>same plot for different groups</high>.
+
+Use `facet_grid()` to create plots of one (set of) variable against those another.
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE, eval = FALSE}
+# With faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw() +
+  facet_grid(drv ~ class) 
+```
+
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+# With faceting
+ggplot(data = mpg, 
+       mapping = aes(x = displ, 
+                     y = hwy)) + 
+  geom_point() + theme_bw() +
+  facet_grid(drv ~ class) 
+```
+
+]
+
+
+---
+
+# `theme()`
+
+.pull-left45[
+
+To <high>customize the appearance of your plot use `theme()`.
+
+`theme()` has <high>94 arguments</high> allowing to fine-tune, e.g., the background, the axes, the legend, etc. 
+
+Arguments are specified via `element_*()` helper functions, mostly `element_rect()` or `element_line()`.
+
+```{r, eval = F}
+# use theme to change appearance
+my_plot + 
+  theme(argument = element_*(), 
+        argument = element_*(),
+        etc.)
+
+```
+
+]
+
+
+.pull-right45[
+
+<p align="center">
+<img src="image/theme.png">
+</p>
+]
+
+---
+
+# Background color: `theme()`
+
+.pull-left45[
+
+Address the <high>panel background</high> using `panel.background` and that of the <high>plot background</high> using `plot.background` and change the color using `element_rect(fill = color)`.
+
+```{r, eval = F}
+# change panel and plot color
+my_plot + 
+  theme(
+    panel.background = 
+      element_rect(fill = 'tomato'), 
+    plot.background = 
+      element_rect(fill = 'burlywood'))
+
+```
+
+]
+
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+# change panel and plot color
+my_plot = my_plot + 
+  theme(
+    panel.background = element_rect(fill = 'tomato'), 
+    plot.background = element_rect(fill = 'burlywood'))
+my_plot
+```
+
+]
+
+---
+
+# Background grid: `theme()`
+
+.pull-left45[
+
+Address the <high>grid line colors</high> using `panel.grid.major` (large grid lines) and `panel.grid.minor` (small grid lines) and change the color using `element_line(colour = color)`.
+
+```{r, eval = F}
+# change grid line color
+my_plot + 
+  theme(
+    panel.grid.major = 
+      element_line(colour = "salmon"),
+    panel.grid.minor = 
+      element_line(colour = "seagreen")
+    )
+
+```
+
+]
+
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+# change grid line color
+my_plot = my_plot + 
+  theme(
+    panel.grid.major = 
+      element_line(colour = "salmon"),
+    panel.grid.minor = 
+      element_line(colour = "seagreen")
+    )
+my_plot
+```
+
+]
+
+---
+
+# Background grid: `theme()`
+
+.pull-left45[
+
+Change the <high>grid line sizes</high> using `element_line(size = number)`.
+
+```{r, eval = F}
+# change grid line color
+my_plot + 
+  theme(
+    panel.grid.major = 
+      element_line(colour = "salmon",
+                   size = 3),
+    panel.grid.minor = 
+      element_line(colour = "seagreen",
+                   size = 1.5)
+    )
+
+```
+
+]
+
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+# change grid line color
+my_plot = my_plot + 
+  theme(
+    panel.grid.major = 
+      element_line(colour = "salmon",
+                   size = 3),
+    panel.grid.minor = 
+      element_line(colour = "seagreen",
+                   size = 1.5)
+    )
+my_plot
+```
+
+]
+
+---
+
+# Axes: `theme()`
+
+.pull-left45[
+
+Change the <high>axes</high> using the ` axis.line.x` and ` axis.line.y` arguments and `element_line(colour, size, lineend, ...)`.
+
+```{r, eval = F}
+# change grid line color
+my_plot + 
+  theme(
+    axis.line.x = 
+      element_line(colour = "deeppink", 
+                   size = 3.5, 
+                   lineend = "butt"),
+    axis.line.y = 
+      element_line(colour = "deeppink", 
+                   size = 3.5)
+    )
+
+```
+
+]
+
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+# change grid line color
+my_plot = my_plot + 
+  theme(
+    axis.line.x = 
+      element_line(colour = "deeppink", 
+                   size = 3.5, 
+                   lineend = "butt"),
+    axis.line.y = 
+      element_line(colour = "deeppink", 
+                   size = 3.5)
+    )
+my_plot
+```
+
+]
+
+---
+
+# Axes: `theme()`
+
+.pull-left45[
+
+Change the <high>axes labels</high> using the ` axis.title.x` and ` axis.title.y` arguments and `element_text(family, face, ...)`.
+
+```{r, eval = F}
+# change grid line color
+my_plot + 
+  theme(
+    axis.title.x = 
+      element_text(
+                   family = "Comic Sans MS", 
+                   size = 30),
+    axis.title.y = 
+      element_text(family = "Comic Sans MS", 
+                   size = 30)
+    )
+
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+# change grid line color
+my_plot = my_plot + 
+  theme(
+    axis.line.x = 
+      element_line(colour = "deeppink", 
+                   size = 3.5, 
+                   lineend = "butt"),
+    axis.line.y = 
+      element_line(colour = "deeppink", 
+                   size = 3.5),
+    axis.title.x = 
+      element_text(
+                   family = "Comic Sans MS", 
+                   size = 30),
+    axis.title.y = 
+      element_text(family = "Comic Sans MS", 
+                   size = 30)
+    )
+my_plot
+```
+
+]
+
+
+---
+
+.pull-left45[
+
+# Further arguments<font style="font-size:16px"> (incomplete)</font>
+
+<u><mono>theme()</mono></u>
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Argument</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>axis.title.*</mono> </td>
+    <td> Everything about the axis labels </td>
+  </tr>
+  <tr>
+    <td> <mono>axis.ticks.*</mono> </td>
+    <td> Everything about the axis tick marks </td>
+  </tr>
+  <tr>
+    <td> <mono>axis.line.*</mono> </td>
+    <td> Everything about the axis line </td>
+  </tr>
+  <tr>
+    <td> <mono>legend.*</mono> </td>
+    <td> Everything about the legend </td>
+  </tr>
+  <tr>
+    <td> <mono>panel.*</mono> </td>
+    <td> Everything about the panel (inner plot region) </td>
+  </tr>
+  <tr>
+    <td> <mono>plot.*</mono> </td>
+    <td> Everything about the plot (outer plot region) </td>
+  </tr>
+  <tr>
+    <td> <mono>strip.*</mono> </td>
+    <td> Everything about facet headers </td>
+  </tr>
+</table>
+
+]
+
+.pull-right45[
+
+<br>
+
+<u><mono>element_rect()</mono></u>
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Argument</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>fill</mono> </td>
+    <td> Fill color </td>
+  </tr>
+  <tr>
+    <td> <mono>colour</mono> </td>
+    <td> Border color </td>
+  </tr>
+</table>
+
+<u><mono>element_line()</mono></u>
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Argument</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>size</mono> </td>
+    <td> Line size </td>
+  </tr>
+  <tr>
+    <td> <mono>linetype</mono> </td>
+    <td> Type of line (solid, dashed, etc.) </td>
+  </tr>
+</table>
+
+<u><mono>element_text()</mono></u>
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Argument</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>face</mono> </td>
+    <td> Font face </td>
+  </tr>
+  <tr>
+    <td> <mono>colour</mono> </td>
+    <td> Font colour </td>
+  </tr>
+</table>
+
+]
+
+
+---
+
+# Create themes
+
+.pull-left45[
+
+```{r}
+# define my theme
+my_theme <- theme(
+    panel.background = 
+      element_rect(fill = 'tomato'), 
+    plot.background = 
+      element_rect(fill = 'burlywood'),
+    panel.grid.major = element_line(
+      colour = "salmon", size = 3),
+    panel.grid.minor = element_line(
+      colour = "seagreen", size = 1.5),
+    axis.line.x = element_line(
+      colour = "deeppink", size = 3.5, 
+      lineend = "butt"),
+    axis.line.y = element_line(
+      colour = "deeppink", size = 3.5),
+    axis.title.x = element_text(
+      family = "Comic Sans MS", size = 30),
+    axis.title.y = element_text(
+      family = "Comic Sans MS", size = 30)
+  )
+```
+
+]
+
+.pull-right45[
+
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+my_plot
+```
+
+]
+
+---
+
+# Create themes
+
+.pull-left45[
+
+```{r}
+# define my theme
+my_theme <- theme(
+    panel.background = 
+      element_rect(fill = 'tomato'), 
+    plot.background = 
+      element_rect(fill = 'burlywood'),
+    panel.grid.major = element_line(
+      colour = "salmon", size = 3),
+    panel.grid.minor = element_line(
+      colour = "seagreen", size = 1.5),
+    axis.line.x = element_line(
+      colour = "deeppink", size = 3.5, 
+      lineend = "butt"),
+    axis.line.y = element_line(
+      colour = "deeppink", size = 3.5),
+    axis.title.x = element_text(
+      family = "Comic Sans MS", size = 30),
+    axis.title.y = element_text(
+      family = "Comic Sans MS", size = 30)
+  )
+```
+
+]
+
+.pull-right45[
+
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+my_plot + my_theme
+```
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+<high>`Scales` control</high> many automatic aspects of the plot such as the axis limits or the color scale.
+
+<u>Scale functions</u>
+
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Function</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_color_*</mono>, <mono>scale_fill_*</mono> </td>
+    <td> Control coloring </td>
+  </tr>
+    <tr>
+    <td> <mono>scale_scale_xy*</mono> </td>
+    <td> Control axis dimensions  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_size_*</mono> </td>
+    <td> Control geom sizes  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_alpha_*</mono> </td>
+    <td> Control transparency  </td>
+  </tr>
+  <tr>
+    <td> ... </td>
+    <td> ...  </td>
+  </tr>
+</table>
+
+
+]
+
+.pull-right45[
+
+```{r, echo = F}
+# orginal plot
+my_plot <- ggplot(data = mpg,
+       aes(x = displ, y = hwy,
+           size = cyl, color = class)) + 
+  geom_point() + theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# Original plot
+my_plot
+```
+
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+<high>`Scales` control</high> many automatic aspects of the plot such as the axis limits or the color scale.
+
+<u>Scale functions</u>
+
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Function</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_color_*</mono>, <mono>scale_fill_*</mono> </td>
+    <td> Control coloring </td>
+  </tr>
+    <tr>
+    <td> <mono>scale_scale_xy*</mono> </td>
+    <td> Control axis dimensions  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_size_*</mono> </td>
+    <td> Control geom sizes  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_alpha_*</mono> </td>
+    <td> Control transparency  </td>
+  </tr>
+  <tr>
+    <td> ... </td>
+    <td> ...  </td>
+  </tr>
+</table>
+
+
+]
+
+.pull-right45[
+
+```{r, echo = F}
+# orginal plot
+my_plot <- ggplot(data = mpg,
+       aes(x = displ, y = hwy,
+           size = cyl, color = class)) + 
+  geom_point() + theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+my_plot + 
+  scale_x_continuous(limits = c(1, 30))
+```
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+<high>`Scales` control</high> many automatic aspects of the plot such as the axis limits or the color scale.
+
+<u>Scale functions</u>
+
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Function</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_color_*</mono>, <mono>scale_fill_*</mono> </td>
+    <td> Control coloring </td>
+  </tr>
+    <tr>
+    <td> <mono>scale_scale_xy*</mono> </td>
+    <td> Control axis dimensions  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_size_*</mono> </td>
+    <td> Control geom sizes  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_alpha_*</mono> </td>
+    <td> Control transparency  </td>
+  </tr>
+  <tr>
+    <td> ... </td>
+    <td> ...  </td>
+  </tr>
+</table>
+
+
+]
+
+.pull-right45[
+
+```{r, echo = F}
+# orginal plot
+my_plot <- ggplot(data = mpg,
+       aes(x = displ, y = hwy,
+           size = cyl, color = class)) + 
+  geom_point() + theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+my_plot + 
+  scale_x_reverse()
+```
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+<high>`Scales` control</high> many automatic aspects of the plot such as the axis limits or the color scale.
+
+<u>Scale functions</u>
+
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Function</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_color_*</mono>, <mono>scale_fill_*</mono> </td>
+    <td> Control coloring </td>
+  </tr>
+    <tr>
+    <td> <mono>scale_scale_xy*</mono> </td>
+    <td> Control axis dimensions  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_size_*</mono> </td>
+    <td> Control geom sizes  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_alpha_*</mono> </td>
+    <td> Control transparency  </td>
+  </tr>
+  <tr>
+    <td> ... </td>
+    <td> ...  </td>
+  </tr>
+</table>
+
+
+]
+
+.pull-right45[
+
+```{r, echo = F}
+# orginal plot
+my_plot <- ggplot(data = mpg,
+       aes(x = displ, y = hwy,
+           size = cyl, color = class)) + 
+  geom_point() + theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+my_plot + 
+  scale_colour_hue(h = c(160, 260))
+```
+
+]
+
+---
+
+# Scales
+
+.pull-left45[
+
+<high>`Scales` control</high> many automatic aspects of the plot such as the axis limits or the color scale.
+
+<u>Scale functions</u>
+
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Function</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_color_*</mono>, <mono>scale_fill_*</mono> </td>
+    <td> Control coloring </td>
+  </tr>
+    <tr>
+    <td> <mono>scale_scale_xy_*</mono> </td>
+    <td> Control axis dimensions  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_size_*</mono> </td>
+    <td> Control geom sizes  </td>
+  </tr>
+  <tr>
+    <td> <mono>scale_alpha_*</mono> </td>
+    <td> Control transparency  </td>
+  </tr>
+  <tr>
+    <td> ... </td>
+    <td> ...  </td>
+  </tr>
+</table>
+
+
+]
+
+.pull-right45[
+
+```{r, echo = F}
+# orginal plot
+my_plot <- ggplot(data = mpg,
+       aes(x = displ, y = hwy,
+           size = cyl, color = class)) + 
+  geom_point() + theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+my_plot + 
+  scale_size(range = c(1, 15))
+```
+
+]
+
+
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>The <mono>patchwork</mono> package provide a simple syntax to combine multiple plots.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generic add</span></li>
+    <li><span><mono>|</mono> | show next to each other</span></li>
+    <li><span><mono>/</mono> | show below each other</span></li>
+    <li><span><mono>()</mono> | combine</span></li>
+    <li><span><mono>&</mono> | apply to all</span></li>
+  </ul>
+</ul>
+
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# Save plots
+pretty <- my_plot
+ugly <- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+pretty + ugly
+```
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>The <mono>patchwork</mono> package provide a simple syntax to combine multiple plots.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generic add</span></li>
+    <li><span><mono>|</mono> | show next to each other</span></li>
+    <li><span><mono>/</mono> | show below each other</span></li>
+    <li><span><mono>()</mono> | combine</span></li>
+    <li><span><mono>&</mono> | apply to all</span></li>
+  </ul>
+</ul>
+
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# add themes
+pretty <- my_plot
+ugly <- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+pretty | ugly + pretty
+```
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>The <mono>patchwork</mono> package provide a simple syntax to combine multiple plots.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generic add</span></li>
+    <li><span><mono>|</mono> | show next to each other</span></li>
+    <li><span><mono>/</mono> | show below each other</span></li>
+    <li><span><mono>()</mono> | combine</span></li>
+    <li><span><mono>&</mono> | apply to all</span></li>
+  </ul>
+</ul>
+
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# add themes
+pretty <- my_plot
+ugly <- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+(pretty+pretty) / (pretty+pretty)
+```
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>The <mono>patchwork</mono> package provide a simple syntax to combine multiple plots.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generic add</span></li>
+    <li><span><mono>|</mono> | show next to each other</span></li>
+    <li><span><mono>/</mono> | show below each other</span></li>
+    <li><span><mono>()</mono> | combine</span></li>
+    <li><span><mono>&</mono> | apply to all</span></li>
+  </ul>
+</ul>
+
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# add themes
+pretty <- my_plot
+ugly <- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+(pretty+pretty) / (pretty+pretty) &
+  my_theme
+```
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>The <mono>patchwork</mono> package provide a simple syntax to combine multiple plots.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generic add</span></li>
+    <li><span><mono>|</mono> | show next to each other</span></li>
+    <li><span><mono>/</mono> | show below each other</span></li>
+    <li><span><mono>()</mono> | combine</span></li>
+    <li><span><mono>&</mono> | apply to all</span></li>
+  </ul>
+</ul>
+
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# add themes
+pretty <- my_plot
+ugly <- my_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+(pretty+pretty) / (pretty+pretty) +
+  plot_annotation(tag_levels = "A") & 
+  theme(legend.position = "none") 
+```
+
+]
+
+---
+
+# `ggsave()`
+
+.pull-left5[
+
+To create an <high>image file</high> of a plot (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
+
+
+<u>Arguments</u>
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Argument</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>filename</mono> </td>
+    <td> Name of the to-be-created file </td>
+  </tr>
+  <tr>
+    <td> <mono>device</mono> </td>
+    <td> File type (e.g.; "pdf", "jpeg", "png") </td>
+  </tr>
+  <tr>
+    <td> <mono>path</mono> </td>
+    <td> Folder to store image in </td>
+  </tr>
+  <tr>
+    <td> <mono>width</mono>, <mono>height</mono>  </td>
+    <td> Plot width, height (e.g., inches) </td>
+  </tr>
+</table>
+
+]
+
+
+.pull-right45[
+
+```{r, eval = FALSE}
+# Create my_plot object
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ, y = hwy)) + 
+            geom_point() + 
+            my_theme
+
+# Create "my_plot.pdf", from my_plot
+ggsave(filename = "my_plot.pdf",
+       plot = my_plot,
+       device = "pdf",
+       path = "figures",
+       width = 6, 
+       height = 4)
+```
+
+]
+
+---
+
+# `ggsave()`
+
+.pull-left5[
+
+To create an <high>image file</high> of a plot (e.g., `.jpg`, `.pdf`, `.png`), use the `ggsave()` function.
+
+
+<u>Arguments</u>
+
+<table style="width:100%">
+  <tr>
+    <td> <b>Argument</b> </td>
+    <td> <b>Description</b> </td>
+  </tr>
+  <tr>
+    <td> <mono>filename</mono> </td>
+    <td> Name of the to-be-created file </td>
+  </tr>
+  <tr>
+    <td> <mono>device</mono> </td>
+    <td> File type (e.g.; "pdf", "jpeg", "png") </td>
+  </tr>
+  <tr>
+    <td> <mono>path</mono> </td>
+    <td> Folder to store image in </td>
+  </tr>
+  <tr>
+    <td> <mono>width</mono>, <mono>height</mono>  </td>
+    <td> Plot width, height (e.g., inches) </td>
+  </tr>
+</table>
+
+]
+
+
+.pull-right45[
+
+```{r, eval = FALSE}
+# Create my_plot object
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ, y = hwy)) + 
+            geom_point() + 
+            my_theme
+
+# Create "my_plot.png", from my_plot
+ggsave(filename = "my_plot.png",
+       plot = my_plot,
+       device = "png",
+       path = "figures",
+       width = 6, 
+       height = 4)
+```
+
+]
+
+
+
+---
+
+class: middle, center
+
+<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/PlottingII/PlottingII_practical.html">Practical</a></h1>

@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Plotting II</title>
+
+<script src="PlottingII_practical_files/header-attrs-2.10/header-attrs.js"></script>
+<script src="PlottingII_practical_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="PlottingII_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="PlottingII_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="PlottingII_practical_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="PlottingII_practical_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="PlottingII_practical_files/navigation-1.1/tabsets.js"></script>
+<link href="PlottingII_practical_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="PlottingII_practical_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="practical.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Plotting II</h1>
+<h4 class="author"><table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'>
+<col width='10%'>
+<col width='10%'>
+<tr style="border:none">
+<td style="display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none" nowrap>
+<font style='font-style:normal'>Introduction to Data Science R</font><br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>The R Bootcamp</font> </a>
+</td>
+<td style="width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none">
+<img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
+</td>
+</tr>
+</table></h4>
+
+</div>
+
+
+<p align="center">
+<img width="100%" src="image/crime.png" margin=0><br> <font style="font-size:10px">adapted from <a href="http://www.trueloveproperty.co.uk/houses-sale-ingham/">paherald.sk.ca</a></font>
+</p>
+<div id="section" class="section level1 tabset">
+<h1 class="tabset"></h1>
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>In this practical you’ll practice customizing plots created using the <code>ggplot2</code> package. By the end of this practical you will know how to:</p>
+<ol style="list-style-type: decimal">
+<li>Use facetting to create multiple plots.</li>
+<li>Use scaling to alter the plots dimensions.</li>
+<li>Alter and store themes to adjust a plots appearance.</li>
+<li>Create multiple plots in one using the <code>patchwork</code> package.</li>
+<li>Create image files using <code>ggsave()</code>.</li>
+</ol>
+</div>
+<div id="tasks" class="section level2">
+<h2>Tasks</h2>
+<div id="a---setup" class="section level3">
+<h3>A - Setup</h3>
+<ol style="list-style-type: decimal">
+<li>Open your <code>TheRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder.</li>
+</ol>
+<pre class="r"><code># Done!</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>plottingII_practical.R</code> in the <code>2_Code</code> folder.</p></li>
+<li><p>Using <code>library()</code> load the set of packages for this practical listed in the functions section above.</p></li>
+</ol>
+<pre class="r"><code>## NAME
+## DATE
+## Plotting II Practical
+
+library(XX)
+library(XX)
+library(XX)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>For this practical, we’ll use the <code>crime.csv</code> data set, containing crime data of US counties across various states. Using <code>read_csv()</code>, load the data into R and store it as a new object called <code>crime</code>.</li>
+</ol>
+<pre class="r"><code>crime &lt;- read_csv(&quot;1_Data/crime.csv&quot;)</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Take a look at the first few rows of the data set(s) by printing them to the console.</li>
+</ol>
+<pre class="r"><code>crime</code></pre>
+<pre><code># A tibble: 1,071 × 36
+   communityname    state population householdsize pctUrban medIncome pctWSocSec
+   &lt;chr&gt;            &lt;chr&gt;      &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+ 1 BerkeleyHeights… NJ         11980          3.1       100     75122       23.6
+ 2 Marpletownship   PA         23123          2.82      100     47917       35.5
+ 3 Norwoodtown      MA         28700          2.6       100     42805       30.2
+ 4 Wacocity         TX        103590          2.62      100     17852       29.1
+ 5 Shermancity      TX         31601          2.54      100     24763       32.7
+ 6 SanPablocity     CA         25158          2.89      100     25479       23.0
+ 7 Glendalecity     CA        180038          2.62      100     34372       20.3
+ 8 Worthingtoncity  OH         14869          2.67      100     49851       23.8
+ 9 Arlingtoncity    TX        261721          2.6       100     35048       11.0
+10 Marinacity       CA         26436          3.34      100     29043       10.7
+# … with 1,061 more rows, and 29 more variables: pctWRetire &lt;dbl&gt;,
+#   whitePerCap &lt;dbl&gt;, blackPerCap &lt;dbl&gt;, AsianPerCap &lt;dbl&gt;, HispPerCap &lt;dbl&gt;,
+#   PctPopUnderPov &lt;dbl&gt;, PctNotHSGrad &lt;dbl&gt;, PctUnemployed &lt;dbl&gt;,
+#   TotalPctDiv &lt;dbl&gt;, PersPerFam &lt;dbl&gt;, PctWorkMom &lt;dbl&gt;, NumImmig &lt;dbl&gt;,
+#   PctImmigRecent &lt;dbl&gt;, PctNotSpeakEnglWell &lt;dbl&gt;, RentMedian &lt;dbl&gt;,
+#   NumInShelters &lt;dbl&gt;, NumStreet &lt;dbl&gt;, PctForeignBorn &lt;dbl&gt;,
+#   PctBornSameState &lt;dbl&gt;, LandArea &lt;dbl&gt;, PopDens &lt;dbl&gt;,
+#   PctUsePubTrans &lt;dbl&gt;, murders &lt;dbl&gt;, robberies &lt;dbl&gt;, assaults &lt;dbl&gt;,
+#   burglaries &lt;dbl&gt;, larcenies &lt;dbl&gt;, autoTheft &lt;dbl&gt;, arsons &lt;dbl&gt;</code></pre>
+</div>
+<div id="b---create-facets" class="section level3">
+<h3>B - Create facets</h3>
+<ol style="list-style-type: decimal">
+<li>To begin with, create a basic scatter plot (using <code>geom_points()</code>) pitting each of the 7 crime indicators (<code>murders</code>, <code>robberies</code>, <code>assaults</code>, <code>burglaries</code>, <code>larcenies</code>, <code>autoTheft</code>, <code>arsons</code>) against the percentage of people using public transportation (<code>PctUsePubTrans</code>).</li>
+</ol>
+<pre class="r"><code>ggplot(data = crime,
+       mapping = aes(x = XX, y = XX)) + 
+  geom_point()
+
+# and so on</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>None of these looked very informative, right? This is because the counts of the each of the crime measures is heavily right skewed. You will learn more about scaling later, but for now add <code>scale_y_log10()</code> to fix this. Run the plots again.</li>
+</ol>
+<pre class="r"><code>ggplot(data = crime,
+       mapping = aes(x = XX, y = XX)) + 
+  geom_point() + 
+  scale_y_log10()
+
+# and so on</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>This should have been more telling. Pretty much all crimes seem to have been positively related to the percentage of individuals using public transportation. Interesting! But wasn’t it a bit of a pain to derive this insight by created 7 separate plots. Let’s fix this using facets. To do this, first, create a <em>long</em> version of the <code>crime</code> data set called <code>crime_long</code>, using the code below. (Note the use of <code>crime_vars</code> as a positive selector for <code>gather()</code>).</li>
+</ol>
+<pre class="r"><code># vector of crime variables
+crime_vars = c(&quot;murders&quot;,&quot;robberies&quot;,&quot;assaults&quot;,&quot;burglaries&quot;,&quot;larcenies&quot;,&quot;autoTheft&quot;,&quot;arsons&quot;)
+
+# transform to long
+crime_long &lt;- crime %&gt;% 
+  pivot_longer(names_to = &quot;crime_var&quot;,
+               values_to = &quot;frequency&quot;,
+               cols = all_of(crime_vars))</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Using the the <code>crime_long</code> data set, you can now make use of the amazing power of <code>ggplot2</code>’s facet functions, such as <code>facet_wrap()</code>. Use <code>facet_wrap()</code> to automatically plot crime frequency against the percentage of people using public transportation for each of the crime variables.</li>
+</ol>
+<pre class="r"><code>ggplot(data = crime_long,
+       mapping = aes(x = XX, y = XX)) + 
+  geom_point() + 
+  scale_y_log10() + 
+  facet_wrap(~ XX)</code></pre>
+<pre class="r"><code>ggplot(data = crime_long,
+       mapping = aes(x = PctUsePubTrans, y = frequency)) + 
+  geom_point() + 
+  scale_y_log10() + 
+  facet_wrap(~ crime_var)</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>This was much more efficient, right? Now explore the relationship of frequency to other variables, such as <code>medIncome</code>, <code>TotalPctDiv</code>, or <code>PctNotHSGrad</code>, for each of the crime measures. What variables do predict, which kind of crime? Explore!</li>
+</ol>
+</div>
+<div id="c---customize-plots-using-theme" class="section level3">
+<h3>C - Customize plots using <code>theme()</code></h3>
+<p>Now that we have an informative plot, let’s focus on making it a bit more “pretty”", using ggplot’s <code>theme()</code> function. The goal is to create a plot that looks like the plot below.</p>
+<pre class="r"><code>crime_facets &lt;- ggplot(data = crime_long,
+       mapping = aes(x = PctUsePubTrans, y = frequency)) + 
+  geom_point() + 
+  scale_y_log10() + 
+  facet_wrap(~ crime_var) +
+  theme(
+    panel.background = element_rect(fill=&#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;,
+                                    size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;,
+                                    size = .1),
+    strip.background = element_rect(fill=&#39;white&#39;),
+    strip.text = element_text(face=&#39;italic&#39;, size=12, hjust=1),
+    axis.title.y = element_text(size=12,margin=margin(r = 10)),
+    axis.title.x = element_text(size=12,margin=margin(t = 10)),
+    panel.spacing = unit(1.1, &quot;lines&quot;)) + 
+  labs(x = &#39;% public transportation&#39;, y = &#39;Crime frequency&#39;)
+crime_facets</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol style="list-style-type: decimal">
+<li>To begin with store one of the facetted plots of section B as <code>crime_facets</code>.</li>
+</ol>
+<pre class="r"><code>crime_facets &lt;- XX</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Now let’s begin changing its appearance. First, change the color of the background to <code>"white"</code> of the panel using the <code>panel.background</code> argument and the <code>element_rect()</code> function.</li>
+</ol>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = XX)
+    )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Next, change the major and minor grid lines to color <code>"grey75"</code> and sizes <code>.25</code> and <code>.1</code>, respectively, using the <code>panel.grid.major</code> and <code>panel.grid.minor</code> arguments and the <code>element_line()</code> function.</li>
+</ol>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = XX),
+    panel.grid.major = element_line(color = XX, size = XX),
+    panel.grid.minor = element_line(color = XX, size = XX)
+    )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Next, change the strip background - the background of the panel headers - to color <code>"white"</code> using the <code>strip.background</code> argument and the <code>element_rect()</code> function.</li>
+</ol>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = XX),
+    panel.grid.major = element_line(color = XX, size = XX),
+    panel.grid.minor = element_line(color = XX, size = XX),
+    strip.background = element_rect(fill = XX),
+    )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Next, change the font in the strip to <code>"italic"</code>, adjust it to the right side, and set size to <code>12</code> using the <code>strip.text</code> argument and the <code>element_text()</code> function. See <code>?element_text()</code>.</li>
+</ol>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = XX),
+    panel.grid.major = element_line(color = XX, size = XX),
+    panel.grid.minor = element_line(color = XX, size = XX),
+    strip.background = element_rect(fill = XX),
+    strip.text = element_text(face = XX, size = XX, hjust = XX)
+    )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Next, set the font size of the axis labels also to <code>12</code> and add a margin of <code>10</code> to the top and right side, respectively, of the labels respectively, using <code>axis.title.x</code> and <code>axis.title.y</code> functions and the <code>element_text()</code> and <code>margin</code> functions. See <code>?margins()</code>.</li>
+</ol>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = XX),
+    panel.grid.major = element_line(color = XX, size = XX),
+    panel.grid.minor = element_line(color = XX, size = XX),
+    strip.background = element_rect(fill = XX),
+    strip.text = element_text(face = XX, size = XX, hjust = XX),
+    axis.title.x = element_text(size = XX, margin = margin(t = XX)),
+    axis.title.y = element_text(size = XX, margin = margin(r = XX)),
+    )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10))
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-21-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="7" style="list-style-type: decimal">
+<li>Finally, increase the spacing between the panels slightly by setting the space between to <code>1.1</code> <code>"lines"</code> using the <code>panel.spacing</code> argument and the <code>unit</code> function.</li>
+</ol>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = XX),
+    panel.grid.major = element_line(color = XX, size = XX),
+    panel.grid.minor = element_line(color = XX, size = XX),
+    strip.background = element_rect(fill = XX),
+    strip.text = element_text(face = XX, size = XX, hjust = XX),
+    axis.title.x = element_text(size = XX, margin = margin(t = XX)),
+    axis.title.y = element_text(size = XX, margin = margin(r = XX)),
+    panel.spacing = unit(XX, units = XX)
+    )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    panel.spacing = unit(1.1, units = &quot;lines&quot;)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-23-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Did you manage to reproduce the plot above? One other thing seems missing. Add appropriate labels using the <code>labs()</code> function.</li>
+</ol>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = XX),
+    panel.grid.major = element_line(color = XX, size = XX),
+    panel.grid.minor = element_line(color = XX, size = XX),
+    strip.background = element_rect(fill = XX),
+    strip.text = element_text(face = XX, size = XX, hjust = XX),
+    axis.title.x = element_text(size = XX, margin = margin(t = XX)),
+    axis.title.y = element_text(size = XX, margin = margin(r = XX)),
+    panel.spacing = unit(XX, units = XX)
+    ) + 
+  labs(x = XX, y = XX)</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    panel.spacing = unit(1.1, units = &quot;lines&quot;)
+    ) + 
+  labs(x = &#39;% public transportation&#39;, y = &#39;Crime frequency&#39;)</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" /></p>
+</div>
+<div id="d---customize-plots-using-theme" class="section level3">
+<h3>D - Customize plots using <code>theme()</code></h3>
+<ol style="list-style-type: decimal">
+<li>When you managed to reproduce the target theme, save all of the theme setting in an independent object called <code>crime_theme</code>.</li>
+</ol>
+<pre class="r"><code>crime_theme &lt;- theme(
+  XX = XX,
+  XX = XX,
+  ...
+  )</code></pre>
+<pre class="r"><code>crime_theme &lt;- theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    panel.spacing = unit(1.1, units = &quot;lines&quot;)
+    )</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Now create new plots with different variables on x-axis and simply add the <code>crime_theme</code> in order to apply your personalized theme.</li>
+</ol>
+<pre class="r"><code>new_crime_plot + crime_theme</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>If you don’t like your theme, go back and make changes to it, and then apply your new theme onto your plots. Go explore! Try out other arguments of <code>theme()</code> (see <code>?theme</code>), such as <code>axis.ticks</code> or <code>strip.placement</code>.</li>
+</ol>
+</div>
+<div id="e---scaling" class="section level3">
+<h3>E - Scaling</h3>
+<p>When creating a plot <code>ggplot</code> automatically chooses sensible dimensions for your plot in terms of x- and y-axis limits, geom sizes, or colors. However, all of these aspects of the plot can also be controlled manually or semi-manually using various <code>scale_*</code> functions.</p>
+<ol style="list-style-type: decimal">
+<li>Before playing around with them, add one more element to your plot, which will help you to realize the importance of scaling. That is, color the points according to state by <em>mapping</em> the <code>state</code> variable onto the <code>color</code> argument and size the points according to the county’s population by <em>mapping</em> the <code>population</code> variable onto the <code>size</code> argument. Store the resulting plot in an object called <code>crime_plot</code>.</li>
+</ol>
+<pre class="r"><code>crime_plot &lt;- 
+  ggplot(data = crime_long,
+       mapping = aes(x = XX, y = XX,
+                     color = XX, size = XX)) + 
+  geom_point() + 
+  scale_y_log10() + 
+  facet_wrap(~ XX) + 
+  crime_theme</code></pre>
+<pre class="r"><code>crime_plot &lt;- ggplot(data = crime_long,
+       mapping = aes(x = PctUsePubTrans, y = frequency,
+                     color = state, size = population)) + 
+  geom_point() + 
+  scale_y_log10() + 
+  facet_wrap(~ crime_var) + 
+  crime_theme
+crime_plot</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-30-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li>First, using <code>scale_size()</code> and the <code>range</code> argument, change the scaling of the points to reduce the degree of overlap among the points (see <code>?scale_size</code>). Try out a few numbers (smaller than 10) to create a version of the plot with a decent trade-off between point size and point overlap.</li>
+</ol>
+<pre class="r"><code>crime_plot + scale_size(range = c(XX, XX))</code></pre>
+<pre class="r"><code>crime_plot + scale_size(range = c(.5, 3))</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-32-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li>You may find that still some of the larger points are cropped off at the upper end of the panels. Fix this by increasing the y-axis limits using the <code>scale_y_log10()</code> function. Set the limits to <code>0</code> and <code>2e+5</code> (i.e., <code>200,000</code>). (Note that R will tell you that this will overwrite the previous use of <code>scale_y_log10()</code>, which is what we intend to do).</li>
+</ol>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(XX, XX)) + 
+  scale_y_continuous(limits = c(XX, XX))</code></pre>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(.5, 3)) + 
+  scale_y_log10(limits = c(1, 2e+5))</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-34-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Next, change the colors to a different, possibly more appropriate color scheme. One way to this is via the <code>scale_color_gradient()</code> or similar functions. Another is to use a specific, pre-defined scheme, such as <code>scale_color_colorblind()</code>. Use the latter. You will see that the colors have much more contrast making it distinguishing the colors based on luminescence alone easier.</li>
+</ol>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(XX, XX)) + 
+  scale_y_log10(limits = c(1, XX)) + 
+  scale_color_colorblind()</code></pre>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(.5, 3)) + 
+  scale_y_log10(limits = c(1, 2e+5)) + 
+  scale_color_colorblind()</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-36-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li>Another approach to changing colors is to supply them manually, e.g., using <code>scale_color_manual()</code>. Try assigning your own choice of colors. You may pick them from <code>colors()</code> or generate them using, for instance, the <code>viridis</code> function from the <code>viridis</code> package (you may need to run <code>install.packages('viridis')</code> before using it), which provides an optimized set of colors designed to be (1) colorful, (2) perceptually uniform, (3) robust to colorblindness, (4) and pretty. Take the latter approach, i.e., use the <code>viridis()</code> function to generate colors, in the context of the <code>scale_color_manual()</code> function.</li>
+</ol>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(XX, XX)) + 
+  scale_y_log10(limits = c(1, XX)) + 
+  scale_color_manual(values = viridis(7))</code></pre>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(.5, 3)) + 
+  scale_y_log10(limits = c(1, 2e+5)) + 
+  scale_color_manual(values = viridis(7))</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-38-1.png" width="576" style="display: block; margin: auto;" /></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Alright the plot fairly pretty and readable now. But there is always more to be done and tastes differ, of course. Go explore!</li>
+</ol>
+</div>
+<div id="f---creating-image-files" class="section level3">
+<h3>F - Creating image files</h3>
+<ol style="list-style-type: decimal">
+<li>When you have found a plot that suits your taste, it’s time to save it as an image file. Store your favorite plot in a new object called <code>crime_final</code>.</li>
+</ol>
+<pre class="r"><code>crime_final &lt;- ggplot(...) + ... # Include your plotting code here</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Run your <code>crime_final</code> object to see that it does indeed contain your plot.</p></li>
+<li><p>Save your plot to a <code>.pdf</code>-file called <code>crime_final</code> using <code>ggsave()</code>. When you finish, find your plot in <code>3_Figures</code> and open it to see how it looks!</p></li>
+</ol>
+<pre class="r"><code># Save crime_final to a pdf file
+ggsave(filename = &quot;crime_plot&quot;, 
+       plot = crime_final,
+       device = &quot;pdf&quot;, 
+       path = &#39;3_Figures&#39;,
+       width = 4, 
+       height = 4, 
+       units = &quot;in&quot;)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Play around with the <code>width</code> and <code>height</code> arguments to change the dimensions of the plot.</p></li>
+<li><p>Customize the code to create a <code>.png</code> image.</p></li>
+</ol>
+</div>
+<div id="x---challenges-multiple-plots" class="section level3">
+<h3>X - Challenges: Multiple Plots</h3>
+<p>In this section, you can play around with the <code>patchwork</code> package (don’t forget to load it) do combine multiple plots into a single one.</p>
+<ol style="list-style-type: decimal">
+<li><p>Create three different plots that plot <code>frequency</code> against different variables in our data set and call these three <code>crime_a</code>, <code>crime_b</code>, und <code>crime_c</code></p></li>
+<li><p>Now, combine all three plots horizontally using <code>verbrechen_a + verbrechen_b + verbrechen_c</code>.</p></li>
+<li><p>Or, place the third plot below the first two <code>verbrechen_a + verbrechen_b / verbrechen_c</code>.</p></li>
+<li><p>Now change the theme by applying <code>theme_void()</code> to all three using the <code>&amp;</code>-Operator.</p></li>
+<li><p>Finally, save your plot as a pdf using <code>ggsave()</code>.</p></li>
+</ol>
+</div>
+</div>
+<div id="examples" class="section level2">
+<h2>Examples</h2>
+<pre class="r"><code># ggplot2 -----------------------
+
+library(tidyverse) # Load tidyverse (contains ggplot2!)
+
+# create a scatter plot of highway miles per gallon against engine displacement
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy)) +
+       geom_point()  
+
+# Store plot objects ------------
+
+# store
+my_plot &lt;- ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy)) +
+       geom_point()  
+
+# evaluate (aka plot)
+my_plot
+
+# Facets ------------
+
+# create separate plots for each car class
+my_plot &lt;- my_plot + facet_wrap(~class)
+
+# plot
+my_plot
+
+# Customize themes ------------
+
+# change panel background to &#39;green&#39;
+my_plot +
+  theme(
+    panel.background = element_rect(fill=&#39;green&#39;)
+  )
+
+# change grid lines
+my_plot +
+  theme(
+    panel.grid.major = element_line(color = &#39;red&#39;, size = 2),
+    panel.grid.minor = element_line(color = &#39;blue&#39;, size = 1)
+  )
+
+# change strip background and text
+my_plot +
+  theme(
+    strip.background = element_rect(fill = &#39;blue&#39;),
+    strip.text = element_text(face = &#39;bold&#39;, size = 12)
+  )
+
+# change axis titles
+my_plot +
+  theme(
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10))
+  )
+
+# change panel spacing
+my_plot +
+  theme(
+    panel.spacing = unit(2, &quot;lines&quot;)
+  )
+
+# Store themes ------------
+
+# create theme
+my_theme &lt;- theme(
+  panel.background = element_rect(fill=&#39;green&#39;),
+  panel.grid.major = element_line(color = &#39;red&#39;, size = 2),
+  panel.grid.minor = element_line(color = &#39;blue&#39;, size = 1),
+  strip.background = element_rect(fill = &#39;blue&#39;),
+  strip.text = element_text(face = &#39;bold&#39;, size = 12),
+  strip.background = element_rect(fill = &#39;blue&#39;),
+  strip.text = element_text(face = &#39;bold&#39;, size = 12),
+  axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+  axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+  panel.spacing = unit(2, &quot;lines&quot;)
+)
+
+# apply theme
+my_plot + my_theme # no parentheses
+
+# Scaling ------------
+
+# change x-axis scaling
+my_plot + scale_x_continuous(limits = c(0, 10))
+
+# change coloring
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy,
+                     color = class)) +
+       geom_point() +
+  scale_color_manual(values = viridis(7))
+  
+# Create image files ------------
+
+# create pdf of my_plot
+ggsave(filename = &quot;my_plot_name&quot;, 
+       plot = my_plot,
+       device = &quot;pdf&quot;, 
+       path = &#39;plotting_folder&#39;,
+       width = 4, 
+       height = 4, 
+       units = &quot;in&quot;)</code></pre>
+</div>
+<div id="datasets" class="section level2">
+<h2>Datasets</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">File</th>
+<th align="left">Rows</th>
+<th align="left">Columns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="https://raw.githubusercontent.com/therbootcamp/Intro2R_Unibe/master/_sessions/PlottingII/1_Data/crime.csv">crime.csv</a></td>
+<td align="left">1071</td>
+<td align="left">36</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>crime</code> data set is subsets of the Communities and Crime Unnormalized Data Set data set from the UCI Machine Learning Repository. Find variable descriptions below or at <a href="https://archive.ics.uci.edu/ml/datasets/Communities+and+Crime+Unnormalized"><strong>Communities and Crime Unnormalized Data Set</strong></a></p>
+<div id="variable-descriptions" class="section level4">
+<h4>Variable descriptions</h4>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="73%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">communityname</td>
+<td align="left">Community name</td>
+</tr>
+<tr class="even">
+<td align="left">state</td>
+<td align="left">US state (by 2 letter postal abbreviation)</td>
+</tr>
+<tr class="odd">
+<td align="left">population</td>
+<td align="left">population for community</td>
+</tr>
+<tr class="even">
+<td align="left">householdsize</td>
+<td align="left">mean people per household</td>
+</tr>
+<tr class="odd">
+<td align="left">pctUrban</td>
+<td align="left">number of people living in areas classified as urban</td>
+</tr>
+<tr class="even">
+<td align="left">medIncome</td>
+<td align="left">median household income</td>
+</tr>
+<tr class="odd">
+<td align="left">pctWSocSec</td>
+<td align="left">percentage of households with social security income in 1989</td>
+</tr>
+<tr class="even">
+<td align="left">pctWRetire</td>
+<td align="left">percentage of households with retirement income in 1989</td>
+</tr>
+<tr class="odd">
+<td align="left">whitePerCap</td>
+<td align="left">per capita income for caucasians</td>
+</tr>
+<tr class="even">
+<td align="left">blackPerCap</td>
+<td align="left">per capita income for african americans</td>
+</tr>
+<tr class="odd">
+<td align="left">AsianPerCap</td>
+<td align="left">per capita income for people with asian</td>
+</tr>
+<tr class="even">
+<td align="left">HispPerCap</td>
+<td align="left">per capita income for people with hispanic heritage</td>
+</tr>
+<tr class="odd">
+<td align="left">PctPopUnderPov</td>
+<td align="left">percentage of people under the poverty level</td>
+</tr>
+<tr class="even">
+<td align="left">PctNotHSGrad</td>
+<td align="left">percentage of people 25 and over that are not high school graduates</td>
+</tr>
+<tr class="odd">
+<td align="left">PctUnemployed</td>
+<td align="left">percentage of people 16 and over, in the labor force, and unemployed</td>
+</tr>
+<tr class="even">
+<td align="left">TotalPctDiv</td>
+<td align="left">percentage of population who are divorced</td>
+</tr>
+<tr class="odd">
+<td align="left">PersPerFam</td>
+<td align="left">mean number of people per family</td>
+</tr>
+<tr class="even">
+<td align="left">PctWorkMom</td>
+<td align="left">percentage of moms of kids under 18 in labor force</td>
+</tr>
+<tr class="odd">
+<td align="left">NumImmig</td>
+<td align="left">total number of people known to be foreign born</td>
+</tr>
+<tr class="even">
+<td align="left">PctImmigRecent</td>
+<td align="left">percentage of immigrants who immigated within last 3 years</td>
+</tr>
+<tr class="odd">
+<td align="left">PctNotSpeakEnglWell</td>
+<td align="left">percent of people who do not speak English well</td>
+</tr>
+<tr class="even">
+<td align="left">RentMedian</td>
+<td align="left">rental housing - median rent</td>
+</tr>
+<tr class="odd">
+<td align="left">NumInShelters</td>
+<td align="left">number of people in homeless shelters</td>
+</tr>
+<tr class="even">
+<td align="left">NumStreet</td>
+<td align="left">number of homeless people counted in the street</td>
+</tr>
+<tr class="odd">
+<td align="left">PctForeignBorn</td>
+<td align="left">percent of people foreign born</td>
+</tr>
+<tr class="even">
+<td align="left">PctBornSameState</td>
+<td align="left">percent of people born in the same state as currently living</td>
+</tr>
+<tr class="odd">
+<td align="left">LandArea</td>
+<td align="left">land area in square miles</td>
+</tr>
+<tr class="even">
+<td align="left">PopDens</td>
+<td align="left">population density in persons per square mile</td>
+</tr>
+<tr class="odd">
+<td align="left">PctUsePubTrans</td>
+<td align="left">percent of people using public transit for commuting</td>
+</tr>
+<tr class="even">
+<td align="left">murders</td>
+<td align="left">number of murders in 1995</td>
+</tr>
+<tr class="odd">
+<td align="left">robberies</td>
+<td align="left">number of robberies in 1995</td>
+</tr>
+<tr class="even">
+<td align="left">assaults</td>
+<td align="left">number of assaults in 1995</td>
+</tr>
+<tr class="odd">
+<td align="left">burglaries</td>
+<td align="left">number of burglaries in 1995</td>
+</tr>
+<tr class="even">
+<td align="left">larcenies</td>
+<td align="left">number of larcenies in 1995</td>
+</tr>
+<tr class="odd">
+<td align="left">autoTheft</td>
+<td align="left">number of auto thefts in 1995</td>
+</tr>
+<tr class="even">
+<td align="left">arsons</td>
+<td align="left">number of arsons in 1995</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="functions" class="section level2">
+<h2>Functions</h2>
+<div id="packages" class="section level3">
+<h3>Packages</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Package</th>
+<th align="left">Installation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>tidyverse</code></td>
+<td align="left"><code>install.packages("tidyverse")</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>patchwork</code></td>
+<td align="left"><code>install.packages("patchwork")</code></td>
+</tr>
+</tbody>
+</table>
+<div id="optional" class="section level4">
+<h4>Optional</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Package</th>
+<th align="left">Installation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>viridis</code></td>
+<td align="left"><code>install.packages("viridis")</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="functions-1" class="section level3">
+<h3>Functions</h3>
+<p><em>Facets</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Package</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>facet_wrap()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Create facets that wrap to fit the screen</td>
+</tr>
+<tr class="even">
+<td align="left"><code>facet_grid()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Create facets along one or more variables in a grid</td>
+</tr>
+</tbody>
+</table>
+<p><em>themes</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Package</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>theme()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Customize theme (see <code>?theme</code>)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>element_rect()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Customize rect elements of theme</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>element_line()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Customize line elements of theme</td>
+</tr>
+<tr class="even">
+<td align="left"><code>element_text()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Customize text elements of theme</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>element_blank()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Remove elements from theme</td>
+</tr>
+</tbody>
+</table>
+<p><em>scales</em></p>
+<table>
+<colgroup>
+<col width="7%" />
+<col width="12%" />
+<col width="80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Package</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>scale_x_*()</code>, <code>scale_y_*()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Various functions to control the x- and y-axes</td>
+</tr>
+<tr class="even">
+<td align="left"><code>scale_size_*()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Various functions to control sizes</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>scale_color_*()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Various functions to control colors</td>
+</tr>
+<tr class="even">
+<td align="left"><code>scale_fill_*()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Various functions to control fill colors</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>scale_alpha_*()</code></td>
+<td align="left"><code>ggplot2</code></td>
+<td align="left">Various functions to control color transparency</td>
+</tr>
+</tbody>
+</table>
+<p><em>colors</em></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Function</th>
+<th align="left">Package</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>viridis()</code></td>
+<td align="left"><code>viridis</code></td>
+<td align="left">Generate colors from the viridis palette</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<div id="documentation" class="section level3">
+<h3>Documentation</h3>
+<ul>
+<li><p>The main <code>ggplot2</code> webpage at <a href="http://ggplot2.tidyverse.org/">http://ggplot2.tidyverse.org/</a> has great tutorials and examples.</p></li>
+<li><p>Check out Selva Prabhakaran’s website for a nice gallery of ggplot2 graphics <a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</a></p></li>
+<li><p><code>ggplot2</code> is also great for making maps. For examples, check out Eric Anderson’s page at <a href="http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html">http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html</a></p></li>
+</ul>
+</div>
+<div id="cheatsheet" class="section level3">
+<h3>Cheatsheet</h3>
+<p align="center" width="100%">
+<a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf"> <img src="http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.png" style="width:70%"></a> <br> <font style="font-size:10px">from <a href="https://www.rstudio.com/resources/cheatsheets/">R Studio</a></font>
+</p>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

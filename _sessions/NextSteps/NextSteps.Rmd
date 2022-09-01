@@ -1,0 +1,259 @@
+---
+title: "Next steps"
+output:
+  xaringan::moon_reader:
+    css: ["default", "baselrbootcamp.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
+---
+
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# see: https://github.com/yihui/xaringan
+# install.packages("xaringan")
+# see: 
+# https://github.com/yihui/xaringan/wiki
+# https://github.com/gnab/remark/wiki/Markdown
+options(width=110)
+options(digits = 4) 
+knitr::opts_chunk$set(comment = NA)
+```
+
+
+.pull-left45[
+<br><br><br><br><br>
+#  Hello Data Scientists!
+
+In 3 days, 9 sessions, and 21 hours you have come a long way.
+
+]
+
+.pull-right4[
+
+<img src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Welcome/image/schedule.png" height="580" align="center">
+]
+
+---
+
+# How to continue
+
+.pull-left5[
+<font size = 4><i>
+<font size = 6>
+1. Practice<br>
+2. Read books<br>
+3. Consult websites<br>
+4. Take courses<br>
+]
+
+</font>
+<br>
+
+.pull-right5[
+<p align="center"><img border="0" alt="W3Schools" src="http://www.theunmanageableemployee.com/wp-content/uploads/2011/07/5cs-stones-cropped-11052730.jpg?w=112"></p>
+]
+
+---
+
+<p align="center"><br>
+<iframe src="https://www.sdghackathon.io/" width="1150" height="570" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></p>
+
+---
+
+# Books
+
+Here is a series of useful good books ordered by complexity.
+
+
+<table width="80%" style="cellspacing:0; cellpadding:0; border:none;">
+
+  <tr>    
+
+  <td> 
+  <a href="http://r4ds.had.co.nz/"><img border="0" alt="W3Schools" src="http://r4ds.had.co.nz/cover.png" height="180"></a>
+  </td>
+
+  <td>
+  <a href="https://covers.oreillystatic.com/images/0636920028574/cat.gif"><img border="0" alt="W3Schools" src="https://covers.oreillystatic.com/images/0636920028574/cat.gif" height="180"></a>
+  </td>
+
+  <td> 
+  <a href="https://ggplot2-book.org/"><img border="0" alt="W3Schools" src="https://images-na.ssl-images-amazon.com/images/I/31uoy-qmhEL._SX331_BO1,204,203,200_.jpg" height="180"></a>
+  </td>
+
+  <td>
+  <a href="https://www.springer.com/de/book/9783540799979"><img border="0" alt="W3Schools" src="https://images.springer.com/sgw/books/medium/9783540799979.jpg" height="180" ></a>
+  </td>
+  
+  <td>
+  <a href="https://bookdown.org/ndphillips/YaRrr/"><img border="0" alt="W3Schools" src="https://bookdown.org/ndphillips/YaRrr/images/YaRrr_Cover.jpg" height="180" ></a>
+  </td>
+  
+  <td>
+  <a href="https://www.orellfuessli.ch/shop/home/artikeldetails/ID35367941.html?ProvID=10917736&gclid=Cj0KCQiAg_HhBRDNARIsAGHLV5238Q26gQmFttHRnYGjcAhz4CslStb-3qBegvuZS5gnCpWSLNlQvF0aAgfOEALw_wcB"><img border="0" alt="W3Schools" src="https://assets.thalia.media/img/35367941-00-00.jpg" height="180" ></a>
+  </td>
+  
+  </tr>
+  
+
+  <tr style="background-color:#ffffff">
+
+  <td>
+  <a href="http://appliedpredictivemodeling.com/"><img border="0" alt="W3Schools" src="http://static1.squarespace.com/static/51156277e4b0b8b2ffe11c00/t/51157487e4b0b8b2ffe16829/1509217882069/?format=1500w" height="180" ></a>
+  </td>
+  
+  <td>
+  <a href="http://www-bcf.usc.edu/~gareth/ISL/ISLR%20First%20Printing.pdf"><img border="0" alt="W3Schools" src="https://images-na.ssl-images-amazon.com/images/I/41EaH4W9LVL._SX332_BO1,204,203,200_.jpg" height="180" ></a>
+  </td>
+  
+  <td>
+  <a href="https://www.manning.com/books/deep-learning-with-r"><img border="0" alt="W3Schools" src="https://images-na.ssl-images-amazon.com/images/I/51h5d4dYaoL._SX396_BO1,204,203,200_.jpg" height="180" ></a>
+  </td>
+
+
+  <td>
+  <a href="https://csgillespie.github.io/efficientR/"><img border="0" alt="W3Schools" src="https://csgillespie.github.io/efficientR/figures/f0_web.png" height="180" ></a>
+  </td>
+
+  <td>
+  <a href="www.rcpp.org/"><img border="0" alt="W3Schools" src="https://images-na.ssl-images-amazon.com/images/I/31Y8QSFEMJL._SX328_BO1,204,203,200_.jpg" height="180" ></a>
+  </td>
+  
+  
+  <td>
+  <a href="http://adv-r.had.co.nz/"><img border="0" alt="W3Schools" src="https://images-na.ssl-images-amazon.com/images/I/41RJLhZ32VL._SX329_BO1,204,203,200_.jpg" height="180" ></a>
+  </td>
+
+
+  </tr>
+  
+
+
+</table>
+<br>
+
+
+---
+
+.pull-left4[
+
+# Websites
+
+The web is a great place to learn about R. 
+
+[Google](www.google.com) or [Rseek](www.rseek.org), which is a wrapper around google to maximize hits related to R. However, most of the time Google works just fine. Just be sure to add *r* to the the search query. 
+
+<font size = 4><i>Then you will most likely be redirected to one of two pages</i></font>
+
+[R-bloggers](www.r-bloggers.com) is a website on which R users inform each other on the newest developments. See, e.g., Nathaniel's [entry](https://www.r-bloggers.com/the-new-and-improved-pirateplot-now-with-themes/).
+
+[Stackoverflow](www.r-bloggers.com) is a website on which R users exchange problems and solutions to problems. Try post something yourself. You will be amazed by the turnaround. 
+
+
+]
+
+.pull-right5[
+<p align="left" style="padding: 0 0px"><br><br><br><br><br><br><br>
+    <a href="https://www.google.com/"><img border="0" alt="W3Schools" src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/google.png" height="100"></a><img border="0" alt="W3Schools" src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/comma.png" height="50"><a href="http://rseek.org/"><img border="0" alt="W3Schools" src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rseek.png" height="100" style="margin-left:10px; margin-buttom:10px"></a><br><br><br><br>
+    <a href="https://www.r-bloggers.com/"><img border="0" alt="W3Schools" src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rbloggers.png" height="105" style="margin-bottom:10px"></a><br>
+  <a href="https://stackoverflow.com/"><img border="0" alt="W3Schools" src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/stackoverflow.png" height="105"></a>
+</p>
+]
+
+
+---
+
+# Other courses
+
+
+<table class="tg"  style="cellspacing:0; cellpadding:0; border:none;">
+<tr valign="top">
+  <col width="20%">
+  <col width="20%">
+  <col width="20%">
+  <col width="20%">
+  <col width="20%">
+  <td>
+    <p align="center">
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Einführung in die moderne Datenanalyse mit R</font><br>
+      <br>
+      <img src="https://therbootcamp.github.io/img/courses/0.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>Oct 15,<br>2021</high><br><br><br><br>
+    </p>
+  </td>
+  <td>
+    <p align="center">
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Explorative Datenanalyse mit R<br></font><br>
+      <br>
+      <img src="https://therbootcamp.github.io/img/courses/1.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>Sep 24-25,<br>2021</high><br><br><br><br>
+    </p>
+  </td>
+  <td>
+    <p align="center">
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Statistik mit R<br><br></font><br>
+      <br>
+      <img src="https://therbootcamp.github.io/img/courses/2.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>Oct 22-23,<br>2021</high><br><br><br><br>
+      </a>
+    </p>
+  </td>
+  <td>
+    <p align="center">
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Maschinelles Lernen mit R<br></font><br>
+      <br>
+      <img src="https://therbootcamp.github.io/img/courses/3.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>Nov 19-20,<br>2021</high><br><br><br><br>
+      </a>
+    </p>
+  </td>
+  <td>
+    <p align="center">
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Reporting mit R<br><br></font><br>
+      <br>
+      <img src="https://therbootcamp.github.io/img/courses/4.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>tba<br>2021</high><br><br><br><br>
+      </a>
+    </p>
+  </td>
+  </tr>
+
+---
+
+.pull-left45[
+# Please provide Feedback
+<br><br>
+
+<p align = "center">
+  <img src="image/feedback.png" height=350px></img><br>
+  <font style="font-size:10px">from <a href="https://cdn-images-1.medium.com/max/1600/1*5OZNYAfzDZfM1lwJBZEuHQ.png">medium.com</a></font>
+</p>
+
+]
+
+.pull-right45[
+
+<p align="center"><br><br>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeBqsc5iS0BQpoOHfrstZl5ViNWR0eRPGqJPMGyyMGtaxeQhg/viewform?embedded=true" width="430" height="550" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></p>
+]
+
+
+---
+
+class: center, middle
+
+# Thank you!
+

@@ -1,0 +1,380 @@
+---
+title: "Recap II"
+author: "
+  Introduction to R<br>
+  <a href='https://therbootcamp.github.io'>
+    Bern R Bootcamp
+  </a>
+  <br> 
+  <a href='https://dwulff.github.io/Intro2R_Unibe/'>
+    <i class='fas fa-clock' style='font-size:.9em;'></i>
+  </a>&#8239; 
+  <a href='https://therbootcamp.github.io'>
+    <i class='fas fa-home' style='font-size:.9em;' ></i>
+  </a>&#8239;
+  <a href='mailto:therbootcamp@gmail.com'>
+    <i class='fas fa-envelope' style='font-size: .9em;'></i>
+  </a>&#8239;
+  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
+  </a>"
+date: "September 2021"
+output:
+  xaringan::moon_reader:
+    css: ["default", "baselrbootcamp.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+      
+---
+
+layout: true
+
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://therbootcamp.github.io/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
+          www.therbootcamp.com
+        </font>
+      </span>
+    </a>
+    <a href="https://therbootcamp.github.io/">
+      <font color="#7E7E7E">
+       Introduction to R | September 2021
+      </font>
+    </a>
+    </span>
+  </div>
+  
+  
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# see: https://github.com/yihui/xaringan
+# install.packages("xaringan")
+# see: 
+# https://github.com/yihui/xaringan/wiki
+# https://github.com/gnab/remark/wiki/Markdown
+options(width=110)
+options(digits = 4) 
+knitr::opts_chunk$set(comment = NA)
+
+
+options(htmltools.dir.version = FALSE)
+# see: https://github.com/yihui/xaringan
+# install.packages("xaringan")
+# see: 
+# https://github.com/yihui/xaringan/wiki
+# https://github.com/gnab/remark/wiki/Markdown
+options(width=110)
+options(digits = 4) 
+knitr::opts_chunk$set(comment = NA)
+library(tidyverse)
+ChickWeight <- as.data.frame(ChickWeight)
+
+
+trial_X <- data.frame(id = 1:5,
+           sex = c("m", "f", "f", "m", "f"),
+           age = c(35, 42, 24, 56, 49),
+           arm = c(1, 2, 1, 2, 1),
+           y_primary = c(50, 78, 46, 97, 74),
+           y_secondary = c(1, 1, 0, 1, 1)
+           )
+
+baselers <- read_csv("https://raw.githubusercontent.com/therbootcamp/baselers/master/inst/extdata/baselers.txt")
+
+```
+
+
+.pull-left45[
+
+# Statistics I
+
+#### <high>Descriptive statistics</high> with <mono>dplyr</mono>
+
+```{r, echo = T, eval = F}
+# Group-summarise idiom
+baselers %>%
+  group_by(sex, eyecor) %>%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    height_median = median(height),
+    children_max = max(children)
+  )
+```
+
+
+#### <high>Simple hypothesis tests</high> with <mono>stats</mono>
+
+```{r, eval = F, echo = T}
+# Simple hypothesis test
+t.test(baselers$happiness,
+       baselers$fitness,
+       var.equal = TRUE)
+```
+
+]
+
+.pull-right45[
+<br><br><br>
+<p align = "center">
+<img src="image/null_hypothesis.png" height=430px><br>
+<font style="font-size:10px">from <a href="https://xkcd.com/892/">xkcd.com</a></font>
+</p>
+
+]
+
+
+---
+
+
+# <mono>summarise()</mono>
+
+.pull-left45[
+
+Use `summarise()` to create new columns of <high>summary statistics</high>.
+
+The result of `summarise()` is always be a tibble.
+
+Functions used in `summerise()` <high>must return a single value</high>.
+
+
+```{r, echo = TRUE, eval = FALSE}
+data %>%
+  summarise(
+    NAME = SUMMARY_FUN(A),
+    NAME = SUMMARY_FUN(B),
+    ...
+  )
+```
+
+]
+
+.pull-right5[
+
+```{r}
+# Calculate summary statistics
+baselers %>%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    height_median = median(height),
+    children_max = max(children)
+  )
+```
+
+
+]
+
+---
+
+# <mono>group_by()</mono> + <mono>summarise()</mono>
+
+.pull-left45[
+
+Use `group_by()` to <high>group data</high> according to one or more columns.
+
+Then, use `summarise()` to <high>calculate summary statistics</high> for each group.
+
+You can include <high>one or more</high> grouping variables.
+
+```{r, echo = TRUE, eval = FALSE}
+data %>%
+  group_by(A, B, ...) %>%
+  summarise(
+    NAME = SUMMARY_FUN(A),
+    NAME = SUMMARY_FUN(B),
+    ...
+  )
+```
+
+
+]
+
+.pull-right5[
+
+```{r echo = TRUE, eval=FALSE}
+baselers %>%
+  group_by(sex) %>%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    income_median = median(income, na.rm = TRUE)
+  )
+```
+
+]
+
+
+---
+
+# <mono>group_by()</mono> + <mono>summarise()</mono>
+
+.pull-left45[
+
+Use `group_by()` to <high>group data</high> according to one or more columns.
+
+Then, use `summarise()` to <high>calculate summary statistics</high> for each group.
+
+You can include <high>one or more</high> grouping variables.
+
+```{r, echo = TRUE, eval = FALSE}
+data %>%
+  group_by(A, B, ...) %>%
+  summarise(
+    NAME = SUMMARY_FUN(A),
+    NAME = SUMMARY_FUN(B),
+    ...
+  )
+```
+
+
+]
+
+.pull-right5[
+
+```{r echo = TRUE, eval=TRUE}
+baselers %>%
+  group_by(sex) %>%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    income_median = median(income, na.rm = TRUE)
+  )
+```
+
+]
+
+---
+
+.pull-left3[
+
+# Decision tree
+
+]
+
+.pull-right6[
+
+<p align="center">
+  <img src="https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/98305/preview.jpg" height="580px" vspace="20">
+</p>
+
+]
+
+.pull-left45[
+
+# Plotting
+
+
+```{r, fig.width = 7, fig.height = 5.5, eval = F, echo = TRUE}
+ggplot(data = mpg, 
+       mapping = aes(x = XXX, 
+                     y = XXX)) +
+  geom_XXX() + 
+  geom_XXX() +
+  labs(x = "XXX",
+       y = "XXX",
+       title = "XXX",
+       caption = "XXX") + 
+  theme_bw()
+
+```
+
+]
+
+
+.pull-right45[
+<br><br><br><br>
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE, message=FALSE}
+ggplot(data = mpg, 
+       mapping = aes(x = cty, 
+                     y = hwy)) +
+  geom_point() + 
+  geom_smooth() +
+  labs(x = "Miles per gallon in city",
+       y = "Miles per gallon on highway",
+       title = "MPG data",
+       caption = "Source: mpg data tidyverse.") + 
+  theme_bw()
+```
+
+]
+
+---
+
+.pull-left45[
+
+# Plotting
+
+
+```{r, fig.width = 7, fig.height = 5.5, eval = F, echo = TRUE}
+ggplot(data = mpg, 
+       mapping = aes(x = cty, 
+                     y = hwy)) +
+  geom_point() + 
+  geom_smooth() +
+  labs(x = "Miles per gallon in city",
+       y = "Miles per gallon on highway",
+       title = "MPG data",
+       caption = "Source: mpg data tidyverse.") + 
+  theme_bw()
+
+```
+
+]
+
+
+.pull-right45[
+<br><br><br><br>
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE, message=FALSE}
+ggplot(data = mpg, 
+       mapping = aes(x = cty, 
+                     y = hwy)) +
+  geom_point() + 
+  geom_smooth() +
+  labs(x = "Miles per gallon in city",
+       y = "Miles per gallon on highway",
+       title = "MPG data",
+       caption = "Source: mpg data tidyverse.") + 
+  theme_bw()
+```
+
+]
+
+
+---
+
+class: middle, center
+
+<h1><a href="https://dwulff.github.io/Intro2R_Unibe/1_Data/BernRBootcamp_Day3.zip">Downloads</a></h1>
+
+
+---
+
+.pull-left35[
+<br><br><br><br><br><br><br><br><br>
+
+<p align="center">
+  <font size=8><hfont><high>Questions?</high></hfont></font><br>
+  <font size = 4><a href = "https://therbootcamp.github.io/Intro2DataScience_2018Oct/">Link to schedule</a></font>
+</p>
+
+]
+
+
+.pull-right6[
+
+<img src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Welcome/image/schedule.png" height="580" align="center">
+
+
+]

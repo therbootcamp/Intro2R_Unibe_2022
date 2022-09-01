@@ -1,0 +1,66 @@
+---
+title: "Case Studies"
+output:
+  xaringan::moon_reader:
+    css: ["default", "baselrbootcamp.css"]
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
+---
+
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# see: https://github.com/yihui/xaringan
+# install.packages("xaringan")
+# see: 
+# https://github.com/yihui/xaringan/wiki
+# https://github.com/gnab/remark/wiki/Markdown
+options(width=110)
+options(digits = 4) 
+knitr::opts_chunk$set(comment = NA)
+```
+
+# 2 Case Studies
+
+Work on one or both case studies designed to repeat the central elements of <high>Data I/O</high>, <high>Data Wrangling</high>, <high>Analysing</high>, and <high>Plotting</high><br>
+
+.pull-left45[
+
+## Clinical
+
+Analyse a clinical trial comparing the effectiveness of clinical drugs.<br>
+
+<p>
+<img src="image/clinical.jpg" style="height:140px">
+</p>
+
+<br>
+[Clinical Trial Case Study](https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/CaseStudies/Clinical_Data_Case_Study.html)
+
+]
+
+.pull-right45[
+
+## Finance
+
+Study the development of key financial markets across the last 20 years<br>
+
+<p>
+<img src="image/finance.png" style="height:140px">
+</p>
+
+<br>
+[Finance Case Study](https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/CaseStudies/Financial_Data_Case_Study.html)
+
+]
+
+
+
+

@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Intro to R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="  Intro to Data Science with R   The R Bootcamp @ Unibe                  " />
+    <script src="IntroToR_files/header-attrs/header-attrs.js"></script>
+    <link href="IntroToR_files/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Intro to R
+### <br> Intro to Data Science with R<br> <a href='https://therbootcamp.github.io'> The R Bootcamp @ Unibe </a> <br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+### September 2021
+
+---
+
+layout: true
+
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://therbootcamp.github.io/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
+          www.therbootcamp.com
+        </font>
+      </span>
+    </a>
+    <a href="https://therbootcamp.github.io/">
+      <font color="#7E7E7E">
+       The R Bootcamp | September 2021
+      </font>
+    </a>
+    </span>
+  </div> 
+
+---
+
+
+
+
+
+# R is a programming language
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Statistical_model) (emphasis added):
+
+&gt; A programming language is a **formal language** that specifies a set of instructions that can be used to produce various kinds of output. Programming languages generally consist of **instructions for a computer**. Programming languages can be used to create programs that **implement specific algorithms**.
+
+.pull-left4[
+### Algorithm
+1. Load data
+2. Extract variables
+3. Run analysis
+4. Print result
+]
+
+.pull-right6[
+### Implementation in R
+
+
+
+```r
+data &lt;- read.table("data/my_data.txt")
+variables &lt;- data[,c('group','variable')]
+analysis &lt;- lm(variable ~ group, data = variables)
+summary(analysis)
+```
+]
+
+---
+
+# Why R?
+
+.pull-left3[
+R steadily **grows in popularity**. 
+
+Today, R is one of the **most popular languages for data science** and overall. 
+
+In terms of the number of data science jobs, **R beats SAS and Matlab**, and is on par with Python.
+
+In many sciences it becomes the de factor **lingua franca** for statistics.
+
+&lt;p style="font-size:10px;float:bottom"&gt;
+  Image source: http://r4stats.com/blog/
+&lt;p&gt;
+
+
+]
+
+.pull-right6[
+&lt;p align="center"&gt;
+  &lt;img src="https://i0.wp.com/r4stats.com/wp-content/uploads/2017/02/Fig-1a-IndeedJobs-2017.png" height="450"&gt;
+&lt;/p&gt;
+]
+
+---
+
+.pull-left3[
+
+# Tidyverse
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The tidyverse is...&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;A collection of user-friendly &lt;high&gt;packages&lt;/high&gt; for analyzing &lt;high&gt;tidy data&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+    &lt;li&gt;&lt;span&gt;An &lt;high&gt;ecosystem&lt;/high&gt; for analytics and data science with common design principles&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+    &lt;li&gt;&lt;span&gt;A &lt;high&gt;dialect&lt;/high&gt; of the R language&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right65[
+&lt;br&gt;&lt;br&gt;
+&lt;p align="center"&gt;
+&lt;img src="image/tidyverse.png" height = "520px"&gt;
+&lt;/p&gt;
+]
+
+
+---
+
+
+.pull-left3[
+
+# Tidyverse
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The tidyverse is...&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;A collection of user-friendly &lt;high&gt;packages&lt;/high&gt; for analyzing &lt;high&gt;tidy data&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+    &lt;li&gt;&lt;span&gt;An &lt;high&gt;ecosystem&lt;/high&gt; for analytics and data science with common design principles&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+    &lt;li&gt;&lt;span&gt;A &lt;high&gt;dialect&lt;/high&gt; of the R language&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right65[
+&lt;br&gt;&lt;br&gt;
+&lt;p align="center"&gt;
+&lt;img src="image/tidyverse_highlight.png" height = "520px"&gt;
+&lt;/p&gt;
+]
+
+---
+
+# RStudio
+
+.pull-left3[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RStudio is...&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;A high-productivity &lt;high&gt;data science IDE.&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+    &lt;li&gt;&lt;span&gt;The &lt;high&gt;company&lt;/high&gt; behind the tidyverse.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+    &lt;li&gt;&lt;span&gt;Designed for R tidyverse with &lt;high&gt;good integration&lt;/high&gt; for Python, Markdown, or C++.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right6[
+&lt;p align="center"&gt;
+&lt;img src="image/rstudio.png"&gt;
+&lt;/p&gt;
+]
+
+
+---
+
+&lt;div class="center_text"&gt;
+  &lt;span&gt;
+  Intro 2 Base R
+  &lt;/span&gt;
+&lt;/div&gt; 
+
+
+---
+
+.pull-left4[
+
+# Part 1: Assignments
+
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;&lt;high&gt;Assignments&lt;/high&gt;&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Object &lt;mono&gt;&lt;-&lt;/mono&gt; function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; creates objects&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; changes objects&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/span&gt;&lt;br&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+&lt;br&gt;&lt;br&gt;
+&lt;p align = "center"&gt;
+&lt;img src="image/goodcode.png" height=500px&gt;&lt;br&gt;
+&lt;font style="font-size:10px"&gt;from &lt;a href="https://xkcd.com//"&gt;xkcd.com&lt;/a&gt;&lt;/font&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Object &lt;mono&gt;&lt;-&lt;/mono&gt; function
+
+.pull-left5[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Object &lt;mono&gt;&lt;-&lt;/mono&gt; function&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; creates objects&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; changes objects&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/span&gt;&lt;br&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+&lt;p align="center"&gt;
+  &lt;img src="image/assignment_eng.png"&gt;
+&lt;/p&gt;
+
+
+]
+
+---
+
+# &lt;mono&gt;&lt;-&lt;/mono&gt; creates objects
+
+.pull-left5[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Object &lt;mono&gt;&lt;-&lt;/mono&gt; function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; creates objects&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; changes objects&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/span&gt;&lt;br&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+```r
+# an object named one_two_three
+one_two_three &lt;- c(1, 2, 3)
+
+# print the object
+print(one_two_three)
+```
+
+```
+[1] 1 2 3
+```
+
+```r
+# print the object
+one_two_three
+```
+
+```
+[1] 1 2 3
+```
+
+]
+
+---
+
+# &lt;mono&gt;&lt;-&lt;/mono&gt; creates objects
+
+.pull-left5[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Object &lt;mono&gt;&lt;-&lt;/mono&gt; function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; creates objects&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; changes objects&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/span&gt;&lt;br&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+```r
+# an object named one_two_three
+one_two_three &lt;- c(1, 2, 3)
+
+# calculate the mean
+mean(one_two_three)
+```
+
+```
+[1] 2
+```
+
+]
+
+---
+
+# &lt;mono&gt;&lt;-&lt;/mono&gt; creates objects
+
+.pull-left5[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Object &lt;mono&gt;&lt;-&lt;/mono&gt; function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; creates objects&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; changes objects&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/span&gt;&lt;br&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+```r
+# an object named one_two_three
+one_two_three &lt;- c(1, 2, 3)
+
+# calculate the mean
+result &lt;- mean(one_two_three)
+
+# print result
+result
+```
+
+```
+[1] 2
+```
+
+]
+
+---
+
+# &lt;mono&gt;&lt;-&lt;/mono&gt; creates objects
+
+.pull-left5[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Object &lt;mono&gt;&lt;-&lt;/mono&gt; function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; creates objects&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; changes objects&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/span&gt;&lt;br&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+```r
+# an object named one_two_three
+one_two_three &lt;- c(1, 2, 3)
+
+# calculate the mean
+result &lt;- mean(one_two_three)
+
+# use result
+result * 10
+```
+
+```
+[1] 20
+```
+
+]
+
+
+---
+
+# &lt;mono&gt;&lt;-&lt;/mono&gt; changes objects
+
+.pull-left5[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Object &lt;mono&gt;&lt;-&lt;/mono&gt; function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; creates objects&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; changes objects&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/span&gt;&lt;br&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+```r
+# an object named one_two_three
+one_two_three &lt;- c(1, 2, 3)
+
+# print the object
+one_two_three
+```
+
+```
+[1] 1 2 3
+```
+
+```r
+# use the object
+one_two_three + 100
+```
+
+```
+[1] 101 102 103
+```
+
+```r
+# print the object
+one_two_three
+```
+
+```
+[1] 1 2 3
+```
+
+]
+
+
+---
+
+# &lt;mono&gt;&lt;-&lt;/mono&gt; changes objects
+
+.pull-left5[
+
+&lt;ul&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Object &lt;mono&gt;&lt;-&lt;/mono&gt; function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; creates objects&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;&lt;mono&gt;&lt;-&lt;/mono&gt; changes objects&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;/span&gt;&lt;br&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+
+```r
+# an object named one_two_three
+one_two_three &lt;- c(1, 2, 3)
+
+# print the object
+one_two_three
+```
+
+```
+[1] 1 2 3
+```
+
+```r
+# use the object
+one_two_three &lt;- one_two_three + 100
+
+# print the object
+one_two_three
+```
+
+```
+[1] 101 102 103
+```
+
+]
+
+
+---
+
+# Part 2: Functions
+
+.pull-left4[
+
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Functions&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+]
+
+.pull-right5[
+&lt;p align = "center"&gt;
+&lt;img src="image/automation.png" &gt;&lt;br&gt;
+&lt;font style="font-size:10px"&gt;from &lt;a href="https://xkcd.com//"&gt;xkcd.com&lt;/a&gt;&lt;/font&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Functions 
+
+.pull-left4[
+
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Functions&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+&lt;p align="center"&gt;&lt;img src="image/input_output.png" height="400"&gt;&lt;/p&gt;
+]
+
+---
+
+# Functions 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Everything happens using functions&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# function c()
+one_two_three &lt;- c(1, 2, 3)
+
+# function `+`()
+one_two_three + 100
+```
+
+```
+[1] 101 102 103
+```
+
+```r
+# function print()
+one_two_three
+```
+
+```
+[1] 1 2 3
+```
+
+```r
+# function mean()
+mean(one_two_three)
+```
+
+```
+[1] 2
+```
+]
+
+
+---
+
+# Arguments 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Functions have (default) arguments&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# no argument
+mean()
+```
+
+```
+Error in mean.default(): argument "x" is missing, with no default
+```
+
+```r
+# one (necessary) argument
+mean(c(1, 2, 3))
+```
+
+```
+[1] 2
+```
+
+```r
+# add missing value (NA)
+mean(c(1, 2, 3, NA))
+```
+
+```
+[1] NA
+```
+]
+
+
+---
+
+# Arguments
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Functions have (default) arguments&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# no argument
+mean()
+```
+
+```
+Error in mean.default(): argument "x" is missing, with no default
+```
+
+```r
+# one (necessary) argument
+mean(c(1, 2, 3))
+```
+
+```
+[1] 2
+```
+
+```r
+# change default to remove NAs
+mean(c(1, 2, 3, NA), na.rm = TRUE)
+```
+
+```
+[1] 2
+```
+]
+
+---
+
+# Arguments
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Functions have (default) arguments&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# explicit argument names
+mean(x = c(1, 2, 3, NA), na.rm = TRUE)
+```
+
+```
+[1] 2
+```
+
+```r
+# with names order does not matter
+mean(na.rm = TRUE, x = c(1, 2, 3, NA))
+```
+
+```
+[1] 2
+```
+
+```r
+# without names order matters
+mean(TRUE, c(1, 2, 3, NA))
+```
+
+```
+Error in mean.default(TRUE, c(1, 2, 3, NA)): 'trim' must be numeric of length one
+```
+]
+
+
+---
+
+# Classes 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;The class of functions matters&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+&lt;p align = "center"&gt;
+&lt;img src="image/types.png"&gt;&lt;br&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+# Classes 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;The class of functions matters&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# calculate mean of c(1, 2, 3)
+mean(c(1, 2, 3))
+```
+
+```
+[1] 2
+```
+
+```r
+# calculate mean of c('1', '2', '3')
+mean(c("1", "2", "3"))
+```
+
+```
+Warning in mean.default(c("1", "2", "3")): argument is not numeric or logical: returning NA
+```
+
+```
+[1] NA
+```
+]
+
+---
+
+# Classes 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;The class of functions matters&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# calculate sum of c(1, 2, 3)
+sum(c(1, 2, 3))
+```
+
+```
+[1] 6
+```
+
+```r
+# calculate sum of c('1', '2', '3')
+sum(c("1", "2", "3"))
+```
+
+```
+Error in sum(c("1", "2", "3")): invalid 'type' (character) of argument
+```
+]
+
+
+
+---
+
+# Packages 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Functions "live" in packages&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+&lt;p align="center"&gt;&lt;img src="image/pakete.png" height="400"&gt;&lt;/p&gt;
+]
+
+---
+
+# Packages 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Functions "live" in packages&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Receive help using &lt;mono&gt;?&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+&lt;high&gt;Install&lt;/high&gt; Packages &lt;high&gt;once&lt;/high&gt; with `install.packages()`
+
+
+```r
+install.packages("tidyverse")
+```
+&lt;br2&gt;
+&lt;high&gt;Load&lt;/high&gt; installed Pakete &lt;high&gt;every time&lt;/high&gt; with `library()`
+
+
+```r
+library(tidyverse)
+```
+
+&lt;p align="left"&gt;&lt;img src="image/tidyverse_load.png" height="180"&gt;&lt;/p&gt;
+]
+---
+
+# Help 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Functions&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Everything happens using functions&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions have (default) arguments&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;The class of functions matters&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Functions "live" in packages&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Receive help using &lt;mono&gt;?&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;&lt;br&gt;
+  &lt;li class="m3g"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+?cor
+```
+&lt;p align="center"&gt;&lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/help_cor.png" width="500"&gt;&lt;/p&gt;
+]
+
+---
+
+# Part 3: Pipes 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;&lt;high&gt;Pipes&lt;/high&gt;&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Swap object and function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Make chaining easy&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+&lt;p align = "center"&gt;
+&lt;img src="image/magrittebrother.jpeg" height=400px&gt;&lt;br&gt;
+&lt;font style="font-size:10px"&gt;from &lt;a href="https://knowyourmeme.com/photos/1217327-this-is-not-a-pipe-parodies"&gt;knowyourmeme.com&lt;/a&gt;&lt;/font&gt;
+&lt;/p&gt;
+
+
+]
+
+---
+
+# Pipes 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Swap object and function&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Make chaining easy&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# Numeric vector
+score &lt;- c(8, 4, 6, 3, 7, 3)
+score
+```
+
+```
+[1] 8 4 6 3 7 3
+```
+
+```r
+# Mean: Base-R-style
+mean(score)
+```
+
+```
+[1] 5.167
+```
+
+```r
+# Mean: dplyr-style
+score %&gt;%  
+  mean()  
+```
+
+```
+[1] 5.167
+```
+]
+
+---
+
+# Pipes 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Swap object and function&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Make chaining easy&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+&lt;p align="center"&gt;
+  &lt;img src="image/pipe_en.png" height = "400px"&gt;
+&lt;/p&gt;
+
+]
+
+---
+
+# Pipes 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Swap object and function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Make chaining easy&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# Numeric vector
+score &lt;- c(8, 4, 6, 3, 7, 3)
+score
+```
+
+```
+[1] 8 4 6 3 7 3
+```
+
+```r
+# Chainig
+score %&gt;%  
+  mean() %&gt;% 
+  round(digits = 2)
+```
+
+```
+[1] 5.17
+```
+]
+
+---
+
+# Pipes 
+
+.pull-left4[
+&lt;ul&gt;
+  &lt;li class="m1g"&gt;&lt;span&gt;Assignments&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2g"&gt;&lt;span&gt;Functions&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;Pipes&lt;br&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;ul class="level"&gt;
+    &lt;li&gt;&lt;span&gt;Swap object and function&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Make chaining easy&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+]
+
+.pull-right5[
+
+```r
+# Numeric vector
+score &lt;- c(8, 4, 6, 3, 7, 3)
+score
+```
+
+```
+[1] 8 4 6 3 7 3
+```
+
+```r
+# Chainig
+score %&gt;%  
+  mean() %&gt;% 
+  round(digits = 2) %&gt;% 
+  as.character()
+```
+
+```
+[1] "5.17"
+```
+]
+
+
+---
+
+class: middle, center
+
+&lt;h1&gt;&lt;a&gt;Interactive&lt;/a&gt;&lt;/h1&gt;
+&lt;h2&gt;Open the TheRBootcamp project file&lt;/h2&gt;
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

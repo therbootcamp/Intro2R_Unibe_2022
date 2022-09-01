@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Recap II</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Introduction to R   Bern R Bootcamp                  " />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Recap II
+### Introduction to R<br> <a href='https://therbootcamp.github.io'> Bern R Bootcamp </a> <br> <a href='https://dwulff.github.io/Intro2R_Unibe/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+### September 2021
+
+---
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;
+  &lt;span style="text-align:center"&gt;
+    &lt;span&gt; 
+      &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/&gt;
+    &lt;/span&gt;
+    &lt;a href="https://therbootcamp.github.io/"&gt;
+      &lt;span style="padding-left:82px"&gt; 
+        &lt;font color="#7E7E7E"&gt;
+          www.therbootcamp.com
+        &lt;/font&gt;
+      &lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="https://therbootcamp.github.io/"&gt;
+      &lt;font color="#7E7E7E"&gt;
+       Introduction to R | September 2021
+      &lt;/font&gt;
+    &lt;/a&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+  
+  
+---
+
+
+
+
+
+.pull-left45[
+
+# Statistics I
+
+#### &lt;high&gt;Descriptive statistics&lt;/high&gt; with &lt;mono&gt;dplyr&lt;/mono&gt;
+
+
+```r
+# Group-summarise idiom
+baselers %&gt;%
+  group_by(sex, eyecor) %&gt;%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    height_median = median(height),
+    children_max = max(children)
+  )
+```
+
+
+#### &lt;high&gt;Simple hypothesis tests&lt;/high&gt; with &lt;mono&gt;stats&lt;/mono&gt;
+
+
+```r
+# Simple hypothesis test
+t.test(baselers$happiness,
+       baselers$fitness,
+       var.equal = TRUE)
+```
+
+]
+
+.pull-right45[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;p align = "center"&gt;
+&lt;img src="image/null_hypothesis.png" height=430px&gt;&lt;br&gt;
+&lt;font style="font-size:10px"&gt;from &lt;a href="https://xkcd.com/892/"&gt;xkcd.com&lt;/a&gt;&lt;/font&gt;
+&lt;/p&gt;
+
+]
+
+
+---
+
+
+# &lt;mono&gt;summarise()&lt;/mono&gt;
+
+.pull-left45[
+
+Use `summarise()` to create new columns of &lt;high&gt;summary statistics&lt;/high&gt;.
+
+The result of `summarise()` is always be a tibble.
+
+Functions used in `summerise()` &lt;high&gt;must return a single value&lt;/high&gt;.
+
+
+
+```r
+data %&gt;%
+  summarise(
+    NAME = SUMMARY_FUN(A),
+    NAME = SUMMARY_FUN(B),
+    ...
+  )
+```
+
+]
+
+.pull-right5[
+
+
+```r
+# Calculate summary statistics
+baselers %&gt;%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    height_median = median(height),
+    children_max = max(children)
+  )
+```
+
+```
+# A tibble: 1 × 4
+      N age_mean height_median children_max
+  &lt;int&gt;    &lt;dbl&gt;         &lt;dbl&gt;        &lt;dbl&gt;
+1 10000     44.6          171.            6
+```
+
+
+]
+
+---
+
+# &lt;mono&gt;group_by()&lt;/mono&gt; + &lt;mono&gt;summarise()&lt;/mono&gt;
+
+.pull-left45[
+
+Use `group_by()` to &lt;high&gt;group data&lt;/high&gt; according to one or more columns.
+
+Then, use `summarise()` to &lt;high&gt;calculate summary statistics&lt;/high&gt; for each group.
+
+You can include &lt;high&gt;one or more&lt;/high&gt; grouping variables.
+
+
+```r
+data %&gt;%
+  group_by(A, B, ...) %&gt;%
+  summarise(
+    NAME = SUMMARY_FUN(A),
+    NAME = SUMMARY_FUN(B),
+    ...
+  )
+```
+
+
+]
+
+.pull-right5[
+
+
+```r
+baselers %&gt;%
+  group_by(sex) %&gt;%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    income_median = median(income, na.rm = TRUE)
+  )
+```
+
+]
+
+
+---
+
+# &lt;mono&gt;group_by()&lt;/mono&gt; + &lt;mono&gt;summarise()&lt;/mono&gt;
+
+.pull-left45[
+
+Use `group_by()` to &lt;high&gt;group data&lt;/high&gt; according to one or more columns.
+
+Then, use `summarise()` to &lt;high&gt;calculate summary statistics&lt;/high&gt; for each group.
+
+You can include &lt;high&gt;one or more&lt;/high&gt; grouping variables.
+
+
+```r
+data %&gt;%
+  group_by(A, B, ...) %&gt;%
+  summarise(
+    NAME = SUMMARY_FUN(A),
+    NAME = SUMMARY_FUN(B),
+    ...
+  )
+```
+
+
+]
+
+.pull-right5[
+
+
+```r
+baselers %&gt;%
+  group_by(sex) %&gt;%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    income_median = median(income, na.rm = TRUE)
+  )
+```
+
+```
+# A tibble: 2 × 4
+  sex        N age_mean income_median
+  &lt;chr&gt;  &lt;int&gt;    &lt;dbl&gt;         &lt;dbl&gt;
+1 female  5000     45.4          7300
+2 male    5000     43.8          7100
+```
+
+]
+
+---
+
+.pull-left3[
+
+# Decision tree
+
+]
+
+.pull-right6[
+
+&lt;p align="center"&gt;
+  &lt;img src="https://s3-eu-west-1.amazonaws.com/pfigshare-u-previews/98305/preview.jpg" height="580px" vspace="20"&gt;
+&lt;/p&gt;
+
+]
+
+.pull-left45[
+
+# Plotting
+
+
+
+```r
+ggplot(data = mpg, 
+       mapping = aes(x = XXX, 
+                     y = XXX)) +
+  geom_XXX() + 
+  geom_XXX() +
+  labs(x = "XXX",
+       y = "XXX",
+       title = "XXX",
+       caption = "XXX") + 
+  theme_bw()
+```
+
+]
+
+
+.pull-right45[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+![](RecapII_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+]
+
+---
+
+.pull-left45[
+
+# Plotting
+
+
+
+```r
+ggplot(data = mpg, 
+       mapping = aes(x = cty, 
+                     y = hwy)) +
+  geom_point() + 
+  geom_smooth() +
+  labs(x = "Miles per gallon in city",
+       y = "Miles per gallon on highway",
+       title = "MPG data",
+       caption = "Source: mpg data tidyverse.") + 
+  theme_bw()
+```
+
+]
+
+
+.pull-right45[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+![](RecapII_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+]
+
+
+---
+
+class: middle, center
+
+&lt;h1&gt;&lt;a href="https://dwulff.github.io/Intro2R_Unibe/1_Data/BernRBootcamp_Day3.zip"&gt;Downloads&lt;/a&gt;&lt;/h1&gt;
+
+
+---
+
+.pull-left35[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+&lt;p align="center"&gt;
+  &lt;font size=8&gt;&lt;hfont&gt;&lt;high&gt;Questions?&lt;/high&gt;&lt;/hfont&gt;&lt;/font&gt;&lt;br&gt;
+  &lt;font size = 4&gt;&lt;a href = "https://therbootcamp.github.io/Intro2DataScience_2018Oct/"&gt;Link to schedule&lt;/a&gt;&lt;/font&gt;
+&lt;/p&gt;
+
+]
+
+
+.pull-right6[
+
+&lt;img src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Welcome/image/schedule.png" height="580" align="center"&gt;
+
+
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
