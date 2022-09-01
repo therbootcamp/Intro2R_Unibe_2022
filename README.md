@@ -10,3 +10,5 @@ Notes on sessions (aka todo):
 - Update reporting in terms of content and style
 - Adapt case study to also include markdown
 - Adjust next steps
+
+- zoom link
