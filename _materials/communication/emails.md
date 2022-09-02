@@ -1,4 +1,32 @@
 
+# Intro email
+
+Dear participants of the "Introduction to Data Science with R" course!
+
+We are very much looking forward to spend time with you and R in this introductory course.
+
+
+We have created a dedicated course website, where you will find all materials and information (slides, exercises) concerning the course:
+https://therbootcamp.github.io/Intro2R_Unibe_2022/
+
+
+On the course website you will find a link to a
+software installation page with instructions that we kindly ask you to complete prior to the course: 
+https://therbootcamp.github.io/Intro2R_Unibe_2022/install.html.
+If questions or problems arise please write to michael.schulte@unibe.ch
+
+
+The course will be held in person in Uni Mittelstrasse, Room 320, Mittelstrasse 43, Bern.
+
+
+Please complete all instructions prior to the start of the
+course. The course will begin on Monday, September 12th, 2022, 09.00am (sharp!).
+
+We are looking very much forward to seeing you soon there!
+
+Best
+Michael & Dirk
+
 
 # Followup email
 
