@@ -1,4 +1,4 @@
-# September 2021
+# September 2022
 # http://therbootcamp.github.io
 
 # Skript um alle nötigen Pakete zu installieren
@@ -94,7 +94,7 @@ Bootcamp_package_installation <- function() {
   
   if(length(critical_not_installed) > 0 | length(optional_not_installed) > 0) {
     
-    message("*** Bericht ***")
+    message("*** Report ***")
     
     warning(paste("The critical packages [", 
                   paste(critical_not_installed, sep = ", "), 
