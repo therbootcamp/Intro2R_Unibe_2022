@@ -16,8 +16,7 @@ https://therbootcamp.github.io/Intro2R_Unibe_2022/install.html.
 If questions or problems arise please write to michael.schulte@unibe.ch
 
 
-The course will be held online via Zoom - the dedicated Zoom link is: https://unibe-ch.zoom.us/j/66457082074?pwd=eUJPMDNRV25na0pMZVhqVU9GSzlZUT09 throughout the three course days.
-
+The course will be held online via Zoom: https://unibe-ch.zoom.us/j/66457082074?pwd=eUJPMDNRV25na0pMZVhqVU9GSzlZUT09
 
 Please complete all instructions prior to the start of the course. The course will begin on Monday, September 12th, 2022, 09.00am (sharp!). Please login into the Zoom meeting at 8.45am on Monday, so that we can figure out potential technical issues with you.
 

@@ -26,8 +26,8 @@ options(width=110)
 options(digits = 4) 
 knitr::opts_chunk$set(comment = NA)
 require(tidyverse)
-baselers = read_csv('https://raw.githubusercontent.com/dwulff/Intro2R_Unibe_2021/main/_sessions/Data/1_Data/baselers.csv')
-
+source('../config.R')
+baselers = read_csv(paste0(raw_url, 'main/_sessions/Data/1_Data/baselers.csv'))
 ```
 
 
@@ -491,46 +491,6 @@ or <a href="https://style.tidyverse.org/index.html">The tidyverse style guide</a
 
 ---
 
-.pull-left45[
-
-# Object Classes
-
-<br><br>
-1 - R's objects have <high>content and attributes</high>.
-<br><br>
-2 - Attributes include always <high>names</high>, <high>dimensions</high>, and the <high>class</high> (or type) of the object. 
-<br2>
-3 - <high>Classes</high> are critical because they determine <high>when and how they can be used in functions</high>!
-
-]
-.pull-right45[
-  <br><br><br>
-  <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/object_class.png"></img>
-]
-
----
-
-.pull-left45[
-
-# Why classes are important
-
-Functions have 3 elements:
-
-1 - <high>Name</high>: Used to refer to the function and call (execute) it.
-
-2 - <high>Arguments</high>: Used to provide (data) inputs and to control what the function does. Arguments with default values (e.g., `use = "everything"`) need not be specified. Arguments without default values (e.g., `x`) need be specified. <high>Inputs must have the appropriate class!</high>
-
-3 - <high>Body</high>: The code that uses the inputs (arguments) to produce the desired output. The code of the functions body is based <high>copies of the inputs</high>, which are named according to the arguments names. 
-
-]
-
-.pull-right5[
-  <br><br><br>
-  <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/function.png"></img>
-]
-
----
-
 # Getting data into R
 
 .pull-left45[
@@ -791,5 +751,5 @@ data <- jsonlite::read_json(file, ...)
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Data/Data_practical.html">Practical</a></h1>
+<h1>`r paste0('<a href="', session_url, 'Data/Data_practical.html">Practical</a>')`</h1>
 

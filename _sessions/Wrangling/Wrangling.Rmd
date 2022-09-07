@@ -19,8 +19,6 @@ output:
 # Code to knit slides
 xaringan::inf_mr('_sessions/D1S2_Wrangling/Wrangling.Rmd')
 
-
-
 ```
 
 ```{r setup, include=FALSE}
@@ -29,7 +27,7 @@ options(width=110)
 options(digits = 4) 
 knitr::opts_chunk$set(comment = NA)
 library(tidyverse)
-
+source('../config.R')
 ```
 
 
@@ -842,5 +840,4 @@ combined %>%
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Wrangling/Wrangling_practical.html">Practical</a></h1>
-
+<h1>`r paste0('<a href="', session_url, 'Wrangling/Wrangling_practical.html">Practical</a>')`</h1>

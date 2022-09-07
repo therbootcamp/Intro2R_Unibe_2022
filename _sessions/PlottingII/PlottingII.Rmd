@@ -33,6 +33,7 @@ options(htmltools.dir.version = FALSE)
 options(width=110)
 options(digits = 4) 
 knitr::opts_chunk$set(comment = NA)
+source('../config.R')
 ```
 
 ```{r, echo = FALSE ,message = FALSE, warning = FALSE}
@@ -1327,4 +1328,4 @@ ggsave(filename = "my_plot.png",
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/PlottingII/PlottingII_practical.html">Practical</a></h1>
+<h1>`r paste0('<a href="', session_url, 'PlottingII/PlottingII_practical.html">Practical</a>')`</h1>

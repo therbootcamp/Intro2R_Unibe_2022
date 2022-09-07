@@ -13,8 +13,8 @@
 
 <title>Wrangling</title>
 
-<script src="Wrangling_practical_files/header-attrs-2.10/header-attrs.js"></script>
-<script src="Wrangling_practical_files/jquery-1.11.3/jquery.min.js"></script>
+<script src="Wrangling_practical_files/header-attrs-2.14/header-attrs.js"></script>
+<script src="Wrangling_practical_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="Wrangling_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="Wrangling_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -57,6 +57,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="practical.css" type="text/css" />
 
 
@@ -81,6 +82,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -170,7 +174,17 @@ pre code {
 <col width='10%'>
 <tr style="border:none">
 <td style="display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none" nowrap>
-<font style='font-style:normal'>Introduction to Data Science with R</font><br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>The R Bootcamp</font> </a>
+<font style='font-style:normal'>Introduction to Data Science with
+R</font><br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
+<i class='fas fa-clock' style='font-size:.9em;' ></i> </a>
+<a href='https://therbootcamp.github.io'>
+<i class='fas fa-home' style='font-size:.9em;'></i> </a>
+<a href='mailto:therbootcamp@gmail.com'>
+<i class='fas fa-envelope' style='font-size: .9em;'></i> </a>
+<a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+<i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+<a href='https://therbootcamp.github.io'>
+<font style='font-style:normal'>The R Bootcamp</font> </a>
 </td>
 <td style="width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none">
 <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
@@ -182,13 +196,16 @@ pre code {
 
 
 <p align="center" width="100%">
-<img src="image/trial.jpg" alt="Trulli" style="width:100%;height:280px"> <br> <font style="font-size:10px">from <a href="https://parkinsonsnewstoday.com/2016/02/24/promising-respiratory-drug-focus-of-new-clinical-trial-for-parkinsons-disease">parkinsonsnewstoday.com</a></font>
+<img src="image/trial.jpg" alt="Trulli" style="width:100%;height:280px">
+<br> <font style="font-size:10px">from
+<a href="https://parkinsonsnewstoday.com/2016/02/24/promising-respiratory-drug-focus-of-new-clinical-trial-for-parkinsons-disease">parkinsonsnewstoday.com</a></font>
 </p>
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>In this practical you’ll practice “data wrangling” with the <code>dplyr</code> and <code>tidyr</code> packages.</p>
+<p>In this practical you’ll practice “data wrangling” with the
+<code>dplyr</code> and <code>tidyr</code> packages.</p>
 <p>By the end of this practical you will know how to:</p>
 <ol style="list-style-type: decimal">
 <li>Change column names, select specific columns</li>
@@ -203,9 +220,16 @@ pre code {
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li><p>Open your <code>TheRBootcamp</code> R project. It should have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder.</p></li>
-<li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>wrangling_practical.R</code> in the <code>2_Code</code> folder.</p></li>
-<li><p>Using <code>library()</code> load the set of packages for this practical listed in the packages section above.</p></li>
+<li><p>Open your <code>TheRBootcamp</code> R project. It should have the
+folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the
+data files listed in the <code>Datasets</code> section above are in your
+<code>1_Data</code> folder.</p></li>
+<li><p>Open a new R script. At the top of the script, using comments,
+write your name and the date. Save it as a new file called
+<code>wrangling_practical.R</code> in the <code>2_Code</code>
+folder.</p></li>
+<li><p>Using <code>library()</code> load the set of packages for this
+practical listed in the packages section above.</p></li>
 </ol>
 <pre class="r"><code>## Name
 ## Date
@@ -216,7 +240,10 @@ library(XX)
 library(XX)
 library(XX)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>In this practical, you will analyze the <code>trial_act</code> data. Using the following template, load both the original and demo data into R and store it as a new object called <code>trial_act</code> and <code>trial_act_demo</code>.</li>
+<li>In this practical, you will analyze the <code>trial_act</code> data.
+Using the following template, load both the original and demo data into
+R and store it as a new object called <code>trial_act</code> and
+<code>trial_act_demo</code>.</li>
 </ol>
 <pre class="r"><code># Load trial_act.csv from the data folder in your working directory
 
@@ -225,7 +252,8 @@ trial_act_demo &lt;- read_csv(file = &quot;XX&quot;)</code></pre>
 <pre class="r"><code>trial_act &lt;- read_csv(file = &quot;1_Data/trial_act.csv&quot;)
 trial_act_demo &lt;- read_csv(file = &quot;1_Data/trial_act_demo_fake.csv&quot;)</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>Take a look at the first few rows of the data sets by printing them to the console.</li>
+<li>Take a look at the first few rows of the data sets by printing them
+to the console.</li>
 </ol>
 <pre class="r"><code># Print trial_act object
 trial_act</code></pre>
@@ -245,7 +273,8 @@ trial_act</code></pre>
 # … with 2,129 more rows, and 15 more variables: gender &lt;dbl&gt;, str2 &lt;dbl&gt;,
 #   strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;, cd40 &lt;dbl&gt;,
 #   cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;,
-#   days &lt;dbl&gt;, arms &lt;dbl&gt;</code></pre>
+#   days &lt;dbl&gt;, arms &lt;dbl&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <pre class="r"><code>trial_act_demo</code></pre>
 <pre><code># A tibble: 2,139 × 3
    pidnum exercise education
@@ -260,12 +289,14 @@ trial_act</code></pre>
  8 241099        3 &lt;HS      
  9  71371        2 BA       
 10 241370        0 MS       
-# … with 2,129 more rows</code></pre>
+# … with 2,129 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <div id="b---change-column-names-with-rename" class="section level3">
 <h3>B - Change column names with rename()</h3>
 <ol style="list-style-type: decimal">
-<li>Print the names of the <code>trial_act</code> data with <code>names(XXX)</code></li>
+<li>Print the names of the <code>trial_act</code> data with
+<code>names(XXX)</code></li>
 </ol>
 <pre class="r"><code>names(XXX)</code></pre>
 <pre class="r"><code>names(trial_act)</code></pre>
@@ -274,7 +305,10 @@ trial_act</code></pre>
 [15] &quot;strat&quot;   &quot;symptom&quot; &quot;treat&quot;   &quot;offtrt&quot;  &quot;cd40&quot;    &quot;cd420&quot;   &quot;cd496&quot;  
 [22] &quot;r&quot;       &quot;cd80&quot;    &quot;cd820&quot;   &quot;cens&quot;    &quot;days&quot;    &quot;arms&quot;   </code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Using <code>rename()</code>, change the column name <code>wtkg</code> in the <code>trial_act</code> dataframe to <code>weight_kg</code>. Be sure to assign the result back to <code>trial_act</code> to change it!</li>
+<li>Using <code>rename()</code>, change the column name
+<code>wtkg</code> in the <code>trial_act</code> dataframe to
+<code>weight_kg</code>. Be sure to assign the result back to
+<code>trial_act</code> to change it!</li>
 </ol>
 <pre class="r"><code># Change the name to weight_kg from wtkg
 
@@ -283,7 +317,8 @@ trial_act &lt;- trial_act %&gt;%
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   rename(weight_kg = wtkg)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Look at the names of your <code>trial_act</code> dataframe again, do you now see the column <code>weight_kg</code>?</li>
+<li>Look at the names of your <code>trial_act</code> dataframe again, do
+you now see the column <code>weight_kg</code>?</li>
 </ol>
 <pre class="r"><code>names(trial_act)</code></pre>
 <pre><code> [1] &quot;pidnum&quot;    &quot;age&quot;       &quot;weight_kg&quot; &quot;hemo&quot;      &quot;homo&quot;      &quot;drugs&quot;    
@@ -292,7 +327,8 @@ trial_act &lt;- trial_act %&gt;%
 [19] &quot;cd40&quot;      &quot;cd420&quot;     &quot;cd496&quot;     &quot;r&quot;         &quot;cd80&quot;      &quot;cd820&quot;    
 [25] &quot;cens&quot;      &quot;days&quot;      &quot;arms&quot;     </code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Change the column name <code>age</code> to <code>age_y</code> (to specify that age is in years).</li>
+<li>Change the column name <code>age</code> to <code>age_y</code> (to
+specify that age is in years).</li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   rename(age_y = age)</code></pre>
@@ -300,7 +336,9 @@ trial_act &lt;- trial_act %&gt;%
 <div id="c---select-columns-with-select" class="section level3">
 <h3>C - Select columns with select()</h3>
 <ol style="list-style-type: decimal">
-<li>Using the <code>select()</code> function, select only the column <code>age_y</code> and print the result (but don’t assign it to anything). Do you see only the <code>age_y</code> column now?</li>
+<li>Using the <code>select()</code> function, select only the column
+<code>age_y</code> and print the result (but don’t assign it to
+anything). Do you see only the <code>age_y</code> column now?</li>
 </ol>
 <pre class="r"><code>XXX %&gt;%
   select(XXX)</code></pre>
@@ -319,42 +357,67 @@ trial_act &lt;- trial_act %&gt;%
  8    41
  9    40
 10    35
-# … with 2,129 more rows</code></pre>
+# … with 2,129 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Using <code>select()</code> select the columns <code>pidnum</code>, <code>age_y</code>, <code>gender</code>, and <code>weight_kg</code> (but don’t assign the result to anything)</p></li>
-<li><p>Now it’s time to create a new dataframe! Select the columns <code>pidnum</code>, <code>arms</code>, <code>cd40</code>, <code>cd420</code>, and <code>cd496</code> <em>and</em> assign the result to a new object called <code>CD4_wide</code>. The <code>cd40</code>, <code>cd420</code>, and <code>cd496</code> columns show patient’s CD4 T cell counts at baseline, 20 weeks, and 96 weeks. After you create <code>CD4_wide</code>, print it to make sure it worked!</p></li>
+<li><p>Using <code>select()</code> select the columns
+<code>pidnum</code>, <code>age_y</code>, <code>gender</code>, and
+<code>weight_kg</code> (but don’t assign the result to
+anything)</p></li>
+<li><p>Now it’s time to create a new dataframe! Select the columns
+<code>pidnum</code>, <code>arms</code>, <code>cd40</code>,
+<code>cd420</code>, and <code>cd496</code> <em>and</em> assign the
+result to a new object called <code>CD4_wide</code>. The
+<code>cd40</code>, <code>cd420</code>, and <code>cd496</code> columns
+show patient’s CD4 T cell counts at baseline, 20 weeks, and 96 weeks.
+After you create <code>CD4_wide</code>, print it to make sure it
+worked!</p></li>
 </ol>
 <pre class="r"><code>XX &lt;- trial_act %&gt;% 
   select(XX, XX, XX, XX, ...)</code></pre>
 <pre class="r"><code>CD4_wide &lt;- trial_act %&gt;%
   select(`pidnum`, `arms`, `cd40`, `cd420`, `cd496`)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Did you know you can easily select all columns that start with specific characters using <code>starts_with()</code>? Try adapting the following code to get the same result you got before.</li>
+<li>Did you know you can easily select all columns that start with
+specific characters using <code>starts_with()</code>? Try adapting the
+following code to get the same result you got before.</li>
 </ol>
 <pre class="r"><code>CD4_wide &lt;- trial_act %&gt;% 
   select(pidnum, arms, starts_with(&quot;XXX&quot;))</code></pre>
 <pre class="r"><code>CD4_wide &lt;- trial_act %&gt;% 
   select(pidnum, arms, starts_with(&quot;cd&quot;))</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>A colleague wants an anonymised dataframe that does <em>not</em> contain the columns <code>pidnum</code> and <code>age</code>. Create this dataframe by selecting all columns <em>except</em> <code>pidnum</code> and <code>age</code> (hint: use the notation <code>select(-XXX, -XXX))</code> to select everything <em>except</em> specified columns</li>
+<li>A colleague wants an anonymised dataframe that does <em>not</em>
+contain the columns <code>pidnum</code> and <code>age</code>. Create
+this dataframe by selecting all columns <em>except</em>
+<code>pidnum</code> and <code>age</code> (hint: use the notation
+<code>select(-XXX, -XXX))</code> to select everything <em>except</em>
+specified columns</li>
 </ol>
 </div>
 <div id="d---add-new-columns-with-mutate" class="section level3">
 <h3>D - Add new columns with mutate()</h3>
 <ol style="list-style-type: decimal">
-<li>Using the <code>mutate()</code> function, add the column <code>age_m</code> which shows each patient’s age in months instead of years (Hint: Just multiply <code>age_y</code> by 12!)</li>
+<li>Using the <code>mutate()</code> function, add the column
+<code>age_m</code> which shows each patient’s age in months instead of
+years (Hint: Just multiply <code>age_y</code> by 12!)</li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   mutate(XX = XX * 12)</code></pre>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   mutate(age_m = age_y * 12)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Using <code>mutate</code>, add the following new columns to <code>trial_act</code>. (Try combining these into <em>one</em> call to the <code>mutate()</code> function!)</li>
+<li>Using <code>mutate</code>, add the following new columns to
+<code>trial_act</code>. (Try combining these into <em>one</em> call to
+the <code>mutate()</code> function!)</li>
 </ol>
 <ul>
-<li><code>weight_lb</code>: Weight in lbs instead of kilograms. You can do this by multiplying <code>weight_kg</code> by 2.2.</li>
-<li><code>cd_change_20</code>: Change in CD4 T cell count from baseline to 20 weeks. You can do this by taking <code>cd420 - cd40</code></li>
-<li><code>cd_change_960</code>: Change in CD4 T cell count from baseline to 96 weeks. You can do this by taking <code>cd496 - cd40</code></li>
+<li><code>weight_lb</code>: Weight in lbs instead of kilograms. You can
+do this by multiplying <code>weight_kg</code> by 2.2.</li>
+<li><code>cd_change_20</code>: Change in CD4 T cell count from baseline
+to 20 weeks. You can do this by taking <code>cd420 - cd40</code></li>
+<li><code>cd_change_960</code>: Change in CD4 T cell count from baseline
+to 96 weeks. You can do this by taking <code>cd496 - cd40</code></li>
 </ul>
 <pre class="r"><code>XXX &lt;- XXX %&gt;% 
   mutate(weight_lb = XXX,
@@ -365,7 +428,11 @@ trial_act &lt;- trial_act %&gt;%
          cd_change_20 = cd420 - cd40,
          cd_change_960 = cd496 - cd40)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>If you look at the <code>gender</code> column, you will see that it is numeric (0s and 1s). Using the <code>mutate()</code> and <code>case_when()</code> functions, create a new column called <code>gender_char</code> which shows the gender as a string, where 0 = “female” and 1 = “male”:</li>
+<li>If you look at the <code>gender</code> column, you will see that it
+is numeric (0s and 1s). Using the <code>mutate()</code> and
+<code>case_when()</code> functions, create a new column called
+<code>gender_char</code> which shows the gender as a string, where 0 =
+“female” and 1 = “male”:</li>
 </ol>
 <pre class="r"><code># Create gender_char which shows gender as a stringh
 trial_act &lt;- trial_act %&gt;%
@@ -379,7 +446,9 @@ trial_act &lt;- trial_act %&gt;%
     gender == 0 ~ &quot;female&quot;,
     gender == 1 ~ &quot;male&quot;))</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>The column <code>arms</code> is also numeric and not very meaningful. Create a new column <code>arms_char</code> contains the names of the arms. Here is a table of the mapping</li>
+<li>The column <code>arms</code> is also numeric and not very
+meaningful. Create a new column <code>arms_char</code> contains the
+names of the arms. Here is a table of the mapping</li>
 </ol>
 <table>
 <thead>
@@ -415,7 +484,13 @@ trial_act &lt;- trial_act %&gt;%
     arms == 2 ~ &quot;zidovudine and zalcitabine&quot;,
     arms == 3 ~ &quot;didanosine&quot;))</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>If you haven’t already, try putting all the code for your previous questions in one call to <code>mutate()</code>. That is, in one block of code, create <code>age_m</code>, <code>weight_lb</code>, <code>cd_change_20</code>, <code>cd_change_960</code>, <code>gender_char</code> and <code>over50</code> using the <code>mutate()</code> function only once. Here’s how your code should look:</li>
+<li>If you haven’t already, try putting all the code for your previous
+questions in one call to <code>mutate()</code>. That is, in one block of
+code, create <code>age_m</code>, <code>weight_lb</code>,
+<code>cd_change_20</code>, <code>cd_change_960</code>,
+<code>gender_char</code> and <code>over50</code> using the
+<code>mutate()</code> function only once. Here’s how your code should
+look:</li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   mutate(
@@ -445,7 +520,10 @@ trial_act &lt;- trial_act %&gt;%
 <div id="e---arrange-rows-with-arrange" class="section level3">
 <h3>E - Arrange rows with arrange()</h3>
 <ol style="list-style-type: decimal">
-<li>Using the <code>arrange()</code> function, arrange the <code>trial_act</code> data in ascending order of <code>age_y</code> (from lowest to highest). After you do, print the data to make sure it worked!</li>
+<li>Using the <code>arrange()</code> function, arrange the
+<code>trial_act</code> data in ascending order of <code>age_y</code>
+(from lowest to highest). After you do, print the data to make sure it
+worked!</li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;% 
  arrange(XXX)</code></pre>
@@ -471,9 +549,14 @@ trial_act</code></pre>
 #   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;</code></pre>
+#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Now arrange the data in <em>descending</em> order of <code>age_y</code> (from highest to lowest). After, look the data to make sure it worked. To arrange data in descending order, just include <code>desc()</code> around the variable. E.g.; <code>data %&gt;% arrrange(desc(height))</code></li>
+<li>Now arrange the data in <em>descending</em> order of
+<code>age_y</code> (from highest to lowest). After, look the data to
+make sure it worked. To arrange data in descending order, just include
+<code>desc()</code> around the variable. E.g.;
+<code>data %&gt;% arrrange(desc(height))</code></li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;% 
  arrange(desc(age_y))
@@ -497,9 +580,13 @@ trial_act</code></pre>
 #   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;</code></pre>
+#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>You can sort the rows of dataframes with multiple columns by including many arguments to <code>arrange()</code>. Now sort the data by arms (<code>arms</code>) and then age_y (<code>age_y</code>). Print the result to make sure it looks right!</li>
+<li>You can sort the rows of dataframes with multiple columns by
+including many arguments to <code>arrange()</code>. Now sort the data by
+arms (<code>arms</code>) and then age_y (<code>age_y</code>). Print the
+result to make sure it looks right!</li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;% 
  arrange(XXX, XXX)</code></pre>
@@ -525,12 +612,14 @@ trial_act</code></pre>
 #   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;</code></pre>
+#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 </div>
 <div id="f---filter-specific-rows-with-filter" class="section level3">
 <h3>F - Filter specific rows with <code>filter()</code></h3>
 <ol style="list-style-type: decimal">
-<li>Using the <code>filter()</code> function, filter only the rows from males (Hint: <code>gender_char == "male"</code>)</li>
+<li>Using the <code>filter()</code> function, filter only the rows from
+males (Hint: <code>gender_char == "male"</code>)</li>
 </ol>
 <pre class="r"><code>trial_act %&gt;%
   filter(XXX == &quot;XXX&quot;)</code></pre>
@@ -554,9 +643,14 @@ trial_act</code></pre>
 #   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;</code></pre>
+#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Create a new dataframe called <code>trial_act_male</code> that only contains rows from males (hint: just assign what you did in the previous question to a new object!). After you create <code>trial_act_male</code>, print it to make sure it only contains data from males!</li>
+<li>Create a new dataframe called <code>trial_act_male</code> that only
+contains rows from males (hint: just assign what you did in the previous
+question to a new object!). After you create
+<code>trial_act_male</code>, print it to make sure it only contains data
+from males!</li>
 </ol>
 <pre class="r"><code>trial_act_male &lt;- trial_act %&gt;%
   filter(gender_char == &quot;male&quot;)
@@ -580,7 +674,8 @@ trial_act_male</code></pre>
 #   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;</code></pre>
+#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Filter only rows for patients under the age of 60.</li>
 </ol>
@@ -604,9 +699,13 @@ trial_act_male</code></pre>
 #   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;</code></pre>
+#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>A colleague of yours named Tracy wants a datafame only containing data from females over the age of 40. Create this dataframe with <code>filter()</code> and call it <code>trial_act_Tracy</code>. After you create the dataframe, print it to make sure it looks correct!</li>
+<li>A colleague of yours named Tracy wants a datafame only containing
+data from females over the age of 40. Create this dataframe with
+<code>filter()</code> and call it <code>trial_act_Tracy</code>. After
+you create the dataframe, print it to make sure it looks correct!</li>
 </ol>
 <pre class="r"><code>trial_act_Tracy &lt;- XXX %&gt;%
   filter(XXX &gt; XXX &amp; XXX == XXX)</code></pre>
@@ -615,17 +714,28 @@ trial_act_male</code></pre>
 </div>
 <div id="g---combine-dataframes-with-left_join" class="section level3">
 <h3>G - Combine dataframes with <code>left_join()</code></h3>
-<p>The <code>trial_act_demo.csv</code> file contains additional (fictional) demographic data about the patients, namely the number of days of exercise they get per week, and their highest level of education. Our goal is to add the demographic information to our <code>trial_act</code> data.</p>
+<p>The <code>trial_act_demo.csv</code> file contains additional
+(fictional) demographic data about the patients, namely the number of
+days of exercise they get per week, and their highest level of
+education. Our goal is to add the demographic information to our
+<code>trial_act</code> data.</p>
 <ol style="list-style-type: decimal">
-<li><p>In order to combine the two dataframes, we need to find one ‘key’ column that we can use to match rows. Look at both the <code>trial_act</code> and <code>trial_act_demo</code> dataframes. Which column can we use as the ‘key’ column?</p></li>
-<li><p>Use the <code>left_join()</code> function to combine the <code>trial_act</code> and <code>trial_act_demo</code> datasets, set the <code>by</code> argument to the name of the key column that is common in both data sets. Assign the result to <code>trial_act</code>.</p></li>
+<li><p>In order to combine the two dataframes, we need to find one ‘key’
+column that we can use to match rows. Look at both the
+<code>trial_act</code> and <code>trial_act_demo</code> dataframes. Which
+column can we use as the ‘key’ column?</p></li>
+<li><p>Use the <code>left_join()</code> function to combine the
+<code>trial_act</code> and <code>trial_act_demo</code> datasets, set the
+<code>by</code> argument to the name of the key column that is common in
+both data sets. Assign the result to <code>trial_act</code>.</p></li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   left_join(XX, by = &quot;XX&quot;)</code></pre>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   left_join(trial_act_demo, by = &quot;pidnum&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Print your new <code>trial_act</code> dataframe. Do you now see the demographic data?</li>
+<li>Print your new <code>trial_act</code> dataframe. Do you now see the
+demographic data?</li>
 </ol>
 <pre class="r"><code>trial_act</code></pre>
 <pre><code># A tibble: 2,139 × 36
@@ -646,11 +756,16 @@ trial_act_male</code></pre>
 #   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;</code></pre>
+#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 </div>
-<div id="h---reshaping-with-pivot_longer-and-pivot_wider" class="section level3">
+<div id="h---reshaping-with-pivot_longer-and-pivot_wider"
+class="section level3">
 <h3>H - Reshaping with pivot_longer() and pivot_wider()</h3>
-<p>Remember the <code>CD4_wide</code> dataframe you created before? Currently it is in the <em>wide</em> format, where each row is a patient, where key data (different CD4 T cell counts) are in different columns like this:</p>
+<p>Remember the <code>CD4_wide</code> dataframe you created before?
+Currently it is in the <em>wide</em> format, where each row is a
+patient, where key data (different CD4 T cell counts) are in different
+columns like this:</p>
 <pre class="r"><code>CD4_wide &lt;- trial_act %&gt;%
   select(`pidnum`, `arms`, `cd40`, `cd420`, `cd496`)</code></pre>
 <pre class="r"><code># Data is in a &#39;wide&#39; format
@@ -668,8 +783,11 @@ CD4_wide</code></pre>
  8 940519     0   276   150    34
  9 211314     0   298   267    NA
 10 340767     0   503   452    NA
-# … with 2,129 more rows</code></pre>
-<p>Our goal is to convert this data to a ‘long’ format, where each row represents a single CD4 T cell count for a specific patient, like this:</p>
+# … with 2,129 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
+<p>Our goal is to convert this data to a ‘long’ format, where each row
+represents a single CD4 T cell count for a specific patient, like
+this:</p>
 <pre class="r"><code># This is the same data in &#39;long&#39; format
 CD4_long</code></pre>
 <pre><code># A tibble: 6,417 × 4
@@ -685,16 +803,22 @@ CD4_long</code></pre>
  8 990071     0 cd420   169
  9 990071     0 cd496    28
 10 980042     0 cd40    299
-# … with 6,407 more rows</code></pre>
+# … with 6,407 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ol style="list-style-type: decimal">
-<li>Using the <code>pivot_longer()</code> function, create a new dataframe called <code>CD4_long</code> that shows the <code>CD4_wide</code> data in the ‘long’ format. To do this, use the following template. Set the grouping column to <code>time</code> and the new data column to <code>value</code>.</li>
+<li>Using the <code>pivot_longer()</code> function, create a new
+dataframe called <code>CD4_long</code> that shows the
+<code>CD4_wide</code> data in the ‘long’ format. To do this, use the
+following template. Set the grouping column to <code>time</code> and the
+new data column to <code>value</code>.</li>
 </ol>
 <pre class="r"><code>CD4_long &lt;- CD4_wide %&gt;% 
   pivot_longer(names_to = &#39;XXX&#39;,  # New grouping column
          values_to = &#39;XXX&#39;,  # New data column
          cols = c(&#39;XXX&#39;, &#39;XXX&#39;, &#39;XXX&#39;))   # Names of columns to replicate</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Print your <code>CD4_long</code> dataframe! Do you now see that each row is a specific observation for a patient?</li>
+<li>Print your <code>CD4_long</code> dataframe! Do you now see that each
+row is a specific observation for a patient?</li>
 </ol>
 <pre class="r"><code>CD4_long</code></pre>
 <pre><code># A tibble: 6,417 × 4
@@ -710,9 +834,13 @@ CD4_long</code></pre>
  8 990071     0 cd420   169
  9 990071     0 cd496    28
 10 980042     0 cd40    299
-# … with 6,407 more rows</code></pre>
+# … with 6,407 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Now use the <code>pivot_wider()</code> function to convert the long data <em>back</em> into the wide format! To do this, make the first argument <code>time</code>, and the second argument <code>value</code></li>
+<li>Now use the <code>pivot_wider()</code> function to convert the long
+data <em>back</em> into the wide format! To do this, make the first
+argument <code>time</code>, and the second argument
+<code>value</code></li>
 </ol>
 <pre class="r"><code>CD4_long %&gt;%
    pivot_wider(names_from = &#39;XXX&#39;,  # Grouping column
@@ -733,17 +861,21 @@ CD4_long</code></pre>
  8 940519     0   276   150    34
  9 211314     0   298   267    NA
 10 340767     0   503   452    NA
-# … with 2,129 more rows</code></pre>
+# … with 2,129 more rows
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <div id="practice" class="section level3">
 <h3>Practice!</h3>
 <ol style="list-style-type: decimal">
-<li>Create a new dataframe called <code>trial_A</code> from <code>trial_act</code> with the following restrictions:</li>
+<li>Create a new dataframe called <code>trial_A</code> from
+<code>trial_act</code> with the following restrictions:</li>
 </ol>
 <ul>
-<li>Only patients who take intraveneous drugs (<code>drugs == 1</code>)</li>
+<li>Only patients who take intraveneous drugs
+(<code>drugs == 1</code>)</li>
 <li>Only patients younger than 60</li>
-<li>Only patients whose baseline CD4 T cell counts <code>cd40</code> were greater than 250 <em>and</em> less than 400.</li>
+<li>Only patients whose baseline CD4 T cell counts <code>cd40</code>
+were greater than 250 <em>and</em> less than 400.</li>
 </ul>
 <pre class="r"><code>trial_A &lt;- trial_act %&gt;%
   filter(drugs == 1,
@@ -769,9 +901,12 @@ trial_A</code></pre>
 #   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;</code></pre>
+#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Add a new column to <code>trial_act</code> called <code>drugs_char</code> which is <code>"User"</code> when drugs == 1, and <code>"Non User"</code> when drugs == 0.</li>
+<li>Add a new column to <code>trial_act</code> called
+<code>drugs_char</code> which is <code>"User"</code> when drugs == 1,
+and <code>"Non User"</code> when drugs == 0.</li>
 </ol>
 <pre class="r"><code>trial_act &lt;- trial_act %&gt;%
   mutate(drugs_char = case_when(
@@ -799,12 +934,16 @@ trial_act</code></pre>
 #   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
 #   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
 #   arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;,
-#   drugs_char &lt;chr&gt;</code></pre>
+#   drugs_char &lt;chr&gt;
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Create a new dataframe called <code>trial_B</code> from <code>trial_act</code> with the following restrictions:</li>
+<li>Create a new dataframe called <code>trial_B</code> from
+<code>trial_act</code> with the following restrictions:</li>
 </ol>
 <ul>
-<li>Only patients whose CD4 T cell counts increase <em>more</em> than 200 between baseline (<code>cd40</code>) and after 96 weeks (<code>cd496</code>)</li>
+<li>Only patients whose CD4 T cell counts increase <em>more</em> than
+200 between baseline (<code>cd40</code>) and after 96 weeks
+(<code>cd496</code>)</li>
 <li>Only drug users</li>
 </ul>
 <pre class="r"><code>trial_B &lt;- trial_act %&gt;%
@@ -830,7 +969,8 @@ trial_B</code></pre>
 #   cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;,
 #   arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;, cd_change_20 &lt;dbl&gt;,
 #   cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;,
-#   exercise &lt;dbl&gt;, education &lt;chr&gt;, drugs_char &lt;chr&gt;</code></pre>
+#   exercise &lt;dbl&gt;, education &lt;chr&gt;, drugs_char &lt;chr&gt;
+# ℹ Use `colnames()` to see all variable names</code></pre>
 </div>
 </div>
 <div id="examples" class="section level2">
@@ -902,6 +1042,11 @@ baselers &lt;- baselers %&gt;%
 <div id="datasets" class="section level2">
 <h2>Datasets</h2>
 <table>
+<colgroup>
+<col width="27%" />
+<col width="33%" />
+<col width="38%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">File</th>
@@ -911,18 +1056,26 @@ baselers &lt;- baselers %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv">trial_act.csv</a></td>
+<td align="left"><a
+href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv">trial_act.csv</a></td>
 <td align="left">2139</td>
 <td align="left">27</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv">trial_act_demo_fake.csv</a></td>
+<td align="left"><a
+href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv">trial_act_demo_fake.csv</a></td>
 <td align="left">2139</td>
 <td align="left">3</td>
 </tr>
 </tbody>
 </table>
-<p>The <code>trial_act</code> data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter. You can learn more about the trial <a href="https://www.nejm.org/doi/full/10.1056/NEJM199610103351501">here</a>)</p>
+<p>The <code>trial_act</code> data set contains a randomized clinical
+trial to compare monotherapy with zidovudine or didanosine with
+combination therapy with zidovudine and didanosine or zidovudine and
+zalcitabine in adults infected with the human immunodeficiency virus
+type I whose CD4 T cell counts were between 200 and 500 per cubic
+millimeter. You can learn more about the trial <a
+href="https://www.nejm.org/doi/full/10.1056/NEJM199610103351501">here</a>)</p>
 <table>
 <colgroup>
 <col width="26%" />
@@ -965,19 +1118,23 @@ baselers &lt;- baselers %&gt;%
 </tr>
 <tr class="even">
 <td align="left">oprior</td>
-<td align="left">non-zidovudine antiretroviral therapy prior to initiation of study treatment (0=no, 1=yes)</td>
+<td align="left">non-zidovudine antiretroviral therapy prior to
+initiation of study treatment (0=no, 1=yes)</td>
 </tr>
 <tr class="odd">
 <td align="left">z30</td>
-<td align="left">zidovudine use in the 30 days prior to treatment initiation (0=no, 1=yes)</td>
+<td align="left">zidovudine use in the 30 days prior to treatment
+initiation (0=no, 1=yes)</td>
 </tr>
 <tr class="even">
 <td align="left">zprior</td>
-<td align="left">zidovudine use prior to treatment initiation (0=no, 1=yes)</td>
+<td align="left">zidovudine use prior to treatment initiation (0=no,
+1=yes)</td>
 </tr>
 <tr class="odd">
 <td align="left">preanti</td>
-<td align="left">number of days of previously received antiretroviral therapy</td>
+<td align="left">number of days of previously received antiretroviral
+therapy</td>
 </tr>
 <tr class="even">
 <td align="left">race</td>
@@ -993,19 +1150,24 @@ baselers &lt;- baselers %&gt;%
 </tr>
 <tr class="odd">
 <td align="left">strat</td>
-<td align="left">antiretroviral history stratification (1=’antiretroviral naive’, 2=’&gt; 1 but ≤ 52 weeks of prior antiretroviral therapy’, 3=’&gt; 52 weeks’)</td>
+<td align="left">antiretroviral history stratification
+(1=’antiretroviral naive’, 2=’&gt; 1 but ≤ 52 weeks of prior
+antiretroviral therapy’, 3=’&gt; 52 weeks’)</td>
 </tr>
 <tr class="even">
 <td align="left">symptom</td>
-<td align="left">symptomatic indicator (0=asymptomatic, 1=symptomatic)</td>
+<td align="left">symptomatic indicator (0=asymptomatic,
+1=symptomatic)</td>
 </tr>
 <tr class="odd">
 <td align="left">treat</td>
-<td align="left">treatment indicator (0=zidovudine only, 1=other therapies)</td>
+<td align="left">treatment indicator (0=zidovudine only, 1=other
+therapies)</td>
 </tr>
 <tr class="even">
 <td align="left">offtrt</td>
-<td align="left">indicator of off-treatment before 96±5 weeks (0=no,1=yes)</td>
+<td align="left">indicator of off-treatment before 96±5 weeks
+(0=no,1=yes)</td>
 </tr>
 <tr class="odd">
 <td align="left">cd40</td>
@@ -1021,7 +1183,8 @@ baselers &lt;- baselers %&gt;%
 </tr>
 <tr class="even">
 <td align="left">r</td>
-<td align="left">missing CD4 T cell count at 96±5 weeks (0=missing, 1=observed)</td>
+<td align="left">missing CD4 T cell count at 96±5 weeks (0=missing,
+1=observed)</td>
 </tr>
 <tr class="odd">
 <td align="left">cd80</td>
@@ -1037,11 +1200,14 @@ baselers &lt;- baselers %&gt;%
 </tr>
 <tr class="even">
 <td align="left">days</td>
-<td align="left">number of days until the first occurrence of: (i) a decline in CD4 T cell count of at least 50 (ii) an event indicating progression to AIDS, or (iii) death.</td>
+<td align="left">number of days until the first occurrence of: (i) a
+decline in CD4 T cell count of at least 50 (ii) an event indicating
+progression to AIDS, or (iii) death.</td>
 </tr>
 <tr class="odd">
 <td align="left">arms</td>
-<td align="left">treatment arm (0=zidovudine, 1=zidovudine and didanosine, 2=zidovudine and zalcitabine, 3=didanosine).</td>
+<td align="left">treatment arm (0=zidovudine, 1=zidovudine and
+didanosine, 2=zidovudine and zalcitabine, 3=didanosine).</td>
 </tr>
 </tbody>
 </table>
@@ -1124,12 +1290,14 @@ baselers &lt;- baselers %&gt;%
 <tr class="odd">
 <td align="left"><code>pivot_wider()</code></td>
 <td align="left"><code>tidyr</code></td>
-<td align="left">Convert long data to wide format - from rows to columns</td>
+<td align="left">Convert long data to wide format - from rows to
+columns</td>
 </tr>
 <tr class="even">
 <td align="left"><code>pivot_longer()</code></td>
 <td align="left"><code>tidyr</code></td>
-<td align="left">Convert wide data to long format - from columns to rows</td>
+<td align="left">Convert wide data to long format - from columns to
+rows</td>
 </tr>
 </tbody>
 </table>
@@ -1139,12 +1307,18 @@ baselers &lt;- baselers %&gt;%
 <h2>Resources</h2>
 <div id="dplyr-vignette" class="section level3">
 <h3><code>dplyr</code> vignette</h3>
-<p>See <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a> for the full dplyr vignette with lots of wrangling tips and tricks.</p>
+<p>See <a
+href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a>
+for the full dplyr vignette with lots of wrangling tips and tricks.</p>
 </div>
 <div id="cheatsheets" class="section level3">
 <h3>Cheatsheets</h3>
 <p align="center" width="100%">
-<a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf"> <img src="https://d33wubrfki0l68.cloudfront.net/db69c3d03699d395475d2ac14d64f611054fa9a4/e98f3/wp-content/uploads/2018/08/data-transformation.png" style="width:70%"></a> <br> <font style="font-size:10px">from <a href="https://www.rstudio.com/resources/cheatsheets/">R Studio</a></font>
+<a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">
+<img src="https://d33wubrfki0l68.cloudfront.net/db69c3d03699d395475d2ac14d64f611054fa9a4/e98f3/wp-content/uploads/2018/08/data-transformation.png" style="width:70%"></a>
+<br> <font style="font-size:10px">from
+<a href="https://www.rstudio.com/resources/cheatsheets/">R
+Studio</a></font>
 </p>
 </div>
 </div>

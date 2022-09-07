@@ -13,8 +13,8 @@
 
 <title>Plotting I</title>
 
-<script src="PlottingI_practical_files/header-attrs-2.10/header-attrs.js"></script>
-<script src="PlottingI_practical_files/jquery-1.11.3/jquery.min.js"></script>
+<script src="PlottingI_practical_files/header-attrs-2.14/header-attrs.js"></script>
+<script src="PlottingI_practical_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="PlottingI_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="PlottingI_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -57,6 +57,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="practical.css" type="text/css" />
 
 
@@ -81,6 +82,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -170,7 +174,17 @@ pre code {
 <col width='10%'>
 <tr style="border:none">
 <td style="display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none" nowrap>
-<font style='font-style:normal'>Introduction to Data Science with R</font><br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>The R Bootcamp</font> </a>
+<font style='font-style:normal'>Introduction to Data Science with
+R</font><br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
+<i class='fas fa-clock' style='font-size:.9em;' ></i> </a>
+<a href='https://therbootcamp.github.io'>
+<i class='fas fa-home' style='font-size:.9em;'></i> </a>
+<a href='mailto:therbootcamp@gmail.com'>
+<i class='fas fa-envelope' style='font-size: .9em;'></i> </a>
+<a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
+<i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+<a href='https://therbootcamp.github.io'>
+<font style='font-style:normal'>The R Bootcamp</font> </a>
 </td>
 <td style="width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none">
 <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
@@ -182,13 +196,17 @@ pre code {
 
 
 <p align="center" width="100%">
-<img src="image/burgers.jpg" alt="Trulli" style="width:100%"> <br> <font style="font-size:10px">from <a href="https://www.today.com/recipes/anne-burell-s-killer-turkey-burgers-recipe-t146616">today.com</a></font>
+<img src="image/burgers.jpg" alt="Trulli" style="width:100%"> <br>
+<font style="font-size:10px">from
+<a href="https://www.today.com/recipes/anne-burell-s-killer-turkey-burgers-recipe-t146616">today.com</a></font>
 </p>
 <div id="section" class="section level1 tabset tabset-fade">
 <h1 class="tabset tabset-fade"></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>In this practical you’ll practice plotting data with the amazing <code>ggplot2</code> package. By the end of this practical you will know how to:</p>
+<p>In this practical you’ll practice plotting data with the amazing
+<code>ggplot2</code> package. By the end of this practical you will know
+how to:</p>
 <ol style="list-style-type: decimal">
 <li>Build a plot step-by-step</li>
 <li>Use multiple geoms</li>
@@ -200,12 +218,19 @@ pre code {
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li>Open your <code>TheRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder.</li>
+<li>Open your <code>TheRBootcamp</code> R project. It should already
+have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure
+that the data files listed in the <code>Datasets</code> section above
+are in your <code>1_Data</code> folder.</li>
 </ol>
 <pre class="r"><code># Done!</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>plotting_practicalI.R</code> in the <code>2_Code</code> folder.</p></li>
-<li><p>Using <code>library()</code> load the set of packages for this practical listed in the Functions section above.</p></li>
+<li><p>Open a new R script. At the top of the script, using comments,
+write your name and the date. Save it as a new file called
+<code>plotting_practicalI.R</code> in the <code>2_Code</code>
+folder.</p></li>
+<li><p>Using <code>library()</code> load the set of packages for this
+practical listed in the Functions section above.</p></li>
 </ol>
 <pre class="r"><code>## NAME
 ## DATE
@@ -216,36 +241,42 @@ library(XX)
 #...</code></pre>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>In this practical, you will analyze the <code>mcondalds.csv</code> data set, which contains nutrition information about items from McDonalds. Using <code>read_csv()</code>, load the data into R and store it as a new object called <code>mcdonalds</code>.</li>
+<li>In this practical, you will analyze the <code>mcondalds.csv</code>
+data set, which contains nutrition information about items from
+McDonalds. Using <code>read_csv()</code>, load the data into R and store
+it as a new object called <code>mcdonalds</code>.</li>
 </ol>
 <pre class="r"><code>mcdonalds &lt;- read_csv(&quot;1_Data/mcdonalds.csv&quot;)</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>Take a look at the first few rows of the dataset(s) by printing them to the console.</li>
+<li>Take a look at the first few rows of the dataset(s) by printing them
+to the console.</li>
 </ol>
 <pre class="r"><code>mcdonalds</code></pre>
 <pre><code># A tibble: 260 × 24
-   Category  Item           `Serving Size` Calories `Calories from … `Total Fat`
-   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;             &lt;dbl&gt;            &lt;dbl&gt;       &lt;dbl&gt;
- 1 Breakfast Egg McMuffin   4.8 oz (136 g)      300              120          13
- 2 Breakfast Egg White Del… 4.8 oz (135 g)      250               70           8
- 3 Breakfast Sausage McMuf… 3.9 oz (111 g)      370              200          23
- 4 Breakfast Sausage McMuf… 5.7 oz (161 g)      450              250          28
- 5 Breakfast Sausage McMuf… 5.7 oz (161 g)      400              210          23
- 6 Breakfast Steak &amp; Egg M… 6.5 oz (185 g)      430              210          23
- 7 Breakfast Bacon, Egg &amp; … 5.3 oz (150 g)      460              230          26
- 8 Breakfast Bacon, Egg &amp; … 5.8 oz (164 g)      520              270          30
- 9 Breakfast Bacon, Egg &amp; … 5.4 oz (153 g)      410              180          20
-10 Breakfast Bacon, Egg &amp; … 5.9 oz (167 g)      470              220          25
-# … with 250 more rows, and 18 more variables: Total Fat (% Daily Value) &lt;dbl&gt;,
-#   Saturated Fat &lt;dbl&gt;, Saturated Fat (% Daily Value) &lt;dbl&gt;, Trans Fat &lt;dbl&gt;,
-#   Cholesterol &lt;dbl&gt;, Cholesterol (% Daily Value) &lt;dbl&gt;, Sodium &lt;dbl&gt;,
-#   Sodium (% Daily Value) &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
-#   Carbohydrates (% Daily Value) &lt;dbl&gt;, Dietary Fiber &lt;dbl&gt;,
-#   Dietary Fiber (% Daily Value) &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
-#   Vitamin A (% Daily Value) &lt;dbl&gt;, Vitamin C (% Daily Value) &lt;dbl&gt;,
-#   Calcium (% Daily Value) &lt;dbl&gt;, Iron (% Daily Value) &lt;dbl&gt;</code></pre>
+   Categ…¹ Item  Servi…² Calor…³ Calor…⁴ Total…⁵ Total…⁶ Satur…⁷ Satur…⁸ Trans…⁹
+   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 Breakf… Egg … 4.8 oz…     300     120      13      20       5      25       0
+ 2 Breakf… Egg … 4.8 oz…     250      70       8      12       3      15       0
+ 3 Breakf… Saus… 3.9 oz…     370     200      23      35       8      42       0
+ 4 Breakf… Saus… 5.7 oz…     450     250      28      43      10      52       0
+ 5 Breakf… Saus… 5.7 oz…     400     210      23      35       8      42       0
+ 6 Breakf… Stea… 6.5 oz…     430     210      23      36       9      46       1
+ 7 Breakf… Baco… 5.3 oz…     460     230      26      40      13      65       0
+ 8 Breakf… Baco… 5.8 oz…     520     270      30      47      14      68       0
+ 9 Breakf… Baco… 5.4 oz…     410     180      20      32      11      56       0
+10 Breakf… Baco… 5.9 oz…     470     220      25      38      12      59       0
+# … with 250 more rows, 14 more variables: Cholesterol &lt;dbl&gt;,
+#   `Cholesterol (% Daily Value)` &lt;dbl&gt;, Sodium &lt;dbl&gt;,
+#   `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
+#   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
+#   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
+#   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;,
+#   `Calcium (% Daily Value)` &lt;dbl&gt;, `Iron (% Daily Value)` &lt;dbl&gt;, and …
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li>You’ll notice that the <code>mcdonalds</code> data frame has many column names with spaces and ‘bad’ characters like parentheses. Run the following code to fix that!</li>
+<li>You’ll notice that the <code>mcdonalds</code> data frame has many
+column names with spaces and ‘bad’ characters like parentheses. Run the
+following code to fix that!</li>
 </ol>
 <pre class="r"><code># Clean up the names of mcdonalds
 mcdonalds &lt;- mcdonalds %&gt;%
@@ -260,21 +291,23 @@ mcdonalds &lt;- mcdonalds %&gt;%
 </ol>
 <pre class="r"><code>mcdonalds</code></pre>
 <pre><code># A tibble: 260 × 14
-   Category  Item     ServingSize Calories CaloriesfromFat TotalFat SaturatedFat
-   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;          &lt;dbl&gt;           &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;
- 1 Breakfast Egg McM… 4.8 oz (13…      300             120       13            5
- 2 Breakfast Egg Whi… 4.8 oz (13…      250              70        8            3
- 3 Breakfast Sausage… 3.9 oz (11…      370             200       23            8
- 4 Breakfast Sausage… 5.7 oz (16…      450             250       28           10
- 5 Breakfast Sausage… 5.7 oz (16…      400             210       23            8
- 6 Breakfast Steak &amp;… 6.5 oz (18…      430             210       23            9
- 7 Breakfast Bacon, … 5.3 oz (15…      460             230       26           13
- 8 Breakfast Bacon, … 5.8 oz (16…      520             270       30           14
- 9 Breakfast Bacon, … 5.4 oz (15…      410             180       20           11
-10 Breakfast Bacon, … 5.9 oz (16…      470             220       25           12
-# … with 250 more rows, and 7 more variables: TransFat &lt;dbl&gt;,
-#   Cholesterol &lt;dbl&gt;, Sodium &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;, DietaryFiber &lt;dbl&gt;,
-#   Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;</code></pre>
+   Category Item  Servi…¹ Calor…² Calor…³ Total…⁴ Satur…⁵ Trans…⁶ Chole…⁷ Sodium
+   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+ 1 Breakfa… Egg … 4.8 oz…     300     120      13       5       0     260    750
+ 2 Breakfa… Egg … 4.8 oz…     250      70       8       3       0      25    770
+ 3 Breakfa… Saus… 3.9 oz…     370     200      23       8       0      45    780
+ 4 Breakfa… Saus… 5.7 oz…     450     250      28      10       0     285    860
+ 5 Breakfa… Saus… 5.7 oz…     400     210      23       8       0      50    880
+ 6 Breakfa… Stea… 6.5 oz…     430     210      23       9       1     300    960
+ 7 Breakfa… Baco… 5.3 oz…     460     230      26      13       0     250   1300
+ 8 Breakfa… Baco… 5.8 oz…     520     270      30      14       0     250   1410
+ 9 Breakfa… Baco… 5.4 oz…     410     180      20      11       0      35   1300
+10 Breakfa… Baco… 5.9 oz…     470     220      25      12       0      35   1420
+# … with 250 more rows, 4 more variables: Carbohydrates &lt;dbl&gt;,
+#   DietaryFiber &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, and abbreviated variable
+#   names ¹​ServingSize, ²​Calories, ³​CaloriesfromFat, ⁴​TotalFat, ⁵​SaturatedFat,
+#   ⁶​TransFat, ⁷​Cholesterol
+# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 </div>
 <div id="b---building-a-plot-step-by-step" class="section level3">
 <h3>B - Building a plot step-by-step</h3>
@@ -289,7 +322,10 @@ mcdonalds &lt;- mcdonalds %&gt;%
   theme_minimal()</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol style="list-style-type: decimal">
-<li>Using <code>ggplot()</code>, create the following blank plot using the <code>data</code> and <code>mapping</code> arguments (but no geom). Use <code>Calories</code> for the x aesthetic and <code>SaturatedFat</code> for the y aesthetic</li>
+<li>Using <code>ggplot()</code>, create the following blank plot using
+the <code>data</code> and <code>mapping</code> arguments (but no geom).
+Use <code>Calories</code> for the x aesthetic and
+<code>SaturatedFat</code> for the y aesthetic</li>
 </ol>
 <pre class="r"><code>ggplot(data = mcdonalds, 
        mapping = aes(x = XX, y = XX))</code></pre>
@@ -305,7 +341,8 @@ mcdonalds &lt;- mcdonalds %&gt;%
   geom_point()</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
-<li>Using the <code>color</code> aesthetic mapping, color the points by their <code>Category</code>.</li>
+<li>Using the <code>color</code> aesthetic mapping, color the points by
+their <code>Category</code>.</li>
 </ol>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() </code></pre>
@@ -323,7 +360,10 @@ mcdonalds &lt;- mcdonalds %&gt;%
   geom_smooth()</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
-<li>Oops! Did you get several smoothed lines instead of just one? Fix this by specifying that the line should have one color: <code>"black"</code>. When you do, you should then only see one line.</li>
+<li>Oops! Did you get several smoothed lines instead of just one? Fix
+this by specifying that the line should have one color:
+<code>"black"</code>. When you do, you should then only see one
+line.</li>
 </ol>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() +
@@ -349,7 +389,8 @@ mcdonalds &lt;- mcdonalds %&gt;%
        caption = &quot;Source: Kaggle.com&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="7" style="list-style-type: decimal">
-<li>Set the limits of the x-axis to <code>0</code> and <code>1250</code> using <code>xlim()</code>.</li>
+<li>Set the limits of the x-axis to <code>0</code> and <code>1250</code>
+using <code>xlim()</code>.</li>
 </ol>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() +
@@ -367,7 +408,8 @@ mcdonalds &lt;- mcdonalds %&gt;%
   xlim(0, 1250)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="8" style="list-style-type: decimal">
-<li>Finally, set the plotting theme to <code>theme_minimal()</code>. You should now have the final plot!</li>
+<li>Finally, set the plotting theme to <code>theme_minimal()</code>. You
+should now have the final plot!</li>
 </ol>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() +
@@ -390,7 +432,8 @@ mcdonalds &lt;- mcdonalds %&gt;%
 <div id="c---adding-multiple-geoms" class="section level3">
 <h3>C - Adding multiple geoms</h3>
 <ol style="list-style-type: decimal">
-<li>Create the following plot showing the relationship between menu category and calories</li>
+<li>Create the following plot showing the relationship between menu
+category and calories</li>
 </ol>
 <pre class="r"><code>ggplot(data = mcdonalds, aes(x = XX, y = XX, fill = XX)) +
   geom_violin() +
@@ -404,7 +447,9 @@ mcdonalds &lt;- mcdonalds %&gt;%
        subtitle = &quot;Calorie distribution by menu category&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-27-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Include the additional argument <code>+ stat_summary(fun.y = "mean", geom = "point", col = "white", size = 4)</code> to include points showing the mean of each distribution</li>
+<li>Include the additional argument
+<code>+ stat_summary(fun.y = "mean", geom = "point", col = "white", size = 4)</code>
+to include points showing the mean of each distribution</li>
 </ol>
 <pre class="r"><code>ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
   geom_violin() +
@@ -414,7 +459,8 @@ mcdonalds &lt;- mcdonalds %&gt;%
        subtitle = &quot;Calorie distribution by menu category&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-28-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
-<li>Now add <code>+ geom_jitter(width = .1, alpha = .5)</code> to your plot, what do you see?</li>
+<li>Now add <code>+ geom_jitter(width = .1, alpha = .5)</code> to your
+plot, what do you see?</li>
 </ol>
 <pre class="r"><code>ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
   geom_violin() +
@@ -425,20 +471,27 @@ mcdonalds &lt;- mcdonalds %&gt;%
        subtitle = &quot;Calorie distribution by menu category&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-29-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
-<li>Play around with your plotting arguments to see how the results change! Each time you make a change, run the plot again to see your new output!</li>
+<li>Play around with your plotting arguments to see how the results
+change! Each time you make a change, run the plot again to see your new
+output!</li>
 </ol>
 <ul>
-<li>Change the summary function in <code>stat_summary()</code> from <code>"mean"</code> to <code>"median"</code>.</li>
-<li>Change the size of the points in <code>stat_summary()</code> to something much bigger (or smaller).</li>
-<li>Change the <code>width</code> argument in <code>geom_jitter()</code> to <code>width = 0</code>.</li>
-<li>Instead of using <code>geom_violin()</code>, try <code>geom_boxplot()</code>.</li>
+<li>Change the summary function in <code>stat_summary()</code> from
+<code>"mean"</code> to <code>"median"</code>.</li>
+<li>Change the size of the points in <code>stat_summary()</code> to
+something much bigger (or smaller).</li>
+<li>Change the <code>width</code> argument in <code>geom_jitter()</code>
+to <code>width = 0</code>.</li>
+<li>Instead of using <code>geom_violin()</code>, try
+<code>geom_boxplot()</code>.</li>
 <li>Remove the <code>fill = Category</code> aesthetic entirely.</li>
 </ul>
 </div>
 <div id="d---summary-statistics" class="section level3">
 <h3>D - Summary statistics</h3>
 <ol style="list-style-type: decimal">
-<li>Create the following plot showing the mean number of calories for each menu category using the following template:</li>
+<li>Create the following plot showing the mean number of calories for
+each menu category using the following template:</li>
 </ol>
 <pre class="r"><code>ggplot(XX, aes(x = XX, y = X)) +
   stat_summary(geom = &quot;bar&quot;, 
@@ -455,14 +508,18 @@ mcdonalds &lt;- mcdonalds %&gt;%
 <li>Customize your plot!</li>
 </ol>
 <ul>
-<li>Instead of showing the <code>"mean"</code>, show the <code>"median"</code>.</li>
+<li>Instead of showing the <code>"mean"</code>, show the
+<code>"median"</code>.</li>
 <li>Give each bar a different color.</li>
-<li>Add overlapping points showing the individual items using <code>geom_point()</code>, <code>geom_count()</code> or <code>geom_jitter()</code>.</li>
+<li>Add overlapping points showing the individual items using
+<code>geom_point()</code>, <code>geom_count()</code> or
+<code>geom_jitter()</code>.</li>
 </ul>
 </div>
 <div id="e---adding-labels" class="section level3">
 <h3>E - Adding labels</h3>
-<p>Let’s create the following plot with additional point labels using <code>geom_text()</code>:</p>
+<p>Let’s create the following plot with additional point labels using
+<code>geom_text()</code>:</p>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = Sugars, 
                       y = Calories, 
                       col = Category, 
@@ -490,15 +547,29 @@ mcdonalds &lt;- mcdonalds %&gt;%
   theme_minimal() +
   labs(title = &quot;XX&quot;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Try adding labels to the plot indicating which item each point represents by adding <code>+ geom_text()</code>.</p></li>
-<li><p>Where are the labels? Ah, we didn’t tell <code>ggplot</code> which column in the data represents the item descriptions. Fix this by specifying the <code>label</code> aesthetic in your first call to the <code>aes()</code> function. That is, include <code>label = Item</code> underneath the line <code>col = XX</code>. Now you should see lots of labels!</p></li>
-<li><p>Customize your <code>geom_text()</code> by including the arguments: <code>geom_text(col = "black", check_overlap = TRUE, hjust = "left")</code>.</p></li>
-<li><p>Using the <code>data</code> argument in <code>geom_text()</code>, specify that the labels should only apply to items over 1100 calories (hint: <code>geom_text(data = mcdonalds %&gt;% filter(XX &gt; XX))</code>)</p></li>
+<li><p>Try adding labels to the plot indicating which item each point
+represents by adding <code>+ geom_text()</code>.</p></li>
+<li><p>Where are the labels? Ah, we didn’t tell <code>ggplot</code>
+which column in the data represents the item descriptions. Fix this by
+specifying the <code>label</code> aesthetic in your first call to the
+<code>aes()</code> function. That is, include <code>label = Item</code>
+underneath the line <code>col = XX</code>. Now you should see lots of
+labels!</p></li>
+<li><p>Customize your <code>geom_text()</code> by including the
+arguments:
+<code>geom_text(col = "black", check_overlap = TRUE, hjust = "left")</code>.</p></li>
+<li><p>Using the <code>data</code> argument in <code>geom_text()</code>,
+specify that the labels should only apply to items over 1100 calories
+(hint:
+<code>geom_text(data = mcdonalds %&gt;% filter(XX &gt; XX))</code>)</p></li>
 <li><p>Play around!</p></li>
 </ol>
 <ul>
-<li>Specify that the size of the points should correspond to their Calories. Do this with the <code>size</code> aesthetic.</li>
-<li>Try using a different plotting theme. For example, you can try <code>theme_excel()</code> included in the <code>ggthemes</code> package.</li>
+<li>Specify that the size of the points should correspond to their
+Calories. Do this with the <code>size</code> aesthetic.</li>
+<li>Try using a different plotting theme. For example, you can try
+<code>theme_excel()</code> included in the <code>ggthemes</code>
+package.</li>
 </ul>
 </div>
 </div>
@@ -592,6 +663,11 @@ ggplot(data = mpg,
 <div id="datasets" class="section level2">
 <h2>Datasets</h2>
 <table>
+<colgroup>
+<col width="27%" />
+<col width="33%" />
+<col width="38%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">File</th>
@@ -601,7 +677,8 @@ ggplot(data = mpg,
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/complete/mcdonalds.csv">mcdonalds.csv</a></td>
+<td align="left"><a
+href="https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/complete/mcdonalds.csv">mcdonalds.csv</a></td>
 <td align="left">260</td>
 <td align="left">24</td>
 </tr>
@@ -637,15 +714,25 @@ ggplot(data = mpg,
 <div id="documentation" class="section level3">
 <h3>Documentation</h3>
 <ul>
-<li><p>The main <code>ggplot2</code> webpage at <a href="http://ggplot2.tidyverse.org/">http://ggplot2.tidyverse.org/</a> has great tutorials and examples.</p></li>
-<li><p>Check out Selva Prabhakaran’s website for a nice gallery of ggplot2 graphics <a href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</a></p></li>
-<li><p><code>ggplot2</code> is also great for making maps. For examples, check out Eric Anderson’s page at <a href="http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html">http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html</a></p></li>
+<li><p>The main <code>ggplot2</code> webpage at <a
+href="http://ggplot2.tidyverse.org/">http://ggplot2.tidyverse.org/</a>
+has great tutorials and examples.</p></li>
+<li><p>Check out Selva Prabhakaran’s website for a nice gallery of
+ggplot2 graphics <a
+href="http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html">http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html</a></p></li>
+<li><p><code>ggplot2</code> is also great for making maps. For examples,
+check out Eric Anderson’s page at <a
+href="http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html">http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html</a></p></li>
 </ul>
 </div>
 <div id="cheatsheets" class="section level3">
 <h3>Cheatsheets</h3>
 <p align="center" width="100%">
-<a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf"> <img src="http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.png" style="width:70%"></a> <br> <font style="font-size:10px">from <a href="https://www.rstudio.com/resources/cheatsheets/">R Studio</a></font>
+<a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf">
+<img src="http://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.png" style="width:70%"></a>
+<br> <font style="font-size:10px">from
+<a href="https://www.rstudio.com/resources/cheatsheets/">R
+Studio</a></font>
 </p>
 </div>
 </div>

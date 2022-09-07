@@ -26,7 +26,7 @@ Use the "Start Bootcamp" link in Ilias!
 .pull-right5[
 
 <br><br>
-<iframe src="https://dwulff.github.io/Intro2R_Unibe_2021/" width="500" height="500"></iframe>
+<iframe src="https://therbootcamp.github.io/Intro2R_Unibe_2022/" width="500" height="500"></iframe>
 
 ]
 
@@ -92,7 +92,7 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 <high>All available online</high>. Follow along, and don't worry about memorizing
 
 <br><br>
-<a href="https://dwulff.github.io/Intro2R_Unibe_2021/">This is a Link to our materials</a>.
+<a href="https://therbootcamp.github.io/Intro2R_Unibe_2022/">This is a Link to our materials</a>.
 <br><br>
 
 ]
@@ -182,6 +182,6 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 
 class: middle, center
 
-<h1><a href=https://dwulff.github.io/Intro2R_Unibe_2021/index.html>Schedule</a></h1>
+<h1><a href=https://therbootcamp.github.io/Intro2R_Unibe_2022/>Schedule</a></h1>
 
 

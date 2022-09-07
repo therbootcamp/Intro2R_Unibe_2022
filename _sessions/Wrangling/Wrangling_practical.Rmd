@@ -46,6 +46,7 @@ suppressMessages(require(tidyverse))
 trial_act <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv")
 
 trial_act_demo <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv")
+source('../config.R')
 ```
 
 <p align="center" width="100%">

@@ -27,7 +27,7 @@ options(digits = 4)
 
 # Load packages
 require(tidyverse)
-
+source('../config.R')
 print2 <- function(x, nlines=10,...) {
    cat(head(capture.output(print(x,...)), nlines), sep="\n")}
 
@@ -920,7 +920,6 @@ anova(mod)
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Statistics/Statistics_practical.html">Practical</a></h1>
-
+<h1>`r paste0('<a href="', session_url, 'Statistics/Statistics_practical.html">Practical</a>')`</h1>
 
 
