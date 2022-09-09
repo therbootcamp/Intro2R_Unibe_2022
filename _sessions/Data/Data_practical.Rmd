@@ -33,11 +33,14 @@ output:
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-                      eval = TRUE,
-                      message = FALSE,
-                      warning = FALSE,
-                      error = FALSE)
+source('../config.R')
+knitr::opts_chunk$set(comment = NA, 
+                      fig.width = 6, 
+                      fig.height = 6,
+                      fig.align = 'center',
+                      echo = value_echo, 
+                      eval = value_eval, 
+                      warning = FALSE)
 
 options(digits = 3)
 #devtools::install_github("therbootcamp/baselers")
@@ -46,7 +49,6 @@ library(knitr)
 library(kableExtra)
 library(readxl)
 library(haven)
-source('../config.R')
 baselers = read_csv(paste0(raw_url, 'main/_sessions/Data/1_Data/baselers.csv'))
 ```
 

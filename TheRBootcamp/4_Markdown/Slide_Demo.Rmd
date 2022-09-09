@@ -1,7 +1,7 @@
 ---
 title: "Final Project"
-author: "Michael Schulte"
-date: "2022-09-12"
+author: "Your Name"
+date: "Date"
 output: ioslides_presentation
 ---
 
@@ -31,15 +31,23 @@ summary(cars)
 
 ## Insight 2
 
-The average speed of the cars is: `r mean(cars$speed)`
+The average speed of the cars is: `r mean(cars$speed)`.
+
+```{r graphic1, echo = FALSE}
+cars %>%
+  ggplot(aes(speed)) +
+         geom_density() +
+         geom_vline(xintercept = mean(cars$speed))
+```
 
 
 ## Insight 3
 
-```{r graphic1, echo = FALSE}
+```{r graphic2, echo = FALSE, message = FALSE}
 cars %>%
   ggplot(aes(speed,dist)) +
-           geom_point()
+         geom_point() +
+         geom_smooth(method = 'lm', se = FALSE)
 ```
 
 ## Executive summary

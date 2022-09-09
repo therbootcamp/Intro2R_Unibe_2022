@@ -13,13 +13,13 @@
 
 <title>Plotting I</title>
 
-<script src="PlottingI_practical_files/header-attrs-2.14/header-attrs.js"></script>
-<script src="PlottingI_practical_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="PlottingI_practical_files/header-attrs/header-attrs.js"></script>
+<script src="PlottingI_practical_files/jquery/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="PlottingI_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="PlottingI_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="PlottingI_practical_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="PlottingI_practical_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="PlottingI_practical_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="PlottingI_practical_files/bootstrap/js/bootstrap.min.js"></script>
+<script src="PlottingI_practical_files/bootstrap/shim/html5shiv.min.js"></script>
+<script src="PlottingI_practical_files/bootstrap/shim/respond.min.js"></script>
 <style>h1 {font-size: 34px;}
        h1.title {font-size: 38px;}
        h2 {font-size: 30px;}
@@ -29,9 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="PlottingI_practical_files/navigation-1.1/tabsets.js"></script>
-<link href="PlottingI_practical_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="PlottingI_practical_files/highlightjs-9.12.0/highlight.js"></script>
+<script src="PlottingI_practical_files/navigation/tabsets.js"></script>
+<link href="PlottingI_practical_files/highlightjs/default.css" rel="stylesheet" />
+<script src="PlottingI_practical_files/highlightjs/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -218,13 +218,10 @@ how to:</p>
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li>Open your <code>TheRBootcamp</code> R project. It should already
+<li><p>Open your <code>TheRBootcamp</code> R project. It should already
 have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure
 that the data files listed in the <code>Datasets</code> section above
-are in your <code>1_Data</code> folder.</li>
-</ol>
-<pre class="r"><code># Done!</code></pre>
-<ol start="2" style="list-style-type: decimal">
+are in your <code>1_Data</code> folder.</p></li>
 <li><p>Open a new R script. At the top of the script, using comments,
 write your name and the date. Save it as a new file called
 <code>plotting_practicalI.R</code> in the <code>2_Code</code>
@@ -239,49 +236,18 @@ practical listed in the Functions section above.</p></li>
 library(XX)     
 library(XX)
 #...</code></pre>
-<pre class="r"><code>library(tidyverse)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>In this practical, you will analyze the <code>mcondalds.csv</code>
-data set, which contains nutrition information about items from
-McDonalds. Using <code>read_csv()</code>, load the data into R and store
-it as a new object called <code>mcdonalds</code>.</li>
-</ol>
-<pre class="r"><code>mcdonalds &lt;- read_csv(&quot;1_Data/mcdonalds.csv&quot;)</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>Take a look at the first few rows of the dataset(s) by printing them
-to the console.</li>
-</ol>
-<pre class="r"><code>mcdonalds</code></pre>
-<pre><code># A tibble: 260 × 24
-   Categ…¹ Item  Servi…² Calor…³ Calor…⁴ Total…⁵ Total…⁶ Satur…⁷ Satur…⁸ Trans…⁹
-   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
- 1 Breakf… Egg … 4.8 oz…     300     120      13      20       5      25       0
- 2 Breakf… Egg … 4.8 oz…     250      70       8      12       3      15       0
- 3 Breakf… Saus… 3.9 oz…     370     200      23      35       8      42       0
- 4 Breakf… Saus… 5.7 oz…     450     250      28      43      10      52       0
- 5 Breakf… Saus… 5.7 oz…     400     210      23      35       8      42       0
- 6 Breakf… Stea… 6.5 oz…     430     210      23      36       9      46       1
- 7 Breakf… Baco… 5.3 oz…     460     230      26      40      13      65       0
- 8 Breakf… Baco… 5.8 oz…     520     270      30      47      14      68       0
- 9 Breakf… Baco… 5.4 oz…     410     180      20      32      11      56       0
-10 Breakf… Baco… 5.9 oz…     470     220      25      38      12      59       0
-# … with 250 more rows, 14 more variables: Cholesterol &lt;dbl&gt;,
-#   `Cholesterol (% Daily Value)` &lt;dbl&gt;, Sodium &lt;dbl&gt;,
-#   `Sodium (% Daily Value)` &lt;dbl&gt;, Carbohydrates &lt;dbl&gt;,
-#   `Carbohydrates (% Daily Value)` &lt;dbl&gt;, `Dietary Fiber` &lt;dbl&gt;,
-#   `Dietary Fiber (% Daily Value)` &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;,
-#   `Vitamin A (% Daily Value)` &lt;dbl&gt;, `Vitamin C (% Daily Value)` &lt;dbl&gt;,
-#   `Calcium (% Daily Value)` &lt;dbl&gt;, `Iron (% Daily Value)` &lt;dbl&gt;, and …
-# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>You’ll notice that the <code>mcdonalds</code> data frame has many
+<li><p>In this practical, you will analyze the
+<code>mcondalds.csv</code> data set, which contains nutrition
+information about items from McDonalds. Using <code>read_csv()</code>,
+load the data into R and store it as a new object called
+<code>mcdonalds</code>.</p></li>
+<li><p>Take a look at the first few rows of the dataset(s) by printing
+them to the console.</p></li>
+<li><p>You’ll notice that the <code>mcdonalds</code> data frame has many
 column names with spaces and ‘bad’ characters like parentheses. Run the
-following code to fix that!</li>
+following code to fix that!</p></li>
 </ol>
-<pre class="r"><code># Clean up the names of mcdonalds
-mcdonalds &lt;- mcdonalds %&gt;%
-  select(-contains(&quot;% Daily Value&quot;)) %&gt;%  # Remove all &#39;% Daily Value&#39; columns
-  rename_all(.funs = ~ gsub(&quot; &quot;, &quot;&quot;, .))  # no more spaces!</code></pre>
 <pre class="r"><code># Clean up the names of mcdonalds
 mcdonalds &lt;- mcdonalds %&gt;%
   select(-contains(&quot;% Daily Value&quot;)) %&gt;%  # Remove all &#39;% Daily Value&#39; columns
@@ -289,37 +255,10 @@ mcdonalds &lt;- mcdonalds %&gt;%
 <ol start="7" style="list-style-type: decimal">
 <li>Now print the dataset again, do the names look better?</li>
 </ol>
-<pre class="r"><code>mcdonalds</code></pre>
-<pre><code># A tibble: 260 × 14
-   Category Item  Servi…¹ Calor…² Calor…³ Total…⁴ Satur…⁵ Trans…⁶ Chole…⁷ Sodium
-   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
- 1 Breakfa… Egg … 4.8 oz…     300     120      13       5       0     260    750
- 2 Breakfa… Egg … 4.8 oz…     250      70       8       3       0      25    770
- 3 Breakfa… Saus… 3.9 oz…     370     200      23       8       0      45    780
- 4 Breakfa… Saus… 5.7 oz…     450     250      28      10       0     285    860
- 5 Breakfa… Saus… 5.7 oz…     400     210      23       8       0      50    880
- 6 Breakfa… Stea… 6.5 oz…     430     210      23       9       1     300    960
- 7 Breakfa… Baco… 5.3 oz…     460     230      26      13       0     250   1300
- 8 Breakfa… Baco… 5.8 oz…     520     270      30      14       0     250   1410
- 9 Breakfa… Baco… 5.4 oz…     410     180      20      11       0      35   1300
-10 Breakfa… Baco… 5.9 oz…     470     220      25      12       0      35   1420
-# … with 250 more rows, 4 more variables: Carbohydrates &lt;dbl&gt;,
-#   DietaryFiber &lt;dbl&gt;, Sugars &lt;dbl&gt;, Protein &lt;dbl&gt;, and abbreviated variable
-#   names ¹​ServingSize, ²​Calories, ³​CaloriesfromFat, ⁴​TotalFat, ⁵​SaturatedFat,
-#   ⁶​TransFat, ⁷​Cholesterol
-# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 </div>
 <div id="b---building-a-plot-step-by-step" class="section level3">
 <h3>B - Building a plot step-by-step</h3>
 <p>In this section, you’ll build the following plot step by step.</p>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
-  geom_point() +
-  geom_smooth(col = &quot;black&quot;) +
-  labs(title = &quot;McDonalds Nutrition&quot;,
-       subtitle = &quot;Each point is a menu item&quot;,
-       caption = &quot;Source: Kaggle.com&quot;) +
-  xlim(0, 1250) +
-  theme_minimal()</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol style="list-style-type: decimal">
 <li>Using <code>ggplot()</code>, create the following blank plot using
@@ -329,36 +268,24 @@ Use <code>Calories</code> for the x aesthetic and
 </ol>
 <pre class="r"><code>ggplot(data = mcdonalds, 
        mapping = aes(x = XX, y = XX))</code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat))</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Using <code>geom_point()</code>, add points to the plot</li>
 </ol>
 <pre class="r"><code>ggplot(data = mcdonalds, 
        mapping = aes(x = XX, y = XX)) +
   geom_point()</code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat)) +
-  geom_point()</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Using the <code>color</code> aesthetic mapping, color the points by
 their <code>Category</code>.</li>
 </ol>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() </code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
-  geom_point()</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Add a smoothed average line using <code>geom_smooth()</code>.</li>
 </ol>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() +
   geom_smooth() </code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
-  geom_point() +
-  geom_smooth()</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Oops! Did you get several smoothed lines instead of just one? Fix
 this by specifying that the line should have one color:
@@ -368,10 +295,6 @@ line.</li>
 <pre class="r"><code>ggplot(mcdonalds, aes(x = XX, y = XX, col = XX)) +
   geom_point() +
   geom_smooth(col = &quot;XX&quot;) </code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
-  geom_point() +
-  geom_smooth(col = &quot;black&quot;)</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Add appropriate labels using the <code>labs()</code> function.</li>
 </ol>
@@ -381,13 +304,6 @@ line.</li>
   labs(title = &quot;XX&quot;,
        subtitle = &quot;XX&quot;,
        caption = &quot;XX&quot;)</code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
-  geom_point() +
-  geom_smooth(col = &quot;black&quot;) +
-  labs(title = &quot;McDonalds Nutrition&quot;,
-       subtitle = &quot;Each point is a menu item&quot;,
-       caption = &quot;Source: Kaggle.com&quot;)</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-21-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Set the limits of the x-axis to <code>0</code> and <code>1250</code>
 using <code>xlim()</code>.</li>
@@ -399,14 +315,6 @@ using <code>xlim()</code>.</li>
        subtitle = &quot;XX&quot;,
        caption = &quot;XX&quot;) +
   xlim(XX, XX)</code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
-  geom_point() +
-  geom_smooth(col = &quot;black&quot;) +
-  labs(title = &quot;McDonalds Nutrition&quot;,
-       subtitle = &quot;Each point is a menu item&quot;,
-       caption = &quot;Source: Kaggle.com&quot;) +
-  xlim(0, 1250)</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Finally, set the plotting theme to <code>theme_minimal()</code>. You
 should now have the final plot!</li>
@@ -419,15 +327,6 @@ should now have the final plot!</li>
        caption = &quot;XX&quot;)+
   xlim(XX, XX) +
   theme_minimal()</code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
-  geom_point() +
-  geom_smooth(col = &quot;black&quot;) +
-  labs(title = &quot;McDonalds Nutrition&quot;,
-       subtitle = &quot;Each point is a menu item&quot;,
-       caption = &quot;Source: Kaggle.com&quot;) +
-  xlim(0, 1250) +
-  theme_minimal()</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-25-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="c---adding-multiple-geoms" class="section level3">
 <h3>C - Adding multiple geoms</h3>
@@ -440,40 +339,16 @@ category and calories</li>
   guides(fill = &quot;none&quot;) +
   labs(title = &quot;XX&quot;,
        subtitle = &quot;XX&quot;)</code></pre>
-<pre class="r"><code>ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
-  geom_violin() +
-  guides(fill = &quot;none&quot;) +
-  labs(title = &quot;McDonalds&quot;,
-       subtitle = &quot;Calorie distribution by menu category&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-27-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Include the additional argument
+<li><p>Include the additional argument
 <code>+ stat_summary(fun.y = "mean", geom = "point", col = "white", size = 4)</code>
-to include points showing the mean of each distribution</li>
-</ol>
-<pre class="r"><code>ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
-  geom_violin() +
-  guides(fill = &quot;none&quot;) +
-  stat_summary(fun = &quot;mean&quot;, geom = &quot;point&quot;, col = &quot;white&quot;, size = 4) +
-  labs(title = &quot;McDonalds&quot;,
-       subtitle = &quot;Calorie distribution by menu category&quot;)</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-28-1.png" width="768" style="display: block; margin: auto;" /></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Now add <code>+ geom_jitter(width = .1, alpha = .5)</code> to your
-plot, what do you see?</li>
-</ol>
-<pre class="r"><code>ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
-  geom_violin() +
-  geom_jitter(width = .1, alpha = .5) +
-  guides(fill = &quot;none&quot;) +
-  stat_summary(fun = &quot;mean&quot;, geom = &quot;point&quot;, col = &quot;white&quot;, size = 4) +
-  labs(title = &quot;McDonalds&quot;,
-       subtitle = &quot;Calorie distribution by menu category&quot;)</code></pre>
-<p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-29-1.png" width="768" style="display: block; margin: auto;" /></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Play around with your plotting arguments to see how the results
+to include points showing the mean of each distribution</p></li>
+<li><p>Now add <code>+ geom_jitter(width = .1, alpha = .5)</code> to
+your plot, what do you see?</p></li>
+<li><p>Play around with your plotting arguments to see how the results
 change! Each time you make a change, run the plot again to see your new
-output!</li>
+output!</p></li>
 </ol>
 <ul>
 <li>Change the summary function in <code>stat_summary()</code> from
@@ -498,11 +373,6 @@ each menu category using the following template:</li>
                fun = &quot;mean&quot;) +
   labs(title = &quot;XX&quot;,
        subtitle = &quot;XX&quot;)</code></pre>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Category, y = Calories)) +
-  stat_summary(geom = &quot;bar&quot;, 
-               fun = &quot;mean&quot;) +
-  labs(title = &quot;Calories by McDonalds menu category&quot;,
-       subtitle = &quot;Bars represent means&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-31-1.png" width="960" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Customize your plot!</li>
@@ -520,20 +390,6 @@ each menu category using the following template:</li>
 <h3>E - Adding labels</h3>
 <p>Let’s create the following plot with additional point labels using
 <code>geom_text()</code>:</p>
-<pre class="r"><code>ggplot(mcdonalds, aes(x = Sugars, 
-                      y = Calories, 
-                      col = Category, 
-                      label = Item)) +
-  geom_point() +
-  geom_text(data = mcdonalds %&gt;% 
-            filter(Calories &gt; 1100),
-            col = &quot;black&quot;, 
-            check_overlap = TRUE, 
-            hjust = &quot;left&quot;) +
-  xlim(0, 150) +
-  ylim(0, 2000) +
-  theme_minimal() +
-  labs(title = &quot;Adding labels to a plot with geom_text()&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-32-1.png" width="768" style="display: block; margin: auto;" /></p>
 <ol style="list-style-type: decimal">
 <li>Start with the following template</li>

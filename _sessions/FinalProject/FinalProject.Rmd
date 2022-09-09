@@ -74,7 +74,7 @@ You should (at least) complete the following tasks
 
 ### A - Setup
 
-1. Open your `bernrbootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
+1. Open your `TheRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
 
 2. Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called `final_project.R` in the `bernrbootcamp` folder.  
 
@@ -207,13 +207,13 @@ dim(full_df)
 
 ### E - Presenting the results
 
-1. Generate a new file with `File - R Markdown - Document` (with the default: HTML). Save this file to your `BernRBootcamp` folder. 
+1. Generate a new file with `File - R Markdown - Document` (with the default: HTML). Save this file to your `TheRBootcamp` folder. 
 
 2. Document your 3 central insights out of this dataset. Describe what the insights are with your own words and document them with figures, statistics and tables produced with R code in your Markdown file `FinalReport.html`.   
 
-3. Generate a new file with `File - R Markdown - Presentation` (with the default: HTML Isoslides). Save this file to your `BernRBootcamp` folder `FinalPresentation.html`. 
+3. Generate a new file with `File - R Markdown - Presentation` (with the default: HTML Ioslides). Save this file to your `TheRBootcamp` folder `FinalPresentation.Rmd`. Alternatively you can check out a template we provide for you in your `TheRBoocamp` project folder `4_Markdown` called `Slide_Demo.Rmd`
 
-4. Prepare a 15 minute presentation documenting your approach to the Document your 3 central insights out of this dataset. Describe what the insights are with your own words and document them with figures, statistics and tables produced with R code in your Marddown file.
+4. Prepare a 15 minute presentation documenting your approach to the Document and your 3 central insights out of this dataset. Describe what the insights are with your own words and document them with figures, statistics and tables produced with R code in your Markdown file.
 
 ## Datasets
 
