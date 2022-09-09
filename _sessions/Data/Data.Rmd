@@ -705,7 +705,7 @@ R provides <high>read and write functions</high> for practically all data file f
 
 .pull-left45[
 ### `readr` <img src="http://d33wubrfki0l68.cloudfront.net/66d3133b4a19949d0b9ddb95fc48da074b69fb07/7dfb6/images/hex-readr.png" width="50", align="right"> 
-```{r, eval = F}
+```{r, eval = F, echo = T}
 # read fixed width files (can be fast)
 data <- read_fwf(file, ...)
 
@@ -715,7 +715,7 @@ data <- read_log(file, ...)
 ```
 
 ### `haven` <img src="http://haven.tidyverse.org/logo.png" width="50" align="right">
-```{r, eval = F}
+```{r, eval = F, echo = T}
 # read SAS's .sas7bat and sas7bcat files
 data <- read_sas(file, ...)
 
@@ -728,13 +728,13 @@ data <- read_sav(file, ...)
 
 .pull-right45[
 ### `readxl` <img src="https://readxl.tidyverse.org/logo.png" width="50" align="right">
-```{r, eval = F}
+```{r, eval = F, echo = T}
 # read Excel's .xls and xlsx files
 data <- read_excel(file, ...)
 ```
 <br>
 ### Other
-```{r, eval = F}
+```{r, eval = F, echo = T}
 # Read Matlab .mat files
 data <- R.matlab::readMat(file, ...)
 

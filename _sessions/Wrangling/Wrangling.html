@@ -117,6 +117,11 @@ Group data and calculate and summary stats
 
 
 
+```r
+# patients tibble
+patients
+```
+
 ```
 # A tibble: 5 × 3
      ID    X1    X2
@@ -131,6 +136,11 @@ Group data and calculate and summary stats
 
 
 
+
+```r
+# results tibble
+results
+```
 
 ```
 # A tibble: 5 × 3
@@ -170,6 +180,10 @@ Transformation functions are used to &lt;high&gt;alter the content&lt;/high&gt; 
 
 
 
+```r
+patients   # Patient data
+```
+
 ```
 # A tibble: 5 × 3
      ID    X1    X2
@@ -201,6 +215,10 @@ patients %&gt;%
 ```
 
 
+```r
+patients  # Original
+```
+
 ```
 # A tibble: 5 × 3
      ID    X1    X2
@@ -217,6 +235,15 @@ patients %&gt;%
 
 Change `X1` to `age`, and `X2` to `arm`.
 
+
+```r
+# 0) Start with patients data
+patients %&gt;% 
+
+# 1) Change variable names with rename()
+  rename(age = X1,  # New = Old
+         arm = X2)  # New = Old
+```
 
 ```
 # A tibble: 5 × 3
@@ -241,12 +268,32 @@ Change `X1` to `age`, and `X2` to `arm`.
 Create &lt;high&gt;new variables&lt;/high&gt;, or &lt;high&gt;change existing ones&lt;/high&gt;, with `mutate()`.
 
 
+```r
+tibble %&gt;%
+  mutate(
+   NEW1 = DEFINITION1,
+   NEW2 = DEFINITION2,
+   NEW3 = DEFINITION3,
+   ...
+  )
+```
 ]
 
 .pull-right5[
 
 Calculate two new variables `age_months` and `age_decades`.
 
+
+```r
+patients %&gt;% 
+
+  rename(age = X1, 
+         arm = X2) %&gt;%   # AND THEN...
+  
+# Create new variables with mutate()
+  mutate(age_months = age * 12,
+         age_decades = age / 10)
+```
 
 ```
 # A tibble: 5 × 5
@@ -270,6 +317,15 @@ Calculate two new variables `age_months` and `age_decades`.
 Use `case_when()` with `mutate()` to define &lt;high&gt;new variables based on logical conditions&lt;/high&gt;.
 
 
+```r
+# Using mutate(case_when())
+tibble %&gt;%
+  mutate(
+    NEW = case_when(
+      COND1 ~ VAL1,
+      COND2 ~ VAL2
+    ))
+```
 
 
 ]
@@ -278,6 +334,17 @@ Use `case_when()` with `mutate()` to define &lt;high&gt;new variables based on l
 
 Create `arm_lab` that carries `'placebo'` for `arm == 1` and `'drug'` for `arm == 2`.
 
+
+```r
+patients %&gt;% 
+
+  rename(age = X1, 
+         arm = X2) %&gt;%
+  
+  # Create arm_lab from arm
+  mutate(arm_lab = case_when(arm == 1 ~ "placebo",
+                             arm == 2 ~ "drug"))
+```
 
 ```
 # A tibble: 5 × 4
@@ -311,6 +378,13 @@ Create `arm_lab` that carries `'placebo'` for `arm == 1` and `'drug'` for `arm =
 Use `left_join()` to &lt;high&gt;combine two data frames&lt;/high&gt; based on one or more key variables.
 
 
+```r
+# Join tibble_1 to tibble_2
+#   matched by KEY
+tibble_1 %&gt;%
+  left_join(tibble_2, 
+      by = c("KEY"))
+```
 
 Other `*_join()` functions: `right_join()`, `full_join()`, `inner_join()`, `anti_join()`, `semi_join()`.
 
@@ -319,7 +393,22 @@ Other `*_join()` functions: `right_join()`, `full_join()`, `inner_join()`, `anti
 .pull-right6[
 
 
+```r
+# Join patients with results to create combined
+combined &lt;- patients %&gt;% 
+  rename(age = X1, arm = X2) %&gt;%
+  mutate(arm_lab = case_when(arm == 1 ~ "placebo",
+                             arm == 2 ~ "drug")) %&gt;%
+  
+# Join with results with left_join()
+  left_join(results, by = "ID")
+```
 
+
+```r
+# Show combined data set
+combined 
+```
 
 ```
 # A tibble: 5 × 6
@@ -361,6 +450,11 @@ Other `*_join()` functions: `right_join()`, `full_join()`, `inner_join()`, `anti
 
 
 
+```r
+# patients tibble
+patients
+```
+
 ```
 # A tibble: 5 × 3
      ID    X1    X2
@@ -375,6 +469,11 @@ Other `*_join()` functions: `right_join()`, `full_join()`, `inner_join()`, `anti
 
 
 
+
+```r
+# results tibble
+results
+```
 
 ```
 # A tibble: 5 × 3
@@ -408,6 +507,11 @@ Organisation functions help you change the organisation of your data by &lt;high
 
 .pull-right55[
 
+
+```r
+# combined tibble
+combined
+```
 
 ```
 # A tibble: 5 × 6
@@ -450,6 +554,11 @@ tibble %&gt;%
 
 Sort by `arm`.
 
+
+```r
+combined %&gt;%
+  arrange(arm)   # Sort by arm
+```
 
 ```
 # A tibble: 5 × 6
@@ -495,6 +604,11 @@ tibble %&gt;%
 Sort by `arm` and then `age`.
 
 
+```r
+combined %&gt;%
+  arrange(arm, age)  # Sort by arm then age
+```
+
 ```
 # A tibble: 5 × 6
      ID   age   arm arm_lab   t_1   t_2
@@ -520,8 +634,18 @@ Use `slice()` to &lt;high&gt;select rows&lt;/high&gt; (or remove) by row number.
 Use `c()`, `a:b`, or `seq()` to create row numbers
 
 
+```r
+# Integer vector
+c(2, 6, 10)
+```
+
 ```
 [1]  2  6 10
+```
+
+```r
+# Integer vector of 0 to 5
+0:5
 ```
 
 ```
@@ -535,6 +659,12 @@ Use `c()`, `a:b`, or `seq()` to create row numbers
 
 Select rows `3` and `5`.
 
+
+```r
+# Rows 3 and 5 only
+combined %&gt;%
+  slice(c(3, 5))
+```
 
 ```
 # A tibble: 2 × 6
@@ -558,8 +688,18 @@ Use `slice()` to &lt;high&gt;select rows&lt;/high&gt; (or remove) by row number.
 Use `c()`, `a:b`, or `seq()` to create row numbers
 
 
+```r
+# Integer vector
+c(2, 6, 10)
+```
+
 ```
 [1]  2  6 10
+```
+
+```r
+# Integer vector of 0 to 5
+0:5
 ```
 
 ```
@@ -573,6 +713,12 @@ Use `c()`, `a:b`, or `seq()` to create row numbers
 
 Select rows `1` through `4`.
 
+
+```r
+# First 4 rows
+combined %&gt;%
+  slice(1:4)
+```
 
 ```
 # A tibble: 4 × 6
@@ -609,6 +755,12 @@ Use `filter()` to &lt;high&gt;select rows&lt;/high&gt; (or remove) based on logi
 Select &lt;i&gt;only&lt;/i&gt; patients over `30`.
 
 
+```r
+# Filter patients younger than 40
+combined %&gt;%
+  filter(age &lt; 40)
+```
+
 ```
 # A tibble: 2 × 6
      ID   age   arm arm_lab   t_1   t_2
@@ -643,6 +795,12 @@ Use `filter()` to &lt;high&gt;select rows&lt;/high&gt; (or remove) based on logi
 Select &lt;i&gt;only&lt;/i&gt; patients over `30` in the `'drug'` arm.
 
 
+```r
+# Filter patients older than 30 given drug
+combined %&gt;%
+  filter(age &gt; 30 &amp; arm_lab == 'drug')
+```
+
 ```
 # A tibble: 3 × 6
      ID   age   arm arm_lab   t_1   t_2
@@ -664,10 +822,20 @@ Select &lt;i&gt;only&lt;/i&gt; patients over `30` in the `'drug'` arm.
 Use `select()` to &lt;high&gt;select variables&lt;/high&gt; (and remove all others)
 
 
+```r
+# Select variables A, B
+tibble %&gt;% 
+  select(A, B)
+```
 
 &lt;high&gt;Remove variables&lt;/high&gt; with `-`.
 
 
+```r
+# Select everything BUT A
+tibble %&gt;% 
+  select(-A)
+```
 
 
 
@@ -677,6 +845,11 @@ Use `select()` to &lt;high&gt;select variables&lt;/high&gt; (and remove all othe
 
 Select variables `ID` and `arm`.
 
+
+```r
+combined %&gt;%
+  select(ID, arm) # Select ID and arm variables
+```
 
 ```
 # A tibble: 5 × 2
@@ -701,10 +874,20 @@ Select variables `ID` and `arm`.
 Use `select()` to &lt;high&gt;select variables&lt;/high&gt; (and remove all others)
 
 
+```r
+# Select variables A, B
+tibble %&gt;% 
+  select(A, B)
+```
 
 &lt;high&gt;Remove variables&lt;/high&gt; with `-`.
 
 
+```r
+# Select everything BUT A
+tibble %&gt;% 
+  select(-A)
+```
 
 
 ]
@@ -713,6 +896,11 @@ Use `select()` to &lt;high&gt;select variables&lt;/high&gt; (and remove all othe
 
 Select everything &lt;i&gt;except&lt;/i&gt; t_2
 
+
+```r
+combined %&gt;%
+  select(-t_2) # Everything BUT t_2
+```
 
 ```
 # A tibble: 5 × 5
@@ -763,6 +951,11 @@ Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt
 
 
 
+```r
+# Show original data (wide)
+combined
+```
+
 ```
 # A tibble: 5 × 6
      ID   age   arm arm_lab   t_1   t_2
@@ -780,17 +973,28 @@ Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt
 
 
 
+```r
+# "pivot_longer" wide data to long
+combined %&gt;% 
+  pivot_longer(names_to = 'time', 
+               values_to = 'value',
+               cols = c(t_1, t_2))
+```
+
 ```
 # A tibble: 10 × 6
-     ID   age   arm arm_lab time  value
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
-1     1    37     1 placebo t_1     123
-2     1    37     1 placebo t_2     135
-3     2    65     2 drug    t_1     143
-4     2    65     2 drug    t_2     140
-5     3    57     2 drug    t_1      NA
-# … with 5 more rows
-# ℹ Use `print(n = ...)` to see more rows
+      ID   age   arm arm_lab time  value
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
+ 1     1    37     1 placebo t_1     123
+ 2     1    37     1 placebo t_2     135
+ 3     2    65     2 drug    t_1     143
+ 4     2    65     2 drug    t_2     140
+ 5     3    57     2 drug    t_1      NA
+ 6     3    57     2 drug    t_2      NA
+ 7     4    34     1 placebo t_1     100
+ 8     4    34     1 placebo t_2     105
+ 9     5    45     2 drug    t_1      NA
+10     5    45     2 drug    t_2      NA
 ```
 
 ]
@@ -804,17 +1008,25 @@ Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt
 
 
 
+```r
+# Show long data
+long 
+```
+
 ```
 # A tibble: 10 × 6
-     ID   age   arm arm_lab time  value
-  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
-1     1    37     1 placebo t_1     123
-2     1    37     1 placebo t_2     135
-3     2    65     2 drug    t_1     143
-4     2    65     2 drug    t_2     140
-5     3    57     2 drug    t_1      NA
-# … with 5 more rows
-# ℹ Use `print(n = ...)` to see more rows
+      ID   age   arm arm_lab time  value
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;
+ 1     1    37     1 placebo t_1     123
+ 2     1    37     1 placebo t_2     135
+ 3     2    65     2 drug    t_1     143
+ 4     2    65     2 drug    t_2     140
+ 5     3    57     2 drug    t_1      NA
+ 6     3    57     2 drug    t_2      NA
+ 7     4    34     1 placebo t_1     100
+ 8     4    34     1 placebo t_2     105
+ 9     5    45     2 drug    t_1      NA
+10     5    45     2 drug    t_2      NA
 ```
 
 
@@ -822,6 +1034,13 @@ Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt
 
 .pull-right45[
 
+
+```r
+# "pivot_wider" long data to wide
+long %&gt;% 
+  pivot_wider(names_from = 'time', 
+              values_from = 'value') 
+```
 
 ```
 # A tibble: 5 × 6
@@ -852,12 +1071,33 @@ Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt
 .pull-left4[
 
 
+```r
+DATA %&gt;%
+  group_by(GROUP_VAR) %&gt;%
+  summarise(
+    NAME1 = SUMMARY_FUN(VAR1),
+    NAME2 = SUMMARY_FUN(VAR2)
+  )
+```
 
 
 ]
 
 .pull-right5[
 
+
+```r
+combined %&gt;%
+  
+  # Group by study arm
+  group_by(arm_lab) %&gt;%
+  
+  # Calculate summary stats
+  summarise(
+    age_mean = mean(age),
+    age_sd = sd(age)
+  )
+```
 
 ```
 # A tibble: 2 × 3
@@ -876,6 +1116,14 @@ Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt
 .pull-left4[
 
 
+```r
+DATA %&gt;%
+  group_by(GROUP_VAR) %&gt;%
+  summarise(
+    NAME1 = SUMMARY_FUN(VAR1),
+    NAME2 = SUMMARY_FUN(VAR2)
+  )
+```
 
 
 ]
@@ -885,6 +1133,20 @@ Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt
 
 
 
+
+```r
+combined %&gt;%
+  
+  # Group by study arm
+  group_by(arm_lab) %&gt;%
+  
+  # Calculate stats
+  summarise(
+    age_mean = mean(age),
+    age_sd = sd(age),
+    N = n()
+  )
+```
 
 ```
 # A tibble: 2 × 4

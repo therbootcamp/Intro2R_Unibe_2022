@@ -252,7 +252,7 @@ In many sciences it becomes the de factor **lingua franca** for statistics.
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # an object named one_two_three
 one_two_three <- c(1, 2, 3)
 
@@ -287,7 +287,7 @@ one_two_three
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # an object named one_two_three
 one_two_three <- c(1, 2, 3)
 
@@ -318,7 +318,7 @@ mean(one_two_three)
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # an object named one_two_three
 one_two_three <- c(1, 2, 3)
 
@@ -352,7 +352,7 @@ result
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # an object named one_two_three
 one_two_three <- c(1, 2, 3)
 
@@ -387,7 +387,7 @@ result * 10
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # an object named one_two_three
 one_two_three <- c(1, 2, 3)
 
@@ -426,7 +426,7 @@ one_two_three
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # an object named one_two_three
 one_two_three <- c(1, 2, 3)
 
@@ -517,7 +517,7 @@ one_two_three
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # function c()
 one_two_three <- c(1, 2, 3)
 
@@ -587,7 +587,7 @@ mean(c(1, 2, 3, NA))
 ]
 
 .pull-right5[
-```{r, error=TRUE,tidy=T}
+```{r, error=TRUE,tidy=T, echo = TRUE}
 # no argument
 mean()
 
@@ -620,7 +620,7 @@ mean(c(1, 2, 3, NA), na.rm = TRUE)
 ]
 
 .pull-right5[
-```{r, error=TRUE,tidy=T}
+```{r, error=TRUE,tidy=T, echo = TRUE}
 # explicit argument names
 mean(x = c(1, 2, 3, NA), na.rm = TRUE)
 
@@ -682,7 +682,7 @@ mean(TRUE, c(1, 2, 3, NA))
 ]
 
 .pull-right5[
-```{r, error=TRUE,tidy=T}
+```{r, error=TRUE,tidy=T, echo = TRUE}
 
 # calculate mean of c(1, 2, 3)
 mean(c(1, 2, 3))
@@ -712,7 +712,7 @@ mean(c("1", "2", "3"))
 ]
 
 .pull-right5[
-```{r, error=TRUE,tidy=T}
+```{r, error=TRUE,tidy=T, echo = TRUE}
 
 # calculate sum of c(1, 2, 3)
 sum(c(1, 2, 3))
@@ -851,7 +851,7 @@ library(tidyverse)
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # Numeric vector
 score <- c(8, 4, 6, 3, 7, 3)
 score
@@ -906,7 +906,7 @@ score %>%
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # Numeric vector
 score <- c(8, 4, 6, 3, 7, 3)
 score
@@ -935,7 +935,7 @@ score %>%
 ]
 
 .pull-right5[
-```{r}
+```{r echo = TRUE}
 # Numeric vector
 score <- c(8, 4, 6, 3, 7, 3)
 score

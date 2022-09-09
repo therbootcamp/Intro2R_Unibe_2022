@@ -21,7 +21,7 @@ xaringan::inf_mr('_sessions/D1S2_Wrangling/Wrangling.Rmd')
 
 ```
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo = TRUE}
 options(htmltools.dir.version = FALSE)
 options(width=110)
 options(digits = 4) 

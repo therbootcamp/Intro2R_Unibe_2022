@@ -989,7 +989,7 @@ basel <- read.csv("1_Data/basel.csv")
 .pull-right55[
 
 <p align = "center">
-  <img src="image/settings_project.png" height=480px>
+  <img src="image/Settings_Project.png" height=480px>
 </p>
 
 ]
