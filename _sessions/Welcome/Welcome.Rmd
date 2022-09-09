@@ -14,6 +14,17 @@ output:
       before_body: '../_before.html'
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = TRUE,
+                      message = FALSE,
+                      warning = FALSE,
+                      error = FALSE)
+
+options(digits = 3)
+source('../config.R')
+```
+
 ---
 .pull-left45[
 <br><br><br><br><br>
@@ -26,7 +37,7 @@ Use the "Start Bootcamp" link in Ilias!
 .pull-right5[
 
 <br><br>
-<iframe src="https://therbootcamp.github.io/Intro2R_Unibe_2022/" width="500" height="500"></iframe>
+<iframe src="`r paste0(base_url, 'index.html')`" width="500" height="500"></iframe>
 
 ]
 
@@ -54,7 +65,7 @@ Use the "Start Bootcamp" link in Ilias!
 ]
 
 ---
-<br><br>
+
 .pull-left5[
 # Schedule 
 
@@ -65,12 +76,16 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 <br>
 
 
+
+
+
 ]
 
-.pull-right4[
+.pull-right5[
 
 <p align="center"><img src="image/schedule.png"></p>
 <center><font size = 3></font></center>
+
 
 ]
 
@@ -141,9 +156,9 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 .pull-right5[
 <br>
 
-  <iframe src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Data/Data_practical.html" height="480px" width = "500px"></iframe>
+  <iframe src="`r paste0(session_url, 'Data/Data_practical.html')`" height="480px" width = "500px"></iframe>
 
-  Example practical:<a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Data/Data_practical.html"> Data </a>
+  Example practical:`r paste0('<a href="', session_url, 'Data/Data_practical.html">Data</a>')`
 
 ]
 
@@ -182,6 +197,5 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 
 class: middle, center
 
-<h1><a href=https://therbootcamp.github.io/Intro2R_Unibe_2022/>Schedule</a></h1>
-
+<h1>`r paste0('<a href="', base_url, 'index.html">Schedule</a>')`</h1>
 

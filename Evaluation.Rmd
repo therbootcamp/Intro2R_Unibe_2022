@@ -1,7 +1,7 @@
 ---
-title: "Evaluation results Bern R Bootcamp FS 2019"
+title: "Evaluation results Bern R Bootcamp HS 2022"
 author: "MSM, DUW"
-date: "2/24/2019"
+date: "9/12/2022"
 output: html_document
 ---
 
@@ -18,7 +18,7 @@ library(tidyverse)
 library(kableExtra)
 
 my_sheets <- gs_ls()
-evaluation <- gs_title('February 2019 BernRBootcamp follow-up survey (Responses)') %>%
+evaluation <- gs_title('September 2022 BernRBootcamp follow-up survey (Responses)') %>%
   gs_read(ws = 1)
 ```
 

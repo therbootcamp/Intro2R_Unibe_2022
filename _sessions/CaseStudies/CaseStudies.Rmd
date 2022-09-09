@@ -13,8 +13,6 @@ output:
       before_body: '../_before.html'
 ---
 
----
-
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 # see: https://github.com/yihui/xaringan
@@ -25,7 +23,11 @@ options(htmltools.dir.version = FALSE)
 options(width=110)
 options(digits = 4) 
 knitr::opts_chunk$set(comment = NA)
+source('../config.R')
 ```
+
+---
+
 
 # 2 Case Studies
 
@@ -42,8 +44,7 @@ Analyse a clinical trial comparing the effectiveness of clinical drugs.<br>
 </p>
 
 <br>
-[Clinical Trial Case Study](https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/CaseStudies/Clinical_Data_Case_Study.html)
-
+[Clinical Trial Case Study](`r noquote(paste0(session_url, 'CaseStudies/Clinical_Data_Case_Study.html'))`)
 ]
 
 .pull-right45[
@@ -57,10 +58,6 @@ Study the development of key financial markets across the last 20 years<br>
 </p>
 
 <br>
-[Finance Case Study](https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/CaseStudies/Financial_Data_Case_Study.html)
+[Finance Case Study](`r noquote(paste0(session_url, 'CaseStudies/Financial_Data_Case_Study.html'))`)
 
 ]
-
-
-
-

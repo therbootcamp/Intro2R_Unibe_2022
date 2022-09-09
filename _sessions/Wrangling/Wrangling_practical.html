@@ -13,13 +13,13 @@
 
 <title>Wrangling</title>
 
-<script src="Wrangling_practical_files/header-attrs-2.14/header-attrs.js"></script>
-<script src="Wrangling_practical_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="Wrangling_practical_files/header-attrs/header-attrs.js"></script>
+<script src="Wrangling_practical_files/jquery/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="Wrangling_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="Wrangling_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="Wrangling_practical_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="Wrangling_practical_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="Wrangling_practical_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Wrangling_practical_files/bootstrap/js/bootstrap.min.js"></script>
+<script src="Wrangling_practical_files/bootstrap/shim/html5shiv.min.js"></script>
+<script src="Wrangling_practical_files/bootstrap/shim/respond.min.js"></script>
 <style>h1 {font-size: 34px;}
        h1.title {font-size: 38px;}
        h2 {font-size: 30px;}
@@ -29,9 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="Wrangling_practical_files/navigation-1.1/tabsets.js"></script>
-<link href="Wrangling_practical_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="Wrangling_practical_files/highlightjs-9.12.0/highlight.js"></script>
+<script src="Wrangling_practical_files/navigation/tabsets.js"></script>
+<link href="Wrangling_practical_files/highlightjs/default.css" rel="stylesheet" />
+<script src="Wrangling_practical_files/highlightjs/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -258,22 +258,19 @@ to the console.</li>
 <pre class="r"><code># Print trial_act object
 trial_act</code></pre>
 <pre><code># A tibble: 2,139 × 27
-   pidnum   age  wtkg  hemo  homo drugs karnof oprior   z30 zprior preanti  race
-    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
- 1  10056    48  89.8     0     0     0    100      0     0      1       0     0
- 2  10059    61  49.4     0     0     0     90      0     1      1     895     0
- 3  10089    45  88.5     0     1     1     90      0     1      1     707     0
- 4  10093    47  85.3     0     1     0    100      0     1      1    1399     0
- 5  10124    43  66.7     0     1     0    100      0     1      1    1352     0
- 6  10140    46  88.9     0     1     1    100      0     1      1    1181     0
- 7  10165    31  73.0     0     1     0    100      0     1      1     930     0
- 8  10190    41  66.2     0     1     1    100      0     1      1    1329     0
- 9  10198    40  82.6     0     1     0     90      0     1      1    1074     0
-10  10229    35  78.0     0     1     0    100      0     1      1     964     0
-# … with 2,129 more rows, and 15 more variables: gender &lt;dbl&gt;, str2 &lt;dbl&gt;,
-#   strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;, cd40 &lt;dbl&gt;,
-#   cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;,
-#   days &lt;dbl&gt;, arms &lt;dbl&gt;
+   pidnum   age  wtkg  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1  10056    48  89.8     0     0     0    100      0     0      1       0     0      0     0     1       0     1      0   422   477   660     1
+ 2  10059    61  49.4     0     0     0     90      0     1      1     895     0      0     1     3       0     1      0   162   218    NA     0
+ 3  10089    45  88.5     0     1     1     90      0     1      1     707     0      1     1     3       0     1      1   326   274   122     1
+ 4  10093    47  85.3     0     1     0    100      0     1      1    1399     0      1     1     3       0     1      0   287   394    NA     0
+ 5  10124    43  66.7     0     1     0    100      0     1      1    1352     0      1     1     3       0     0      0   504   353   660     1
+ 6  10140    46  88.9     0     1     1    100      0     1      1    1181     0      1     1     3       0     1      0   235   339   264     1
+ 7  10165    31  73.0     0     1     0    100      0     1      1     930     0      1     1     3       0     0      0   244   225   106     1
+ 8  10190    41  66.2     0     1     1    100      0     1      1    1329     0      1     1     3       0     0      0   401   366   453     1
+ 9  10198    40  82.6     0     1     0     90      0     1      1    1074     0      1     1     3       1     1      1   214   107     8     1
+10  10229    35  78.0     0     1     0    100      0     1      1     964     0      1     1     3       0     0      1   221   132    NA     0
+# … with 2,129 more rows, and 5 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <pre class="r"><code>trial_act_demo</code></pre>
 <pre><code># A tibble: 2,139 × 3
@@ -300,10 +297,8 @@ trial_act</code></pre>
 </ol>
 <pre class="r"><code>names(XXX)</code></pre>
 <pre class="r"><code>names(trial_act)</code></pre>
-<pre><code> [1] &quot;pidnum&quot;  &quot;age&quot;     &quot;wtkg&quot;    &quot;hemo&quot;    &quot;homo&quot;    &quot;drugs&quot;   &quot;karnof&quot; 
- [8] &quot;oprior&quot;  &quot;z30&quot;     &quot;zprior&quot;  &quot;preanti&quot; &quot;race&quot;    &quot;gender&quot;  &quot;str2&quot;   
-[15] &quot;strat&quot;   &quot;symptom&quot; &quot;treat&quot;   &quot;offtrt&quot;  &quot;cd40&quot;    &quot;cd420&quot;   &quot;cd496&quot;  
-[22] &quot;r&quot;       &quot;cd80&quot;    &quot;cd820&quot;   &quot;cens&quot;    &quot;days&quot;    &quot;arms&quot;   </code></pre>
+<pre><code> [1] &quot;pidnum&quot;  &quot;age&quot;     &quot;wtkg&quot;    &quot;hemo&quot;    &quot;homo&quot;    &quot;drugs&quot;   &quot;karnof&quot;  &quot;oprior&quot;  &quot;z30&quot;     &quot;zprior&quot;  &quot;preanti&quot; &quot;race&quot;    &quot;gender&quot;  &quot;str2&quot;   
+[15] &quot;strat&quot;   &quot;symptom&quot; &quot;treat&quot;   &quot;offtrt&quot;  &quot;cd40&quot;    &quot;cd420&quot;   &quot;cd496&quot;   &quot;r&quot;       &quot;cd80&quot;    &quot;cd820&quot;   &quot;cens&quot;    &quot;days&quot;    &quot;arms&quot;   </code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using <code>rename()</code>, change the column name
 <code>wtkg</code> in the <code>trial_act</code> dataframe to
@@ -321,11 +316,9 @@ trial_act &lt;- trial_act %&gt;%
 you now see the column <code>weight_kg</code>?</li>
 </ol>
 <pre class="r"><code>names(trial_act)</code></pre>
-<pre><code> [1] &quot;pidnum&quot;    &quot;age&quot;       &quot;weight_kg&quot; &quot;hemo&quot;      &quot;homo&quot;      &quot;drugs&quot;    
- [7] &quot;karnof&quot;    &quot;oprior&quot;    &quot;z30&quot;       &quot;zprior&quot;    &quot;preanti&quot;   &quot;race&quot;     
-[13] &quot;gender&quot;    &quot;str2&quot;      &quot;strat&quot;     &quot;symptom&quot;   &quot;treat&quot;     &quot;offtrt&quot;   
-[19] &quot;cd40&quot;      &quot;cd420&quot;     &quot;cd496&quot;     &quot;r&quot;         &quot;cd80&quot;      &quot;cd820&quot;    
-[25] &quot;cens&quot;      &quot;days&quot;      &quot;arms&quot;     </code></pre>
+<pre><code> [1] &quot;pidnum&quot;    &quot;age&quot;       &quot;weight_kg&quot; &quot;hemo&quot;      &quot;homo&quot;      &quot;drugs&quot;     &quot;karnof&quot;    &quot;oprior&quot;    &quot;z30&quot;       &quot;zprior&quot;    &quot;preanti&quot;  
+[12] &quot;race&quot;      &quot;gender&quot;    &quot;str2&quot;      &quot;strat&quot;     &quot;symptom&quot;   &quot;treat&quot;     &quot;offtrt&quot;    &quot;cd40&quot;      &quot;cd420&quot;     &quot;cd496&quot;     &quot;r&quot;        
+[23] &quot;cd80&quot;      &quot;cd820&quot;     &quot;cens&quot;      &quot;days&quot;      &quot;arms&quot;     </code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Change the column name <code>age</code> to <code>age_y</code> (to
 specify that age is in years).</li>
@@ -532,24 +525,20 @@ worked!</li>
 
 trial_act</code></pre>
 <pre><code># A tibble: 2,139 × 34
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 940533    12      41.4     1     0     0    100      0     0      1       0
- 2 950037    12      53.1     1     0     0    100      0     1      1     902
- 3 950056    12      31       1     0     0    100      0     1      1    2500
- 4 910034    13      32.7     1     0     0    100      0     1      1     553
- 5 940534    13      62.9     1     0     0    100      0     0      1     366
- 6 960014    13      48.5     1     0     0    100      0     0      1       0
- 7 310767    14      65       1     0     0    100      0     1      1     490
- 8 920050    14      54.2     1     0     0    100      0     1      1     610
- 9 940544    14      41.1     1     0     0    100      0     0      1       0
-10 950061    14      64.3     1     0     0    100      0     1      1     387
-# … with 2,129 more rows, and 23 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 940533    12    41.4     1     0     0    100      0     0      1       0     1      1     0     1       0     1      0   301   390   422     1
+ 2 950037    12    53.1     1     0     0    100      0     1      1     902     0      1     1     3       0     1      0   328   826   497     1
+ 3 950056    12    31       1     0     0    100      0     1      1    2500     0      1     1     3       0     1      1   187   116    NA     0
+ 4 910034    13    32.7     1     0     0    100      0     1      1     553     0      1     1     3       1     1      1   265   434    NA     0
+ 5 940534    13    62.9     1     0     0    100      0     0      1     366     0      1     1     2       0     1      1   445   286    NA     0
+ 6 960014    13    48.5     1     0     0    100      0     0      1       0     0      1     0     1       1     0      1   283   271    NA     0
+ 7 310767    14    65       1     0     0    100      0     1      1     490     0      1     1     3       0     1      0   374   451   447     1
+ 8 920050    14    54.2     1     0     0    100      0     1      1     610     1      1     1     3       0     1      0   290   300   310     1
+ 9 940544    14    41.1     1     0     0    100      0     0      1       0     0      1     0     1       0     1      0   516   734   702     1
+10 950061    14    64.3     1     0     0    100      0     1      1     387     1      1     1     3       0     1      1   383   281    NA     0
+# … with 2,129 more rows, 12 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, and abbreviated variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Now arrange the data in <em>descending</em> order of
@@ -563,24 +552,20 @@ make sure it worked. To arrange data in descending order, just include
 
 trial_act</code></pre>
 <pre><code># A tibble: 2,139 × 34
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1  11438    70      73.9     0     1     0    100      0     1      1     674
- 2 211360    70      63.1     0     1     0     90      0     0      1       0
- 3 211284    69      81.6     0     1     0    100      0     0      1       0
- 4  50580    68      90.5     0     1     1    100      0     1      1     618
- 5  81127    68      70.8     0     1     0     90      0     1      1    1770
- 6  10924    67      71       0     1     0    100      0     0      1       0
- 7 241150    67      82.1     0     1     0     90      0     0      1       0
- 8  50662    66      84.4     0     1     0    100      0     0      1       0
- 9  11987    65      77.2     0     1     0     90      0     0      1       0
-10 140797    65      60.5     0     1     0     90      0     0      1       0
-# … with 2,129 more rows, and 23 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1  11438    70    73.9     0     1     0    100      0     1      1     674     0      1     1     3       0     0      0   429   353    NA     0
+ 2 211360    70    63.1     0     1     0     90      0     0      1       0     0      1     0     1       0     1      0   479   574   502     1
+ 3 211284    69    81.6     0     1     0    100      0     0      1       0     0      1     0     1       0     1      0   455   566   618     1
+ 4  50580    68    90.5     0     1     1    100      0     1      1     618     0      1     1     3       0     1      0   367   537   701     1
+ 5  81127    68    70.8     0     1     0     90      0     1      1    1770     0      1     1     3       0     1      1   196   190    NA     0
+ 6  10924    67    71       0     1     0    100      0     0      1       0     0      1     0     1       1     1      0   307   376   207     1
+ 7 241150    67    82.1     0     1     0     90      0     0      1       0     0      1     0     1       0     0      1   296   292    NA     0
+ 8  50662    66    84.4     0     1     0    100      0     0      1       0     0      1     0     1       0     0      1   481   418    55     1
+ 9  11987    65    77.2     0     1     0     90      0     0      1       0     0      1     0     1       0     0      0   323   412    24     1
+10 140797    65    60.5     0     1     0     90      0     0      1       0     0      1     0     1       0     0      1   414   459   270     1
+# … with 2,129 more rows, 12 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, and abbreviated variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>You can sort the rows of dataframes with multiple columns by
@@ -595,24 +580,20 @@ result to make sure it looks right!</li>
 
 trial_act</code></pre>
 <pre><code># A tibble: 2,139 × 34
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 960014    13      48.5     1     0     0    100      0     0      1       0
- 2 960031    14      48.3     1     0     0    100      0     0      1       0
- 3 990071    14      60       1     0     0    100      0     0      1       0
- 4 980042    16      63       1     0     0    100      0     1      1     753
- 5 171040    17      51.3     0     0     0     90      0     0      1       0
- 6 990026    17     103.      1     0     0    100      0     1      1     417
- 7 310234    18      57.3     1     0     0    100      0     1      1     344
- 8 940519    18      56.8     1     0     0    100      0     1      1     805
- 9 211314    19      50.8     0     0     0     90      0     0      1       0
-10 340767    19      74.8     0     1     0    100      0     0      1       0
-# … with 2,129 more rows, and 23 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 960014    13    48.5     1     0     0    100      0     0      1       0     0      1     0     1       1     0      1   283   271    NA     0
+ 2 960031    14    48.3     1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   481   428   519     1
+ 3 990071    14    60       1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   166   169    28     1
+ 4 980042    16    63       1     0     0    100      0     1      1     753     0      1     1     3       0     0      0   299   214   124     1
+ 5 171040    17    51.3     0     0     0     90      0     0      1       0     1      0     0     1       0     0      1   549   415   436     1
+ 6 990026    17   103.      1     0     0    100      0     1      1     417     1      1     1     3       0     0      1   373   218    NA     0
+ 7 310234    18    57.3     1     0     0    100      0     1      1     344     0      0     1     2       0     0      0   445   371   338     1
+ 8 940519    18    56.8     1     0     0    100      0     1      1     805     1      1     1     3       0     0      0   276   150    34     1
+ 9 211314    19    50.8     0     0     0     90      0     0      1       0     1      0     0     1       0     0      1   298   267    NA     0
+10 340767    19    74.8     0     1     0    100      0     0      1       0     1      1     0     1       0     0      0   503   452    NA     0
+# … with 2,129 more rows, 12 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, and abbreviated variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 </div>
 <div id="f---filter-specific-rows-with-filter" class="section level3">
@@ -626,24 +607,20 @@ males (Hint: <code>gender_char == "male"</code>)</li>
 <pre class="r"><code>trial_act %&gt;%
   filter(gender_char == &quot;male&quot;)</code></pre>
 <pre><code># A tibble: 1,771 × 34
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 960014    13      48.5     1     0     0    100      0     0      1       0
- 2 960031    14      48.3     1     0     0    100      0     0      1       0
- 3 990071    14      60       1     0     0    100      0     0      1       0
- 4 980042    16      63       1     0     0    100      0     1      1     753
- 5 990026    17     103.      1     0     0    100      0     1      1     417
- 6 940519    18      56.8     1     0     0    100      0     1      1     805
- 7 340767    19      74.8     0     1     0    100      0     0      1       0
- 8 211007    20      72.7     0     1     0     90      0     1      1      21
- 9 261065    20      57.3     0     1     0    100      0     0      1       0
-10 490308    20      72       0     1     0    100      0     0      1     539
-# … with 1,761 more rows, and 23 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 960014    13    48.5     1     0     0    100      0     0      1       0     0      1     0     1       1     0      1   283   271    NA     0
+ 2 960031    14    48.3     1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   481   428   519     1
+ 3 990071    14    60       1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   166   169    28     1
+ 4 980042    16    63       1     0     0    100      0     1      1     753     0      1     1     3       0     0      0   299   214   124     1
+ 5 990026    17   103.      1     0     0    100      0     1      1     417     1      1     1     3       0     0      1   373   218    NA     0
+ 6 940519    18    56.8     1     0     0    100      0     1      1     805     1      1     1     3       0     0      0   276   150    34     1
+ 7 340767    19    74.8     0     1     0    100      0     0      1       0     1      1     0     1       0     0      0   503   452    NA     0
+ 8 211007    20    72.7     0     1     0     90      0     1      1      21     0      1     1     2       0     0      1   283   334    NA     0
+ 9 261065    20    57.3     0     1     0    100      0     0      1       0     0      1     0     1       0     0      1   488   559    NA     0
+10 490308    20    72       0     1     0    100      0     0      1     539     1      1     1     3       0     0      1   215   249   236     1
+# … with 1,761 more rows, 12 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, and abbreviated variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Create a new dataframe called <code>trial_act_male</code> that only
@@ -657,24 +634,20 @@ from males!</li>
 
 trial_act_male</code></pre>
 <pre><code># A tibble: 1,771 × 34
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 960014    13      48.5     1     0     0    100      0     0      1       0
- 2 960031    14      48.3     1     0     0    100      0     0      1       0
- 3 990071    14      60       1     0     0    100      0     0      1       0
- 4 980042    16      63       1     0     0    100      0     1      1     753
- 5 990026    17     103.      1     0     0    100      0     1      1     417
- 6 940519    18      56.8     1     0     0    100      0     1      1     805
- 7 340767    19      74.8     0     1     0    100      0     0      1       0
- 8 211007    20      72.7     0     1     0     90      0     1      1      21
- 9 261065    20      57.3     0     1     0    100      0     0      1       0
-10 490308    20      72       0     1     0    100      0     0      1     539
-# … with 1,761 more rows, and 23 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 960014    13    48.5     1     0     0    100      0     0      1       0     0      1     0     1       1     0      1   283   271    NA     0
+ 2 960031    14    48.3     1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   481   428   519     1
+ 3 990071    14    60       1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   166   169    28     1
+ 4 980042    16    63       1     0     0    100      0     1      1     753     0      1     1     3       0     0      0   299   214   124     1
+ 5 990026    17   103.      1     0     0    100      0     1      1     417     1      1     1     3       0     0      1   373   218    NA     0
+ 6 940519    18    56.8     1     0     0    100      0     1      1     805     1      1     1     3       0     0      0   276   150    34     1
+ 7 340767    19    74.8     0     1     0    100      0     0      1       0     1      1     0     1       0     0      0   503   452    NA     0
+ 8 211007    20    72.7     0     1     0     90      0     1      1      21     0      1     1     2       0     0      1   283   334    NA     0
+ 9 261065    20    57.3     0     1     0    100      0     0      1       0     0      1     0     1       0     0      1   488   559    NA     0
+10 490308    20    72       0     1     0    100      0     0      1     539     1      1     1     3       0     0      1   215   249   236     1
+# … with 1,761 more rows, 12 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, and abbreviated variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Filter only rows for patients under the age of 60.</li>
@@ -682,24 +655,20 @@ trial_act_male</code></pre>
 <pre class="r"><code>trial_act %&gt;%
   filter(age_y &lt; 60)</code></pre>
 <pre><code># A tibble: 2,110 × 34
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 960014    13      48.5     1     0     0    100      0     0      1       0
- 2 960031    14      48.3     1     0     0    100      0     0      1       0
- 3 990071    14      60       1     0     0    100      0     0      1       0
- 4 980042    16      63       1     0     0    100      0     1      1     753
- 5 171040    17      51.3     0     0     0     90      0     0      1       0
- 6 990026    17     103.      1     0     0    100      0     1      1     417
- 7 310234    18      57.3     1     0     0    100      0     1      1     344
- 8 940519    18      56.8     1     0     0    100      0     1      1     805
- 9 211314    19      50.8     0     0     0     90      0     0      1       0
-10 340767    19      74.8     0     1     0    100      0     0      1       0
-# … with 2,100 more rows, and 23 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 960014    13    48.5     1     0     0    100      0     0      1       0     0      1     0     1       1     0      1   283   271    NA     0
+ 2 960031    14    48.3     1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   481   428   519     1
+ 3 990071    14    60       1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   166   169    28     1
+ 4 980042    16    63       1     0     0    100      0     1      1     753     0      1     1     3       0     0      0   299   214   124     1
+ 5 171040    17    51.3     0     0     0     90      0     0      1       0     1      0     0     1       0     0      1   549   415   436     1
+ 6 990026    17   103.      1     0     0    100      0     1      1     417     1      1     1     3       0     0      1   373   218    NA     0
+ 7 310234    18    57.3     1     0     0    100      0     1      1     344     0      0     1     2       0     0      0   445   371   338     1
+ 8 940519    18    56.8     1     0     0    100      0     1      1     805     1      1     1     3       0     0      0   276   150    34     1
+ 9 211314    19    50.8     0     0     0     90      0     0      1       0     1      0     0     1       0     0      1   298   267    NA     0
+10 340767    19    74.8     0     1     0    100      0     0      1       0     1      1     0     1       0     0      0   503   452    NA     0
+# … with 2,100 more rows, 12 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, and abbreviated variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>A colleague of yours named Tracy wants a datafame only containing
@@ -739,24 +708,21 @@ demographic data?</li>
 </ol>
 <pre class="r"><code>trial_act</code></pre>
 <pre><code># A tibble: 2,139 × 36
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 960014    13      48.5     1     0     0    100      0     0      1       0
- 2 960031    14      48.3     1     0     0    100      0     0      1       0
- 3 990071    14      60       1     0     0    100      0     0      1       0
- 4 980042    16      63       1     0     0    100      0     1      1     753
- 5 171040    17      51.3     0     0     0     90      0     0      1       0
- 6 990026    17     103.      1     0     0    100      0     1      1     417
- 7 310234    18      57.3     1     0     0    100      0     1      1     344
- 8 940519    18      56.8     1     0     0    100      0     1      1     805
- 9 211314    19      50.8     0     0     0     90      0     0      1       0
-10 340767    19      74.8     0     1     0    100      0     0      1       0
-# … with 2,129 more rows, and 25 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 960014    13    48.5     1     0     0    100      0     0      1       0     0      1     0     1       1     0      1   283   271    NA     0
+ 2 960031    14    48.3     1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   481   428   519     1
+ 3 990071    14    60       1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   166   169    28     1
+ 4 980042    16    63       1     0     0    100      0     1      1     753     0      1     1     3       0     0      0   299   214   124     1
+ 5 171040    17    51.3     0     0     0     90      0     0      1       0     1      0     0     1       0     0      1   549   415   436     1
+ 6 990026    17   103.      1     0     0    100      0     1      1     417     1      1     1     3       0     0      1   373   218    NA     0
+ 7 310234    18    57.3     1     0     0    100      0     1      1     344     0      0     1     2       0     0      0   445   371   338     1
+ 8 940519    18    56.8     1     0     0    100      0     1      1     805     1      1     1     3       0     0      0   276   150    34     1
+ 9 211314    19    50.8     0     0     0     90      0     0      1       0     1      0     0     1       0     0      1   298   267    NA     0
+10 340767    19    74.8     0     1     0    100      0     0      1       0     1      1     0     1       0     0      0   503   452    NA     0
+# … with 2,129 more rows, 14 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;, and abbreviated
+#   variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 </div>
 <div id="h---reshaping-with-pivot_longer-and-pivot_wider"
@@ -884,24 +850,21 @@ were greater than 250 <em>and</em> less than 400.</li>
 
 trial_A</code></pre>
 <pre><code># A tibble: 126 × 36
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 630023    26      86.2     0     0     1     90      0     0      1       0
- 2  10378    27      67.3     0     0     1     90      0     1      1     875
- 3 320475    27      66.6     0     0     1     90      0     0      1       0
- 4  71333    29      73.9     0     1     1    100      0     0      1       0
- 5 140809    29      70       0     1     1    100      0     0      1       0
- 6 630030    29      88.2     0     0     1    100      0     0      1       0
- 7 190395    33      68       0     0     1    100      0     1      1     842
- 8 320365    34      86.0     0     0     1    100      0     0      1       0
- 9 540015    34      72.6     0     0     1    100      0     0      1       0
-10 180917    35      77.7     0     0     1     90      0     1      1     248
-# … with 116 more rows, and 25 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 630023    26    86.2     0     0     1     90      0     0      1       0     0      1     0     1       0     0      1   342   179    NA     0
+ 2  10378    27    67.3     0     0     1     90      0     1      1     875     0      0     1     3       0     0      0   350   440    NA     0
+ 3 320475    27    66.6     0     0     1     90      0     0      1       0     0      0     0     1       0     0      0   320   256   396     1
+ 4  71333    29    73.9     0     1     1    100      0     0      1       0     0      1     0     1       0     0      1   280   458   349     1
+ 5 140809    29    70       0     1     1    100      0     0      1       0     0      1     0     1       0     0      1   259   263    NA     0
+ 6 630030    29    88.2     0     0     1    100      0     0      1       0     1      1     0     1       1     0      1   378   530   235     1
+ 7 190395    33    68       0     0     1    100      0     1      1     842     0      1     1     3       0     0      1   304   264    NA     0
+ 8 320365    34    86.0     0     0     1    100      0     0      1       0     1      0     0     1       0     0      0   348   372   324     1
+ 9 540015    34    72.6     0     0     1    100      0     0      1       0     1      1     0     1       0     0      1   370   380    NA     0
+10 180917    35    77.7     0     0     1     90      0     1      1     248     1      1     1     2       0     0      0   341   372    NA     0
+# … with 116 more rows, 14 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;, and abbreviated
+#   variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Add a new column to <code>trial_act</code> called
@@ -916,25 +879,21 @@ and <code>"Non User"</code> when drugs == 0.</li>
 
 trial_act</code></pre>
 <pre><code># A tibble: 2,139 × 37
-   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
- 1 960014    13      48.5     1     0     0    100      0     0      1       0
- 2 960031    14      48.3     1     0     0    100      0     0      1       0
- 3 990071    14      60       1     0     0    100      0     0      1       0
- 4 980042    16      63       1     0     0    100      0     1      1     753
- 5 171040    17      51.3     0     0     0     90      0     0      1       0
- 6 990026    17     103.      1     0     0    100      0     1      1     417
- 7 310234    18      57.3     1     0     0    100      0     1      1     344
- 8 940519    18      56.8     1     0     0    100      0     1      1     805
- 9 211314    19      50.8     0     0     0     90      0     0      1       0
-10 340767    19      74.8     0     1     0    100      0     0      1       0
-# … with 2,129 more rows, and 26 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;,
-#   str2 &lt;dbl&gt;, strat &lt;dbl&gt;, symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;,
-#   cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;, cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;,
-#   cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
-#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;,
-#   arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;,
-#   drugs_char &lt;chr&gt;
+   pidnum age_y weigh…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 960014    13    48.5     1     0     0    100      0     0      1       0     0      1     0     1       1     0      1   283   271    NA     0
+ 2 960031    14    48.3     1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   481   428   519     1
+ 3 990071    14    60       1     0     0    100      0     0      1       0     0      1     0     1       0     0      0   166   169    28     1
+ 4 980042    16    63       1     0     0    100      0     1      1     753     0      1     1     3       0     0      0   299   214   124     1
+ 5 171040    17    51.3     0     0     0     90      0     0      1       0     1      0     0     1       0     0      1   549   415   436     1
+ 6 990026    17   103.      1     0     0    100      0     1      1     417     1      1     1     3       0     0      1   373   218    NA     0
+ 7 310234    18    57.3     1     0     0    100      0     1      1     344     0      0     1     2       0     0      0   445   371   338     1
+ 8 940519    18    56.8     1     0     0    100      0     1      1     805     1      1     1     3       0     0      0   276   150    34     1
+ 9 211314    19    50.8     0     0     0     90      0     0      1       0     1      0     0     1       0     0      1   298   267    NA     0
+10 340767    19    74.8     0     1     0    100      0     0      1       0     1      1     0     1       0     0      0   503   452    NA     0
+# … with 2,129 more rows, 15 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;,
+#   cd_change_20 &lt;dbl&gt;, cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;, drugs_char &lt;chr&gt;,
+#   and abbreviated variable name ¹​weight_kg
 # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Create a new dataframe called <code>trial_B</code> from
@@ -954,22 +913,19 @@ trial_act</code></pre>
 
 trial_B</code></pre>
 <pre><code># A tibble: 8 × 37
-  pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
-   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-1 220489    45      70.9     0     0     1    100      0     0      1       0
-2 140744    30      81.2     0     1     1    100      0     0      1       0
-3  10962    41      81.9     0     0     1     90      0     0      1       0
-4  50580    68      90.5     0     1     1    100      0     1      1     618
-5  10881    36      81.6     0     1     1    100      0     1      1      86
-6 250197    49      86.2     0     1     1     90      0     0      1       0
-7  50572    28      84.4     0     1     1     90      0     0      1      15
-8  50623    35      77       0     1     1    100      0     0      1       0
-# … with 26 more variables: race &lt;dbl&gt;, gender &lt;dbl&gt;, str2 &lt;dbl&gt;, strat &lt;dbl&gt;,
-#   symptom &lt;dbl&gt;, treat &lt;dbl&gt;, offtrt &lt;dbl&gt;, cd40 &lt;dbl&gt;, cd420 &lt;dbl&gt;,
-#   cd496 &lt;dbl&gt;, r &lt;dbl&gt;, cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;,
-#   arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;, cd_change_20 &lt;dbl&gt;,
-#   cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;,
-#   exercise &lt;dbl&gt;, education &lt;chr&gt;, drugs_char &lt;chr&gt;
+  pidnum age_y weight…¹  hemo  homo drugs karnof oprior   z30 zprior preanti  race gender  str2 strat symptom treat offtrt  cd40 cd420 cd496     r
+   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 220489    45     70.9     0     0     1    100      0     0      1       0     1      0     0     1       0     0      1   422   401   722     1
+2 140744    30     81.2     0     1     1    100      0     0      1       0     0      1     0     1       0     1      1     0   566   304     1
+3  10962    41     81.9     0     0     1     90      0     0      1       0     1      1     0     1       0     1      0   209   569   675     1
+4  50580    68     90.5     0     1     1    100      0     1      1     618     0      1     1     3       0     1      0   367   537   701     1
+5  10881    36     81.6     0     1     1    100      0     1      1      86     0      1     1     2       1     1      1   236   290   447     1
+6 250197    49     86.2     0     1     1     90      0     0      1       0     0      1     0     1       0     1      0   300   510   550     1
+7  50572    28     84.4     0     1     1     90      0     0      1      15     0      1     1     2       1     1      0   387   597   625     1
+8  50623    35     77       0     1     1    100      0     0      1       0     0      1     0     1       0     1      0   293   396   536     1
+# … with 15 more variables: cd80 &lt;dbl&gt;, cd820 &lt;dbl&gt;, cens &lt;dbl&gt;, days &lt;dbl&gt;, arms &lt;dbl&gt;, age_m &lt;dbl&gt;, weight_lb &lt;dbl&gt;, cd_change_20 &lt;dbl&gt;,
+#   cd_change_960 &lt;dbl&gt;, gender_char &lt;chr&gt;, arms_char &lt;chr&gt;, agem &lt;dbl&gt;, exercise &lt;dbl&gt;, education &lt;chr&gt;, drugs_char &lt;chr&gt;, and abbreviated
+#   variable name ¹​weight_kg
 # ℹ Use `colnames()` to see all variable names</code></pre>
 </div>
 </div>

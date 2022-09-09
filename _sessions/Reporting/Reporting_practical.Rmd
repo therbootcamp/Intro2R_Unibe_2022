@@ -3,7 +3,7 @@ title: "Reporting"
 author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
-      <font style='font-style:normal'>Introduction to R</font><br>
+      <font style='font-style:normal'>Introduction to Data Science with R</font><br>
       <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
@@ -80,14 +80,14 @@ By the end of this practical you will know how to:
 
 2. Because R Markdown looks quite a bit different from standard R code, the best way to look at examples is to see a new R Markdown document in action. In RStudio, click File -- New File -- R Markdown
 
-```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "60%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_A.png")
+```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "50%"}
+knitr::include_graphics("image/rmarkdown_ss_A.png")
 ```
 
 3.  Give the document a title and an author. For the output format, select HTML (the default). Click Ok!
 
 ```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "60%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_B.png")
+knitr::include_graphics("image/rmarkdown_ss_B.png")
 ```
 
 4. A new file with the information you just entered will pop up. This is your first R Markdown document!
@@ -104,7 +104,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therboot
 
 ### C - Load packages, data and set default chunk options
 
-1. The first chunk in your document already has the label `setup`. This is your setup chunk. This is a good place to load your packages and import your data. Inside of this chunk, write the comment `# Load Packages -------------`. Then, using the `library()` function, load the packages listed in the `Packages` section above. 
+1. The first chunk in your document already has the label `setup`. This is your setup chunk. This is a good place to load your packages and import your data. Inside of this chunk, write the comment `# Load Packages -------------`. Then, using the `library()` function, load the following packages: `tidyverse`, `knitr`, `DT`, `broom`, and `rmdformats`. 
 
 2. Knit your document! Make sure you don't get any errors!
 
@@ -141,7 +141,7 @@ options(digits = 2)  # Round all output to 2 digits
 
 ### D - Add formatted text and an image
 
-1. Below your last markdown chunk, write the necessary text and Markdown tags to create the following sentence. Be sure to create italic text using single astricies *\*italic\** and and bold text using two astricies \*\***bold**\*\*
+1. Below your last markdown chunk, write the necessary text and Markdown tags to create the following sentence. Be sure to create italic text using single asterisk *\*italic\** and and bold text using two asterisks \*\***bold**\*\*
 
 - In this practical, I will analyse two datasets and show reproducible results in a dynamic document created in R Markdown. R Markdown is great because I can integrate R code directly into my document, and easily use *italics* and **bold** using formatting tags.
 
@@ -149,7 +149,7 @@ options(digits = 2)  # Round all output to 2 digits
 
 3. Knit the document!
 
-4. Create a new code chunk by either clicking the "Insert - R" button, or by using the "Command|Ctrl + Option + I"" shortcut on Mac
+4. Create a new code chunk by either clicking the "Insert - R" button, or by using the "Command|Ctrl + Option + I" shortcut
 
 5. Now it's time to add an image to your document! In the chunk you just created, use the following template to include an image of a burger in your document. You can find the image here: [link](https://dwulff.github.io/Intro2R_Unibe/_sessions/PlottingI/image/burgers.jpg). (Tip: Use right click and copy link address to copy the link)
 

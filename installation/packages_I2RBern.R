@@ -18,7 +18,9 @@ Bootcamp_package_installation <- function() {
     "tidyverse",
     "knitr",
     "rmarkdown",
-    "DT"
+    "DT",
+    "broom",
+    "rmdformats"
   )
   
   # Optional packages

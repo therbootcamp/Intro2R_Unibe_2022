@@ -63,11 +63,6 @@ In 3 days, 9 sessions, and 21 hours you have come a long way.
 
 ---
 
-<p align="center"><br>
-<iframe src="https://www.sdghackathon.io/" width="1150" height="570" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe></p>
-
----
-
 # Books
 
 Here is a series of useful good books ordered by complexity.
@@ -90,7 +85,7 @@ Here is a series of useful good books ordered by complexity.
   </td>
 
   <td>
-  <a href="https://www.springer.com/de/book/9783540799979"><img border="0" alt="W3Schools" src="https://images.springer.com/sgw/books/medium/9783540799979.jpg" height="180" ></a>
+  <a href="https://www.springer.com/de/book/9783540799979"><img border="0" alt="W3Schools" src="https://media.springernature.com/w92/springer-static/cover/book/978-3-540-79998-6.jpg" height="180" ></a>
   </td>
   
   <td>
@@ -170,66 +165,17 @@ The web is a great place to learn about R.
 
 
 ---
-
+.pull-left45[
 # Other courses
 
+]
 
-<table class="tg"  style="cellspacing:0; cellpadding:0; border:none;">
-<tr valign="top">
-  <col width="20%">
-  <col width="20%">
-  <col width="20%">
-  <col width="20%">
-  <col width="20%">
-  <td>
-    <p align="center">
-      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
-      <font style="font-size:20px;weight:700"><br>Einführung in die moderne Datenanalyse mit R</font><br>
-      <br>
-      <img src="https://therbootcamp.github.io/img/courses/0.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
-      <high>Oct 15,<br>2021</high><br><br><br><br>
-    </p>
-  </td>
-  <td>
-    <p align="center">
-      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
-      <font style="font-size:20px;weight:700"><br>Explorative Datenanalyse mit R<br></font><br>
-      <br>
-      <img src="https://therbootcamp.github.io/img/courses/1.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
-      <high>Sep 24-25,<br>2021</high><br><br><br><br>
-    </p>
-  </td>
-  <td>
-    <p align="center">
-      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
-      <font style="font-size:20px;weight:700"><br>Statistik mit R<br><br></font><br>
-      <br>
-      <img src="https://therbootcamp.github.io/img/courses/2.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
-      <high>Oct 22-23,<br>2021</high><br><br><br><br>
-      </a>
-    </p>
-  </td>
-  <td>
-    <p align="center">
-      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
-      <font style="font-size:20px;weight:700"><br>Maschinelles Lernen mit R<br></font><br>
-      <br>
-      <img src="https://therbootcamp.github.io/img/courses/3.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
-      <high>Nov 19-20,<br>2021</high><br><br><br><br>
-      </a>
-    </p>
-  </td>
-  <td>
-    <p align="center">
-      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
-      <font style="font-size:20px;weight:700"><br>Reporting mit R<br><br></font><br>
-      <br>
-      <img src="https://therbootcamp.github.io/img/courses/4.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
-      <high>tba<br>2021</high><br><br><br><br>
-      </a>
-    </p>
-  </td>
-  </tr>
+.pull-right45[
+
+<p align="center"><br><br>
+<iframe src="https://therbootcamp.github.io" width="430" height="550" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</p>
+]
 
 ---
 

@@ -3,7 +3,7 @@
   <head>
     <title>Reporting</title>
     <meta charset="utf-8" />
-    <meta name="author" content="  Intro to Data Science with R   The R Bootcamp @ Unibe                  " />
+    <meta name="author" content="  Introduction to Data Science with R   The R Bootcamp @ Unibe                  " />
     <script src="Reporting_files/header-attrs/header-attrs.js"></script>
     <link href="Reporting_files/remark-css/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
@@ -12,9 +12,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Reporting
-### <br> Intro to Data Science with R<br> <a href='https://therbootcamp.github.io'> The R Bootcamp @ Unibe </a> <br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
-### September 2021
+]
+.author[
+### <br> Introduction to Data Science with R<br> <a href='https://therbootcamp.github.io'> The R Bootcamp @ Unibe </a> <br> <a href='https://therbootcamp.github.io/Intro2R_Unibe_2022/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+]
+.date[
+### September 2022
+]
 
 ---
 
@@ -34,7 +40,7 @@ layout: true
     </a>
     <a href="https://therbootcamp.github.io/">
       <font color="#7E7E7E">
-       The R Bootcamp | September 2021
+       The R Bootcamp | September 2022
       </font>
     </a>
     </span>
@@ -52,13 +58,13 @@ layout: true
 &lt;ul&gt;
   &lt;li class="m1"&gt;&lt;span&gt;Developed by John Gruber and Aaron Swartz in 2004.&lt;br&gt;&lt;br&gt;
   "&lt;high&gt;easy-to-read&lt;/high&gt; and &lt;high&gt;easy-to-write&lt;/high&gt; plain text format, [...] convert it to structurally valid XHTML (or HTML)"&lt;/span&gt;&lt;/li&gt; 
-  &lt;li class="m2"&gt;&lt;span&gt;Simple &lt;high&gt;Syntax for the layout&lt;/high&gt; of documents.&lt;/span&gt;&lt;/li&gt;  
+  &lt;li class="m2"&gt;&lt;span&gt;Simple &lt;high&gt;syntax for formatting&lt;/high&gt; documents.&lt;/span&gt;&lt;/li&gt;  
   &lt;ul&gt;
-    &lt;li&gt;&lt;span&gt;Text in bold and italics&lt;/span&gt;&lt;/li&gt;   
-    &lt;li&gt;&lt;span&gt;Lists&lt;/span&gt;&lt;/li&gt;  
-    &lt;li&gt;&lt;span&gt;Headings&lt;/span&gt;&lt;/li&gt; 
-    &lt;li&gt;&lt;span&gt;Links&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Pictures&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;highlight text with bold and italic&lt;/span&gt;&lt;/li&gt;   
+    &lt;li&gt;&lt;span&gt;lists&lt;/span&gt;&lt;/li&gt;  
+    &lt;li&gt;&lt;span&gt;headers&lt;/span&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;span&gt;hyperlinks&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;images&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/ul&gt;
 
@@ -77,18 +83,19 @@ layout: true
 
 ---
 
-# What is RMarkdown?
+# What is R Markdown?
 
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Markdown is used for &lt;high&gt;layout of dynamic documents&lt;/high&gt; with embedded ...&lt;/span&gt;&lt;/li&gt;&lt;br&gt; 
+  &lt;li class="m1"&gt;&lt;span&gt;Uses Markdown for &lt;high&gt;formatting dynamic reports&lt;/high&gt; that include ...&lt;/span&gt;&lt;/li&gt;&lt;br&gt; 
   &lt;ul&gt;
-    &lt;li&gt;&lt;span&gt;R code chunks&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;R inline code&lt;/span&gt;&lt;/li&gt;   
-    &lt;li&gt;&lt;span&gt;Output from statistical models&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;R code chunks&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;R inline Code&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;  
+    &lt;li&gt;&lt;span&gt;&lt;high&gt;Visualizations&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;Statistical outputs&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span&gt;Tables&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Visualization&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span&gt;etc.&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/ul&gt;
 
@@ -105,41 +112,12 @@ layout: true
 
 ---
 
-.pull-left3[
-
-# Types of documents
-
-&lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown allows the creation of different &lt;high&gt;document types&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;span&gt;Text documents&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Presentations&lt;/span&gt;&lt;/li&gt;   
-    &lt;li&gt;&lt;span&gt;Dashboards (Cockpits)&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Books&lt;/span&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;span&gt;Web-Pages&lt;/span&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/ul&gt;
-
-
-]
-
-.pull-right6[
-
-&lt;br&gt;&lt;br&gt;
-&lt;p align = "center"&gt;
-  &lt;img src="image/types.png"&gt;
-&lt;/p&gt;
-
-]
-
----
-
-# Components of RMarkdown
+# R Markdown elements
 
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;A RMarkdown script consists of multiple &lt;high&gt;components&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown scripts consist of several &lt;high&gt;elements&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%&gt;
@@ -147,7 +125,7 @@ layout: true
   &lt;col width="60%"&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-    &lt;b&gt;Component&lt;/b&gt;
+    &lt;b&gt;Element&lt;/b&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
     &lt;b&gt;Description&lt;/b&gt;
@@ -159,7 +137,7 @@ layout: true
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
   &lt;b&gt;Y&lt;/b&gt;AML &lt;b&gt;A&lt;/b&gt;in't &lt;b&gt;M&lt;/b&gt;arkup &lt;b&gt;L&lt;/b&gt;anguage&lt;br&gt;
-  &lt;high&gt;Document setup&lt;/high&gt;
+  &lt;high&gt;general document settings&lt;/high&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -167,9 +145,9 @@ layout: true
   &lt;mono&gt;Setup chunk&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;high&gt;Chunk&lt;/high&gt; features&lt;br&gt;
-  &lt;high&gt;Packages&lt;/high&gt; load&lt;br&gt;
-  &lt;high&gt;Data&lt;/high&gt; load
+  control &lt;high&gt;chunks&lt;/high&gt; settings&lt;br&gt;
+  load &lt;high&gt;packages&lt;/high&gt;&lt;br&gt;
+  load &lt;high&gt;data&lt;/high&gt;
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -177,8 +155,8 @@ layout: true
   &lt;mono&gt;Markdown&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;high&gt;Headings&lt;/high&gt;&lt;br&gt;
-  &lt;high&gt;Text&lt;/high&gt; with decoration 
+  &lt;high&gt;header&lt;/high&gt;&lt;br&gt;
+  &lt;high&gt;text&lt;/high&gt; highlighting
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -209,14 +187,14 @@ layout: true
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;One RMarkdown document can be translated into multiple output &lt;high&gt;formats&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;RMarkdown can be translated into different &lt;high&gt;document types&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
     &lt;ul&gt;
     &lt;li&gt;&lt;span&gt;PDF&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span&gt;HTML&lt;/span&gt;&lt;/li&gt;   
     &lt;li&gt;&lt;span&gt;Word&lt;/span&gt;&lt;/li&gt;
     &lt;li&gt;&lt;span&gt;PowerPoint&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;&lt;br&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;During theses steps RMarkdown will be translated &lt;high&gt;multiple times&lt;/high&gt;. This process comes with certain restrictions.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;To this end, &lt;high&gt;several translation steps&lt;/high&gt; are necessary.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
 &lt;/ul&gt;
 
 ]
@@ -236,8 +214,8 @@ layout: true
 .pull-left4[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;HTML is the &lt;high&gt;universal framework&lt;/high&gt; for documents, presentations and dashboards.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Export to PDF&lt;/high&gt; is possible, with minimal restrictions.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;HTML is a &lt;high&gt;universal framework&lt;/high&gt; for documents, presentations, and dashboards&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;HTML &lt;high&gt;export to PDF&lt;/high&gt; is often straightforward.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
 &lt;/ul&gt;
 
 ]
@@ -258,8 +236,8 @@ layout: true
 
 &lt;ul&gt;
   &lt;li class="m1"&gt;&lt;span&gt;&lt;b&gt;H&lt;/b&gt;yper&lt;b&gt;T&lt;/b&gt;ext &lt;b&gt;M&lt;/b&gt;arkup &lt;b&gt;L&lt;/b&gt;anguage.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;The lingua franca of the &lt;high&gt;World Wide Web&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m3"&gt;&lt;span&gt;Can be extended with &lt;high&gt;CSS&lt;/high&gt; (Cascading Style Sheets) for specialized formats.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;The format of the &lt;high&gt;World Wide Web&lt;/high&gt;s.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m3"&gt;&lt;span&gt;Affords flexible styling through &lt;high&gt;CSS&lt;/high&gt; (Cascading Style Sheets).&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -275,13 +253,13 @@ layout: true
 
 ---
 
-# Rendering
+# Render
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;HTML is interpreted by RStudio (or a browsern) and presented as a formatted document.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Rstudio&lt;/high&gt; can show rendered documents in the viewer window. &lt;/span&gt;&lt;/li&gt;&lt;br&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;HTML gets &lt;high&gt;interpreted&lt;/high&gt; in RStudio (or browsers) so that a well-formatted document emerges.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;&lt;high&gt;Rstudio&lt;/high&gt; also shows rendered documents (rather than the raw html). &lt;/span&gt;&lt;/li&gt;&lt;br&gt;
 &lt;/ul&gt;
 
 ]
@@ -297,12 +275,12 @@ layout: true
 
 ---
 
-# Headings
+# Headers
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Different level headings are represented with one or multiple &lt;mono&gt;#&lt;/mono&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Headers on different &lt;high&gt;levels&lt;/high&gt; can be set using &lt;mono&gt;#&lt;/mono&gt;.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -321,7 +299,7 @@ layout: true
   &lt;mono&gt;# text&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 1
+  level 1
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -329,7 +307,7 @@ layout: true
   &lt;mono&gt;## text&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 2
+  level 2
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -342,10 +320,10 @@ layout: true
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;mono&gt;##### text&lt;/mono&gt;
+  &lt;mono&gt;##### txt&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 5
+  level 5
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -363,12 +341,12 @@ layout: true
 
 ---
 
-# Headings
+# Headers
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Different level headings are represented with one or multiple &lt;mono&gt;#&lt;/mono&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Headers on different &lt;high&gt;levels&lt;/high&gt; can be set using &lt;mono&gt;#&lt;/mono&gt;.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -387,7 +365,7 @@ layout: true
   &lt;mono&gt;# text&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 1
+  level 1
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -395,7 +373,7 @@ layout: true
   &lt;mono&gt;## text&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 2
+  level 2
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -408,14 +386,13 @@ layout: true
 &lt;/tr&gt;
 &lt;tr&gt;
   &lt;td bgcolor="white"&gt;
-  &lt;mono&gt;##### text&lt;/mono&gt;
+  &lt;mono&gt;##### txt&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  Level 5
+  level 5
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
-
 
 ]
 
@@ -430,12 +407,12 @@ layout: true
 
 ---
 
-# Emphasize text
+# Highlighting
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;The usage of special characters allows &lt;high&gt;text- and code-related&lt;/high&gt; emphasis&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Various operators enable &lt;high&gt;text- and code&lt;/high&gt; highlighting.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -504,12 +481,12 @@ layout: true
 
 ---
 
-# Emphasize text
+# Highlighting
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;The usage of special characters allows &lt;high&gt;text- and code-related&lt;/high&gt; emphasis&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Various operators enable &lt;high&gt;text- and code&lt;/high&gt; highlighting.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -579,12 +556,12 @@ layout: true
 
 ---
 
-# Emphasize text
+# Highlighting
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;The usage of special characters allows &lt;high&gt;text- and code-related&lt;/high&gt; emphasis&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Various operators enable &lt;high&gt;text- and code&lt;/high&gt; highlighting.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%&gt;
@@ -655,13 +632,13 @@ layout: true
 
 ---
 
-# Inline Code
+# Inline code
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;&lt;high&gt;Number and word &lt;/high&gt; can be parameterised with inline code .&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;inline code can contain any R code, similar to &lt;high&gt;code &lt;mono&gt;chunks&lt;/mono&gt;&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;&lt;high&gt;Numbers or labels&lt;/high&gt; in text can be parameterized using inline code.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Inline code can include &lt;high&gt;any&lt;/high&gt; type/length of code.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -682,8 +659,8 @@ layout: true
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;A &lt;high&gt;code &lt;mono&gt;chunk&lt;/mono&gt;&lt;/high&gt; can contain any R Code.&lt;/span&gt;&lt;/li&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;Code chunks are fine tuned with &lt;high&gt;additional arguments&lt;/high&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;A &lt;high&gt;code &lt;mono&gt;chunk&lt;/mono&gt;&lt;/high&gt; can contain any R code.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;The behavior of code chunks can be controlled using &lt;high&gt;chunk arguments&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -719,7 +696,7 @@ layout: true
   &lt;mono&gt;echo=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  show/hide &lt;high&gt;code&lt;/high&gt;
+  Show/hide &lt;high&gt;code&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -727,7 +704,7 @@ layout: true
   &lt;mono&gt;eval=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  execute/don't execute &lt;high&gt;code&lt;/high&gt;
+  Run/not-run &lt;high&gt;code&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -735,7 +712,7 @@ layout: true
   &lt;mono&gt;include=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;high&gt;output&lt;/high&gt; 
+  Include/exclude all &lt;high&gt;output&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -743,7 +720,7 @@ layout: true
   &lt;mono&gt;message=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;messages&lt;/highm&gt;
+  Include/exclude &lt;highm&gt;messages&lt;/highm&gt; in output.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -751,7 +728,7 @@ layout: true
   &lt;mono&gt;warning=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;warnings&lt;/highm&gt;
+  Include/exclude &lt;highm&gt;warnings&lt;/highm&gt; in output.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -793,7 +770,7 @@ layout: true
   &lt;mono&gt;echo=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  show/hide &lt;high&gt;code&lt;/high&gt;
+  Show/hide &lt;high&gt;code&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -801,7 +778,7 @@ layout: true
   &lt;mono&gt;eval=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  execute/don't execute &lt;high&gt;code&lt;/high&gt;
+  Run/not-run &lt;high&gt;code&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -809,7 +786,7 @@ layout: true
   &lt;mono&gt;include=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;high&gt;output&lt;/high&gt; 
+  Include/exclude all &lt;high&gt;output&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -817,7 +794,7 @@ layout: true
   &lt;mono&gt;message=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;messages&lt;/highm&gt;
+  Include/exclude &lt;highm&gt;messages&lt;/highm&gt; in output.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -825,7 +802,7 @@ layout: true
   &lt;mono&gt;warning=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;warnings&lt;/highm&gt;
+  Include/exclude &lt;highm&gt;warnings&lt;/highm&gt; in output.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -866,7 +843,7 @@ layout: true
   &lt;mono&gt;echo=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  show/hide &lt;high&gt;code&lt;/high&gt;
+  Show/hide &lt;high&gt;code&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -874,7 +851,7 @@ layout: true
   &lt;mono&gt;eval=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  execute/don't execute &lt;high&gt;code&lt;/high&gt;
+  Run/not-run &lt;high&gt;code&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -882,7 +859,7 @@ layout: true
   &lt;mono&gt;include=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;high&gt;output&lt;/high&gt; 
+  Include/exclude all &lt;high&gt;output&lt;/high&gt;.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -890,7 +867,7 @@ layout: true
   &lt;mono&gt;message=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;messages&lt;/highm&gt;
+  Include/exclude &lt;highm&gt;messages&lt;/highm&gt; in output.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -898,7 +875,7 @@ layout: true
   &lt;mono&gt;warning=T/F&lt;/mono&gt;
   &lt;/td&gt;
   &lt;td bgcolor="white"&gt;
-  include/exclude &lt;highm&gt;warnings&lt;/highm&gt;
+  Include/exclude &lt;highm&gt;warnings&lt;/highm&gt; in output.
   &lt;/td&gt; 
 &lt;/tr&gt;
 &lt;/table&gt;
@@ -918,12 +895,13 @@ layout: true
 
 ---
 
-# Setup-Chunk
+# Setup chunk
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The setup chunk affords &lt;high&gt; general settings for all chunks&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Additional functions assist.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -939,33 +917,13 @@ layout: true
 
 ---
 
-# Setup-Chunk
+# Setup chunk
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
-&lt;/ul&gt;
-]
-
-.pull-right6[
-
-&lt;br&gt;
-&lt;p align = "center"&gt;
-  &lt;img src="image/markdown_trans_12.png"&gt;
-&lt;/p&gt;
-
-]
-
-
----
-
-# Setup-Chunk
-
-.pull-left3[
-
-&lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The setup chunk affords &lt;high&gt; general settings for all chunks&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Additional functions assist.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -982,12 +940,13 @@ layout: true
 
 ---
 
-# Setup-Chunk
+# Setup chunk
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The setup chunk affords &lt;high&gt; general settings for all chunks&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Additional functions assist.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 ]
@@ -1004,19 +963,21 @@ layout: true
 
 ---
 
-# Setup-Chunk
+# Setup chunk
 
 .pull-left3[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;In the setup-chunk global &lt;high&gt;settings for all other chunks &lt;/high&gt; can be defined.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;The setup chunk affords &lt;high&gt; general settings for all chunks&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Additional functions assist.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 ]
 
 .pull-right6[
 
 &lt;p align = "center"&gt;
-  &lt;img src="image/markdown_trans_15.png" height=420px&gt;
+  &lt;img src="image/markdown_trans_15.png"&gt;
 &lt;/p&gt;
 
 ]
@@ -1024,36 +985,32 @@ layout: true
 
 ---
 
-# Relative path
+# Check settings
 
 .pull-left35[
 
 &lt;ul&gt;
-  &lt;li class="m1"&gt;&lt;span&gt;Markdown documents do not access the regular &lt;high&gt;working directory&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;&lt;br&gt;
-  &lt;li class="m2"&gt;&lt;span&gt;Paths in RMarkdown have to be &lt;high&gt;relative to the .Rmd&lt;/high&gt; file.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m1"&gt;&lt;span&gt;Paths can be specified in &lt;high&gt;Preferences - RMarkdown&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
+  &lt;li class="m2"&gt;&lt;span&gt;Check that 'Evaluate chunks in directory' is set to &lt;high&gt;Project&lt;/high&gt;.&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;br&gt;
-```R
-# Read Data
-read_csv("../1_Data/daten.csv")
-```
-
-] 
+ 
+]
 
 .pull-right55[
-&lt;br&gt;
+
 &lt;p align = "center"&gt;
-  &lt;img src="image/folder.png" height=280px&gt;
+  &lt;img src="image/settings_project.png" height=480px&gt;
 &lt;/p&gt;
 
 ]
+
 
 ---
 
 class: middle, center
 
-&lt;h1&gt;&lt;a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Reporting/Reporting_practical.html"&gt;Practical&lt;/a&gt;&lt;/h1&gt;
+&lt;h1&gt;&lt;a href="https://therbootcamp.github.io/Intro2R_Unibe_2022/_sessions/Reporting/Reporting_practical.html"&gt;Practical&lt;/a&gt;&lt;/h1&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
@@ -1103,6 +1060,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
