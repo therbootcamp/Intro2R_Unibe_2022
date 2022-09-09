@@ -158,7 +158,7 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 
   <iframe src="`r paste0(session_url, 'Data/Data_practical.html')`" height="480px" width = "500px"></iframe>
 
-  Example practical:`r paste0('<a href="', session_url, 'Data/Data_practical.html">Data</a>')`
+  Example practical: `r paste0('<a href="', session_url, 'Data/Data_practical.html">Data</a>')`
 
 ]
 

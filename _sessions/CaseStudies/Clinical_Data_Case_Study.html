@@ -13,13 +13,13 @@
 
 <title>Case study: Clinical</title>
 
-<script src="Clinical_Data_Case_Study_files/header-attrs-2.14/header-attrs.js"></script>
-<script src="Clinical_Data_Case_Study_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="Clinical_Data_Case_Study_files/header-attrs/header-attrs.js"></script>
+<script src="Clinical_Data_Case_Study_files/jquery/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="Clinical_Data_Case_Study_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="Clinical_Data_Case_Study_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="Clinical_Data_Case_Study_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="Clinical_Data_Case_Study_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="Clinical_Data_Case_Study_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Clinical_Data_Case_Study_files/bootstrap/js/bootstrap.min.js"></script>
+<script src="Clinical_Data_Case_Study_files/bootstrap/shim/html5shiv.min.js"></script>
+<script src="Clinical_Data_Case_Study_files/bootstrap/shim/respond.min.js"></script>
 <style>h1 {font-size: 34px;}
        h1.title {font-size: 38px;}
        h2 {font-size: 30px;}
@@ -29,9 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="Clinical_Data_Case_Study_files/navigation-1.1/tabsets.js"></script>
-<link href="Clinical_Data_Case_Study_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="Clinical_Data_Case_Study_files/highlightjs-9.12.0/highlight.js"></script>
+<script src="Clinical_Data_Case_Study_files/navigation/tabsets.js"></script>
+<link href="Clinical_Data_Case_Study_files/highlightjs/default.css" rel="stylesheet" />
+<script src="Clinical_Data_Case_Study_files/highlightjs/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -256,51 +256,38 @@ loaded correctly?</li>
 </ol>
 <pre class="r"><code>trial_df</code></pre>
 <pre><code># A tibble: 300 × 6
-   PatientID   arm histamine_start histamine_end qol_start qol_end
-   &lt;chr&gt;     &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 txdjezeo      1            58.6          67.0         3       3
- 2 htxfjlxk      3            36.1          28.0         3       4
- 3 vkdqhyez      1            57.7          57.3         2       2
- 4 dbuvrwfq      3            56.6          57.4         2       3
- 5 ydaitaah      2            64.7          67.9         5       7
- 6 omhxokdr      1            37.4          41.7         2       2
- 7 dsybafny      1            88.4          95.9         4       6
- 8 fdfmcoto      2            20.2          18.9         2       2
- 9 rwsbykxe      2            48.3          43.0         3       3
-10 xocueqqe      3            48.6          55.2         1       1
-# … with 290 more rows
+  PatientID   arm histamine…¹ hista…² qol_s…³
+  &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 txdjezeo      1        58.6    67.0       3
+2 htxfjlxk      3        36.1    28.0       3
+3 vkdqhyez      1        57.7    57.3       2
+4 dbuvrwfq      3        56.6    57.4       2
+5 ydaitaah      2        64.7    67.9       5
+# … with 295 more rows, and abbreviated
+#   variable names ¹​histamine_start,
+#   ²​histamine_end, ³​qol_start
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <pre class="r"><code>demographics_df</code></pre>
 <pre><code># A tibble: 300 × 5
-   PatientID   age gender site   diseasestatus
-   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        
- 1 pkyivajv     36      0 Tokyo  Mid          
- 2 dbuvrwfq     39      0 Paris  Late         
- 3 jhuztppp     30      0 Tokyo  Mid          
- 4 qejexgza     34      1 Tokyo  Late         
- 5 cszrjxju     41      1 Tokyo  Late         
- 6 uhvgttqh     31      0 London Late         
- 7 cflnybdw     45      1 Tokyo  Mid          
- 8 igobmmvj     48      0 Tokyo  Late         
- 9 lcrtmerg     35      0 London Late         
-10 fjjrnsnt     43      1 London Mid          
-# … with 290 more rows
+  PatientID   age gender site  diseasestatus
+  &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;        
+1 pkyivajv     36      0 Tokyo Mid          
+2 dbuvrwfq     39      0 Paris Late         
+3 jhuztppp     30      0 Tokyo Mid          
+4 qejexgza     34      1 Tokyo Late         
+5 cszrjxju     41      1 Tokyo Late         
+# … with 295 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <pre class="r"><code>biomarker_df</code></pre>
 <pre><code># A tibble: 900 × 3
-   PatientID Biomarker BiomarkerStatus
-   &lt;chr&gt;     &lt;chr&gt;     &lt;lgl&gt;          
- 1 ygazqssv  dw        FALSE          
- 2 qosueuyw  ms        FALSE          
- 3 bhhykjvw  ms        FALSE          
- 4 ifajorty  np        TRUE           
- 5 gxnsybdt  ms        FALSE          
- 6 igobmmvj  ms        FALSE          
- 7 knnzlzun  ms        FALSE          
- 8 glzcbmby  ms        FALSE          
- 9 gxnsybdt  dw        TRUE           
-10 fzrhdpdu  np        FALSE          
-# … with 890 more rows
+  PatientID Biomarker BiomarkerStatus
+  &lt;chr&gt;     &lt;chr&gt;     &lt;lgl&gt;          
+1 ygazqssv  dw        FALSE          
+2 qosueuyw  ms        FALSE          
+3 bhhykjvw  ms        FALSE          
+4 ifajorty  np        TRUE           
+5 gxnsybdt  ms        FALSE          
+# … with 895 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <div id="c---data-wrangling" class="section level3">
@@ -382,22 +369,17 @@ including <code>dw</code>, <code>ms</code>, and <code>np</code></li>
 </ol>
 <pre class="r"><code>dimarta_df</code></pre>
 <pre><code># A tibble: 300 × 14
-   PatientID StudyArm hista…¹ hista…² qol_s…³ qol_end   age gender site  disea…⁴
-   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  
- 1 txdjezeo  placebo     58.6    67.0       3       3    39      0 Paris Late   
- 2 htxfjlxk  dimarta     36.1    28.0       3       4    42      0 Paris Late   
- 3 vkdqhyez  placebo     57.7    57.3       2       2    47      1 Lond… Mid    
- 4 dbuvrwfq  dimarta     56.6    57.4       2       3    39      0 Paris Late   
- 5 ydaitaah  adiclax     64.7    67.9       5       7    35      0 Lond… Late   
- 6 omhxokdr  placebo     37.4    41.7       2       2    41      0 Tokyo Early  
- 7 dsybafny  placebo     88.4    95.9       4       6    35      1 Tokyo Early  
- 8 fdfmcoto  adiclax     20.2    18.9       2       2    50      0 Lond… Mid    
- 9 rwsbykxe  adiclax     48.3    43.0       3       3    35      0 Lond… Early  
-10 xocueqqe  dimarta     48.6    55.2       1       1    42      1 Paris Late   
-# … with 290 more rows, 4 more variables: gender_c &lt;chr&gt;, dw &lt;lgl&gt;, ms &lt;lgl&gt;,
-#   np &lt;lgl&gt;, and abbreviated variable names ¹​histamine_start, ²​histamine_end,
-#   ³​qol_start, ⁴​diseasestatus
-# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
+  PatientID StudyArm histam…¹ hista…² qol_s…³
+  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 txdjezeo  placebo      58.6    67.0       3
+2 htxfjlxk  dimarta      36.1    28.0       3
+3 vkdqhyez  placebo      57.7    57.3       2
+4 dbuvrwfq  dimarta      56.6    57.4       2
+5 ydaitaah  adiclax      64.7    67.9       5
+# … with 295 more rows, and abbreviated
+#   variable names ¹​histamine_start,
+#   ²​histamine_end, ³​qol_start
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>Using the <code>mean()</code> function, calculate the mean age of
 all patients.</li>
@@ -455,7 +437,8 @@ second grouping variable!)</li>
 3 dimarta  female       49
 4 dimarta  male         51
 5 placebo  female       50
-6 placebo  male         50</code></pre>
+# … with 1 more row
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ol start="12" style="list-style-type: decimal">
 <li>Add a new column to the <code>dimarta_df</code> data called
 <code>histamine_change</code> that shows the <em>change</em> in
@@ -481,19 +464,14 @@ life.</li>
 dimarta_df %&gt;% 
   select(qol_change)</code></pre>
 <pre><code># A tibble: 300 × 1
-   qol_change
-        &lt;dbl&gt;
- 1          0
- 2          1
- 3          0
- 4          1
- 5          2
- 6          0
- 7          2
- 8          0
- 9          0
-10          0
-# … with 290 more rows
+  qol_change
+       &lt;dbl&gt;
+1          0
+2          1
+3          0
+4          1
+5          2
+# … with 295 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ol start="14" style="list-style-type: decimal">
 <li>Calculate the percentage of patients who tested positive for each of

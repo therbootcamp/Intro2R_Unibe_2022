@@ -32,12 +32,13 @@ output:
 ---
 
 ```{r setup, include = FALSE}
+source('../config.R')
 knitr::opts_chunk$set(comment = NA, 
                       fig.width = 6, 
                       fig.height = 6,
                       fig.align = 'center',
-                      echo = FALSE, 
-                      eval = FALSE, 
+                      echo = value_echo, 
+                      eval = value_eval, 
                       warning = FALSE)
 
 options(digits = 3)

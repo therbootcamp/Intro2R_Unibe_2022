@@ -31,14 +31,14 @@ output:
 ---
 
 ```{r setup, echo = FALSE, warning=F, message=F}
+source('../config.R')
 knitr::opts_chunk$set(comment = NA, 
                       fig.width = 6, 
                       fig.height = 6,
                       fig.align = 'center',
-                      echo = TRUE, 
-                      eval = TRUE, 
-                      warning = FALSE,
-                      message = FALSE)
+                      echo = value_echo, 
+                      eval = value_eval, 
+                      warning = FALSE)
 require(tidyverse)
 options(digits = 3)
 mcdonalds <- read_csv("1_Data/mcdonalds.csv")
@@ -132,7 +132,7 @@ mcdonalds
 
 In this section, you'll build the following plot step by step.
 
-```{r, eval = TRUE, fig.width = 7, fig.height = 4}
+```{r, eval = TRUE, fig.width = 7, fig.height = 4, message = FALSE}
 ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
   geom_point() +
   geom_smooth(col = "black") +

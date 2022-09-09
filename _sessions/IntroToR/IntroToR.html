@@ -71,12 +71,6 @@ From [Wikipedia](https://en.wikipedia.org/wiki/Statistical_model) (emphasis adde
 
 
 
-```r
-data &lt;- read.table("data/my_data.txt")
-variables &lt;- data[,c('group','variable')]
-analysis &lt;- lm(variable ~ group, data = variables)
-summary(analysis)
-```
 ]
 
 ---
@@ -269,21 +263,8 @@ In many sciences it becomes the de factor **lingua franca** for statistics.
 
 .pull-right5[
 
-```r
-# an object named one_two_three
-one_two_three &lt;- c(1, 2, 3)
-
-# print the object
-print(one_two_three)
-```
-
 ```
 [1] 1 2 3
-```
-
-```r
-# print the object
-one_two_three
 ```
 
 ```
@@ -314,14 +295,6 @@ one_two_three
 
 .pull-right5[
 
-```r
-# an object named one_two_three
-one_two_three &lt;- c(1, 2, 3)
-
-# calculate the mean
-mean(one_two_three)
-```
-
 ```
 [1] 2
 ```
@@ -350,17 +323,6 @@ mean(one_two_three)
 
 .pull-right5[
 
-```r
-# an object named one_two_three
-one_two_three &lt;- c(1, 2, 3)
-
-# calculate the mean
-result &lt;- mean(one_two_three)
-
-# print result
-result
-```
-
 ```
 [1] 2
 ```
@@ -388,17 +350,6 @@ result
 ]
 
 .pull-right5[
-
-```r
-# an object named one_two_three
-one_two_three &lt;- c(1, 2, 3)
-
-# calculate the mean
-result &lt;- mean(one_two_three)
-
-# use result
-result * 10
-```
 
 ```
 [1] 20
@@ -429,30 +380,12 @@ result * 10
 
 .pull-right5[
 
-```r
-# an object named one_two_three
-one_two_three &lt;- c(1, 2, 3)
-
-# print the object
-one_two_three
-```
-
 ```
 [1] 1 2 3
 ```
 
-```r
-# use the object
-one_two_three + 100
-```
-
 ```
 [1] 101 102 103
-```
-
-```r
-# print the object
-one_two_three
 ```
 
 ```
@@ -484,24 +417,8 @@ one_two_three
 
 .pull-right5[
 
-```r
-# an object named one_two_three
-one_two_three &lt;- c(1, 2, 3)
-
-# print the object
-one_two_three
-```
-
 ```
 [1] 1 2 3
-```
-
-```r
-# use the object
-one_two_three &lt;- one_two_three + 100
-
-# print the object
-one_two_three
 ```
 
 ```
@@ -585,30 +502,12 @@ one_two_three
 
 .pull-right5[
 
-```r
-# function c()
-one_two_three &lt;- c(1, 2, 3)
-
-# function `+`()
-one_two_three + 100
-```
-
 ```
 [1] 101 102 103
 ```
 
-```r
-# function print()
-one_two_three
-```
-
 ```
 [1] 1 2 3
-```
-
-```r
-# function mean()
-mean(one_two_three)
 ```
 
 ```
@@ -638,27 +537,12 @@ mean(one_two_three)
 
 .pull-right5[
 
-```r
-# no argument
-mean()
-```
-
 ```
 Error in mean.default(): argument "x" is missing, with no default
 ```
 
-```r
-# one (necessary) argument
-mean(c(1, 2, 3))
-```
-
 ```
 [1] 2
-```
-
-```r
-# add missing value (NA)
-mean(c(1, 2, 3, NA))
 ```
 
 ```
@@ -688,27 +572,12 @@ mean(c(1, 2, 3, NA))
 
 .pull-right5[
 
-```r
-# no argument
-mean()
-```
-
 ```
 Error in mean.default(): argument "x" is missing, with no default
 ```
 
-```r
-# one (necessary) argument
-mean(c(1, 2, 3))
-```
-
 ```
 [1] 2
-```
-
-```r
-# change default to remove NAs
-mean(c(1, 2, 3, NA), na.rm = TRUE)
 ```
 
 ```
@@ -737,27 +606,12 @@ mean(c(1, 2, 3, NA), na.rm = TRUE)
 
 .pull-right5[
 
-```r
-# explicit argument names
-mean(x = c(1, 2, 3, NA), na.rm = TRUE)
-```
-
 ```
 [1] 2
 ```
 
-```r
-# with names order does not matter
-mean(na.rm = TRUE, x = c(1, 2, 3, NA))
-```
-
 ```
 [1] 2
-```
-
-```r
-# without names order matters
-mean(TRUE, c(1, 2, 3, NA))
 ```
 
 ```
@@ -815,18 +669,8 @@ Error in mean.default(TRUE, c(1, 2, 3, NA)): 'trim' must be numeric of length on
 
 .pull-right5[
 
-```r
-# calculate mean of c(1, 2, 3)
-mean(c(1, 2, 3))
-```
-
 ```
 [1] 2
-```
-
-```r
-# calculate mean of c('1', '2', '3')
-mean(c("1", "2", "3"))
 ```
 
 ```
@@ -859,18 +703,8 @@ Warning in mean.default(c("1", "2", "3")): argument is not numeric or logical: r
 
 .pull-right5[
 
-```r
-# calculate sum of c(1, 2, 3)
-sum(c(1, 2, 3))
-```
-
 ```
 [1] 6
-```
-
-```r
-# calculate sum of c('1', '2', '3')
-sum(c("1", "2", "3"))
 ```
 
 ```
@@ -927,16 +761,10 @@ Error in sum(c("1", "2", "3")): invalid 'type' (character) of argument
 &lt;high&gt;Install&lt;/high&gt; Packages &lt;high&gt;once&lt;/high&gt; with `install.packages()`
 
 
-```r
-install.packages("tidyverse")
-```
 &lt;br2&gt;
 &lt;high&gt;Load&lt;/high&gt; installed Pakete &lt;high&gt;every time&lt;/high&gt; with `library()`
 
 
-```r
-library(tidyverse)
-```
 
 &lt;p align="left"&gt;&lt;img src="image/tidyverse_load.png" height="180"&gt;&lt;/p&gt;
 ]
@@ -961,9 +789,6 @@ library(tidyverse)
 
 .pull-right5[
 
-```r
-?cor
-```
 &lt;p align="center"&gt;&lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/help_cor.png" width="500"&gt;&lt;/p&gt;
 ]
 
@@ -1011,29 +836,12 @@ library(tidyverse)
 
 .pull-right5[
 
-```r
-# Numeric vector
-score &lt;- c(8, 4, 6, 3, 7, 3)
-score
-```
-
 ```
 [1] 8 4 6 3 7 3
 ```
 
-```r
-# Mean: Base-R-style
-mean(score)
-```
-
 ```
 [1] 5.167
-```
-
-```r
-# Mean: dplyr-style
-score %&gt;%  
-  mean()  
 ```
 
 ```
@@ -1083,21 +891,8 @@ score %&gt;%
 
 .pull-right5[
 
-```r
-# Numeric vector
-score &lt;- c(8, 4, 6, 3, 7, 3)
-score
-```
-
 ```
 [1] 8 4 6 3 7 3
-```
-
-```r
-# Chainig
-score %&gt;%  
-  mean() %&gt;% 
-  round(digits = 2)
 ```
 
 ```
@@ -1123,22 +918,8 @@ score %&gt;%
 
 .pull-right5[
 
-```r
-# Numeric vector
-score &lt;- c(8, 4, 6, 3, 7, 3)
-score
-```
-
 ```
 [1] 8 4 6 3 7 3
-```
-
-```r
-# Chainig
-score %&gt;%  
-  mean() %&gt;% 
-  round(digits = 2) %&gt;% 
-  as.character()
 ```
 
 ```

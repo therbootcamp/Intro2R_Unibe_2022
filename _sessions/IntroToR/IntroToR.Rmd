@@ -31,7 +31,7 @@ options(digits = 4)
 knitr::opts_chunk$set(comment = NA)
 
 require(tidyverse)
-source('../_config.R')
+source('../config.R')
 ```
 
 
@@ -940,7 +940,7 @@ score %>%
 score <- c(8, 4, 6, 3, 7, 3)
 score
 
-# Chainig
+# Chaining
 score %>%  
   mean() %>% 
   round(digits = 2) %>% 
