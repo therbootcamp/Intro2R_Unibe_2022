@@ -205,7 +205,7 @@ baselers
 # Inspect content
 
 ```{r, eval = F}
-# inspect baselers via print
+# inspect baselers via view
 View(baselers)
 
 ```
@@ -235,12 +235,12 @@ baselers$age[1:20]
 ```
 
 ```{r, eval = F}
-# select age variable
+# select education variable
 baselers$education
 ```
 
 ```{r, echo = F}
-# select age variable
+# select education variable
 baselers$education[1:10]
 ```
 
@@ -259,7 +259,7 @@ baselers$education[1:10]
 
 ```{r, eval = T}
 # compute age in months
-baselers$age <- baselers$age * 2
+baselers$age <- baselers$age * 12
 
 # inspect baselers
 baselers
@@ -392,7 +392,7 @@ baselers$sex[1:8]
 ```
 
 ```{r, eval = F}
-# evaluate type
+# convert type
 as.character(baselers$age)
 ```
 
@@ -425,12 +425,12 @@ baselers$sex[1:8] == "male"
 ```
 
 ```{r, eval = F}
-# evaluate type
+# evaluate condition
 baselers$age < 30
 ```
 
 ```{r, echo = F}
-# evaluate type
+# evaluate condition
 baselers$age[1:9] < 300
 ```
 
@@ -557,7 +557,7 @@ or <a href="https://style.tidyverse.org/index.html">The tidyverse style guide</a
 
 data <- read_csv(file, ...)   # comma-delimited
 data <- read_csv2(file, ...)  # semicolon-delimeted
-data <- read_delim(file, ...) # arbitrary-delimited
+data <- read_delim(file, delim = ...) # arbitrary-delimited
 
 # Writing a data frame to a file
 
@@ -624,8 +624,8 @@ write_delim(data_object, file, ...)  # arbitrary-delimited
 <br><br><br>
 ```{r, eval=F}
 # Read with explicit column names
-baselers <-read_delim(file = "/1_Data/baselers.csv",
-                      delim = c(","))
+baselers <- read_delim(file = "/1_Data/baselers.csv",
+                       delim = ",")
 ```
 
 ]
@@ -680,8 +680,8 @@ Incorrect data types can be fixed. Typically this involves:
 
 ```{r, eval = F}
 # Read baselers
-baseslers <- read_csv(file = ".../baselers.csv",
-                      na = c('NA'))
+baselers <- read_csv(file = ".../baselers.csv",
+                     na = c('NA'))
 
 # Try to fix incorrect data types
 baselers <- type_convert(baselers)

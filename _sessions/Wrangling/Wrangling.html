@@ -237,10 +237,10 @@ Change `X1` to `age`, and `X2` to `arm`.
 
 
 ```r
-# 0) Start with patients data
+# Start with patients data
 patients %&gt;% 
 
-# 1) Change variable names with rename()
+# Change variable names with rename()
   rename(age = X1,  # New = Old
          arm = X2)  # New = Old
 ```
@@ -400,7 +400,7 @@ combined &lt;- patients %&gt;%
   mutate(arm_lab = case_when(arm == 1 ~ "placebo",
                              arm == 2 ~ "drug")) %&gt;%
   
-# Join with results with left_join()
+# Join results with left_join()
   left_join(results, by = "ID")
 ```
 
@@ -924,7 +924,7 @@ combined %&gt;%
 
 Some functions require data to be in a certain shape, that is to be either in a wide or a long format.
 
-Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt;/high&gt; from the `tidyr`package to change a tibble between &lt;high&gt;wide&lt;/high&gt; and &lt;high&gt;long&lt;/high&gt; formats.
+Use &lt;high&gt;`pivot_longer()`&lt;/high&gt; and &lt;high&gt;`pivot_wider()`&lt;/high&gt; from the `tidyr` package to change a tibble between &lt;high&gt;wide&lt;/high&gt; and &lt;high&gt;long&lt;/high&gt; formats.
 
 &lt;br&gt;
 
