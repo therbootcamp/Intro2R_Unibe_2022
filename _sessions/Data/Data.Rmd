@@ -739,7 +739,7 @@ data <- read_excel(file, ...)
 data <- R.matlab::readMat(file, ...)
 
 # Read and wrangle .xml and .html
-data <- XML::xmlParseParse(file, ...)
+data <- XML::xmlParse(file, ...)
 
 # from package jsonlite: read .json files
 data <- jsonlite::read_json(file, ...)
