@@ -146,9 +146,9 @@ The web is a great place to learn about R.
 
 [Google](www.google.com) or [Rseek](www.rseek.org), which is a wrapper around google to maximize hits related to R. However, most of the time Google works just fine. Just be sure to add *r* to the the search query. 
 
-<font size = 4><i>Then you will most likely be redirected to one of two pages</i></font>
+<font size = 4><i>Then you will often be directed to one of two pages</i></font>
 
-[R-bloggers](www.r-bloggers.com) is a website on which R users inform each other on the newest developments. See, e.g., Nathaniel's [entry](https://www.r-bloggers.com/the-new-and-improved-pirateplot-now-with-themes/).
+[R-bloggers](www.r-bloggers.com) is a website on which R users inform each other on the newest developments. 
 
 [Stackoverflow](www.r-bloggers.com) is a website on which R users exchange problems and solutions to problems. Try post something yourself. You will be amazed by the turnaround. 
 
@@ -165,12 +165,12 @@ The web is a great place to learn about R.
 
 
 ---
-.pull-left45[
+.pull-left25[
 # Other courses
 
 ]
 
-.pull-right45[
+.pull-right65[
 
 <p align="center"><br><br>
 <iframe src="https://therbootcamp.github.io" width="500" height="560" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
