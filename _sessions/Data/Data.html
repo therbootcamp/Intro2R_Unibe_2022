@@ -746,7 +746,7 @@ baselers &lt;- read_delim(file = "/1_Data/baselers.csv",
 
 .pull-left5[
 
-1 - `readr`- functions typically expect the &lt;high&gt;column names&lt;/high&gt; in the first line.
+1 - `readr`-functions typically expect the &lt;high&gt;column names&lt;/high&gt; in the first line.
 
 2 - If no column names are available, use the &lt;high&gt;`col_names`-argument&lt;/high&gt; to provide them.
 &lt;br&gt;&lt;br&gt;&lt;br&gt;
@@ -754,8 +754,8 @@ baselers &lt;- read_delim(file = "/1_Data/baselers.csv",
 ```r
 # Read with explicit column names
 baselers &lt;- read_csv(file = "1_Data/baselers.csv",
-                 col_names = c("id","age",
-                               ...))
+                     col_names = c("id","age",
+                                    ...))
 ```
 
 ]

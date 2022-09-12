@@ -645,15 +645,15 @@ baselers <- read_delim(file = "/1_Data/baselers.csv",
 
 .pull-left5[
 
-1 - `readr`- functions typically expect the <high>column names</high> in the first line.
+1 - `readr`-functions typically expect the <high>column names</high> in the first line.
 
 2 - If no column names are available, use the <high>`col_names`-argument</high> to provide them.
 <br><br><br>
 ```{r, eval=F}
 # Read with explicit column names
 baselers <- read_csv(file = "1_Data/baselers.csv",
-                 col_names = c("id","age",
-                               ...))
+                     col_names = c("id","age",
+                                    ...))
 ```
 
 ]
