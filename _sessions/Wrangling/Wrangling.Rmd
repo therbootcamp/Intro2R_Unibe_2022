@@ -134,7 +134,7 @@ Transformation functions are used to <high>alter the content</high> of a `tibble
 | `rename()` | <high>Change names</high> of variables |
 | `mutate()`|   <high>Create variable</high> from existing variables|
 | `case_when()`|  <high>Recode values</high> from a vector to another|
-| `left_join()` | <high>Combine tibbbles</high> |
+| `left_join()` | <high>Combine tibbles</high> |
 
 ]
 
@@ -538,8 +538,8 @@ Use `filter()` to <high>select rows</high> (or remove) based on logical statemen
 <high>`==`</high> - is equal to<br>
 <high>`<`</high>, <high>`>`</high> - smaller/greater than<br>
 <high>`≤`</high>, <high>`≥`</high> - smaller/greater than or equal<br>
-<high>`&`</high>, <high>`&&`</high> - logical AND<br>
-<high>`|`</high>, <high>`||`</high> - logical OR<br>
+<high>`&`</high> - logical AND<br>
+<high>`|`</high> - logical OR<br>
 
 ]
 
@@ -569,8 +569,8 @@ Use `filter()` to <high>select rows</high> (or remove) based on logical statemen
 <high>`==`</high> - is equal to<br>
 <high>`<`</high>, <high>`>`</high> - smaller/greater than<br>
 <high>`≤`</high>, <high>`≥`</high> - smaller/greater than or equal<br>
-<high>`&`</high>, <high>`&&`</high> - logical AND<br>
-<high>`|`</high>, <high>`||`</high> - logical OR<br>
+<high>`&`</high> - logical AND<br>
+<high>`|`</high> - logical OR<br>
 
 ]
 
