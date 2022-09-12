@@ -148,7 +148,7 @@ The web is a great place to learn about R.
 
 <font size = 4><i>Then you will most likely be redirected to one of two pages</i></font>
 
-[R-bloggers](www.r-bloggers.com) is a website on which R users inform each other on the newest developments. See, e.g., Nathaniel's [entry](https://www.r-bloggers.com/the-new-and-improved-pirateplot-now-with-themes/).
+[R-bloggers](www.r-bloggers.com) is a website on which R users inform each other on the newest developments. 
 
 [Stackoverflow](www.r-bloggers.com) is a website on which R users exchange problems and solutions to problems. Try post something yourself. You will be amazed by the turnaround. 
 
