@@ -703,7 +703,7 @@ my_plot + my_theme
     <td> Control coloring </td>
   </tr>
     <tr>
-    <td> <mono>scale_scale_xy*</mono> </td>
+    <td> <mono>scale_xy_*</mono> </td>
     <td> Control axis dimensions  </td>
   </tr>
   <tr>
@@ -762,7 +762,7 @@ my_plot
     <td> Control coloring </td>
   </tr>
     <tr>
-    <td> <mono>scale_scale_xy*</mono> </td>
+    <td> <mono>scale_xy_*</mono> </td>
     <td> Control axis dimensions  </td>
   </tr>
   <tr>
@@ -820,7 +820,7 @@ my_plot +
     <td> Control coloring </td>
   </tr>
     <tr>
-    <td> <mono>scale_scale_xy*</mono> </td>
+    <td> <mono>scale_xy_*</mono> </td>
     <td> Control axis dimensions  </td>
   </tr>
   <tr>
@@ -878,7 +878,7 @@ my_plot +
     <td> Control coloring </td>
   </tr>
     <tr>
-    <td> <mono>scale_scale_xy*</mono> </td>
+    <td> <mono>scale_xy_*</mono> </td>
     <td> Control axis dimensions  </td>
   </tr>
   <tr>
@@ -936,7 +936,7 @@ my_plot +
     <td> Control coloring </td>
   </tr>
     <tr>
-    <td> <mono>scale_scale_xy_*</mono> </td>
+    <td> <mono>scale_xy_*</mono> </td>
     <td> Control axis dimensions  </td>
   </tr>
   <tr>
