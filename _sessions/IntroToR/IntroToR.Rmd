@@ -559,10 +559,10 @@ mean(one_two_three)
 mean()
 
 # one (necessary) argument
-mean(c(1, 2, 3))
+mean(x = c(1, 2, 3))
 
 # add missing value (NA)
-mean(c(1, 2, 3, NA))
+mean(x = c(1, 2, 3, NA))
 ```
 ]
 
@@ -592,10 +592,10 @@ mean(c(1, 2, 3, NA))
 mean()
 
 # one (necessary) argument
-mean(c(1, 2, 3))
+mean(x = c(1, 2, 3))
 
 # change default to remove NAs
-mean(c(1, 2, 3, NA), na.rm = TRUE)
+mean(x = c(1, 2, 3, NA), na.rm = TRUE)
 
 ```
 ]
@@ -911,7 +911,7 @@ score %>%
 score <- c(8, 4, 6, 3, 7, 3)
 score
 
-# Chainig
+# Chaining
 score %>%  
   mean() %>% 
   round(digits = 2)

@@ -430,3 +430,7 @@ li.m8g {list-style-image:url("bullets/b8g.png"); margin: 0x;}
 li.m9g {list-style-image:url("bullets/b9g.png"); margin: 0x;}
 li.m10g {list-style-image:url("bullets/b10g.png"); margin: 0x;}
 
+div.remark-code-line {
+  white-space: pre-wrap;
+  padding: .1em;
+}

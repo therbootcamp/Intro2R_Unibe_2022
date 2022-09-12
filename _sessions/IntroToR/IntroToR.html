@@ -649,7 +649,7 @@ Error in mean.default(): argument "x" is missing, with no default
 
 ```r
 # one (necessary) argument
-mean(c(1, 2, 3))
+mean(x = c(1, 2, 3))
 ```
 
 ```
@@ -658,7 +658,7 @@ mean(c(1, 2, 3))
 
 ```r
 # add missing value (NA)
-mean(c(1, 2, 3, NA))
+mean(x = c(1, 2, 3, NA))
 ```
 
 ```
@@ -699,7 +699,7 @@ Error in mean.default(): argument "x" is missing, with no default
 
 ```r
 # one (necessary) argument
-mean(c(1, 2, 3))
+mean(x = c(1, 2, 3))
 ```
 
 ```
@@ -708,7 +708,7 @@ mean(c(1, 2, 3))
 
 ```r
 # change default to remove NAs
-mean(c(1, 2, 3, NA), na.rm = TRUE)
+mean(x = c(1, 2, 3, NA), na.rm = TRUE)
 ```
 
 ```
@@ -1094,7 +1094,7 @@ score
 ```
 
 ```r
-# Chainig
+# Chaining
 score %&gt;%  
   mean() %&gt;% 
   round(digits = 2)
