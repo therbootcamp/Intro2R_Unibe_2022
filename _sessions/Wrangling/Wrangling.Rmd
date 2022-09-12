@@ -161,7 +161,7 @@ patients   # Patient data
 <high>Change variable names</high> with `rename()`.
 
 ```{r, eval = FALSE, echo = TRUE}
-patients %>%
+tibble %>%
   rename(NEW = OLD,
          NEW = OLD)
 ```
@@ -545,12 +545,12 @@ Use `filter()` to <high>select rows</high> (or remove) based on logical statemen
 
 .pull-right55[
 
-Select <i>only</i> patients over `30`.
+Select <i>only</i> patients older than  `30`.
 
 ```{r}
-# Filter patients younger than 40
+# Filter patients older than 30
 combined %>%
-  filter(age < 40)
+  filter(age > 30)
 ```
 
 ]
@@ -576,7 +576,7 @@ Use `filter()` to <high>select rows</high> (or remove) based on logical statemen
 
 .pull-right55[
 
-Select <i>only</i> patients over `30` in the `'drug'` arm.
+Select <i>only</i> patients alder than `30` in the `'drug'` arm.
 
 ```{r}
 # Filter patients older than 30 given drug
@@ -768,7 +768,7 @@ long %>%
 .pull-left4[
 
 ```{r, eval = F}
-DATA %>%
+tibble %>%
   group_by(GROUP_VAR) %>%
   summarise(
     NAME1 = SUMMARY_FUN(VAR1),
@@ -782,10 +782,45 @@ DATA %>%
 .pull-right5[
 
 ```{r}
-combined %>%
+long %>%
   
   # Group by study arm
   group_by(arm_lab) %>%
+  
+  # Calculate summary stats
+  summarise(
+    age_mean = mean(age),
+    age_sd = sd(age)
+  )
+```
+
+]
+
+---
+
+# `group_by()`, `summarise()`
+
+.pull-left4[
+
+```{r, eval = F}
+tibble %>%
+  group_by(GROUP_VAR) %>%
+  summarise(
+    NAME1 = SUMMARY_FUN(VAR1),
+    NAME2 = SUMMARY_FUN(VAR2)
+  )
+```
+
+
+]
+
+.pull-right5[
+
+```{r}
+long %>%
+  
+  # Group by study arm and time
+  group_by(arm_lab, time) %>%
   
   # Calculate summary stats
   summarise(
@@ -803,7 +838,7 @@ combined %>%
 .pull-left4[
 
 ```{r, eval = F}
-DATA %>%
+tibble %>%
   group_by(GROUP_VAR) %>%
   summarise(
     NAME1 = SUMMARY_FUN(VAR1),
@@ -822,10 +857,10 @@ options(tibble.width=50, tibble.print_max=5, tibble.print_min=5, tibble.max_extr
 
 
 ```{r}
-combined %>%
+long %>%
   
-  # Group by study arm
-  group_by(arm_lab) %>%
+  # Group by study arm and time
+  group_by(arm_lab, time) %>%
   
   # Calculate stats
   summarise(

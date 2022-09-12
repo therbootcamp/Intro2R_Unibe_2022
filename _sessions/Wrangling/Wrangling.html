@@ -209,7 +209,7 @@ patients   # Patient data
 
 
 ```r
-patients %&gt;%
+tibble %&gt;%
   rename(NEW = OLD,
          NEW = OLD)
 ```
@@ -752,21 +752,24 @@ Use `filter()` to &lt;high&gt;select rows&lt;/high&gt; (or remove) based on logi
 
 .pull-right55[
 
-Select &lt;i&gt;only&lt;/i&gt; patients over `30`.
+Select &lt;i&gt;only&lt;/i&gt; patients older than  `30`.
 
 
 ```r
-# Filter patients younger than 40
+# Filter patients older than 30
 combined %&gt;%
-  filter(age &lt; 40)
+  filter(age &gt; 30)
 ```
 
 ```
-# A tibble: 2 × 6
+# A tibble: 5 × 6
      ID   age   arm arm_lab   t_1   t_2
   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
 1     1    37     1 placebo   123   135
-2     4    34     1 placebo   100   105
+2     2    65     2 drug      143   140
+3     3    57     2 drug       NA    NA
+4     4    34     1 placebo   100   105
+5     5    45     2 drug       NA    NA
 ```
 
 ]
@@ -792,7 +795,7 @@ Use `filter()` to &lt;high&gt;select rows&lt;/high&gt; (or remove) based on logi
 
 .pull-right55[
 
-Select &lt;i&gt;only&lt;/i&gt; patients over `30` in the `'drug'` arm.
+Select &lt;i&gt;only&lt;/i&gt; patients alder than `30` in the `'drug'` arm.
 
 
 ```r
@@ -1072,7 +1075,7 @@ long %&gt;%
 
 
 ```r
-DATA %&gt;%
+tibble %&gt;%
   group_by(GROUP_VAR) %&gt;%
   summarise(
     NAME1 = SUMMARY_FUN(VAR1),
@@ -1087,7 +1090,7 @@ DATA %&gt;%
 
 
 ```r
-combined %&gt;%
+long %&gt;%
   
   # Group by study arm
   group_by(arm_lab) %&gt;%
@@ -1103,8 +1106,60 @@ combined %&gt;%
 # A tibble: 2 × 3
   arm_lab age_mean age_sd
   &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;
-1 drug        55.7  10.1 
-2 placebo     35.5   2.12
+1 drug        55.7   9.00
+2 placebo     35.5   1.73
+```
+
+]
+
+---
+
+# `group_by()`, `summarise()`
+
+.pull-left4[
+
+
+```r
+tibble %&gt;%
+  group_by(GROUP_VAR) %&gt;%
+  summarise(
+    NAME1 = SUMMARY_FUN(VAR1),
+    NAME2 = SUMMARY_FUN(VAR2)
+  )
+```
+
+
+]
+
+.pull-right5[
+
+
+```r
+long %&gt;%
+  
+  # Group by study arm and time
+  group_by(arm_lab, time) %&gt;%
+  
+  # Calculate summary stats
+  summarise(
+    age_mean = mean(age),
+    age_sd = sd(age)
+  )
+```
+
+```
+`summarise()` has grouped output by 'arm_lab'. You can override using the `.groups` argument.
+```
+
+```
+# A tibble: 4 × 4
+# Groups:   arm_lab [2]
+  arm_lab time  age_mean age_sd
+  &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
+1 drug    t_1       55.7  10.1 
+2 drug    t_2       55.7  10.1 
+3 placebo t_1       35.5   2.12
+4 placebo t_2       35.5   2.12
 ```
 
 ]
@@ -1117,7 +1172,7 @@ combined %&gt;%
 
 
 ```r
-DATA %&gt;%
+tibble %&gt;%
   group_by(GROUP_VAR) %&gt;%
   summarise(
     NAME1 = SUMMARY_FUN(VAR1),
@@ -1135,10 +1190,10 @@ DATA %&gt;%
 
 
 ```r
-combined %&gt;%
+long %&gt;%
   
-  # Group by study arm
-  group_by(arm_lab) %&gt;%
+  # Group by study arm and time
+  group_by(arm_lab, time) %&gt;%
   
   # Calculate stats
   summarise(
@@ -1149,11 +1204,18 @@ combined %&gt;%
 ```
 
 ```
-# A tibble: 2 × 4
-  arm_lab age_mean age_sd     N
-  &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
-1 drug        55.7  10.1      3
-2 placebo     35.5   2.12     2
+`summarise()` has grouped output by 'arm_lab'. You can override using the `.groups` argument.
+```
+
+```
+# A tibble: 4 × 5
+# Groups:   arm_lab [2]
+  arm_lab time  age_mean age_sd     N
+  &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;
+1 drug    t_1       55.7  10.1      3
+2 drug    t_2       55.7  10.1      3
+3 placebo t_1       35.5   2.12     2
+4 placebo t_2       35.5   2.12     2
 ```
 
 ]
