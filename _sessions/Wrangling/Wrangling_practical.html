@@ -13,13 +13,13 @@
 
 <title>Wrangling</title>
 
-<script src="Wrangling_practical_files/header-attrs/header-attrs.js"></script>
-<script src="Wrangling_practical_files/jquery/jquery-3.6.0.min.js"></script>
+<script src="Wrangling_practical_files/header-attrs-2.14/header-attrs.js"></script>
+<script src="Wrangling_practical_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="Wrangling_practical_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<script src="Wrangling_practical_files/bootstrap/js/bootstrap.min.js"></script>
-<script src="Wrangling_practical_files/bootstrap/shim/html5shiv.min.js"></script>
-<script src="Wrangling_practical_files/bootstrap/shim/respond.min.js"></script>
+<link href="Wrangling_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Wrangling_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="Wrangling_practical_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="Wrangling_practical_files/bootstrap-3.3.5/shim/respond.min.js"></script>
 <style>h1 {font-size: 34px;}
        h1.title {font-size: 38px;}
        h2 {font-size: 30px;}
@@ -29,9 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="Wrangling_practical_files/navigation/tabsets.js"></script>
-<link href="Wrangling_practical_files/highlightjs/default.css" rel="stylesheet" />
-<script src="Wrangling_practical_files/highlightjs/highlight.js"></script>
+<script src="Wrangling_practical_files/navigation-1.1/tabsets.js"></script>
+<link href="Wrangling_practical_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="Wrangling_practical_files/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -243,7 +243,7 @@ library(XX)</code></pre>
 <li>In this practical, you will analyze the <code>trial_act</code> data.
 Using the following template, load both the original and demo data into
 R and store it as a new object called <code>trial_act</code> and
-<code>trial_act_demo</code>.</li>
+<code>trial_act_demo_fake</code>.</li>
 </ol>
 <pre class="r"><code># Load trial_act.csv from the data folder in your working directory
 
@@ -491,14 +491,19 @@ Currently it is in the <em>wide</em> format, where each row is a
 patient, where key data (different CD4 T cell counts) are in different
 columns like this:</p>
 <pre><code># A tibble: 2,139 × 5
-  pidnum  arms  cd40 cd420 cd496
-   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1  10056     2   422   477   660
-2  10059     3   162   218    NA
-3  10089     3   326   274   122
-4  10093     3   287   394    NA
-5  10124     0   504   353   660
-# … with 2,134 more rows
+   pidnum  arms  cd40 cd420 cd496
+    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1  10056     2   422   477   660
+ 2  10059     3   162   218    NA
+ 3  10089     3   326   274   122
+ 4  10093     3   287   394    NA
+ 5  10124     0   504   353   660
+ 6  10140     1   235   339   264
+ 7  10165     0   244   225   106
+ 8  10190     0   401   366   453
+ 9  10198     3   214   107     8
+10  10229     0   221   132    NA
+# … with 2,129 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <p>Our goal is to convert this data to a ‘long’ format, where each row
 represents a single CD4 T cell count for a specific patient, like
@@ -506,14 +511,19 @@ this:</p>
 <pre class="r"><code># This is the same data in &#39;long&#39; format
 CD4_long</code></pre>
 <pre><code># A tibble: 6,417 × 4
-  pidnum  arms time  value
-   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
-1  10056     2 cd40    422
-2  10056     2 cd420   477
-3  10056     2 cd496   660
-4  10059     3 cd40    162
-5  10059     3 cd420   218
-# … with 6,412 more rows
+   pidnum  arms time  value
+    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
+ 1  10056     2 cd40    422
+ 2  10056     2 cd420   477
+ 3  10056     2 cd496   660
+ 4  10059     3 cd40    162
+ 5  10059     3 cd420   218
+ 6  10059     3 cd496    NA
+ 7  10089     3 cd40    326
+ 8  10089     3 cd420   274
+ 9  10089     3 cd496   122
+10  10093     3 cd40    287
+# … with 6,407 more rows
 # ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using the <code>pivot_longer()</code> function, create a new

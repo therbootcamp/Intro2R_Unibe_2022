@@ -96,7 +96,7 @@ library(XX)
 library(XX)
 ```
 
-4. In this practical, you will analyze the `trial_act` data. Using the following template, load both the original and demo data into R and store it as a new object called `trial_act` and `trial_act_demo`.
+4. In this practical, you will analyze the `trial_act` data. Using the following template, load both the original and demo data into R and store it as a new object called `trial_act` and `trial_act_demo_fake`.
 
 ```{r, echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE}
 # Load trial_act.csv from the data folder in your working directory
