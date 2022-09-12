@@ -66,7 +66,7 @@ Use the "Start Bootcamp" link in Ilias!
 
 ---
 
-.pull-left5[
+.pull-left45[
 # Schedule 
 
 3 days, <high>3 sessions per day</high>, <high>2 hours per session</high>.
@@ -81,9 +81,9 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 
 ]
 
-.pull-right5[
+.pull-right45[
 
-<p align="center"><img src="image/schedule.png"></p>
+<p align="center"><img src="image/schedule.png" width = 500></p>
 <center><font size = 3></font></center>
 
 

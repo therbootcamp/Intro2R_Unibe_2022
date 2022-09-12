@@ -36,9 +36,9 @@ In 3 days, 9 sessions, and 21 hours you have come a long way.
 
 ]
 
-.pull-right4[
+.pull-right45[
 
-<img src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Welcome/image/schedule.png" height="580" align="center">
+<p align="center"><img src="image/schedule.png" width = 500></p>
 ]
 
 ---
