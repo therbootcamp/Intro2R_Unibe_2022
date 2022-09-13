@@ -38,8 +38,8 @@ In this practical, I will analyse the `mcdonalds` datasets and show reproducible
 
 ### Overview
 
-```{r, out.width = "30%", fig.cap="Source: Wikipedia"}
-knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/2560px-Cheeseburger.jpg")
+```{r, out.width = "50%", fig.cap="Source: Wikipedia"}
+knitr::include_graphics("image/Cheeseburger.jpeg")
 ```
 
 The `mcdonalds` data contains `r ncol(mcdonalds)` pieces of information for `r nrow(mcdonalds)` menu items. The data originally comes from [https://www.kaggle.com/mcdonalds/nutrition-facts](https://www.kaggle.com/mcdonalds/nutrition-facts). 

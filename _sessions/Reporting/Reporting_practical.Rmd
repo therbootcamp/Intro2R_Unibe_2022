@@ -201,11 +201,13 @@ mcdonalds %>%
 
 1. Add a new 3rd level header called "Calories Histogram"
 
-2. Write the appropriate combination of markdown, text, and code to create the following output. Be sure to specify the mean and maximum umber of calories using inline chunks!. Here's some `ggplot2` code that might help in creating your plot.
+2. Write the appropriate combination of markdown, text, and code to create the following output. Be sure to specify the mean and maximum number of calories using inline chunks! 
 
 ```{r, eval = TRUE, echo = FALSE, out.width="75%"}
 knitr::include_graphics("https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/calories_histogram.jpg?raw=true")
 ```
+
+Here's some `ggplot2` code that might help in creating your plot.
 
 ```{r, eval = FALSE, echo = TRUE}
 # Create a histogram of Calories
