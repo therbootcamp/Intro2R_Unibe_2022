@@ -57,7 +57,7 @@ library(lubridate)
 
 In this case study, you will analyse historic data of three major stock indices, the **Dow Jones**, the **DAX**, and the **Nikkei**, and the exchange rates between the **US dollar**, the **Euro**, and the **Yen**. Using this data, you will address several questions. 
 
-1. How large was the impact of the recent financial crisis on the respective stock markets? 
+1. How large was the impact of the financial crisis in 2008 on the respective stock markets? 
 2. How correlated is the development between the stock markets? 
 3. What is the relationship between stock market returns and exchange rates? 
 
