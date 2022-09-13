@@ -209,7 +209,7 @@ The &lt;high&gt;Grammar of graphics&lt;/high&gt; breaks down plots into several 
 
 | Aesthetics| Description|
 |:------|:----|
-| Data| What dataframe contains the data?|
+| data| What dataframe contains the data?|
 | axes| What does the x-axis, y-axis, color (etc) represent?|
 | color| What does color represent? |
 | size | What does size represent? |
@@ -277,6 +277,17 @@ To &lt;high&gt;create a ggplot2 object&lt;/high&gt;, use the `ggplot()` function
 - `data` - A data frame (aka `tibble`)
 - `mapping` - A call to `aes()`
 
+
+&lt;p align="center"&gt; `mpg`&lt;/p&gt;
+
+| displ| hwy|class      |
+|-----:|---:|:----------|
+|   4.6|  22|subcompact |
+|   2.8|  26|compact    |
+|   3.3|  17|minivan    |
+|   5.7|  17|pickup     |
+|   2.5|  27|suv        |
+
 ]
 
 
@@ -287,7 +298,7 @@ To &lt;high&gt;create a ggplot2 object&lt;/high&gt;, use the `ggplot()` function
 ggplot(data = mpg)
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -323,7 +334,7 @@ ggplot(data = mpg,
        mapping = aes(x = displ, y = hwy))
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -351,7 +362,7 @@ ggplot(data = mpg,
 .pull-right45[
 
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ]
@@ -382,7 +393,7 @@ Common geoms are...
 
 .pull-right45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ]
@@ -406,7 +417,7 @@ ggplot(data = mpg,
   geom_boxplot()
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ]
@@ -425,7 +436,7 @@ ggplot(data = mpg,
   geom_violin()
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-20-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-21-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 
 ]
@@ -447,7 +458,7 @@ ggplot(data = mpg,
   geom_bar()
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-21-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 
 ]
@@ -467,7 +478,7 @@ ggplot(data = mpg,
   geom_count()
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-23-1.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -493,13 +504,13 @@ ggplot(data = mpg,
 
 &lt;p align="center"&gt; `mpg`&lt;/p&gt;
 
-| displ| hwy|class   | year|
-|-----:|---:|:-------|----:|
-|   3.3|  24|minivan | 2008|
-|   3.8|  28|midsize | 2008|
-|   5.3|  14|suv     | 2008|
-|   1.8|  29|midsize | 1999|
-|   4.2|  17|pickup  | 1999|
+| displ| hwy|class      |
+|-----:|---:|:----------|
+|   6.2|  26|2seater    |
+|   3.7|  19|pickup     |
+|   3.7|  19|suv        |
+|   2.5|  26|subcompact |
+|   2.8|  26|midsize    |
 
 
 ]
@@ -507,7 +518,7 @@ ggplot(data = mpg,
 .pull-right45[
 
 &lt;br&gt;
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ]
@@ -519,7 +530,7 @@ ggplot(data = mpg,
 
 .pull-left45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ]
@@ -527,7 +538,7 @@ ggplot(data = mpg,
 
 .pull-right45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-27-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-28-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -559,7 +570,7 @@ ggplot(data = mpg,
 .pull-right45[
 
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-29-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -591,7 +602,7 @@ ggplot(data = mpg,
 .pull-right45[
 
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -620,7 +631,7 @@ ggplot(data = mpg,
 .pull-right45[
 
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -631,14 +642,14 @@ ggplot(data = mpg,
 
 .pull-left45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-35-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
 
 .pull-right45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-35-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-36-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -673,7 +684,7 @@ ggplot(...) +
 
 .pull-right45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-38-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -684,14 +695,14 @@ ggplot(...) +
 
 .pull-left45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-38-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
 
 .pull-right45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-40-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -729,7 +740,7 @@ ggplot(...) +
   theme_gray() # The Default theme
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-41-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-42-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -755,6 +766,121 @@ Themes from the `ggthemes` package
 `theme_economist()`&lt;br&gt;
 etc.
 
+
+
+]
+
+.pull-right45[
+
+
+```r
+ggplot(...) + 
+  theme_bw()
+```
+
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-44-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting &lt;high&gt;theme&lt;/high&gt; controls many aspects of its &lt;high&gt;overall look&lt;/high&gt;, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`
+
+`theme_bw()`&lt;br&gt;
+`theme_minimal()`&lt;br&gt;
+`theme_classic()`&lt;br&gt;
+`theme_light()`&lt;br&gt;
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`&lt;br&gt;
+`theme_economist()`&lt;br&gt;
+etc.
+
+
+
+]
+
+.pull-right45[
+
+
+```r
+ggplot(...) + 
+  theme_minimal()
+```
+
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-46-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting &lt;high&gt;theme&lt;/high&gt; controls many aspects of its &lt;high&gt;overall look&lt;/high&gt;, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`
+
+`theme_bw()`&lt;br&gt;
+`theme_minimal()`&lt;br&gt;
+`theme_classic()`&lt;br&gt;
+`theme_light()`&lt;br&gt;
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`&lt;br&gt;
+`theme_economist()`&lt;br&gt;
+etc.
+
+
+
+]
+
+.pull-right45[
+
+
+
+```r
+ggplot(...) + 
+  theme_classic()
+```
+
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-48-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting &lt;high&gt;theme&lt;/high&gt; controls many aspects of its &lt;high&gt;overall look&lt;/high&gt;, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`
+
+`theme_bw()`&lt;br&gt;
+`theme_minimal()`&lt;br&gt;
+`theme_classic()`&lt;br&gt;
+`theme_light()`&lt;br&gt;
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`&lt;br&gt;
+`theme_economist()`&lt;br&gt;
+etc.
 
 
 ]
@@ -767,7 +893,7 @@ ggplot(...) +
   theme_light()
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-43-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-50-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -792,7 +918,6 @@ Themes from the `ggthemes` package
 `theme_excel()`&lt;br&gt;
 `theme_economist()`&lt;br&gt;
 etc.
-
 
 
 ]
@@ -805,7 +930,7 @@ ggplot(...) +
   theme_void()
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-45-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-52-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -832,11 +957,9 @@ Themes from the `ggthemes` package
 etc.
 
 
-
 ]
 
 .pull-right45[
-
 
 
 ```r
@@ -844,10 +967,9 @@ ggplot(...) +
   theme_excel()
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-47-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-54-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
-
 
 ---
 
@@ -857,7 +979,7 @@ ggplot(...) +
 
 A plotting &lt;high&gt;theme&lt;/high&gt; controls many aspects of its &lt;high&gt;overall look&lt;/high&gt;, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
 
-Themes built into `ggplot2`:
+Themes built into `ggplot2`
 
 `theme_bw()`&lt;br&gt;
 `theme_minimal()`&lt;br&gt;
@@ -882,13 +1004,13 @@ ggplot(...) +
   theme_economist()
 ```
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-49-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-56-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
 ---
 
-# Final result!
+#Final result!
 
 
 .pull-left45[
@@ -915,7 +1037,7 @@ ggplot(data = mpg,
 
 .pull-right45[
 
-&lt;img src="PlottingI_files/figure-html/unnamed-chunk-51-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="PlottingI_files/figure-html/unnamed-chunk-58-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 

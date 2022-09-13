@@ -228,7 +228,7 @@ The <high>Grammar of graphics</high> breaks down plots into several key pieces:
 
 | Aesthetics| Description|
 |:------|:----|
-| Data| What dataframe contains the data?|
+| data| What dataframe contains the data?|
 | axes| What does the x-axis, y-axis, color (etc) represent?|
 | color| What does color represent? |
 | size | What does size represent? |
@@ -319,6 +319,12 @@ To <high>create a ggplot2 object</high>, use the `ggplot()` function
 
 - `data` - A data frame (aka `tibble`)
 - `mapping` - A call to `aes()`
+
+
+<p align="center"> `mpg`</p>
+```{r, echo = FALSE, eval = TRUE}
+knitr::kable(mpg %>% sample_n(5) %>% select(displ, hwy, class), format = "markdown")
+```
 
 ]
 
@@ -524,7 +530,7 @@ ggplot(data = mpg,
 
 <p align="center"> `mpg`</p>
 ```{r, echo = FALSE, eval = TRUE}
-knitr::kable(mpg %>% sample_n(5) %>% select(displ, hwy, class, year), format = "markdown")
+knitr::kable(mpg %>% sample_n(5) %>% select(displ, hwy, class), format = "markdown")
 ```
 
 
@@ -890,6 +896,151 @@ etc.
 
 ```{r, eval = F}
 ggplot(...) + 
+  theme_bw()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  geom_smooth(col = "blue", method = "lm") +
+  labs(x = "Engine Displ...",
+       y = "Highway miles...",
+       title = "MPG data",
+       subtitle = "Cars with ...",
+       caption = "Source...") + theme_bw()
+```
+
+]
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting <high>theme</high> controls many aspects of its <high>overall look</high>, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`
+
+`theme_bw()`<br>
+`theme_minimal()`<br>
+`theme_classic()`<br>
+`theme_light()`<br>
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`<br>
+`theme_economist()`<br>
+etc.
+
+
+
+]
+
+.pull-right45[
+
+```{r, eval = F}
+ggplot(...) + 
+  theme_minimal()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  geom_smooth(col = "blue", method = "lm") +
+  labs(x = "Engine Displ...",
+       y = "Highway miles...",
+       title = "MPG data",
+       subtitle = "Cars with ...",
+       caption = "Source...") + theme_minimal()
+```
+
+]
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting <high>theme</high> controls many aspects of its <high>overall look</high>, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`
+
+`theme_bw()`<br>
+`theme_minimal()`<br>
+`theme_classic()`<br>
+`theme_light()`<br>
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`<br>
+`theme_economist()`<br>
+etc.
+
+
+
+]
+
+.pull-right45[
+
+
+```{r, eval = F}
+ggplot(...) + 
+  theme_classic()
+```
+
+```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
+ggplot(data = mpg, 
+       mapping = aes(x = displ, y = hwy, 
+                     col = class)) +
+  geom_point() + 
+  geom_smooth(col = "blue", method = "lm") +
+  labs(x = "Engine Displ...",
+       y = "Highway miles...",
+       title = "MPG data",
+       subtitle = "Cars with ...",
+       caption = "Source...") + theme_classic()
+```
+
+]
+
+
+---
+
+# Themes with `theme_XX()`
+
+.pull-left45[
+
+A plotting <high>theme</high> controls many aspects of its <high>overall look</high>, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
+
+Themes built into `ggplot2`
+
+`theme_bw()`<br>
+`theme_minimal()`<br>
+`theme_classic()`<br>
+`theme_light()`<br>
+`theme_void()`
+
+Themes from the `ggthemes` package
+
+`theme_excel()`<br>
+`theme_economist()`<br>
+etc.
+
+
+]
+
+.pull-right45[
+
+```{r, eval = F}
+ggplot(...) + 
   theme_light()
 ```
 
@@ -929,7 +1080,6 @@ Themes from the `ggthemes` package
 `theme_excel()`<br>
 `theme_economist()`<br>
 etc.
-
 
 
 ]
@@ -979,11 +1129,9 @@ Themes from the `ggthemes` package
 etc.
 
 
-
 ]
 
 .pull-right45[
-
 
 ```{r, eval = F}
 ggplot(...) + 
@@ -1005,7 +1153,6 @@ ggplot(data = mpg,
 
 ]
 
-
 ---
 
 # Themes with `theme_XX()`
@@ -1014,7 +1161,7 @@ ggplot(data = mpg,
 
 A plotting <high>theme</high> controls many aspects of its <high>overall look</high>, from the background, to the grid lines, to the label font to the spacing between plot labels and the plotting space.
 
-Themes built into `ggplot2`:
+Themes built into `ggplot2`
 
 `theme_bw()`<br>
 `theme_minimal()`<br>
@@ -1055,7 +1202,7 @@ ggplot(data = mpg,
 
 ---
 
-# Final result!
+#Final result!
 
 
 .pull-left45[

@@ -1,0 +1,30 @@
+# Recap I
+
+vector
+function
+cor
+arguments
+vector[] position
+packages
+
+- datatypes
+lists
+tibbles
+vectors
+
+dima <- read_csv('1_Data/dimarta_trial.csv')
+
+
+rename
+mutate (diff)
+case_when(arm)
+slice
+filter
+
+dima %>%
+pivot_longer(
+names_to = 'time',
+values_to = 'histamine',
+cols = c(histamine_start, histamine_end))
+
+group_by()
