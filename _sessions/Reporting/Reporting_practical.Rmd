@@ -45,6 +45,7 @@ options(digits = 3)
 
 #library(baselers)
 library(tidyverse)
+source('../config.R')
 mcdonalds <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/complete/mcdonalds.csv")
 ```
 
@@ -101,7 +102,9 @@ knitr::include_graphics("image/rmarkdown_ss_B.png")
 
 ### B - Here's your goal!
 
-1. In this practical you will create as much of [this html document](https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Reporting/Reporting_answers.html) as you can! Open the document and keep it open in a separate window as you work through the practical!
+1. In this practical you will create as much of [this html document](`r paste0(session_url, 'Reporting/Reporting_answers.html')`) as you can! Open the document and keep it open in a separate window as you work through the practical!
+
+
 
 ### C - Load packages, data and set default chunk options
 
