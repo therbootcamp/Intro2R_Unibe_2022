@@ -1202,8 +1202,7 @@ ugly <- my_plot + my_theme
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
 (pretty+pretty) / (pretty+pretty) +
-  plot_annotation(tag_levels = "A") & 
-  theme(legend.position = "none") 
+  plot_annotation(tag_levels = "A")
 ```
 
 ]
