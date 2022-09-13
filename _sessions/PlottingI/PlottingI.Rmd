@@ -287,19 +287,9 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = class)) +
 
 .pull-right45[
 
-```{r, echo = FALSE, fig.width = 7, fig.height = 5.5}
-# Add a regression line for all classes
-
-ggplot(data = mpg, 
-       mapping = aes(x = displ, y = hwy, color = class)) +
-  geom_point(size = 3, alpha = .9) + 
-  geom_smooth(col = "blue", method = "lm")+
-  labs(x = "Engine Displacement in Liters",
-       y = "Highway miles per gallon",
-       title = "MPG data",
-       subtitle = "Cars with higher engine displacement tend to have lower highway mpg",
-       caption = "Source: mpg data in ggplot2") + theme_bw()
-
+<p align="center"> `mpg`</p>
+```{r, echo = FALSE, eval = TRUE}
+knitr::kable(mpg %>% slice(1:10) %>% select(displ, hwy, class), format = "markdown")
 ```
 
 
@@ -319,12 +309,6 @@ To <high>create a ggplot2 object</high>, use the `ggplot()` function
 
 - `data` - A data frame (aka `tibble`)
 - `mapping` - A call to `aes()`
-
-
-<p align="center"> `mpg`</p>
-```{r, echo = FALSE, eval = TRUE}
-knitr::kable(mpg %>% sample_n(5) %>% select(displ, hwy, class), format = "markdown")
-```
 
 ]
 
