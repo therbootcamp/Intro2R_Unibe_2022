@@ -13,7 +13,7 @@
 
 <title>Case study: Clinical</title>
 
-<script src="Clinical_Data_Case_Study_files/header-attrs-2.14/header-attrs.js"></script>
+<script src="Clinical_Data_Case_Study_files/header-attrs-2.16/header-attrs.js"></script>
 <script src="Clinical_Data_Case_Study_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="Clinical_Data_Case_Study_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -248,51 +248,6 @@ exploring them with a mixture of the <code>View()</code>,
 <code>head()</code>, <code>names()</code>, and <code>str()</code>
 functions. Were they all loaded correctly?</p></li>
 </ol>
-<pre><code># A tibble: 300 × 6
-   PatientID   arm histamine_start histamine_end qol_start qol_end
-   &lt;chr&gt;     &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 txdjezeo      1            58.6          67.0         3       3
- 2 htxfjlxk      3            36.1          28.0         3       4
- 3 vkdqhyez      1            57.7          57.3         2       2
- 4 dbuvrwfq      3            56.6          57.4         2       3
- 5 ydaitaah      2            64.7          67.9         5       7
- 6 omhxokdr      1            37.4          41.7         2       2
- 7 dsybafny      1            88.4          95.9         4       6
- 8 fdfmcoto      2            20.2          18.9         2       2
- 9 rwsbykxe      2            48.3          43.0         3       3
-10 xocueqqe      3            48.6          55.2         1       1
-# … with 290 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
-<pre><code># A tibble: 300 × 5
-   PatientID   age gender site   diseasestatus
-   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        
- 1 pkyivajv     36      0 Tokyo  Mid          
- 2 dbuvrwfq     39      0 Paris  Late         
- 3 jhuztppp     30      0 Tokyo  Mid          
- 4 qejexgza     34      1 Tokyo  Late         
- 5 cszrjxju     41      1 Tokyo  Late         
- 6 uhvgttqh     31      0 London Late         
- 7 cflnybdw     45      1 Tokyo  Mid          
- 8 igobmmvj     48      0 Tokyo  Late         
- 9 lcrtmerg     35      0 London Late         
-10 fjjrnsnt     43      1 London Mid          
-# … with 290 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
-<pre><code># A tibble: 900 × 3
-   PatientID Biomarker BiomarkerStatus
-   &lt;chr&gt;     &lt;chr&gt;     &lt;lgl&gt;          
- 1 ygazqssv  dw        FALSE          
- 2 qosueuyw  ms        FALSE          
- 3 bhhykjvw  ms        FALSE          
- 4 ifajorty  np        TRUE           
- 5 gxnsybdt  ms        FALSE          
- 6 igobmmvj  ms        FALSE          
- 7 knnzlzun  ms        FALSE          
- 8 glzcbmby  ms        FALSE          
- 9 gxnsybdt  dw        TRUE           
-10 fzrhdpdu  np        FALSE          
-# … with 890 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <div id="c---data-wrangling" class="section level3">
 <h3>C - Data Wrangling</h3>
@@ -336,69 +291,22 @@ Now you should have all of the data in a single dataframe called
 <li><p>View <code>dimarta_df</code> to make sure the data look correct!
 The data should have one row for each patient, and 13 separate columns,
 including <code>dw</code>, <code>ms</code>, and <code>np</code></p></li>
-</ol>
-<pre><code># A tibble: 300 × 14
-   PatientID StudyArm hista…¹ hista…² qol_s…³ qol_end   age gender site  disea…⁴
-   &lt;chr&gt;     &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  
- 1 txdjezeo  placebo     58.6    67.0       3       3    39      0 Paris Late   
- 2 htxfjlxk  dimarta     36.1    28.0       3       4    42      0 Paris Late   
- 3 vkdqhyez  placebo     57.7    57.3       2       2    47      1 Lond… Mid    
- 4 dbuvrwfq  dimarta     56.6    57.4       2       3    39      0 Paris Late   
- 5 ydaitaah  adiclax     64.7    67.9       5       7    35      0 Lond… Late   
- 6 omhxokdr  placebo     37.4    41.7       2       2    41      0 Tokyo Early  
- 7 dsybafny  placebo     88.4    95.9       4       6    35      1 Tokyo Early  
- 8 fdfmcoto  adiclax     20.2    18.9       2       2    50      0 Lond… Mid    
- 9 rwsbykxe  adiclax     48.3    43.0       3       3    35      0 Lond… Early  
-10 xocueqqe  dimarta     48.6    55.2       1       1    42      1 Paris Late   
-# … with 290 more rows, 4 more variables: gender_c &lt;chr&gt;, dw &lt;lgl&gt;, ms &lt;lgl&gt;,
-#   np &lt;lgl&gt;, and abbreviated variable names ¹​histamine_start, ²​histamine_end,
-#   ³​qol_start, ⁴​diseasestatus
-# ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>Using the <code>mean()</code> function, calculate the mean age of
-all patients.</li>
-</ol>
-<pre><code>[1] 39.9</code></pre>
-<ol start="9" style="list-style-type: decimal">
-<li>Create a table showing how many male and female patients were in the
-trial.</li>
+<li><p>Using the <code>mean()</code> function, calculate the mean age of
+all patients.</p></li>
+<li><p>Create a table showing how many male and female patients were in
+the trial.</p></li>
 </ol>
 <pre class="r"><code>dimarta_df %&gt;%
   group_by(XXX) %&gt;%
   summarise(
     Counts = n()    
   )</code></pre>
-<pre><code># A tibble: 2 × 2
-  gender_c Counts
-  &lt;chr&gt;     &lt;int&gt;
-1 female      140
-2 male        160</code></pre>
 <ol start="10" style="list-style-type: decimal">
-<li>Now, using similar code, find out how many patients were assigned to
-each study arm.</li>
-</ol>
-<pre><code># A tibble: 3 × 2
-  StudyArm Counts
-  &lt;chr&gt;     &lt;int&gt;
-1 adiclax     100
-2 dimarta     100
-3 placebo     100</code></pre>
-<ol start="11" style="list-style-type: decimal">
-<li>Find out how many men and women were assigned to each study arm
+<li><p>Now, using similar code, find out how many patients were assigned
+to each study arm.</p></li>
+<li><p>Find out how many men and women were assigned to each study arm
 (Hint: You can use very similar code to what you used above, just add a
-second grouping variable!)</li>
-</ol>
-<pre><code># A tibble: 6 × 3
-# Groups:   StudyArm [3]
-  StudyArm gender_c Counts
-  &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt;
-1 adiclax  female       41
-2 adiclax  male         59
-3 dimarta  female       49
-4 dimarta  male         51
-5 placebo  female       50
-6 placebo  male         50</code></pre>
-<ol start="12" style="list-style-type: decimal">
+second grouping variable!)</p></li>
 <li><p>Add a new column to the <code>dimarta_df</code> data called
 <code>histamine_change</code> that shows the <em>change</em> in
 patient’s histamine levels from the start to the end of the trial (Hint:
@@ -407,26 +315,10 @@ from <code>histamine_end</code>!)</p></li>
 <li><p>Add a new column to <code>dimarta_df</code> called
 <code>qol_change</code> that shows the change in patient’s quality of
 life.</p></li>
-</ol>
-<pre><code># A tibble: 300 × 1
-   qol_change
-        &lt;dbl&gt;
- 1          0
- 2          1
- 3          0
- 4          1
- 5          2
- 6          0
- 7          2
- 8          0
- 9          0
-10          0
-# … with 290 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
-<ol start="14" style="list-style-type: decimal">
-<li>Calculate the percentage of patients who tested positive for each of
-the three biomarkers (Hint: If you calculate the <code>mean()</code> of
-a logical vector, you will get the percentage of TRUE values!)</li>
+<li><p>Calculate the percentage of patients who tested positive for each
+of the three biomarkers (Hint: If you calculate the <code>mean()</code>
+of a logical vector, you will get the percentage of TRUE
+values!)</p></li>
 </ol>
 <pre class="r"><code># Calculate percent of patients with positive biomarkers
 
@@ -436,100 +328,47 @@ dimarta_df %&gt;%
     ms_percent = mean(XXX),
     np_percent = mean(XXX)
   )</code></pre>
-<pre><code># A tibble: 1 × 3
-  dw_mean ms_percent np_percent
-    &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
-1   0.257       0.19      0.233</code></pre>
 <ol start="15" style="list-style-type: decimal">
-<li>Were there different distributions of age in the different trial
+<li><p>Were there different distributions of age in the different trial
 sites? To answer this, separately calculate the mean and standard
 deviations of patient ages in each site. (Hint: group the data by
 <code>site</code>, then calculate two separate summary statistics:
 <code>age_mean = mean(age)</code>, and
-<code>age_sd = sd(age)</code>.</li>
-</ol>
-<pre><code># A tibble: 3 × 3
-  site   age_mean age_sd
-  &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-1 London     39.9   5.86
-2 Paris      39.8   4.84
-3 Tokyo      40.1   4.50</code></pre>
-<ol start="16" style="list-style-type: decimal">
-<li>Calculate the mean change in histamine results separately for each
-study site</li>
-</ol>
-<pre><code># A tibble: 3 × 2
-  site   histamine_change_mean
-  &lt;chr&gt;                  &lt;dbl&gt;
-1 London                  1.99
-2 Paris                   2.29
-3 Tokyo                   1.29</code></pre>
-<ol start="17" style="list-style-type: decimal">
-<li>Calculate the mean change in histamine results
+<code>age_sd = sd(age)</code>.</p></li>
+<li><p>Calculate the mean change in histamine results separately for
+each study site</p></li>
+<li><p>Calculate the mean change in histamine results
 (<code>histamine_change</code>) for each study arm. Which study arm had
-a largest decrease in histamine?</li>
-</ol>
-<pre><code># A tibble: 3 × 2
-  StudyArm histamine_change_mean
-  &lt;chr&gt;                    &lt;dbl&gt;
-1 adiclax                  0.210
-2 dimarta                  2.51 
-3 placebo                  2.90 </code></pre>
-<ol start="18" style="list-style-type: decimal">
-<li>Calculate the mean change in quality of life
+a largest decrease in histamine?</p></li>
+<li><p>Calculate the mean change in quality of life
 (<code>qol_change</code>) for each study arm. Do the results match what
-you found with the histamine results?</li>
+you found with the histamine results?</p></li>
 </ol>
-<pre><code># A tibble: 3 × 2
-  StudyArm qol_change_mean
-  &lt;chr&gt;              &lt;dbl&gt;
-1 adiclax             0.06
-2 dimarta             0.01
-3 placebo            -0.15</code></pre>
 </div>
 <div id="d---plotting" class="section level3">
 <h3>D - Plotting</h3>
 <ol style="list-style-type: decimal">
-<li>Create boxplots showing the relationship between study arm and
+<li><p>Create boxplots showing the relationship between study arm and
 histamine change. (Tip! convert <code>StudyArm</code> to a factor with
-factor(StudyArm))</li>
-</ol>
-<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-31-1.png" width="576" style="display: block; margin: auto;" /></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Try using <code>geom_jitter()</code> to add the raw points to the
-plot</li>
-</ol>
-<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-32-1.png" width="576" style="display: block; margin: auto;" /></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Create the same plot as above, but instead of analysing study arm,
-try analysing gender. (Tip! convert gender to a factor with
+factor(StudyArm))</p></li>
+<li><p>Try using <code>geom_jitter()</code> to add the raw points to the
+plot</p></li>
+<li><p>Create the same plot as above, but instead of analysing study
+arm, try analysing gender. (Tip! convert gender to a factor with
 <code>factor(gender)</code>) What do you find? Did one gender have
-better histamine improvements than the other?</li>
-</ol>
-<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-33-1.png" width="576" style="display: block; margin: auto;" /></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Now create the same plot but show both gender and study arm in the
-same plot. One way to do this would be to color the points by
-gender!</li>
-</ol>
-<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-34-1.png" width="576" style="display: block; margin: auto;" /></p>
-<ol start="5" style="list-style-type: decimal">
-<li>Is there a correlation between patient’s starting and ending
+better histamine improvements than the other?</p></li>
+<li><p>Now create the same plot but show both gender and study arm in
+the same plot. One way to do this would be to color the points by
+gender!</p></li>
+<li><p>Is there a correlation between patient’s starting and ending
 histamine levels? Create a scatterplot with a regression line to find
-out!</li>
+out!</p></li>
+<li><p>Now create the same plot as above, but have different colored
+points for different study arms (but only one regression line).</p></li>
+<li><p>Instead of having different study arms as different colored
+points, create another plot using <code>facet_wrap()</code> to have
+different study arms in different plotting panels.</p></li>
 </ol>
-<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-36-1.png" width="576" style="display: block; margin: auto;" /></p>
-<ol start="6" style="list-style-type: decimal">
-<li>Now create the same plot as above, but have different colored points
-for different study arms (but only one regression line).</li>
-</ol>
-<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-37-1.png" width="576" style="display: block; margin: auto;" /></p>
-<ol start="7" style="list-style-type: decimal">
-<li>Instead of having different study arms as different colored points,
-create another plot using <code>facet_wrap()</code> to have different
-study arms in different plotting panels.</li>
-</ol>
-<p><img src="Clinical_Data_Case_Study_files/figure-html/unnamed-chunk-38-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 <div id="datasets" class="section level2">

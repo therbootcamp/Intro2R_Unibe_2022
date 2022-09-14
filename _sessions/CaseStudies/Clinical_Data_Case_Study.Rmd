@@ -36,7 +36,7 @@ knitr::opts_chunk$set(comment = NA,
                       fig.height = 6,
                       fig.align = 'center',
                       echo = FALSE, 
-                      eval = TRUE, 
+                      eval = FALSE, 
                       warning = FALSE,
                       message = FALSE)
 

@@ -13,7 +13,7 @@
 
 <title>Case study: Finance</title>
 
-<script src="Financial_Data_Case_Study_files/header-attrs-2.14/header-attrs.js"></script>
+<script src="Financial_Data_Case_Study_files/header-attrs-2.16/header-attrs.js"></script>
 <script src="Financial_Data_Case_Study_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="Financial_Data_Case_Study_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -277,38 +277,6 @@ tab-delimited.</p></li>
 <li><p>Print the <code>eur_usd</code> and <code>yen_usd</code> objects.
 Are all the data types and variable names correct? Not quite,
 right?</p></li>
-</ol>
-<pre><code># A tibble: 6,545 × 2
-   `04 Jan 1999` `1.186669`
-   &lt;chr&gt;              &lt;dbl&gt;
- 1 05 Jan 1999         1.18
- 2 06 Jan 1999         1.16
- 3 07 Jan 1999         1.17
- 4 08 Jan 1999         1.16
- 5 11 Jan 1999         1.15
- 6 12 Jan 1999         1.16
- 7 13 Jan 1999         1.17
- 8 14 Jan 1999         1.17
- 9 15 Jan 1999         1.16
-10 18 Jan 1999         1.16
-# … with 6,535 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
-<pre><code># A tibble: 8,764 × 2
-   `02 Jan 1990` `0.006838`
-   &lt;chr&gt;              &lt;dbl&gt;
- 1 03 Jan 1990      0.00686
- 2 04 Jan 1990      0.00698
- 3 05 Jan 1990      0.00695
- 4 08 Jan 1990      0.00694
- 5 09 Jan 1990      0.00689
- 6 10 Jan 1990      0.00688
- 7 11 Jan 1990      0.00688
- 8 12 Jan 1990      0.00688
- 9 16 Jan 1990      0.00687
-10 17 Jan 1990      0.00687
-# … with 8,754 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
-<ol start="5" style="list-style-type: decimal">
 <li><p>To fix the data, first load the data again and use the
 <code>col_names</code>-argument to explicitly assign the column names to
 be <code>Date</code> and <code>Rate</code>. This will prevent R to take
@@ -348,44 +316,12 @@ financial &lt;- dow %&gt;%
   select(Date,Close) %&gt;% 
   inner_join(dax %&gt;% select(Date, Close), by = &#39;Date&#39;)
 financial</code></pre>
-<pre><code># A tibble: 7,577 × 3
-   Date       Close.x Close.y
-   &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;
- 1 1987-12-30   1950.   1005.
- 2 1987-12-31   1939.     NA 
- 3 1988-01-04   2015.    956.
- 4 1988-01-05   2032.    996.
- 5 1988-01-06   2038.   1006.
- 6 1988-01-07   2052.   1014.
- 7 1988-01-08   1911.   1027.
- 8 1988-01-11   1945.    988.
- 9 1988-01-12   1929.    987.
-10 1988-01-13   1925.    966.
-# … with 7,567 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Inspect the data! What has R done with the names of the two
+<li><p>Inspect the data! What has R done with the names of the two
 <code>Close</code> variables? Run the code again, this time using the
 <code>suffix</code>-argument to give both variables suffixes preserve
 the origin of these variables, e.g.,
-<code>suffix = c(_dow','_dax')</code>.</li>
-</ol>
-<pre><code># A tibble: 7,577 × 3
-   Date       Close_dow Close_dax
-   &lt;date&gt;         &lt;dbl&gt;     &lt;dbl&gt;
- 1 1987-12-30     1950.     1005.
- 2 1987-12-31     1939.       NA 
- 3 1988-01-04     2015.      956.
- 4 1988-01-05     2032.      996.
- 5 1988-01-06     2038.     1006.
- 6 1988-01-07     2052.     1014.
- 7 1988-01-08     1911.     1027.
- 8 1988-01-11     1945.      988.
- 9 1988-01-12     1929.      987.
-10 1988-01-13     1925.      966.
-# … with 7,567 more rows
-# ℹ Use `print(n = ...)` to see more rows</code></pre>
-<ol start="3" style="list-style-type: decimal">
+<code>suffix = c(_dow','_dax')</code>.</p></li>
 <li><p>Looks better now? OK, now that you know how to join two data sets
 repeat the steps until all five data sets are included in
 <code>financial</code>. Remember, we only want the dates variable
@@ -427,56 +363,26 @@ contain? Consider using <code>summary</code> or
 <div id="d---analysing-and-plotting" class="section level3">
 <h3>D - Analysing and Plotting</h3>
 <ol style="list-style-type: decimal">
-<li>Plot the development of each of the stock indices over the available
-time periods. First, select rows corresponding to the stock index
-prices. Then use the <code>ggplot()</code>-function to start a plot.
-Then, Map <code>Date</code> to <code>x</code> and <code>value</code> to
-<code>y</code> in the <code>aes()</code>-function. And, finally, add a
-<code>geom_line()</code>. Does the plot look right?</li>
-</ol>
-<p><img src="Financial_Data_Case_Study_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" /></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Looked like the values of the three stock indices were somehow
+<li><p>Plot the development of each of the stock indices over the
+available time periods. First, select rows corresponding to the stock
+index prices. Then use the <code>ggplot()</code>-function to start a
+plot. Then, Map <code>Date</code> to <code>x</code> and
+<code>value</code> to <code>y</code> in the <code>aes()</code>-function.
+And, finally, add a <code>geom_line()</code>. Does the plot look
+right?</p></li>
+<li><p>Looked like the values of the three stock indices were somehow
 overlayering each other. Use <code>+ facet_grid(~variable)</code> to
 teas them apart. Also give it a slightly nicer appearance using
 <code>+ theme_light()</code> What does the plot tell you? Has there been
-a particular drop in any year?</li>
-</ol>
-<p><img src="Financial_Data_Case_Study_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" /></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Calculate the overall stock index price change per year. To do this,
-use <code>group_by()</code> and <code>summarise()</code> on the stock
-index change variables. Use the basic <code>sum()</code>-function inside
-<code>summarise()</code> to compute the overall change in the year. In
-doing this, don’t forget there were <code>NA</code>’s in two of the
-stock index price variables. Check out the result! When was the biggest
-drop in stock index prices?</li>
-</ol>
-<pre><code># A tibble: 20 × 4
-    year mean_dow_change mean_dax_change mean_nik_change
-   &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;
- 1  1999            NA             1529.          5903. 
- 2  2000          -709.            -455.         -5561. 
- 3  2001          -766.           -1254.         -4436. 
- 4  2002         -1680.           -2112.         -2235. 
- 5  2003          2112.             718.           327. 
- 6  2004           329.             180.          1335. 
- 7  2005           -65.5           1108.          3219. 
- 8  2006          1746.            1189.          1504. 
- 9  2007           903.            1470.         -1918. 
-10  2008         -4697.           -3257.         -6448. 
-11  2009          1880.            1147.          1513. 
-12  2010          1021.             957.          -318. 
-13  2011           648.           -1016.         -1774. 
-14  2012           721.            1714.          1940. 
-15  2013          3566.            1940.          5896. 
-16  2014          1479.             253.          1159. 
-17  2015          -379.             937.          1583. 
-18  2016          2159.             738.            80.7
-19  2017          4957.            1266.          3439. 
-20  2018          -455.            -960.         -2395. </code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>The results up to now suggest that modern financial markets are
+a particular drop in any year?</p></li>
+<li><p>Calculate the overall stock index price change per year. To do
+this, use <code>group_by()</code> and <code>summarise()</code> on the
+stock index change variables. Use the basic <code>sum()</code>-function
+inside <code>summarise()</code> to compute the overall change in the
+year. In doing this, don’t forget there were <code>NA</code>’s in two of
+the stock index price variables. Check out the result! When was the
+biggest drop in stock index prices?</p></li>
+<li><p>The results up to now suggest that modern financial markets are
 closely intertwined, to the extent that a change in one market can bring
 about a change in the markets. Evaluate this aspect of financial markets
 by calculating all correlations between the three stock index change
@@ -488,56 +394,20 @@ data is stored in a “wide” format. Reactivate the old, wide
 Before that select the variables you are interest in. Again, don’t
 forget about the <code>NA</code>s - there is an argument for
 <code>cor()</code> to deal with them. How closely are the stock indices
-related and which ones are most closely related?</li>
-</ol>
-<pre><code>                 Close_dow_change Close_dax_change Close_nik_change
-Close_dow_change            1.000            0.570            0.169
-Close_dax_change            0.570            1.000            0.318
-Close_nik_change            0.169            0.318            1.000</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>Evaluate the stability of the relationships between financial
+related and which ones are most closely related?</p></li>
+<li><p>Evaluate the stability of the relationships between financial
 markets by calculating pair-wise correlations for each year using
 <code>group_by</code> and <code>summarise()</code>. Note that here you
 have to specify each pairwise correlation separately inside
-<code>summarise()</code>.</li>
-</ol>
-<pre><code># A tibble: 20 × 4
-    year cor_dow_dax cor_dow_nik cor_dax_nik
-   &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
- 1  1999       0.453      0.0730       0.192
- 2  2000       0.308     -0.0519       0.195
- 3  2001       0.667      0.255        0.287
- 4  2002       0.654      0.196        0.236
- 5  2003       0.695      0.127        0.249
- 6  2004       0.468      0.166        0.344
- 7  2005       0.390      0.0625       0.327
- 8  2006       0.594      0.100        0.266
- 9  2007       0.537      0.0874       0.394
-10  2008       0.613      0.212        0.527
-11  2009       0.732      0.175        0.260
-12  2010       0.695      0.255        0.329
-13  2011       0.796      0.185        0.351
-14  2012       0.725      0.212        0.325
-15  2013       0.566      0.161        0.256
-16  2014       0.567      0.149        0.176
-17  2015       0.538      0.254        0.295
-18  2016       0.605      0.214        0.387
-19  2017       0.554      0.367        0.395
-20  2018       0.378      0.108        0.481</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>Another important aspect of financial markets are exchange rates
+<code>summarise()</code>.</p></li>
+<li><p>Another important aspect of financial markets are exchange rates
 between currencies. Generally, it is assumed that a strong economy
 translates into both a strong stock index and a strong currency relative
 to other currencies. For the end of this practical, let’s find out if
 that holds true our data. First, evaluate whether changes in exchange
 rates changes correlate with each other in the same way that stock
-indices did using the <code>cor</code>-function.</li>
-</ol>
-<pre><code>                Rate_eur_change Rate_yen_change
-Rate_eur_change           1.000           0.391
-Rate_yen_change           0.391           1.000</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li>Now, evaluate whether exchange rates vary as a function of the
+indices did using the <code>cor</code>-function.</p></li>
+<li><p>Now, evaluate whether exchange rates vary as a function of the
 <em>difference</em> between stock indices. That is, for instance, does a
 large difference between Dow Jones and DAX translate into a strong
 Dollar relative to the EURO? According to the above intuition this
@@ -547,40 +417,11 @@ index price may be motivated to sell their holdings and exchange them
 for their own currency to maintain a neutral position. This would, in
 effect, depreciate the currency at the same time as the stock index is
 outperforming, thus producing a negative relationship. What do you
-think? Ask the data.</li>
+think? Ask the data.</p></li>
+<li><p>Finally, evaluate the stability of the above relationship for
+each year separately. Can you make out a stable pattern? No? I guess it
+depends. As always.</p></li>
 </ol>
-<pre><code># A tibble: 1 × 2
-  cor_dow_dax cor_dow_nik
-        &lt;dbl&gt;       &lt;dbl&gt;
-1      0.0869       0.569</code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>Finally, evaluate the stability of the above relationship for each
-year separately. Can you make out a stable pattern? No? I guess it
-depends. As always.</li>
-</ol>
-<pre><code># A tibble: 20 × 3
-    year cor_dow_dax cor_dow_nik
-   &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
- 1  1999      -0.639     -0.501 
- 2  2000      -0.222     -0.479 
- 3  2001      -0.393     -0.221 
- 4  2002       0.162     -0.287 
- 5  2003       0.772     -0.320 
- 6  2004       0.253      0.427 
- 7  2005       0.831      0.862 
- 8  2006       0.776      0.0745
- 9  2007      -0.136      0.824 
-10  2008       0.825      0.788 
-11  2009       0.837      0.740 
-12  2010       0.714      0.932 
-13  2011      -0.334      0.459 
-14  2012      -0.248      0.727 
-15  2013      -0.235      0.898 
-16  2014      -0.856      0.781 
-17  2015       0.601      0.819 
-18  2016      -0.108      0.831 
-19  2017       0.784      0.629 
-20  2018       0.470      0.792 </code></pre>
 </div>
 </div>
 <div id="datasets" class="section level2">
