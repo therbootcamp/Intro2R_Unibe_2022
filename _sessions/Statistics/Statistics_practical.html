@@ -256,16 +256,47 @@ an object called <code>wine_lm</code>.</li>
 <pre class="r"><code># Simple regression
 wine_lm &lt;- lm(formula = XX ~ XX,
               data = XX)</code></pre>
+<pre class="r"><code>wine_lm &lt;- lm(formula = Quality ~ Residual_Sugar,
+              data = wine)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Print the fitted model <code>wine_lm</code>. Which information
-does it show? Can you make sense of it?</p></li>
-<li><p>The deafult output of <code>lm</code> is not very informative. It
+<li>Print the fitted model <code>wine_lm</code>. Which information does
+it show? Can you make sense of it?</li>
+</ol>
+<pre class="r"><code>wine_lm</code></pre>
+<pre><code>
+Call:
+lm(formula = Quality ~ Residual_Sugar, data = wine)
+
+Coefficients:
+   (Intercept)  Residual_Sugar  
+       5.85532        -0.00679  </code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>The deafult output of <code>lm</code> is not very informative. It
 only shows the code and the estimates for the mdoel’s parameters: the
 inetrcept and the coefficient for <code>Residual_Sugar</code>. Use
-<code>summary()</code> to obtain a more informative output.</p></li>
+<code>summary()</code> to obtain a more informative output.</li>
 </ol>
 <pre class="r"><code># Show results
 summary(XX)</code></pre>
+<pre class="r"><code>summary(wine_lm)</code></pre>
+<pre><code>
+Call:
+lm(formula = Quality ~ Residual_Sugar, data = wine)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-2.851 -0.808  0.158  0.229  3.217 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     5.85532    0.01645  355.89   &lt;2e-16 ***
+Residual_Sugar -0.00679    0.00228   -2.98   0.0029 ** 
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.873 on 6495 degrees of freedom
+Multiple R-squared:  0.00137,   Adjusted R-squared:  0.00121 
+F-statistic: 8.89 on 1 and 6495 DF,  p-value: 0.00287</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li><code>summary()</code> shows a detailed output with five
 sections:</li>
@@ -311,21 +342,36 @@ to run a multiple regression with these variables and save it as
 <pre class="r"><code># Multiple regression
 wine_lm &lt;- lm(formula = XX ~ XX + XX + XX + XX,
               data = XX)</code></pre>
+<pre class="r"><code>wine_lm &lt;- lm(formula = Quality ~ Residual_Sugar + PH_Value + Alcohol + Sulphate,
+              data = wine)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li><p>Print the fitted mdoel. How do you interpret the coefficients? Do
-they tell you, which predictor is most important?</p></li>
-<li><p>Raw coefficients tell little about the importance of predictors,
-as they are also affect by the scale of the precictors. For instance,
-was <code>Alcohol</code> coded in per thousand (rather than percent),
-then its coefficient would be exactly ten times larger. You can tests
-this using the template below. Add the four predictors using above such
-that <code>Alcohol</code> is placed within of <code>I()</code> and run
-the model. Do not save it, only inspect the coefficients printed in the
-console.</p></li>
+<li>Print the fitted mdoel. How do you interpret the coefficients? Do
+they tell you, which predictor is most important?</li>
+</ol>
+<pre class="r"><code>wine_lm</code></pre>
+<pre><code>
+Call:
+lm(formula = Quality ~ Residual_Sugar + PH_Value + Alcohol + 
+    Sulphate, data = wine)
+
+Coefficients:
+   (Intercept)  Residual_Sugar        PH_Value         Alcohol        Sulphate  
+        1.8422          0.0280         -0.0767          0.3669          0.4171  </code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Raw coefficients tell little about the importance of predictors, as
+they are also affect by the scale of the precictors. For instance, was
+<code>Alcohol</code> coded in per thousand (rather than percent), then
+its coefficient would be exactly ten times larger. You can tests this
+using the template below. Add the four predictors using above such that
+<code>Alcohol</code> is placed within of <code>I()</code> and run the
+model. Do not save it, only inspect the coefficients printed in the
+console.</li>
 </ol>
 <pre class="r"><code># Multiple regression
 lm(formula = XX ~ XX + XX + I(XX / 10) + XX,
    data = XX)</code></pre>
+<pre class="r"><code>wine_lm &lt;- lm(formula = Quality ~ Residual_Sugar + PH_Value + I(Alcohol/10) + Sulphate,
+              data = wine)</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Regression coefficients must always be interpreted with the
 scaling of variables in mind. Nevertheless, the coefficients reveal some
@@ -337,6 +383,31 @@ This means that one coefficient can only be interpreted in reference to
 the whole set of predictors. Now, take a look at the
 <code>summary()</code>. Which effects are significant and what is their
 direction?</p></li>
+</ol>
+<pre class="r"><code>summary(wine_lm)</code></pre>
+<pre><code>
+Call:
+lm(formula = Quality ~ Residual_Sugar + PH_Value + I(Alcohol/10) + 
+    Sulphate, data = wine)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-3.494 -0.501 -0.035  0.492  3.099 
+
+Coefficients:
+               Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     1.84215    0.22155    8.32  &lt; 2e-16 ***
+Residual_Sugar  0.02800    0.00225   12.43  &lt; 2e-16 ***
+PH_Value       -0.07671    0.06256   -1.23     0.22    
+I(Alcohol/10)   3.66868    0.08635   42.49  &lt; 2e-16 ***
+ [ reached getOption(&quot;max.print&quot;) -- omitted 1 row ]
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.772 on 6492 degrees of freedom
+Multiple R-squared:  0.219, Adjusted R-squared:  0.219 
+F-statistic:  456 on 4 and 6492 DF,  p-value: &lt;2e-16</code></pre>
+<ol start="6" style="list-style-type: decimal">
 <li><p><code>Alcohol</code>, <code>Sulphate</code>, and
 <code>Residual_Sugar</code> all show a significant positive relationship
 with perceived quality of wines, whereas <code>PH_Value</code> shows a
@@ -370,6 +441,19 @@ vectors with a <i>t</i>-test. You do not have to save the result.</li>
 </ol>
 <pre class="r"><code># t-test
 t.test(x = XX, y = XX)</code></pre>
+<pre class="r"><code># t-test
+t.test(x = white, y = red)</code></pre>
+<pre><code>
+    Welch Two Sample t-test
+
+data:  white and red
+t = 10, df = 2951, p-value &lt;2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.195 0.289
+sample estimates:
+mean of x mean of y 
+     5.88      5.64 </code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><p>What does the output of the <i>t</i>-tests tell you about the
 difference between white and red wine in perceived quality? You can find
@@ -383,6 +467,9 @@ Now, try to get the same result with a regression. Predict
 <pre class="r"><code># Regression
 wine_lm &lt;- lm(formula = XX ~ XX, 
               data = XX)</code></pre>
+<pre class="r"><code># Regression
+wine_lm &lt;- lm(formula = Quality ~ Color, 
+              data = wine)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Print the object and inspect the regression coefficients. Do you
 recognize some of these numbers?</p></li>
@@ -395,16 +482,51 @@ that comes earlier in the alphabet, i.e.,
 <li><p>Now take a look at the <code>summary()</code> of your model
 object and compare the degrees of freedom, <i>t</i>- and p-values with
 the ones from the <i>t</i>-test above.</p></li>
-<li><p>The values from the t-test do not exactly match the estimates for
+</ol>
+<pre class="r"><code># summary
+summary(wine_lm)</code></pre>
+<pre><code>
+Call:
+lm(formula = Quality ~ Color, data = wine)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-2.878 -0.878  0.122  0.364  3.122 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   5.6360     0.0217  259.92   &lt;2e-16 ***
+Colorwhite    0.2419     0.0250    9.69   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.867 on 6495 degrees of freedom
+Multiple R-squared:  0.0142,    Adjusted R-squared:  0.0141 
+F-statistic: 93.8 on 1 and 6495 DF,  p-value: &lt;2e-16</code></pre>
+<ol start="8" style="list-style-type: decimal">
+<li>The values from the t-test do not exactly match the estimates for
 the coefficients in the regression. The reason is that the
 <code>t.test()</code> function permits different variances in the groups
 (red and white). In contrast, regression always assumes that the
 variances between groups are the identical. Re-calculate the
 <i>t</i>-test using the additional argument
-<code>var.equal = TRUE</code>.</p></li>
+<code>var.equal = TRUE</code>.</li>
 </ol>
 <pre class="r"><code># t-test
 t.test(x = XX, y = XX, var.equal = XX)</code></pre>
+<pre class="r"><code># t-test
+t.test(x = white, y = red, var.equal = TRUE)</code></pre>
+<pre><code>
+    Two Sample t-test
+
+data:  white and red
+t = 10, df = 6495, p-value &lt;2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.193 0.291
+sample estimates:
+mean of x mean of y 
+     5.88      5.64 </code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>Order has been restored! All values in the <i>t</i>-test and the
 regression should now be identical.</li>
@@ -434,6 +556,13 @@ wine_dummy &lt;- lm(formula = XX ~ XX,
 # Regression effect
 wine_effect &lt;- lm(formula = XX ~ XX, 
                   data = XX)</code></pre>
+<pre class="r"><code># Regression dummy
+wine_dummy &lt;- lm(formula = Quality ~ Color_dummy, 
+                 data = wine)
+
+# Regression effect
+wine_effect &lt;- lm(formula = Quality ~ Color_effect, 
+                  data = wine)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Print these objects and compare the coeffcients. The dummy coding
 coefficients should be familiar. How do they compare to the effect
@@ -444,20 +573,65 @@ intercept has also changed for exactly the same value. Verify the
 weights with the calculations done in the code chunk below.</p></li>
 </ol>
 <pre class="r"><code># Dummy-coding
-mean(red) # intercept
-mean(white) - mean(red) # coeffcient color
-
-# EffekKodierung
-(mean(red) + mean(white))/2 # intercept
-mean(white) - (mean(red) + mean(white))/2 # coeffcient color</code></pre>
+mean(red) # intercept</code></pre>
+<pre><code>[1] 5.64</code></pre>
+<pre class="r"><code>mean(white) - mean(red) # coeffcient color</code></pre>
+<pre><code>[1] 0.242</code></pre>
+<pre class="r"><code># EffekKodierung
+(mean(red) + mean(white))/2 # intercept</code></pre>
+<pre><code>[1] 5.76</code></pre>
+<pre class="r"><code>mean(white) - (mean(red) + mean(white))/2 # coeffcient color</code></pre>
+<pre><code>[1] 0.121</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Now, compare the models with <code>summary()</code>. Where is
-different, what the same?</p></li>
-<li><p>The coding (dummy or effect) has, with the exception of the
+<li>Now, compare the models with <code>summary()</code>. Where is
+different, what the same?</li>
+</ol>
+<pre class="r"><code># Regression dummy
+summary(wine_dummy)</code></pre>
+<pre><code>
+Call:
+lm(formula = Quality ~ Color_dummy, data = wine)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-2.878 -0.878  0.122  0.364  3.122 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   5.6360     0.0217  259.92   &lt;2e-16 ***
+Color_dummy   0.2419     0.0250    9.69   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.867 on 6495 degrees of freedom
+Multiple R-squared:  0.0142,    Adjusted R-squared:  0.0141 
+F-statistic: 93.8 on 1 and 6495 DF,  p-value: &lt;2e-16</code></pre>
+<pre class="r"><code># Regression effekt
+summary(wine_effect)</code></pre>
+<pre><code>
+Call:
+lm(formula = Quality ~ Color_effect, data = wine)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-2.878 -0.878  0.122  0.364  3.122 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    5.7570     0.0125  461.04   &lt;2e-16 ***
+Color_effect   0.1209     0.0125    9.69   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.867 on 6495 degrees of freedom
+Multiple R-squared:  0.0142,    Adjusted R-squared:  0.0141 
+F-statistic: 93.8 on 1 and 6495 DF,  p-value: &lt;2e-16</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>The coding (dummy or effect) has, with the exception of the
 coefficient scaling and the standard error, no influence on the
 <i>t</i>-value and the <i>p</i>-value for predictors. However, the
 intercept changed dramatically, because for the effect coding the
-intercept is considerably further away from zero.</p></li>
+intercept is considerably further away from zero.</li>
 </ol>
 </div>
 </div>

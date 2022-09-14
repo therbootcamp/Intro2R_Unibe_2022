@@ -1,0 +1,49 @@
+Recap II
+
+library(tidyverse)
+
+ggplot(mpg, mapping = aes(x = trans, y = cty)) + 
+  geom_boxplot()
+
+ggplot(mpg, mapping = aes(x = reorder(trans,cyl), y = cty)) + 
+  geom_boxplot()
+
+ggplot(mpg, mapping = aes(x = displ, y = cty, colour = drv)) + 
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE) +
+  theme_bw() +
+  labs(title = 'titel',
+       subtitle = 'untertitel',
+       x = 'Hubraum',
+       y = 'Meilen in der Stadt',
+       caption = 'xxx') +
+  scale_color_brewer(palette = "PuBuGn")
+
+ggplot(mpg, mapping = aes(x = displ, y = cty)) + 
+  geom_point() +
+  geom_smooth(method = 'lm', se = FALSE) +
+  theme_bw() +
+  facet_wrap(~ drv)
+  facet_grid(drv ~ manufacturer) 
+ 
+ggplot(mpg, mapping = aes(x = trans, y = cty)) + 
+  geom_boxplot() +
+  theme(panel.background = element_rect(fill = 'green'),
+        panel.grid.major = element_line(colour = 'black'),
+        axis.title.x = element_text(family = "Arial", 
+            size = 15))
+
+ggsave(filename = "my_plot.pdf",
+       plot = my_plot,
+       device = "pdf",
+       path = "3_Figures",
+       width = 6, 
+       height = 4)
+
+(pretty+pretty) / (pretty+pretty) +
+  plot_annotation(tag_levels = "A")  
+
+
+https://colorbrewer2.org/
+scale_color_brewer(palette = "PuBuGn")
+scale_color_gradient(low = 'red', high = 'blue')

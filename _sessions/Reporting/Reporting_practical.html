@@ -13,13 +13,13 @@
 
 <title>Reporting</title>
 
-<script src="Reporting_practical_files/header-attrs-2.14/header-attrs.js"></script>
-<script src="Reporting_practical_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="Reporting_practical_files/header-attrs/header-attrs.js"></script>
+<script src="Reporting_practical_files/jquery/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="Reporting_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="Reporting_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="Reporting_practical_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="Reporting_practical_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<link href="Reporting_practical_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Reporting_practical_files/bootstrap/js/bootstrap.min.js"></script>
+<script src="Reporting_practical_files/bootstrap/shim/html5shiv.min.js"></script>
+<script src="Reporting_practical_files/bootstrap/shim/respond.min.js"></script>
 <style>h1 {font-size: 34px;}
        h1.title {font-size: 38px;}
        h2 {font-size: 30px;}
@@ -29,9 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="Reporting_practical_files/navigation-1.1/tabsets.js"></script>
-<link href="Reporting_practical_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="Reporting_practical_files/highlightjs-9.12.0/highlight.js"></script>
+<script src="Reporting_practical_files/navigation/tabsets.js"></script>
+<link href="Reporting_practical_files/highlightjs/default.css" rel="stylesheet" />
+<script src="Reporting_practical_files/highlightjs/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -219,14 +219,16 @@ href="https://www.dertreasurer.de/news/software-it/neue-technologien-helfen-beim
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li><p>Open your <code>TheRBootcamp</code> R project. It should already
+<li>Open your <code>TheRBootcamp</code> R project. It should already
 have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure
 that the data files listed in the Datasets section above are in your
-<code>2_Data</code> folder</p></li>
-<li><p>Because R Markdown looks quite a bit different from standard R
-code, the best way to look at examples is to see a new R Markdown
-document in action. In RStudio, click File – New File – R
-Markdown</p></li>
+<code>2_Data</code> folder</li>
+</ol>
+<pre class="r"><code># Done!</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Because R Markdown looks quite a bit different from standard R code,
+the best way to look at examples is to see a new R Markdown document in
+action. In RStudio, click File – New File – R Markdown</li>
 </ol>
 <p><img src="image/rmarkdown_ss_A.png" width="50%" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
@@ -459,6 +461,8 @@ header</p></li>
 </div>
 <div id="datasets" class="section level2">
 <h2>Datasets</h2>
+<pre class="r"><code>library(tidyverse)
+mcdonalds &lt;- read_csv(&quot;https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/complete/mcdonalds.csv&quot;)</code></pre>
 <table>
 <colgroup>
 <col width="10%" />

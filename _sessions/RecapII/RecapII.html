@@ -125,6 +125,17 @@ data %&gt;%
 .pull-right5[
 
 
+```r
+# Calculate summary statistics
+baselers %&gt;%
+  summarise(
+    N = n(),
+    age_mean = mean(age),
+    height_median = median(height),
+    children_max = max(children)
+  )
+```
+
 ```
 # A tibble: 1 × 4
       N age_mean height_median children_max

@@ -240,13 +240,37 @@ library(XX)
 library(XX)
 library(XX)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li><p>For this practical, we’ll use the <code>crime.csv</code> data
-set, containing crime data of US counties across various states. Using
+<li>For this practical, we’ll use the <code>crime.csv</code> data set,
+containing crime data of US counties across various states. Using
 <code>read_csv()</code>, load the data into R and store it as a new
-object called <code>crime</code>.</p></li>
-<li><p>Take a look at the first few rows of the data set(s) by printing
-them to the console.</p></li>
+object called <code>crime</code>.</li>
 </ol>
+<pre class="r"><code>crime &lt;- read_csv(&quot;1_Data/crime.csv&quot;)</code></pre>
+<pre><code>Rows: 1071 Columns: 36
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────
+Delimiter: &quot;,&quot;
+chr  (2): communityname, state
+dbl (34): population, householdsize, pctUrban, medIncome, pctWSocSec, pctWRetire, whitePerCap, blackPerCap...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Take a look at the first few rows of the data set(s) by printing
+them to the console.</li>
+</ol>
+<pre class="r"><code>crime</code></pre>
+<pre><code># A tibble: 1,071 × 36
+  communityname state popul…¹ house…² pctUr…³
+  &lt;chr&gt;         &lt;chr&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 BerkeleyHeig… NJ      11980    3.1      100
+2 Marpletownsh… PA      23123    2.82     100
+3 Norwoodtown   MA      28700    2.6      100
+4 Wacocity      TX     103590    2.62     100
+5 Shermancity   TX      31601    2.54     100
+# … with 1,066 more rows, and abbreviated
+#   variable names ¹​population,
+#   ²​householdsize, ³​pctUrban
+# ℹ Use `print(n = ...)` to see more rows</code></pre>
 </div>
 <div id="b---create-facets" class="section level3">
 <h3>B - Create facets</h3>
@@ -305,6 +329,12 @@ using public transportation for each of the crime variables.</li>
   geom_point() + 
   scale_y_log10() + 
   facet_wrap(~ XX)</code></pre>
+<pre class="r"><code>ggplot(data = crime_long,
+       mapping = aes(x = PctUsePubTrans, y = frequency)) + 
+  geom_point() + 
+  scale_y_log10() + 
+  facet_wrap(~ crime_var)</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>This was much more efficient, right? Now explore the relationship of
 frequency to other variables, such as <code>medIncome</code>,
@@ -318,6 +348,24 @@ Explore!</li>
 <p>Now that we have an informative plot, let’s focus on making it a bit
 more “pretty”“, using ggplot’s <code>theme()</code> function. The goal
 is to create a plot that looks like the plot below.</p>
+<pre class="r"><code>crime_facets &lt;- ggplot(data = crime_long,
+       mapping = aes(x = PctUsePubTrans, y = frequency)) + 
+  geom_point() + 
+  scale_y_log10() + 
+  facet_wrap(~ crime_var) +
+  theme(
+    panel.background = element_rect(fill=&#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;,
+                                    size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;,
+                                    size = .1),
+    strip.background = element_rect(fill=&#39;white&#39;),
+    strip.text = element_text(face=&#39;italic&#39;, size=12, hjust=1),
+    axis.title.y = element_text(size=12,margin=margin(r = 10)),
+    axis.title.x = element_text(size=12,margin=margin(t = 10)),
+    panel.spacing = unit(1.1, &quot;lines&quot;)) + 
+  labs(x = &#39;% public transportation&#39;, y = &#39;Crime frequency&#39;)
+crime_facets</code></pre>
 <p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol style="list-style-type: decimal">
 <li>To begin with store one of the facetted plots of section B as
@@ -334,6 +382,11 @@ the background to <code>"white"</code> of the panel using the
   theme(
     panel.background = element_rect(fill = XX)
     )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Next, change the major and minor grid lines to color
 <code>"grey75"</code> and sizes <code>.25</code> and <code>.1</code>,
@@ -347,6 +400,13 @@ respectively, using the <code>panel.grid.major</code> and
     panel.grid.major = element_line(color = XX, size = XX),
     panel.grid.minor = element_line(color = XX, size = XX)
     )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Next, change the strip background - the background of the panel
 headers - to color <code>"white"</code> using the
@@ -360,6 +420,14 @@ headers - to color <code>"white"</code> using the
     panel.grid.minor = element_line(color = XX, size = XX),
     strip.background = element_rect(fill = XX),
     )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Next, change the font in the strip to <code>"italic"</code>, adjust
 it to the right side, and set size to <code>12</code> using the
@@ -374,6 +442,15 @@ function. See <code>?element_text()</code>.</li>
     strip.background = element_rect(fill = XX),
     strip.text = element_text(face = XX, size = XX, hjust = XX)
     )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Next, set the font size of the axis labels also to <code>12</code>
 and add a margin of <code>10</code> to the top and right side,
@@ -392,6 +469,17 @@ the <code>element_text()</code> and <code>margin</code> functions. See
     axis.title.x = element_text(size = XX, margin = margin(t = XX)),
     axis.title.y = element_text(size = XX, margin = margin(r = XX)),
     )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10))
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-20-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="7" style="list-style-type: decimal">
 <li>Finally, increase the spacing between the panels slightly by setting
 the space between to <code>1.1</code> <code>"lines"</code> using the
@@ -409,6 +497,18 @@ function.</li>
     axis.title.y = element_text(size = XX, margin = margin(r = XX)),
     panel.spacing = unit(XX, units = XX)
     )</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    panel.spacing = unit(1.1, units = &quot;lines&quot;)
+    )</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="8" style="list-style-type: decimal">
 <li>Did you manage to reproduce the plot above? One other thing seems
 missing. Add appropriate labels using the <code>labs()</code>
@@ -426,6 +526,19 @@ function.</li>
     panel.spacing = unit(XX, units = XX)
     ) + 
   labs(x = XX, y = XX)</code></pre>
+<pre class="r"><code>crime_facets + 
+  theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    panel.spacing = unit(1.1, units = &quot;lines&quot;)
+    ) + 
+  labs(x = &#39;% public transportation&#39;, y = &#39;Crime frequency&#39;)</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-24-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="d---customize-plots-using-theme" class="section level3">
 <h3>D - Customize plots using <code>theme()</code></h3>
@@ -439,6 +552,16 @@ theme setting in an independent object called
   XX = XX,
   ...
   )</code></pre>
+<pre class="r"><code>crime_theme &lt;- theme(
+    panel.background = element_rect(fill = &#39;white&#39;),
+    panel.grid.major = element_line(color = &#39;grey75&#39;, size = .25),
+    panel.grid.minor = element_line(color = &#39;grey75&#39;, size = .1),
+    strip.background = element_rect(fill = &#39;white&#39;),
+    strip.text = element_text(face = &#39;italic&#39;, size = 12, hjust = 1),
+    axis.title.x = element_text(size = 12, margin = margin(t = 10)),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),
+    panel.spacing = unit(1.1, units = &quot;lines&quot;)
+    )</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Now create new plots with different variables on x-axis and simply
 add the <code>crime_theme</code> in order to apply your personalized
@@ -477,6 +600,15 @@ Store the resulting plot in an object called
   scale_y_log10() + 
   facet_wrap(~ XX) + 
   crime_theme</code></pre>
+<pre class="r"><code>crime_plot &lt;- ggplot(data = crime_long,
+       mapping = aes(x = PctUsePubTrans, y = frequency,
+                     color = state, size = population)) + 
+  geom_point() + 
+  scale_y_log10() + 
+  facet_wrap(~ crime_var) + 
+  crime_theme
+crime_plot</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-29-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="2" style="list-style-type: decimal">
 <li>First, using <code>scale_size()</code> and the <code>range</code>
 argument, change the scaling of the points to reduce the degree of
@@ -485,6 +617,8 @@ numbers (smaller than 10) to create a version of the plot with a decent
 trade-off between point size and point overlap.</li>
 </ol>
 <pre class="r"><code>crime_plot + scale_size(range = c(XX, XX))</code></pre>
+<pre class="r"><code>crime_plot + scale_size(range = c(.5, 3))</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-31-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="3" style="list-style-type: decimal">
 <li>You may find that still some of the larger points are cropped off at
 the upper end of the panels. Fix this by increasing the y-axis limits
@@ -496,6 +630,11 @@ that R will tell you that this will overwrite the previous use of
 <pre class="r"><code>crime_plot + 
   scale_size(range = c(XX, XX)) + 
   scale_y_continuous(limits = c(XX, XX))</code></pre>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(.5, 3)) + 
+  scale_y_log10(limits = c(1, 2e+5))</code></pre>
+<pre><code>Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will replace the existing scale.</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-33-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Next, change the colors to a different, possibly more appropriate
 color scheme. One way to this is via the
@@ -509,6 +648,12 @@ based on luminescence alone easier.</li>
   scale_size(range = c(XX, XX)) + 
   scale_y_log10(limits = c(1, XX)) + 
   scale_color_colorblind()</code></pre>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(.5, 3)) + 
+  scale_y_log10(limits = c(1, 2e+5)) + 
+  scale_color_colorblind()</code></pre>
+<pre><code>Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will replace the existing scale.</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-35-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="5" style="list-style-type: decimal">
 <li>Another approach to changing colors is to supply them manually,
 e.g., using <code>scale_color_manual()</code>. Try assigning your own
@@ -526,6 +671,12 @@ function.</li>
   scale_size(range = c(XX, XX)) + 
   scale_y_log10(limits = c(1, XX)) + 
   scale_color_manual(values = viridis(7))</code></pre>
+<pre class="r"><code>crime_plot + 
+  scale_size(range = c(.5, 3)) + 
+  scale_y_log10(limits = c(1, 2e+5)) + 
+  scale_color_manual(values = viridis(7))</code></pre>
+<pre><code>Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will replace the existing scale.</code></pre>
+<p><img src="PlottingII_practical_files/figure-html/unnamed-chunk-37-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="6" style="list-style-type: decimal">
 <li>Alright the plot fairly pretty and readable now. But there is always
 more to be done and tastes differ, of course. Go explore!</li>
