@@ -118,7 +118,7 @@ wine <- read_csv(file = "https://bit.ly/3zV98fi")
 wine <- wine %>% mutate_if(is.character, factor)
 ```
 
-### B - Einfache Regression
+### B - Simple Regression
 
 1. In this section, you will test the effect of `Residual_Sugar` (predictor) on the perceived `Quality` (criterion) of wines. Use the template below, to run a simple linear regression testing the relationship and save it in an object called `wine_lm`.
 
