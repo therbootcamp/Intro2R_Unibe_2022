@@ -13,13 +13,13 @@
 
 <title>Statistics</title>
 
-<script src="Statistics_practical_files/header-attrs/header-attrs.js"></script>
-<script src="Statistics_practical_files/jquery/jquery-3.6.0.min.js"></script>
+<script src="Statistics_practical_files/header-attrs-2.14/header-attrs.js"></script>
+<script src="Statistics_practical_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="Statistics_practical_files/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-<script src="Statistics_practical_files/bootstrap/js/bootstrap.min.js"></script>
-<script src="Statistics_practical_files/bootstrap/shim/html5shiv.min.js"></script>
-<script src="Statistics_practical_files/bootstrap/shim/respond.min.js"></script>
+<link href="Statistics_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="Statistics_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="Statistics_practical_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="Statistics_practical_files/bootstrap-3.3.5/shim/respond.min.js"></script>
 <style>h1 {font-size: 34px;}
        h1.title {font-size: 38px;}
        h2 {font-size: 30px;}
@@ -29,9 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
-<script src="Statistics_practical_files/navigation/tabsets.js"></script>
-<link href="Statistics_practical_files/highlightjs/default.css" rel="stylesheet" />
-<script src="Statistics_practical_files/highlightjs/highlight.js"></script>
+<script src="Statistics_practical_files/navigation-1.1/tabsets.js"></script>
+<link href="Statistics_practical_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="Statistics_practical_files/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -244,8 +244,8 @@ to interpret categorical variables correctly.</li>
 <pre class="r"><code># convert character to factor
 wine &lt;- wine %&gt;% mutate_if(is.character, factor)</code></pre>
 </div>
-<div id="b---einfache-regression" class="section level3">
-<h3>B - Einfache Regression</h3>
+<div id="b---simple-regression" class="section level3">
+<h3>B - Simple Regression</h3>
 <ol style="list-style-type: decimal">
 <li>In this section, you will test the effect of
 <code>Residual_Sugar</code> (predictor) on the perceived
@@ -400,7 +400,7 @@ Coefficients:
 Residual_Sugar  0.02800    0.00225   12.43  &lt; 2e-16 ***
 PH_Value       -0.07671    0.06256   -1.23     0.22    
 I(Alcohol/10)   3.66868    0.08635   42.49  &lt; 2e-16 ***
- [ reached getOption(&quot;max.print&quot;) -- omitted 1 row ]
+Sulphate        0.41713    0.06646    6.28  3.7e-10 ***
 ---
 Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 

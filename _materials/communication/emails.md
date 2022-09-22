@@ -34,7 +34,7 @@ We hope this finds you well and that you enjoyed the three days with us. We woul
 
 1) Website and materials
 
-The website and all materials continue to be available at: https://github.com/dwulff/Intro2R_Unibe_2022 
+The website and all materials continue to be available at: https://therbootcamp.github.io/Intro2R_Unibe_2022/
 
 
 The solutions should now be visible in the individual practicals.
@@ -42,7 +42,7 @@ The solutions should now be visible in the individual practicals.
 2) Follow-up questionnaire
 
 
-Please take a few moments and let us know how we can improve future courses: https://docs.google.com/forms/d/e/1FAIpQLSeBqsc5iS0BQpoOHfrstZl5ViNWR0eRPGqJPMGyyMGtaxeQhg/viewform 
+Please take a moment and let us know how we can improve future courses: https://forms.gle/XVQdghv4VESubFDC9
 
 3) Project 
 
