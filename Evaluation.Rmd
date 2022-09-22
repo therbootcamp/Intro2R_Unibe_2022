@@ -1,7 +1,7 @@
 ---
 title: "Evaluation results Bern R Bootcamp HS 2022"
 author: "MSM, DUW"
-date: "9/12/2022"
+date: "9/21/2022"
 output: html_document
 ---
 
@@ -13,14 +13,19 @@ knitr::opts_chunk$set(echo = FALSE,
                       error = FALSE)
 
 
-library(googlesheets)
+library(googlesheets4)
 library(tidyverse)
 library(kableExtra)
+library(lubridate)
+filter_year <- 2022
 
-my_sheets <- gs_ls()
-evaluation <- gs_title('September 2022 BernRBootcamp follow-up survey (Responses)') %>%
-  gs_read(ws = 1)
+evaluation <- read_sheet('https://docs.google.com/spreadsheets/d/1TKm2POz-MPDQr4WS8QLgCyPj9ZJ_EQS0C2TzcjM0-og/edit?resourcekey#gid=84040835') %>%
+  filter(year(Timestamp) == '2022')
+
 ```
+
+This questionnaire was filled in by `r nrow(evaluation)` participants.
+
 
 ## How satisfied were you with the bootcamp in general? (5 points scale, 5 = best)
 
